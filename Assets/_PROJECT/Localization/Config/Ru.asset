@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196f4d3c079dd594ea366842c439b197, type: 3}
+  m_Name: Ru
+  m_EditorClassIdentifier: Assembly-CSharp::LocalizationData
+  <Real>k__BackingField: 2
+  <Substitutes>k__BackingField: 02000000
+  <HourTime>k__BackingField: "\u0447"
+  <MinuteTime>k__BackingField: "\u043C"
+  <SecondTime>k__BackingField: "\u0441"
+  <AdsInterstitial>k__BackingField: 
+  <LabelProgressNarrator>k__BackingField: 
+  Suffixies:
+  - 
+  - K
+  - M
+  - B
+  - T
+  - "\u041A\u0432"
+  - "\u041A\u0430"
+  BotsPhrases: []
+  Timer: "\u041D\u0430\u0447\u0430\u043B\u043E \u0447\u0435\u0440\u0435\u0437 {0}..."
+  Enemy: "\u0412\u0440\u0430\u0433"
+  PlayerHit: "{0} \u043F\u043E\u043F\u0430\u043B!"
+  PlayerWinner: "{0} \u0432\u044B\u0438\u0433\u0440\u0430\u043B!"
+  TaskTranslates:
+  - <Id>k__BackingField: 0
+    name: "\u041F\u043E\u043F\u0430\u0434\u0438 \u0432\u043E \u0432\u0440\u0430\u0433\u0430
+      {0} \u0440\u0430\u0437."
+  - <Id>k__BackingField: 1
+    name: "\u0412\u044B\u0438\u0433\u0440\u0430\u0439 {0} \u0440\u0430\u0437"
+  - <Id>k__BackingField: 2
+    name: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0430\u043F\u0442\u0435\u0447\u043A\u0443
+      {0} \u0440\u0430\u0437"
+  - <Id>k__BackingField: 3
+    name: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0449\u0438\u0442
+      {0} \u0440\u0430\u0437"
+  - <Id>k__BackingField: 4
+    name: "\u0418\u0437\u043B\u0435\u0447\u0438 {0}\u0435\u0434\u0438\u043D\u0438\u0446
+      \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
+  - <Id>k__BackingField: 5
+    name: "\u041F\u0440\u043E\u0439\u0434\u0438 \u043F\u0430\u0440\u043A\u0443\u0440"
+  DailyReward:
+    <ShowAsAllowReceive>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
+    <ShowAsReceived>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u043D\u043E"
+    <ShowAsBlockedForReceive>k__BackingField: "\u0421\u043A\u043E\u0440\u043E"

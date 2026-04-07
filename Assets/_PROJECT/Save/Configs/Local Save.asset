@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7119f28a206f8cb43bc38f3763d2f4ee, type: 3}
+  m_Name: Local Save
+  m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
+  Save:
+    Money: 13000
+    IsBoughtPurchase: 0
+    Skins:
+    - Id: creeper_skin
+    - Id: tits_skin
+    SkinWearId: creeper_skin
+    Bonuses:
+    - Id: health_bonus
+      Count: 3
+    - Id: shield_bonus
+      Count: 10
+    - Id: reset_bonus
+      Count: 11
+    Tasks:
+    - Id: Parkour
+      Count: 0
+      IsGetReward: 0
+    - Id: WinCount
+      Count: 0
+      IsGetReward: 0
+    - Id: HitCount
+      Count: 3
+      IsGetReward: 0
+    - Id: UseHealCount
+      Count: 0
+      IsGetReward: 0
+    - Id: ShieldCount
+      Count: 8
+      IsGetReward: 0
+    - Id: HealsLifesCount
+      Count: 0
+      IsGetReward: 0
+    DailyRewardSave:
+      LastDateTimeReceived: 
+      LastDayNumber: -1
+    WheelFortuneSave:
+      CountSpinAllow: 5
+      LastDateTimeSpined: 07.04.2026 22:43:20
