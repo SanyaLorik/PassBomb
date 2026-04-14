@@ -18,7 +18,10 @@ public class LocalizationData : LocalizationDataBase,
     // Battle info
     public string PlayerHit;
     public string PlayerWinner;
-    
+
+    [field: Header("Статический текст")]
+    [field: SerializeField] public StaticTranslation<string>[] StaticTranslates { get; private set; }
+
     public DailyRewardLocaliation DailyReward;
 
     DailyRewardLocaliation IDailyRewardLocalization.DailyReward => DailyReward;
