@@ -11,7 +11,8 @@ public class GameSave : GameSaveBase,
 {
     public long Money;
     public bool IsBoughtPurchase = false;
-    
+    public bool TutorialPassed = false;
+
     // Skins
     public List<SkinItem> Skins = new ();
     public string SkinWearId = "";
@@ -36,17 +37,23 @@ public class GameSave : GameSaveBase,
     }
     
     
-    public void AddNewBonusCounts(string id, int count) {
+    public void AddNewBonusCounts(string id, int count, bool clear = false) {
         BonuseItem bonus = Bonuses.FirstOrDefault(b => b.Id == id);
         if (bonus == null) {
             Bonuses.Add(new BonuseItem {
                 Id = id,
                 Count = count,
             });
-            return;
         }
-        bonus.Count += count;
-        Debug.Log($"Added {count} bonus: {bonus.GetType()}");
+        else {
+            if (clear) {
+                bonus.Count = count;
+            }
+            else {
+                bonus.Count += count;
+            }
+            Debug.Log($"Added {count} bonus: {bonus.GetType()}"); 
+        }
     }
 
     public int GetBonusCount(string id) {

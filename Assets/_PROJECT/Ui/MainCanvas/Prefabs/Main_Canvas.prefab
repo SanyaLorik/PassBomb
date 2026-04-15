@@ -2092,6 +2092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2910249023095400976}
+  - component: {fileID: 809942917255569914}
   m_Layer: 0
   m_Name: Bonus
   m_TagString: Untagged
@@ -2124,6 +2125,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &809942917255569914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732263699532266779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!1 &1778200921826152827
 GameObject:
   m_ObjectHideFlags: 0
@@ -11422,8 +11436,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 333449345517826449, guid: 2ca8277968254f447b51e95ca827034c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 477555571859675011}
   m_SourcePrefab: {fileID: 100100000, guid: 2ca8277968254f447b51e95ca827034c, type: 3}
+--- !u!1 &357196156022087502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 333449345517826449, guid: 2ca8277968254f447b51e95ca827034c, type: 3}
+  m_PrefabInstance: {fileID: 24103954891271903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &477555571859675011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357196156022087502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!224 &357196156022087503 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 333449345517826448, guid: 2ca8277968254f447b51e95ca827034c, type: 3}
@@ -12140,8 +12175,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8848040366624976310, guid: 36c06ce9c1212944d984cd9e0e98526f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 122973144646155212}
   m_SourcePrefab: {fileID: 100100000, guid: 36c06ce9c1212944d984cd9e0e98526f, type: 3}
+--- !u!1 &4349500979724909561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8848040366624976310, guid: 36c06ce9c1212944d984cd9e0e98526f, type: 3}
+  m_PrefabInstance: {fileID: 5086259207394088527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &122973144646155212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349500979724909561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!224 &6376352386382116112 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2227979423713190751, guid: 36c06ce9c1212944d984cd9e0e98526f, type: 3}
@@ -12249,7 +12305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3370294952947883889, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 628
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 4043790351245931100, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
       propertyPath: m_AnchorMax.y
@@ -12586,13 +12642,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4528865624888444204, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6263698666714582622}
   m_SourcePrefab: {fileID: 100100000, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
 --- !u!224 &1606088729212494721 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5305438994395250626, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
   m_PrefabInstance: {fileID: 6911140416126917699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7003254500649802095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4528865624888444204, guid: 6760e1a7909c6cb4eb968075b6c31242, type: 3}
+  m_PrefabInstance: {fileID: 6911140416126917699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6263698666714582622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7003254500649802095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!1001 &7305627115529667981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12954,8 +13031,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7385780027793325565, guid: 01a3e98bbcc9f4f4a82afd475f58d06d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5917819093350181331}
   m_SourcePrefab: {fileID: 100100000, guid: 01a3e98bbcc9f4f4a82afd475f58d06d, type: 3}
+--- !u!1 &612599191597666270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7385780027793325565, guid: 01a3e98bbcc9f4f4a82afd475f58d06d, type: 3}
+  m_PrefabInstance: {fileID: 7998371454063571491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5917819093350181331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612599191597666270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!224 &6134560801471510962 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4313809618807278481, guid: 01a3e98bbcc9f4f4a82afd475f58d06d, type: 3}
@@ -12971,39 +13069,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 589515331783823542, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 589515331783823542, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099668229020949410, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 1099668229020949410, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1099668229020949410, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 1919931552203818945, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 1919931552203818945, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2526588194619736315, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2526588194619736315, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4126828558782445345, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_Name
@@ -13015,47 +13113,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4608800589218887457, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 4608800589218887457, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4608800589218887457, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 4721396801411405930, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4721396801411405930, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4721396801411405930, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4840473649522932915, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.682
       objectReference: {fileID: 0}
     - target: {fileID: 4840473649522932915, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6264978517393976639, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6264978517393976639, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6264978517393976639, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6729681981935221192, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
       propertyPath: m_Pivot.x
@@ -13140,13 +13238,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4126828558782445345, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5527093567723960050}
   m_SourcePrefab: {fileID: 100100000, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
 --- !u!224 &3253882127669714695 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6729681981935221192, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
   m_PrefabInstance: {fileID: 8092052179116271311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5262964279867118062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4126828558782445345, guid: 05afce5e0aad1b54c910cd5de76da589, type: 3}
+  m_PrefabInstance: {fileID: 8092052179116271311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5527093567723960050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5262964279867118062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 1
 --- !u!1001 &8852876962668496225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13488,8 +13607,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6773685173217878001, guid: 97305eea33114b64ebd4ca90007bf87c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4435028398721180329}
   m_SourcePrefab: {fileID: 100100000, guid: 97305eea33114b64ebd4ca90007bf87c, type: 3}
+--- !u!1 &2419087862856397032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6773685173217878001, guid: 97305eea33114b64ebd4ca90007bf87c, type: 3}
+  m_PrefabInstance: {fileID: 9192591616386854681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4435028398721180329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419087862856397032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e5d551ed0179140baed77a4596a6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
+  _allowCameraZoom: 0
 --- !u!224 &8948765347673261700 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 261987186140457373, guid: 97305eea33114b64ebd4ca90007bf87c, type: 3}
