@@ -16,7 +16,7 @@ public class BonusShopView : MonoBehaviour {
     [SerializeField] private Ease _easeToShowCards;
     [SerializeField] private float _showCardsDuration;
     [Header("Кнопки купить")]
-    [SerializeField] private List<BonusCardItem> _bonusCards;
+    [SerializeField] private List<BonusShopCardView> _bonusCards;
     [SerializeField] private Button _randomByAdv;
 
     private GameSave Saves => _save.GetSave<GameSave>();
@@ -55,11 +55,11 @@ public class BonusShopView : MonoBehaviour {
     }
     
 
-    private void BuyOneItem(string bonusId, BonusCardItem bonusCard) {
-        _bank.SpendMoney(bonusCard.Bonus.Price);
+    private void BuyOneItem(string bonusId, BonusShopCardView bonusShopCard) {
+        _bank.SpendMoney(bonusShopCard.Bonus.Price);
         Saves.AddNewBonusCounts(bonusId,1);
         _save.Save();
-        bonusCard.SetCount(Saves.GetBonusCount(bonusId));
+        bonusShopCard.SetCount(Saves.GetBonusCount(bonusId));
         _bonusCards.ForEach(c => c.CheckPlayerBankToBuy());
     }
 
@@ -78,10 +78,10 @@ public class BonusShopView : MonoBehaviour {
     
     
     private void GetRandom() { 
-        BonusCardItem bonusCardItem = _bonusCards.GetRandomElement();
-        Saves.AddNewBonusCounts(bonusCardItem.Bonus.Id, 1);
+        BonusShopCardView bonusShopCardView = _bonusCards.GetRandomElement();
+        Saves.AddNewBonusCounts(bonusShopCardView.Bonus.Id, 1);
         _save.Save();
-        bonusCardItem.SetCount(Saves.GetBonusCount(bonusCardItem.Bonus.Id));
+        bonusShopCardView.SetCount(Saves.GetBonusCount(bonusShopCardView.Bonus.Id));
     }
 
     

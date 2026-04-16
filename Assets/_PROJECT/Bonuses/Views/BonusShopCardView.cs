@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class BonusCardItem : MonoBehaviour {
+public class BonusShopCardView : MonoBehaviour {
     [field: SerializeField] public BonusItemConfig Bonus { get; private set; }
     [field: SerializeField] public Button BuyButton { get; private set; }
     [field: SerializeField] public Transform Card;

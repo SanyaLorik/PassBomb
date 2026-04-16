@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class GoDuoGameTrigger : TriggerBehaviourBase {
+public class GoAfkGameTrigger : TriggerBehaviourBase {
     [SerializeField] private bool _afkStatusOnEnter;
     
     [Inject] MainGameStarter _gameStarter;

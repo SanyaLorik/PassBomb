@@ -1,21 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Architecture_M;
-using SanyaBeerExtension;
 using UnityEngine;
 using Zenject;
 
 
 public class BonusManager : MonoBehaviour {
-    [SerializeField] private List<WeightedItem<IBonus>> _bonusValues;
+    // [SerializeField] private List<WeightedItem<IBonus>> _bonusValuesForBots;
     [SerializeField] private List<BonusSlot> _bonusSlots;
-    [SerializeField] private GameObject[] _allBonuseObjects;
-    [Range(0,1), SerializeField] private float _chanseToTryAgainFindBonusBot;
+    // [Range(0,1), SerializeField] private float _chanseToTryAgainFindBonusBot;
     
     private BonusSlot _choosedModifierChanger;
     
-    private bool _showBonuses = true;
     
     private GameSave _saves => _saver.GetSave<GameSave>();
     
@@ -38,11 +34,6 @@ public class BonusManager : MonoBehaviour {
         foreach (var bonusSlot in _bonusSlots) {
             _saves.AddNewBonusCounts(bonusSlot.BonusItem.Id, count, true);
         }
-    }
-    
-    public void SetBonusesEnable(bool state) {
-        _allBonuseObjects.ForEach(b => b.gameObject.SetActive(state));
-        _showBonuses = state;
     }
     
     

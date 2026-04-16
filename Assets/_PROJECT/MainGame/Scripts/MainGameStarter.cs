@@ -98,8 +98,8 @@ public class MainGameStarter : MonoBehaviour  {
     }
     
     public void ChangeAfkStatus(bool afk, bool changeVisual = true) {
-        // Debug.Log("ChangeAfkStatus");
-        _afkPressed = afk;
+        Debug.Log("ChangeAfkStatus " + afk);
+        _afkPressed = afk;  
         _firstPlayerBot = _afkPressed;
         if (changeVisual) {
             _afkStatusText.SetActive(_afkPressed);
