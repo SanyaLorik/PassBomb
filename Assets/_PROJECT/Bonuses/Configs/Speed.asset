@@ -10,16 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45a865cbd7bbfcf46b9d961f83cdcf3d, type: 3}
-  m_Name: HealthBonusSO
-  m_EditorClassIdentifier: Assembly-CSharp::BonusItemSO
-  <Id>k__BackingField: health
+  m_Name: Speed
+  m_EditorClassIdentifier: Assembly-CSharp::BonusItemConfig
   Bonus:
-    rid: 8231486814680514639
-  <Price>k__BackingField: 5000
+    rid: 6522072450793734211
+  <Price>k__BackingField: 1488
   references:
     version: 2
     RefIds:
-    - rid: 8231486814680514639
-      type: {class: HealBonus, ns: , asm: Assembly-CSharp}
-      data:
-        _healUnits: 20
+    - rid: 6522072450793734211
+      type: {class: SpeedBonus, ns: , asm: Assembly-CSharp}
+      data: 

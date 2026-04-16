@@ -30,11 +30,19 @@ MonoBehaviour:
   BotsPhrases: []
   Timer: Start in {0}...
   Enemy: Enemy
-  PlayerHit: '{0} scores! '
   PlayerWinner: '{0} wins! '
   TaskTranslates:
   - <Id>k__BackingField: 0
-    name: Hit enemy {0} times.
+    _text: 
+  TutorialTranslates: []
+  BonusesTranslates:
+  - <Id>k__BackingField: {fileID: 11400000, guid: f4665fba6592ecd4da333ef6375d5ead, type: 2}
+    _text: Invisible
+  - <Id>k__BackingField: {fileID: 11400000, guid: d30500e8baf4b1044bc71b057341727f, type: 2}
+    _text: Speed
+  ModifiersTranslate: []
+  SkinTranslates: []
+  <StaticTranslates>k__BackingField: []
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten

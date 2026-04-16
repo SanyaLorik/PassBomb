@@ -6,7 +6,7 @@ using Zenject;
 public class CanvasWindowNotifier : MonoBehaviour {
     [SerializeField] private bool _allowCameraZoom;
     
-    [Inject(Id = "CanvasesToHide")] private GameObject[] _сanvasesToHide;
+    [Inject(Id = "UiToHide")] private GameObject[] _сanvasesToHide;
     [Inject] IInputActivity _inputActivity;
     
     

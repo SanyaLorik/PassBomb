@@ -12,15 +12,15 @@ public class BonusesLoader : MonoBehaviour {
     // [SerializeField] private int _maxRandomCountToBot;
     // [SerializeField] private int _countToPvp;
     //
-    // private List<BonusChanger> _leftBonusChangers;
-    // private List<BonusChanger> _rightBonusChangers;
+    // private List<BonusSlot> _leftBonusChangers;
+    // private List<BonusSlot> _rightBonusChangers;
     //
     // [Inject] private MainGameStarter _starter;
     // [Inject] private BattleManager _battleManager;
     // [Inject] private IGameSave _save;
     //
     //
-    // public void LoadBonusesComponents(List<BonusChanger> leftBonusChangers, List<BonusChanger> rightBonusChangers) {
+    // public void LoadBonusesComponents(List<BonusSlot> leftBonusChangers, List<BonusSlot> rightBonusChangers) {
     //     _leftBonusChangers = leftBonusChangers;
     //     _rightBonusChangers = rightBonusChangers;
     // }

@@ -24,7 +24,6 @@ public class LocalizationData : LocalizationDataBase,
     public List<TaskTranslate> TaskTranslates;
     public List<TutorialTranslate> TutorialTranslates;
     public List<BonusesTranslate> BonusesTranslates;
-    public List<BonusesTranslate> ModifiersTranslate;
     public List<SkinTranslate> SkinTranslates;
     
     
@@ -68,15 +67,8 @@ public class TutorialTranslate : IIdName<TutorialStep> {
 }
 
 [Serializable]
-public class BonusesTranslate : IIdName<string> {
-    [field: SerializeField] public string Id { get; set; }
-    [SerializeField] private string _text;
-    public string Text => _text;
-}
-
-[Serializable]
-public class ModifiersTranslate : IIdName<string> {
-    [field: SerializeField] public string Id { get; set; }
+public class BonusesTranslate : IIdName<BonusItemConfig> {
+    [field: SerializeField] public BonusItemConfig Id { get; set; }
     [SerializeField] private string _text;
     public string Text => _text;
 }

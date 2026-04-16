@@ -17,6 +17,7 @@ public class BattleManager : MonoBehaviour {
     
     [Inject] private CameraOrbitalController _camera;
     public bool MainPlayerPlay { get; private set; }
+    public bool AllowToPlay { get; private set; }
 
     public void InitForNewGame() {
     }

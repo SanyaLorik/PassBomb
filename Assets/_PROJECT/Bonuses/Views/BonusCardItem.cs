@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using Zenject;
 
 public class BonusCardItem : MonoBehaviour {
-    [field: SerializeField] public BonusItemSO Bonus { get; private set; }
+    [field: SerializeField] public BonusItemConfig Bonus { get; private set; }
     [field: SerializeField] public Button BuyButton { get; private set; }
     [field: SerializeField] public Transform Card;
     [SerializeField] private TextMeshProUGUI _priceText;
@@ -32,7 +32,7 @@ public class BonusCardItem : MonoBehaviour {
     
     private void Initialize() {
         _priceText.text = _priceFormatter.ValuteFormatter(Bonus.Price);
-        _nameText.text = _localization.GetTranslatedText(Bonus.Id, _localization.BonusesTranslates);
+        _nameText.text = _localization.GetTranslatedText(Bonus, _localization.BonusesTranslates);
     }
 
     

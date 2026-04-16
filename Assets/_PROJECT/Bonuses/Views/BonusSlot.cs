@@ -3,8 +3,8 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class BonusChanger : UsableItemBase {
-    [field: SerializeField] public BonusItemSO BonusItem { get; private set; }
+public class BonusSlot : UsableItemBase {
+    [field: SerializeField] public BonusItemConfig BonusItem { get; private set; }
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private TextMeshProUGUI _bonusNameText;
     
@@ -27,7 +27,7 @@ public class BonusChanger : UsableItemBase {
     private void Start() {
         ChangeVisualCount();
         _bonusNameText.text =
-            _localization.GetTranslatedText(BonusItem.Id, _localization.BonusesTranslates);
+            _localization.GetTranslatedText(BonusItem, _localization.BonusesTranslates);
     }
 
 

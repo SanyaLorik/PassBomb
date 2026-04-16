@@ -17210,6 +17210,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043150827447168653, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
       propertyPath: m_Name
       value: Trigger Parkout
@@ -17222,8 +17226,7 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 206
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -20799,12 +20802,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043150827447168653, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
       propertyPath: m_Name
       value: Trigger Shop
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -23556,6 +23562,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043150827447168653, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
       propertyPath: m_Name
       value: Trigger Bonus
@@ -23568,8 +23578,7 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 206
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -23811,6 +23820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+      propertyPath: _duration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5043150827447168653, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
       propertyPath: m_Name
       value: Trigger Wheel Fortune
@@ -23823,8 +23836,7 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 206
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3690612954459454503, guid: ab12a273c0c865848aef0e42f3992503, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

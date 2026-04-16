@@ -43,7 +43,7 @@ public class SingleInstaller : MonoInstaller {
     
     private void BindCanvasToHide() {
         Container.Bind<GameObject[]>()
-            .WithId("CanvasesToHide")
+            .WithId("UiToHide")
             .FromInstance(_canvasesToHide)
             .AsSingle().NonLazy();
     }
