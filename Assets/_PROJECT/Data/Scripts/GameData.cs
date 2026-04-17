@@ -43,6 +43,7 @@ public class GameData : GameDataBase
     
     // Боты (потом уберу ненужное)
     [field: Header("БОТЫ")]
+    [field: SerializeField] public float BotSpeed { get; private set; }
     [field: SerializeField] public PairedValue<int> CountSpeakingBotsPerTime  { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanseToChangeSkin { get; private set; }

@@ -141,17 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &60722210 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8024904503761004126, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd804cb867d301349afaf14642d04474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BonusSlot
 --- !u!1 &95609035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,10 +1297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8252550566034338347, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1959702832}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
 --- !u!4 &415421059 stripped
@@ -2806,10 +2792,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8024904503761004126, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-      propertyPath: <BonusItem>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 90d408a111db82948b57ffd9ad6ecc6c, type: 2}
     - target: {fileID: 8033709127930423977, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 94.3999
@@ -3606,7 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685e4e6beb9f015409ef464f3a085501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainGameStarter
-  _timerDuration: 5
+  _timerDuration: 1488
   _durationAfterGameOver: 5
   _timerText: {fileID: 11117804}
   _timerCanvas: {fileID: 1831422309}
@@ -4366,7 +4348,6 @@ MonoBehaviour:
   _bonusSlots:
   - {fileID: 682419295}
   - {fileID: 1562383112}
-  - {fileID: 60722210}
 --- !u!114 &1800275026 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3930958459884441742, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -4654,75 +4635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!4 &1917661723 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8252550566034338347, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1959702831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1959702832}
-  - component: {fileID: 1959702833}
-  m_Layer: 0
-  m_Name: Surface
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1959702832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959702831}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1917661723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1959702833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959702831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 1
-  m_Size: {x: 105.8, y: 19.1, z: 101.7}
-  m_Center: {x: -2.7, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 3
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: dc045ee671c1b9c40aced0adf605cd06, type: 2}
-  m_BuildHeightMesh: 0
 --- !u!1 &1960033643
 GameObject:
   m_ObjectHideFlags: 0

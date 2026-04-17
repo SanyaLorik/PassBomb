@@ -2,25 +2,23 @@ using System.Collections;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 public enum BotState {
     Wandering
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BotStateManager : MonoBehaviour, IGamePlayer {
+public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
     [SerializeField] private GameObject _skinInstance;
-    [SerializeField] private Collider _botCollider;
-
-    private Vector3 _posBeforeTeleport;
-    
     [SerializeField] private BotWander _botWander;
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] private MainGameRoleBehaviour _roleBehaviour;
     
-    
+    private Vector3 _posBeforeTeleport;
     private IBotBehaviour _currentBotBehaviour;
 
     public bool IsPlaying { get; private set; }
@@ -28,10 +26,10 @@ public class BotStateManager : MonoBehaviour, IGamePlayer {
     
     public BotState State { get; private set; }
     
-    public bool IsPlayerCopy { get; private set; }
     
     public string SkinId { get; private set; }
     
+    [Inject] private GameData _gameData;
 
     private void Awake() {
         Destroy(_skinInstance);
@@ -44,25 +42,21 @@ public class BotStateManager : MonoBehaviour, IGamePlayer {
     
     
     public void SetPlayStatus(bool goPlay) {
-        if (!IsPlayerCopy) {
-            if (goPlay) {
-                _botMonolog.HideNickname();
-            }
-            else {
-                _botMonolog.ShowNickname();
-            }
-        }
+        // if (goPlay) {
+        //     _botMonolog.HideNickname();
+        // }
+        // else {
+        //     _botMonolog.ShowNickname();
+        // }
         // Debug.Log("SetPlayStatus: " + goPlay);
         // Debug.Log("_posBeforeTeleport: " + _posBeforeTeleport);
         IsPlaying = goPlay;
         if (goPlay) {
             _currentBotBehaviour?.Exit();
-            _botCollider.enabled = true;
         }
         // Возвращение на спавн
         else {
-            TpInPoint(_posBeforeTeleport);
-            _botCollider.enabled = false;
+            TeleportToPoint(_posBeforeTeleport);
             ChangeBotState(BotState.Wandering);
         }
     }
@@ -72,15 +66,31 @@ public class BotStateManager : MonoBehaviour, IGamePlayer {
     }
 
 
-    public void TpInPoint(Vector3 pos) {
+    public void TeleportToPoint(Vector3 pos) {
         _posBeforeTeleport = transform.position;
-        // Debug.Log("TpInPoint bot");
-        // _agent.enabled = false;
         if (NavMesh.SamplePosition(pos, out var hit, 5f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
         }
     }
+
     
+    public void SetMovingStatus(bool enable) {
+        if (!enable) {
+            _currentBotBehaviour.Exit();
+        }
+    }
+
+    public void SetBiggerSpeed(float speed) {
+        _agent.speed = speed;
+    }
+
+    public void SetDefaultSpeed() {
+        _agent.speed = _gameData.BotSpeed;
+    }
+
+    public MainGameRoleBehaviour RoleBehaviour()
+        => _roleBehaviour;
+
     public void RotateToTarget(Vector3 targetPosition) {
         Vector3 direction = targetPosition - transform.position;
         direction.y = 0;
@@ -92,7 +102,6 @@ public class BotStateManager : MonoBehaviour, IGamePlayer {
 
 
     public void ChangeBotState(BotState newState) {
-        if(IsPlayerCopy) return;
         _currentBotBehaviour?.Exit();
         
         State = newState;
@@ -135,12 +144,6 @@ public class BotStateManager : MonoBehaviour, IGamePlayer {
         gameObject.SetActive(_previousBotState);
     }
 
-
-    
-    public void SetPlayerCopyBehavior() {
-        IsPlayerCopy = true;
-        _botMonolog.HideNickname();
-    }
 
     public void EnableBot(bool state) {
         _agent.enabled = state;

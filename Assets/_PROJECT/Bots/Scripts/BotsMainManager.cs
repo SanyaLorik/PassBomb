@@ -43,9 +43,14 @@ public class BotsMainManager : IInitializable, IDisposable {
         bot.SetBotSkin(skin);
         bot.InitAnimator();
     }
+
+    public List<BotStateManager> GetBotsToGame(int count) {
+        return _bots.GetRange(0, count);
+    }
+    
     
     public BotStateManager GetRandomBotToBattle(bool playerCopy) {
-        int countIters = 500;
+        int countIters = 100;
         while (countIters > 0) {
             countIters--;
             var bot = _bots.GetRandomElement();

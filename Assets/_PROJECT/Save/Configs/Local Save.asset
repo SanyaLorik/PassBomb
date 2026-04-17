@@ -15,7 +15,7 @@ MonoBehaviour:
   Save:
     Money: 20000
     IsBoughtPurchase: 0
-    TutorialPassed: 0
+    TutorialPassed: 1
     Skins:
     - Id: creeper_skin
     - Id: tits_skin
@@ -23,7 +23,9 @@ MonoBehaviour:
     SkinWearId: obby
     Bonuses:
     - Id: InvisibleBonus
-      Count: 2
+      Count: 4
+    - Id: SpeedBonus
+      Count: 3
     Tasks:
     - Id: Parkour
       Count: 0
@@ -50,4 +52,4 @@ MonoBehaviour:
       CountSpinAllow: 5
       LastDateTimeSpined: 07.04.2026 22:43:20
     DailyQuestSave:
-      LastDateTimeEntered: 
+      LastDateTimeEntered: 16.04.2026 15:45:41

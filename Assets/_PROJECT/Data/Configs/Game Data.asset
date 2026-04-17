@@ -18,7 +18,7 @@ MonoBehaviour:
     <InterstitialDelay>k__BackingField: 80
     <AdTimerInitial>k__BackingField: 2
     <AdTimerFinal>k__BackingField: 0
-    <WalkSpeed>k__BackingField: 10
+    <WalkSpeed>k__BackingField: 15
     <JumpForce>k__BackingField: 12
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
@@ -32,12 +32,9 @@ MonoBehaviour:
     <HorizontalAxisValueToThrow>k__BackingField: -84.62
     <VerticalAxisValueToThrow>k__BackingField: 8.823097
     <ZoomPercentInThrowGame>k__BackingField: 0.5
-    <LeftPlayerWinnerAxis>k__BackingField:
-      <From>k__BackingField: 207
-      <To>k__BackingField: 23.4
-    <RightPlayerWinnerAxis>k__BackingField:
-      <From>k__BackingField: -27
-      <To>k__BackingField: 23.4
+    <PlayerWinnerAxis>k__BackingField:
+      <From>k__BackingField: 0
+      <To>k__BackingField: 0
     <ZoomToWinnerView>k__BackingField: 0.201
     <JoystickSensivityMultiplier>k__BackingField: 500
     <MouseSensivityMultiplier>k__BackingField: 0.4
@@ -45,6 +42,7 @@ MonoBehaviour:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
+    <BotSpeed>k__BackingField: 0
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 1
@@ -53,6 +51,9 @@ MonoBehaviour:
       <To>k__BackingField: 7
     <ChanseToChangeSkin>k__BackingField: 0
     <ChanseToChangeNickname>k__BackingField: 0
+    <TimeToStayAfterSpawn>k__BackingField:
+      <From>k__BackingField: 0
+      <To>k__BackingField: 0
     <RotationSpeed>k__BackingField: 10
     <ChanceToJump>k__BackingField: 0.374
     <ChanseToGoPlayer>k__BackingField: 0.1

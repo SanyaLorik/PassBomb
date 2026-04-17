@@ -6,18 +6,17 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour, IGamePlayer {
+public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private CharacterController _controller; // 
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private MainGameRoleBehaviour _roleBehaviour;
     
-    // [SerializeField] private PlayerVisual _visual;
-
     public Vector2 MoveInput => _inputDirection2.Direction2;
     private float _currentRoll;
     private float _rollVelocity;
     private bool _wasGroundedLastFrame;
     private Vector3 _externalMotion;
-    
+    private float _walkSpeed;
     
     public event Action JumpPressed;
     public event Action DoubleJumpPressed;
@@ -26,7 +25,6 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
     
     public bool IsGrounded { get; private set; }
     public bool IsRunning { get; private set; }
-    public bool IsPlaying { get; private set; }
     
     public CharacterController Controller => _controller;
     
@@ -41,18 +39,10 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
     private float _verticalVelocity;
     private int _jumpsUsed;
 
-    /// <summary>
-    /// Какой-то внешний стимулятор движения, например лифт
-    /// </summary>
-    /// <param name="motion"></param>
-    public void AddExternalMotion(Vector3 motion) {
-        _externalMotion += motion;
+    private void Start() {
+        SetDefaultSpeed();
     }
 
-    private void SetCharacterControllerState(bool state) {
-        _controller.enabled = state;
-    }
-    
     private void Update() {
         Walk();
     }
@@ -66,8 +56,17 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
         _inputJumping.OnJumped -= OnJump;
     }
 
-
-    public void TpInPoint(Vector3 target) {
+    
+    /// <summary>
+    /// Какой-то внешний стимулятор движения, например лифт
+    /// </summary>
+    /// <param name="motion"></param>
+    public void AddExternalMotion(Vector3 motion) {
+        _externalMotion += motion;
+    }
+    
+    
+    public void TeleportToPoint(Vector3 target) {
         SetCharacterControllerState(false);
         transform.position = target;
         SetCharacterControllerState(true);
@@ -78,39 +77,38 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
 
     public void SetPlayStatus(bool goPlay) {
         _stateManager.SetupCanvases(goPlay);
-        // игрок не учавствовал в бою
-        // Вернулся
-        if (!goPlay) {
-            TeleportInSpawn();
+        if (goPlay) {
+            
+        }
+        else {
+            
+        }
+    }
+
+    public MainGameRoleBehaviour RoleBehaviour()
+        => _roleBehaviour;
+    
+    public void SetMovingStatus(bool enable) {
+        if (enable) {
             _inputActivity.Enable();
-            SetCharacterControllerState(true);
-            IsPlaying = false;
         }
         else {
             _inputActivity.Disable();
-            if (_controllerOffRoutine != null) {
-                StopCoroutine(_controllerOffRoutine);
-            }
-            _controllerOffRoutine = StartCoroutine(ControllerOffRoutine());
         }
     }
 
+    public void SetBiggerSpeed(float speed) {
+        _walkSpeed = speed;
+    }
+
+    public void SetDefaultSpeed() {
+        _walkSpeed = _gameData.WalkSpeed;
+    }
+
+    
     public void TeleportInSpawn() {
-        TpInPoint(_spawnPoint.position);
+        TeleportToPoint(_spawnPoint.position);
     }
-
-
-    private Coroutine _controllerOffRoutine;
-    /// <summary>
-    /// После телепорта пусть все коллизии просчитает а потом отключится для игры
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator ControllerOffRoutine() {
-        yield return new WaitForSeconds(1f);
-        IsPlaying = true;
-        SetCharacterControllerState(false);
-    }
-
 
 
     public void OnJump() {
@@ -140,7 +138,6 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
 
 
     private void Walk() {
-        if (IsPlaying) return;
         Transform cam = Camera.main.transform;
         Vector3 camForward = cam.forward;
         Vector3 camRight = cam.right;
@@ -163,10 +160,10 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
         if (!_controller.isGrounded) {
             _verticalVelocity += Physics.gravity.y * _gameData.GravityScale * Time.deltaTime;
         }
-        
+
 
         Vector3 horizontalMove = hasInput
-            ? move.normalized * _gameData.WalkSpeed * Time.deltaTime
+            ? move.normalized * _walkSpeed * Time.deltaTime
             : Vector3.zero;
 
         Vector3 verticalMove = Vector3.up * _verticalVelocity * Time.deltaTime;
@@ -218,6 +215,8 @@ public class PlayerMovement : MonoBehaviour, IGamePlayer {
         }
     }
     
-
+    private void SetCharacterControllerState(bool state) {
+        _controller.enabled = state;
+    }
     
 }
