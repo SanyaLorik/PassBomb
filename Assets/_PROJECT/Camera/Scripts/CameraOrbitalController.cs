@@ -130,8 +130,6 @@ public class CameraOrbitalController : MonoBehaviour {
     public void SetCameraToPoint(Transform point) {
         _zoomBeforeGame = CurrentFovPercent;
         SetFollowPoint(point);
-        SetAxisToFollow(_gameData.HorizontalAxisValueToThrow, _gameData.VerticalAxisValueToThrow);
-        ChangeCameraZoomPercent(_gameData.ZoomPercentInThrowGame);
     }
     
 

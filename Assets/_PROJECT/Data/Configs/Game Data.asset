@@ -23,15 +23,11 @@ MonoBehaviour:
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
     <GravityScale>k__BackingField: 4
-    <PlayerMaxHp>k__BackingField: 100
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
     <FlightCameraFov>k__BackingField: 0
     <DefaultCameraSens>k__BackingField: 0.137
     <ZoomSpeed>k__BackingField: 0.1
-    <HorizontalAxisValueToThrow>k__BackingField: -84.62
-    <VerticalAxisValueToThrow>k__BackingField: 8.823097
-    <ZoomPercentInThrowGame>k__BackingField: 0.5
     <PlayerWinnerAxis>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 0
@@ -42,7 +38,7 @@ MonoBehaviour:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
-    <BotSpeed>k__BackingField: 0
+    <BotSpeed>k__BackingField: 14
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 1
@@ -63,3 +59,6 @@ MonoBehaviour:
     <TimeToStayOnPoint>k__BackingField:
       <From>k__BackingField: 7
       <To>k__BackingField: 14
+    <TimeToBombExplode>k__BackingField: 10
+    <TimeToInvinsibleAfterPass>k__BackingField: 5
+    <DefaultSpeedInGame>k__BackingField: 16

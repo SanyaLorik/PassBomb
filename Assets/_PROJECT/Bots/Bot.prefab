@@ -36,6 +36,7 @@ Transform:
   - {fileID: 4005745868750855142}
   - {fileID: 6674921500675637912}
   - {fileID: 6986078075926337724}
+  - {fileID: 3439339956350828852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1212541108296832897
@@ -106,10 +107,10 @@ MonoBehaviour:
   _skinParent: {fileID: 4005745868750855142}
   _botAnimator: {fileID: 586101920010288029}
   _skinInstance: {fileID: 7053059051747391328}
-  _botCollider: {fileID: 0}
   _botWander: {fileID: 1402330233937831249}
   _botMonolog: {fileID: 7393878432037271427}
   _agent: {fileID: 1212541108296832897}
+  _roleBehaviour: {fileID: 5885440733740190721}
 --- !u!1 &734268474806474848
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +598,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5194921409329958626, guid: 8576fca35b1243d4eabc909b5029eb12, type: 3}
   m_PrefabInstance: {fileID: 3024570300247226754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3372014915572801025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3667074117147502011}
+    m_Modifications:
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179833317421156327, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: m_Name
+      value: PlayerRoleBehaviour
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: <PlayerHandle>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+--- !u!4 &3439339956350828852 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+  m_PrefabInstance: {fileID: 3372014915572801025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5885440733740190721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+  m_PrefabInstance: {fileID: 3372014915572801025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a084eb1172c4e08982efad95bc3cc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRoleBehaviour
 --- !u!1001 &5121719498599766661
 PrefabInstance:
   m_ObjectHideFlags: 0

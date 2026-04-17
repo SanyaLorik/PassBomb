@@ -7,5 +7,5 @@ public interface IPassBombPlayer {
     public void SetMovingStatus(bool enable);
     public void SetBiggerSpeed(float speed);
     public void SetDefaultSpeed();
-    public MainGameRoleBehaviour RoleBehaviour();
+    public PlayerRoleBehaviour RoleBehaviour { get; }
 }

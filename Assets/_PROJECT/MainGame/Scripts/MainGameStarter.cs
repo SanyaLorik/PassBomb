@@ -45,7 +45,7 @@ public class MainGameStarter : MonoBehaviour  {
     }
     
     public void GameOver() {
-        Debug.Log("GameOver, _startGamePressed = " + _startGamePressed);
+        Debug.Log("SetGameOver, _startGamePressed = " + _startGamePressed);
         GameStarted?.Invoke(false);
         GameIsStarted = false;
         if (_battleManager.MainPlayerPlay) {

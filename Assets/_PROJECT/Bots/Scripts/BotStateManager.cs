@@ -16,7 +16,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private BotWander _botWander;
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private MainGameRoleBehaviour _roleBehaviour;
+    [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
     
     private Vector3 _posBeforeTeleport;
     private IBotBehaviour _currentBotBehaviour;
@@ -88,8 +88,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         _agent.speed = _gameData.BotSpeed;
     }
 
-    public MainGameRoleBehaviour RoleBehaviour()
-        => _roleBehaviour;
+    public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
 
     public void RotateToTarget(Vector3 targetPosition) {
         Vector3 direction = targetPosition - transform.position;

@@ -13,6 +13,8 @@ public class MainGameInstaller : MonoInstaller {
         Container.Bind<BonusManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BonusesLoader>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BattleInformator>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<Bomb>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<PlayersBombRoleManager>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 
 

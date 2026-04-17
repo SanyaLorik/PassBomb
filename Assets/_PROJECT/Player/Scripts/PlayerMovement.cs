@@ -9,7 +9,7 @@ using Zenject;
 public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private CharacterController _controller; // 
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private MainGameRoleBehaviour _roleBehaviour;
+    [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
     
     public Vector2 MoveInput => _inputDirection2.Direction2;
     private float _currentRoll;
@@ -85,8 +85,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         }
     }
 
-    public MainGameRoleBehaviour RoleBehaviour()
-        => _roleBehaviour;
+    public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
     
     public void SetMovingStatus(bool enable) {
         if (enable) {

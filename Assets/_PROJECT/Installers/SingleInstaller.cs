@@ -16,8 +16,10 @@ public class SingleInstaller : MonoInstaller {
         BindCanvasToHide();
     }
 
-    private IfNotBoundBinder BindEconomy() {
-        return Container.Bind<EconomyCalculator>().FromComponentInHierarchy().AsSingle().NonLazy();
+ 
+
+    private void BindEconomy() {
+        Container.Bind<EconomyCalculator>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 
     private void BindTurorial() {

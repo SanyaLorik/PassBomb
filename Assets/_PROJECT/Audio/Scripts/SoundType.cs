@@ -11,7 +11,6 @@
     HitFloor,
     HitPlayer,
     Explosion,
-    Giant,
     ReloadModifier,
     BonusUse,
     NextStep

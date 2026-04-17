@@ -44,6 +44,7 @@ public class SoundManager : MonoBehaviour {
     [Inject] private BattleManager _battleManager;
     [Inject] private BonusManager _bonusManager;
     [Inject] private GameOverShower _gameOverShower;
+    [Inject] private Bomb _bomb;
     
     
     private void Awake() {
@@ -81,13 +82,13 @@ public class SoundManager : MonoBehaviour {
         GameEvents.FloorHited += PlayFloorHit;
         GameEvents.PlayerHited += PlayPlayerHit;
         GameEvents.ObjectExploded += PlayExplode;
-        GameEvents.ObjectGianted += PlayGiantModifier;
         GameEvents.ModifierReloaded += ModifierReloaded;
         GameEvents.TriggerUsed += UiButtonClick;
+        _bomb.BombExploded += OnBombExploded;
 
     }
-    
-    
+
+
     private void OnDisable() {
         // STATE CHANGES
         _stateManager.StateChanged -= StateManagerOnChangeState;
@@ -109,10 +110,15 @@ public class SoundManager : MonoBehaviour {
         GameEvents.FloorHited -= PlayFloorHit;
         GameEvents.PlayerHited -= PlayPlayerHit;
         GameEvents.ObjectExploded -= PlayExplode;
-        GameEvents.ObjectGianted -= PlayGiantModifier;
         GameEvents.ModifierReloaded -= ModifierReloaded;
         GameEvents.TriggerUsed -= UiButtonClick;
+        _bomb.BombExploded -= OnBombExploded;
     }
+    
+    private void OnBombExploded() {
+        PlaySoundByType(SoundType.Explosion);
+    }
+    
     
     private void CreateAudioSourceContainer() {
         _audioSourcesContainer = new GameObject("AudioSources");
@@ -156,11 +162,6 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(SoundType.Explosion);
     }
     
-    
-    private void PlayGiantModifier() {
-        if(!_battleManager.MainPlayerPlay) return;
-        PlaySoundByType(SoundType.Giant);
-    }
     
     
     private void NewPlayerStep() {

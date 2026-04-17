@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -18,15 +19,28 @@ public class BattleManager : MonoBehaviour {
     
     [Inject] private PlayerMovement _mainPlayerMovement;
     [Inject] private BotsMainManager _botsMainManager;
+    [Inject] private PlayersBombRoleManager _playersBombRoleManager;
+    [Inject] private Bomb _bomb;
 
     
     public bool MainPlayerPlay { get; private set; }
     public bool AllowToPlay { get; private set; }
     
     public int CountPlayersToBattle => _gameSpawnPoints.Count;
-    
 
-    private readonly List<IPassBombPlayer> _players = new (8);
+
+    private readonly List<IPassBombPlayer> _players = new(8);
+
+    public IReadOnlyCollection<IPassBombPlayer> Players => _players;
+    
+    private void OnEnable() {
+        _bomb.BombExploded += CheckPlayers;
+    }
+    
+    private void OnDisable() {
+        _bomb.BombExploded -= CheckPlayers;
+    }
+    
     
     public void InitForNewGame(bool mainPlayerPlay) {
         MainPlayerPlay = mainPlayerPlay;
@@ -46,19 +60,37 @@ public class BattleManager : MonoBehaviour {
         _players.AddRange(bots);
     }
 
+    
     private void InitPlayers() {
         foreach (var player in _players) {
             player.SetPlayStatus(true);
         }
         TeleportPlayersToPoints(_players, _gameSpawnPoints);
-    }
-    
-    
-    
-    public void SetGameOverToBots() {
-        
+        GoBattleAsync().Forget();
     }
 
+    private async UniTask GoBattleAsync() {
+        while (_players.Count > 1) {
+            Debug.Log("Игроков: " + _players.Count);
+            _playersBombRoleManager.InitNewPlayers(_players);
+            await UniTask.WaitUntil(() => _bomb.BombExplode);
+        }
+    }
+    
+
+    private void CheckPlayers() {
+        foreach (IPassBombPlayer player in _players) {
+            if (player.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
+                Debug.Log("Игрок сдох!");
+                _players.Remove(player);
+                player.SetPlayStatus(false);
+                return;
+            }
+        }
+        Debug.LogError("Игрок не сдох после взрыва бомбы, WTF");
+    }
+    
+    
     private void TeleportPlayersToPoints(List<IPassBombPlayer> players, List<Transform> points) {
         if (players.Count < points.Count) {
             Debug.LogWarning("Кол-во игроков < кол-ва точек спавна");
@@ -71,4 +103,14 @@ public class BattleManager : MonoBehaviour {
         }
     }
     
+    
+    
+    public void SetGameOverToBots() {
+        _playersBombRoleManager.SetGameOver(_players);
+    }
+
+    
+    
+
+
 }
