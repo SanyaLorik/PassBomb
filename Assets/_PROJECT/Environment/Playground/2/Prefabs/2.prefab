@@ -271,6 +271,37 @@ Transform:
   - {fileID: 5289022298543555549}
   m_Father: {fileID: 2696530420384138178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &576713321993345094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3598272472388772314}
+  m_Layer: 0
+  m_Name: PointToSpawnBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3598272472388772314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576713321993345094}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 12.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2696530420384138178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &766583558958111434
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,6 +716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2696530420384138178}
+  - component: {fileID: 315721818488657792}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -709,8 +741,33 @@ Transform:
   - {fileID: 1653525654532838806}
   - {fileID: 1217785521688975955}
   - {fileID: 5824650118324503891}
+  - {fileID: 3598272472388772314}
+  - {fileID: 5848057208379409794}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &315721818488657792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568910352540917366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapItem
+  SpawnPoints:
+  - {fileID: 1049489440972555692}
+  - {fileID: 2427664993449647767}
+  - {fileID: 6761130802016225615}
+  - {fileID: 8037025720379512712}
+  - {fileID: 7603961555488985908}
+  - {fileID: 1909577575458331277}
+  - {fileID: 7559952784622317018}
+  - {fileID: 1164745546286655917}
+  BombCenterSpawn: {fileID: 3598272472388772314}
+  Surface: {fileID: 3100680242726987324}
 --- !u!1 &2015505961877311291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1363,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5824650118324503891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7914094805959555748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5848057208379409794}
+  - component: {fileID: 3100680242726987324}
+  m_Layer: 0
+  m_Name: BotSurface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5848057208379409794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914094805959555748}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.15695953, y: 8.02759, z: -6.08318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2696530420384138178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3100680242726987324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7914094805959555748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 1
+  m_Size: {x: 105.8, y: 19.1, z: 101.7}
+  m_Center: {x: -2.7, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 3
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 9f2808b08b785764a8d73b23ccb598c9, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &7982037561239821495
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,11 @@ using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-public class MapChanger : MonoBehaviour {
+public class StaticMapChanger : MonoBehaviour {
     [SerializeField] private List<GameObject> _maps;
     [SerializeField] private float _timeToChangeMaps;
     [SerializeField] private bool _changeRandomMap;
-    
-    
-    
+
     private CancellationTokenSource _tokenSource;
     private int _currentMapIndex;
     

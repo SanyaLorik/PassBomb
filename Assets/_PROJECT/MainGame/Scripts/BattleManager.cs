@@ -8,15 +8,15 @@ using Random = UnityEngine.Random;
 
 
 public class BattleManager : MonoBehaviour {
-    // Будет выбираться рулеткой шо кинуть может
-    // Прокидывать потом 
-    [SerializeField] private List<Transform> _gameSpawnPoints;
     
     public bool MainPlayerPlay { get; private set; }
     public bool AllowToPlay { get; private set; }
-    
-    public int CountPlayersToBattle => _gameSpawnPoints.Count;
 
+    public int CountPlayersToBattle => _mapsToBattleChanger.CurrentMapSpawnPoints.Length;
+    public Transform[] PlayersSpawnPoints => _mapsToBattleChanger.CurrentMapSpawnPoints;
+    public Transform BombSpawnPoint => _mapsToBattleChanger.GetCurrentBombSpawn;
+
+    
     public IReadOnlyCollection<IPassBombPlayer> Players => _players;
     
     private readonly List<IPassBombPlayer> _players = new(8);
@@ -32,6 +32,7 @@ public class BattleManager : MonoBehaviour {
     [Inject] private Bomb _bomb;
     [Inject] private BattleStartVisualizer _battleStartVisualizer;
     [Inject] private MainGameStarter _gameStarter;
+    [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     
     
     private void OnEnable() {
@@ -45,6 +46,10 @@ public class BattleManager : MonoBehaviour {
     
     
     public void InitForNewGame(bool mainPlayerPlay) {
+        _mapsToBattleChanger.ChooseNextMap();
+        _bomb.TeleportBombToSpawn(BombSpawnPoint);
+        
+        
         MainPlayerPlay = mainPlayerPlay;
         GetNewPlayers(MainPlayerPlay);
         InitPlayers();
@@ -67,17 +72,20 @@ public class BattleManager : MonoBehaviour {
         foreach (var player in _players) {
             player.SetPlayStatus(true);
         }
-        TeleportPlayersToPoints(_players, _gameSpawnPoints);
-        GoBattleAsync().Forget();
+        TeleportPlayersToPoints(_players, PlayersSpawnPoints);
         PlayersCountChanged?.Invoke(_players.Count);
+        GoBattleAsync().Forget();
     }
 
     private async UniTask GoBattleAsync() {
+        RotatePlayersToBomb();
         await ShowStartAnimation();
         GameReadyToPlay?.Invoke();
+        
         while (_players.Count > 1) {
             Debug.Log("Игроков: " + _players.Count);
             _playersRoleManager.InitNewPlayers(_players);
+            _bomb.StartNewBombTimer();
             await UniTask.WaitUntil(() => _bomb.BombExplode);
             await ShowStartAnimation();
         }
@@ -85,7 +93,10 @@ public class BattleManager : MonoBehaviour {
     }
 
     private async UniTask ShowStartAnimation() {
-        RotatePlayersToBomb();
+        _bomb.TeleportBombToSpawn(BombSpawnPoint);
+        
+        await UniTask.Yield();
+        
         EnablePlayersMove(false);
         _battleStartVisualizer.ShowAnimation();
         await UniTask.WaitWhile(() => _battleStartVisualizer.AnimationPlay);
@@ -97,7 +108,7 @@ public class BattleManager : MonoBehaviour {
     }
 
     private void RotatePlayersToBomb() {
-        _players.ForEach(p => p.RotateToTarget(Vector3.zero));
+        _players.ForEach(p => p.RotateToTarget(BombSpawnPoint.position));
     }
 
 
@@ -129,16 +140,16 @@ public class BattleManager : MonoBehaviour {
     }
     
     
-    private void TeleportPlayersToPoints(List<IPassBombPlayer> players, List<Transform> points) {
-        if (players.Count < points.Count) {
+    private void TeleportPlayersToPoints(List<IPassBombPlayer> players, Transform[] points) {
+        if (players.Count < points.Length) {
             Debug.LogWarning("Кол-во игроков < кол-ва точек спавна");
             return;
         } 
-        int randomStartIndex = Random.Range(0, _gameSpawnPoints.Count);
-        for (int i = 0; i < points.Count; i++) {
-            int index = (i + randomStartIndex) % _gameSpawnPoints.Count;
+        int randomStartIndex = Random.Range(0, points.Length);
+        for (int i = 0; i < points.Length; i++) {
+            int index = (i + randomStartIndex) % points.Length;
             players[i].TeleportToPoint(points[index].position);
-            players[i].RotateToTarget(Vector3.zero);
+            players[i].RotateToTarget(BombSpawnPoint.position);
         }
     }
     

@@ -49,9 +49,12 @@ public class Bomb : MonoBehaviour {
         PlayerBecameHunter?.Invoke(playerRoleBehaviour);
         _bombInstance.transform.SetParent(playerTransform, false); 
         _bombInstance.ActiveSelf();
-        _bombInstance.transform.localPosition = Vector3.zero;
     }
 
+    public void TeleportBombToSpawn(Transform spawn) {
+        _bombInstance.ActiveSelf();
+        _bombInstance.transform.SetParent(spawn, false); 
+    }
     
     public void StartNewBombTimer() {
         UniTaskHelper.DisposeTask(ref _tokenSource);

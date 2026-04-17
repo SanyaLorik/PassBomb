@@ -21,5 +21,6 @@ public class MainGameInstaller : MonoInstaller {
         Container.Bind<GameOverShower>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BattleStartVisualizer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BattleDiesInformator>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<MapsToBattleChanger>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }

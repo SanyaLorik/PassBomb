@@ -19,7 +19,6 @@ public class PlayersRoleManager : MonoBehaviour {
         // Назначение роли у типочка
         int randomPlayer = Random.Range(0, players.Count);
         players.ElementAt(randomPlayer).RoleBehaviour.SetRole(BotRoleInGame.Hunter);
-        _bomb.StartNewBombTimer();
         // Debug.Log("назначение охотника");
     }
 
