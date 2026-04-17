@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: BigJump
   m_EditorClassIdentifier: Assembly-CSharp::BonusItemConfig
   Bonus:
-    rid: 6522072450793734210
+    rid: 6522072473654001730
   <Price>k__BackingField: 1488
   references:
     version: 2
     RefIds:
-    - rid: 6522072450793734210
-      type: {class: InvisibleBonus, ns: , asm: Assembly-CSharp}
+    - rid: 6522072473654001730
+      type: {class: BigJumpBonus, ns: , asm: Assembly-CSharp}
       data: 

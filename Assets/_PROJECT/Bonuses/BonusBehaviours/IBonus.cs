@@ -1,3 +1,3 @@
 public interface IBonus {
-    public void Use(IDamageable damageable);
+    public void Use(IPassBombPlayer passBombPlayer);
 }

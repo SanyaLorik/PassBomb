@@ -76,7 +76,9 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     public void SetMovingStatus(bool enable) {
         if (!enable) {
+            // Это фигня поидее не надо итак
             _currentBotBehaviour.Exit();
+            // допом вырубать их движ
         }
     }
 

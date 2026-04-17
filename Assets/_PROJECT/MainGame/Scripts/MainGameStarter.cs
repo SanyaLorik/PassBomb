@@ -52,7 +52,6 @@ public class MainGameStarter : MonoBehaviour  {
             _advTimerStarter.ShowAdvAfterBattle();
         }
         
-        // Ну наверное начинать сразу...
         if (!_startGamePressed) {
             StartWaitBeforeNewTimer();
         }

@@ -7,35 +7,37 @@ using Zenject;
 using Random = UnityEngine.Random;
 
 
-// Настройка положения игроков во время игры, поворот и тп
-// Битва, смена ходов, уведомления о ходах которая будет слухать камера!
-
-
 public class BattleManager : MonoBehaviour {
     // Будет выбираться рулеткой шо кинуть может
-    
     // Прокидывать потом 
     [SerializeField] private List<Transform> _gameSpawnPoints;
-    
-    [Inject] private PlayerMovement _mainPlayerMovement;
-    [Inject] private BotsMainManager _botsMainManager;
-    [Inject] private PlayersBombRoleManager _playersBombRoleManager;
-    [Inject] private Bomb _bomb;
-
     
     public bool MainPlayerPlay { get; private set; }
     public bool AllowToPlay { get; private set; }
     
     public int CountPlayersToBattle => _gameSpawnPoints.Count;
 
-
-    private readonly List<IPassBombPlayer> _players = new(8);
-
     public IReadOnlyCollection<IPassBombPlayer> Players => _players;
+    
+    private readonly List<IPassBombPlayer> _players = new(8);
+    
+    public event Action<string> PlayedDied;
+    public event Action<int> PlayersCountChanged;
+    public event Action GameReadyToPlay;
+    
+    
+    [Inject] private PlayerMovement _mainPlayerMovement;
+    [Inject] private BotsMainManager _botsMainManager;
+    [Inject] private PlayersRoleManager _playersRoleManager;
+    [Inject] private Bomb _bomb;
+    [Inject] private BattleStartVisualizer _battleStartVisualizer;
+    [Inject] private MainGameStarter _gameStarter;
+    
     
     private void OnEnable() {
         _bomb.BombExploded += CheckPlayers;
     }
+    
     
     private void OnDisable() {
         _bomb.BombExploded -= CheckPlayers;
@@ -67,23 +69,59 @@ public class BattleManager : MonoBehaviour {
         }
         TeleportPlayersToPoints(_players, _gameSpawnPoints);
         GoBattleAsync().Forget();
+        PlayersCountChanged?.Invoke(_players.Count);
     }
 
     private async UniTask GoBattleAsync() {
+        await ShowStartAnimation();
+        GameReadyToPlay?.Invoke();
         while (_players.Count > 1) {
             Debug.Log("Игроков: " + _players.Count);
-            _playersBombRoleManager.InitNewPlayers(_players);
+            _playersRoleManager.InitNewPlayers(_players);
             await UniTask.WaitUntil(() => _bomb.BombExplode);
+            await ShowStartAnimation();
         }
+        GameEnded();
     }
-    
+
+    private async UniTask ShowStartAnimation() {
+        RotatePlayersToBomb();
+        EnablePlayersMove(false);
+        _battleStartVisualizer.ShowAnimation();
+        await UniTask.WaitWhile(() => _battleStartVisualizer.AnimationPlay);
+        EnablePlayersMove(true);
+    }
+
+    private void EnablePlayersMove(bool enable) {
+        _players.ForEach(p => p.SetMovingStatus(enable));
+    }
+
+    private void RotatePlayersToBomb() {
+        _players.ForEach(p => p.RotateToTarget(Vector3.zero));
+    }
+
+
+    private void GameEnded() {
+        Debug.Log("Игра кончилась");
+        foreach (IPassBombPlayer player in _players) {
+            player.RoleBehaviour.GameStarted(false);
+            player.SetPlayStatus(false);
+        }
+        _players.Clear();
+        _gameStarter.GameOver();
+    }
 
     private void CheckPlayers() {
         foreach (IPassBombPlayer player in _players) {
             if (player.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
                 Debug.Log("Игрок сдох!");
+                if (player.RoleBehaviour.gameObject.TryGetComponent(out BotMonolog botMonolog)) {
+                    PlayedDied?.Invoke(botMonolog.NickName);
+                }
+                player.RoleBehaviour.GameStarted(false);
                 _players.Remove(player);
                 player.SetPlayStatus(false);
+                PlayersCountChanged?.Invoke(_players.Count);
                 return;
             }
         }
@@ -100,13 +138,14 @@ public class BattleManager : MonoBehaviour {
         for (int i = 0; i < points.Count; i++) {
             int index = (i + randomStartIndex) % _gameSpawnPoints.Count;
             players[i].TeleportToPoint(points[index].position);
+            players[i].RotateToTarget(Vector3.zero);
         }
     }
     
     
     
     public void SetGameOverToBots() {
-        _playersBombRoleManager.SetGameOver(_players);
+        _playersRoleManager.SetGameOver(_players);
     }
 
     

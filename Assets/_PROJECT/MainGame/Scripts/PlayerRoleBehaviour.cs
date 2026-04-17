@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -22,52 +21,60 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     [field:  SerializeField] public BotRoleInGame CurrentRole { get; private set; }
     
     private CancellationTokenSource _tokenSource;
-
+    
+    // Для асинхронной передачи
+    private static float _lastPassTime = -999f;
+    private const float PASS_COOLDOWN = 0.5f;
     
     [Inject] private GameData _gameData;
     [Inject] private Bomb _bomb;
     
     
     private void Awake() {
-        SetColliderEnableIfBot(false);
+        SetColliderEnable(false);
     }
 
-    private void OnTriggerEnter(Collider collider) {
-        if(IsInvincibleAfterBomb) return;
-        Debug.Log($"Игроки столкнулись, PlayerHandle =  + {PlayerHandle}, Role = {CurrentRole}");
-        // Если просто бродилка то никак не влияет на триггеры,
-        if(CurrentRole == BotRoleInGame.Wanderer || CurrentRole == BotRoleInGame.Victim) return;
-
-        if (collider.TryGetComponent(out PlayerRoleBehaviour player)) {
-            Debug.Log("Охотник передал бомбу");
-            SetColliderEnableIfBot(false);
-            player.SetRole(BotRoleInGame.Hunter);
-            SetRole(BotRoleInGame.Wanderer);
-            StartInvinsibleTimer(_gameData.TimeToInvinsibleAfterPass).Forget();
-        }
-        else {
-           Debug.Log("Контакт с " + collider); 
-        }
-
-    }
-    
     
     public void GameStarted(bool started) {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CurrentRole = BotRoleInGame.Wanderer;
-        SetColliderEnableIfBot(started);
+        SetColliderEnable(started);
+    }
+
+    
+    private void OnTriggerEnter(Collider collider) {
+        if(IsInvincibleAfterBomb) return;
+        // Если просто бродилка то никак не влияет на триггеры,
+        if(CurrentRole != BotRoleInGame.Hunter) return;
+        
+        if (Time.time - _lastPassTime < PASS_COOLDOWN) {
+            // Debug.Log("Передача заблокирована глобальным кулдауном");
+            return;
+        }
+        
+        if (!collider.TryGetComponent(out PlayerRoleBehaviour player)) return;
+        
+        // Debug.Log($"Охотник передал бомбу, PlayerHandle = {PlayerHandle}");
+        
+        player.SetRole(BotRoleInGame.Hunter);
+        SetRole(BotRoleInGame.Wanderer);
+        
+        StartInvinsibleTimer(_gameData.TimeToInvinsibleAfterPass).Forget();
+        _lastPassTime = Time.time;
+        
     }
     
+    
+
    
     public void SetRole(BotRoleInGame role) {
         CurrentRole = role;
-        
         UniTaskHelper.DisposeTask(ref _tokenSource);
         _tokenSource = new CancellationTokenSource();
         
         switch (role) {
             case BotRoleInGame.Hunter:
-                _bomb.InitBombToNewPlayer(_pointToHoldBomb);
+                _bomb.InitBombToNewPlayer(_pointToHoldBomb, this);
                 StartHunting(_tokenSource.Token).Forget();
                 break;
             case BotRoleInGame.Victim:
@@ -101,12 +108,16 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         Debug.Log("WanderingInPlace");
     }
 
+    
     private async UniTask StartInvinsibleTimer(float time) {
+        SetColliderEnable(false);
+        Debug.Log($"StartInvinsibleTimer, PlayerHandle = {PlayerHandle}");
         await UniTask.WaitForSeconds(time);
-        SetColliderEnableIfBot(true);
+        SetColliderEnable(true);
     }
 
-    private void SetColliderEnableIfBot(bool enable) {
+    
+    private void SetColliderEnable(bool enable) {
         _collider.enabled = enable;
         IsInvincibleAfterBomb = !enable;
     }

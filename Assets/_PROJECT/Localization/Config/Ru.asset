@@ -31,6 +31,7 @@ MonoBehaviour:
   Timer: "\u041D\u0430\u0447\u0430\u043B\u043E \u0447\u0435\u0440\u0435\u0437 {0}..."
   Enemy: "\u0412\u0440\u0430\u0433"
   PlayerWinner: "{0} \u0432\u044B\u0438\u0433\u0440\u0430\u043B!"
+  PlayerExploded: 
   TaskTranslates:
   - <Id>k__BackingField: 0
     _text: 
@@ -50,7 +51,8 @@ MonoBehaviour:
     _text: "\u041D\u0435\u0432\u0438\u0434\u0438\u043C\u043E\u0441\u0442\u044C"
   - <Id>k__BackingField: {fileID: 11400000, guid: d30500e8baf4b1044bc71b057341727f, type: 2}
     _text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
-  ModifiersTranslate: []
+  - <Id>k__BackingField: {fileID: 11400000, guid: 90d408a111db82948b57ffd9ad6ecc6c, type: 2}
+    _text: "\u0421\u0443\u043F\u0435\u0440 \u043F\u0440\u044B\u0436\u043E\u043A"
   SkinTranslates: []
   <StaticTranslates>k__BackingField: []
   DailyReward:

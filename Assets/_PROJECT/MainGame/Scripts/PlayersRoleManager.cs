@@ -5,7 +5,7 @@ using Zenject;
 using Random = UnityEngine.Random;
 
 
-public class PlayersBombRoleManager : MonoBehaviour {
+public class PlayersRoleManager : MonoBehaviour {
     [Inject] private BattleManager _battleManager;
     [Inject] private Bomb _bomb;
     
@@ -20,9 +20,10 @@ public class PlayersBombRoleManager : MonoBehaviour {
         int randomPlayer = Random.Range(0, players.Count);
         players.ElementAt(randomPlayer).RoleBehaviour.SetRole(BotRoleInGame.Hunter);
         _bomb.StartNewBombTimer();
-        Debug.Log("назначение охотника");
+        // Debug.Log("назначение охотника");
     }
 
+    
     public void SetGameOver(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (var player in players) {
             player.RoleBehaviour.GameStarted(false);

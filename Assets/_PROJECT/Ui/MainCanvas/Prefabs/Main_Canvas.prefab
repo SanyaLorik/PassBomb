@@ -11037,6 +11037,7 @@ GameObject:
   - component: {fileID: 7063002218301142725}
   - component: {fileID: 6432316101013417837}
   - component: {fileID: 4555038196750754470}
+  - component: {fileID: 5340242245638737837}
   m_Layer: 0
   m_Name: Icon Image
   m_TagString: Untagged
@@ -11101,6 +11102,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1.18
+--- !u!114 &5340242245638737837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076788113006749997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e96b019042a5449e993f7cf077282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.ScaleDownUpAnimation
+  <Entity>k__BackingField:
+    <Source>k__BackingField: {fileID: 7063002218301142725}
+    <Duration>k__BackingField: 1
+    <Ease>k__BackingField: 1
+  <IsAutoStart>k__BackingField: 0
+  _upScale: {x: 1, y: 1, z: 1}
+  _downScale: {x: 0.75, y: 0.75, z: 0.75}
 --- !u!1 &9126828320373769567
 GameObject:
   m_ObjectHideFlags: 0

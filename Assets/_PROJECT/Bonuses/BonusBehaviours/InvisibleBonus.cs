@@ -2,7 +2,7 @@
 
 [Serializable]
 public class InvisibleBonus : IBonus {
-    public void Use(IDamageable damageable) {
+    public void Use(IPassBombPlayer passBombPlayer) {
         
     }
 }

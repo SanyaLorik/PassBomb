@@ -1,3 +1,4 @@
+using System;
 using Architecture_M;
 using TMPro;
 using UnityEngine;
@@ -8,9 +9,9 @@ public class BonusSlot : UsableItemBase {
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private TextMeshProUGUI _bonusNameText;
     
-    private int _bonusCounts;
     public IBonus Bonus => BonusItem.Bonus;
-    public int BonusCount => _bonusCounts;
+    public int BonusCount => Saves.GetBonusCount(BonusItem.Id);
+    private GameSave Saves => _saver.GetSave<GameSave>();
     
     [Inject] private BonusManager _bonusManager;
     [Inject] private DiContainer _diContainer;
@@ -23,9 +24,14 @@ public class BonusSlot : UsableItemBase {
         _diContainer.QueueForInject(Bonus);
     }
     
+
+    private void OnEnable() {
+        CheckVisualCount();
+    }
+
     
     private void Start() {
-        ChangeVisualCount();
+        CheckVisualCount();
         _bonusNameText.text =
             _localization.GetTranslatedText(BonusItem, _localization.BonusesTranslates);
     }
@@ -37,7 +43,7 @@ public class BonusSlot : UsableItemBase {
             return;
         }
 
-        if (_bonusCounts == 0) {
+        if (BonusCount == 0) {
             Debug.Log("Бонусов нема");
             return;
         }
@@ -45,37 +51,37 @@ public class BonusSlot : UsableItemBase {
     }
 
     public void CheckAvailable() {
-        if (_bonusCounts == 0) {
+        if (BonusCount == 0) {
             SetUnvailable();
         }
     }
 
     
     public void AddBonusCount(int newBonusCount) {
-        _bonusCounts += newBonusCount;
-        ChangeVisualCount();
+        Saves.AddNewBonusCounts(BonusItem.Id, newBonusCount);
+        CheckVisualCount();
     }
 
+    
     public void SetBonusCount(int newBonusCount) {
-        _bonusCounts = newBonusCount;
-        ChangeVisualCount();
+        Saves.AddNewBonusCounts(BonusItem.Id, newBonusCount, true);
+        CheckVisualCount();
     }
 
     
     public void GetOneBonus(bool useSaves = false) {
-        if (_bonusCounts != 0) {
-            _bonusCounts--;
+        if (BonusCount != 0) {
             if (useSaves) {
                 _saver.GetSave<GameSave>().SetMinusOneBonus(BonusItem.Id);
                 _saver.Save();
             }
         }
-        ChangeVisualCount();
+        CheckVisualCount();
     }
 
     
-    private void ChangeVisualCount() {
-        _countText.text = _bonusCounts.ToString();
+    private void CheckVisualCount() {
+        _countText.text = BonusCount.ToString();
         CheckAvailable();
     }
     

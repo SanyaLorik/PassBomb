@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7627953708463765982}
   - component: {fileID: 8394366362186865689}
   m_Layer: 0
-  m_Name: ThrowObjectTrail
+  m_Name: BombTrail
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

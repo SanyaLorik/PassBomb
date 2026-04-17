@@ -58,5 +58,8 @@ public class GameData : GameDataBase
     [field: SerializeField] public float TimeToInvinsibleAfterPass { get; private set; }
     [field: SerializeField] public float DefaultSpeedInGame { get; private set; }
     
+    [field: Header("Тайминги")]
+    [field: SerializeField] public float ColldownToStartGame { get; private set; }
+    
     
 }

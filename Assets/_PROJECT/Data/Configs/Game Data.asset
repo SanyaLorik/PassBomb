@@ -60,5 +60,6 @@ MonoBehaviour:
       <From>k__BackingField: 7
       <To>k__BackingField: 14
     <TimeToBombExplode>k__BackingField: 10
-    <TimeToInvinsibleAfterPass>k__BackingField: 5
+    <TimeToInvinsibleAfterPass>k__BackingField: 2
     <DefaultSpeedInGame>k__BackingField: 16
+    <ColldownToStartGame>k__BackingField: 3

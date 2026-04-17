@@ -12,14 +12,14 @@ public class MainGameInstaller : MonoInstaller {
         Container.Bind<BattleManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BonusManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BonusesLoader>().FromComponentInHierarchy().AsSingle().NonLazy();
-        Container.Bind<BattleInformator>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<Bomb>().FromComponentInHierarchy().AsSingle().NonLazy();
-        Container.Bind<PlayersBombRoleManager>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<PlayersRoleManager>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 
 
     private void BindViews() {
-        Container.Bind<StartBattleView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<GameOverShower>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<BattleStartVisualizer>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<BattleDiesInformator>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }
