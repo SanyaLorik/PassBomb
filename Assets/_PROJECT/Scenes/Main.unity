@@ -888,9 +888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64b174c0656b964480502a4a9e68218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapsToBattleChanger
-  <CentralTeleport>k__BackingField: {fileID: 415421060}
+  <CentralTeleport>k__BackingField: {fileID: 977837456}
   _mapitems:
-  - {fileID: 415421061}
+  - {fileID: 1917661724}
 --- !u!1 &360952958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1311,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2001338882135671543, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791267105365825196, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4343414195835875579, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_Name
       value: Playground
@@ -1325,22 +1333,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 461965544241013744, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
   m_PrefabInstance: {fileID: 415421058}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &415421060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7351372791144796211, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &415421061 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6020002596322780777, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!114 &426298320 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3666224302561396283, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -3231,6 +3223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!4 &977837456 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8851156972997885243, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+  m_PrefabInstance: {fileID: 415421058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1009659975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2129352225957763919, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -3434,6 +3431,18 @@ PrefabInstance:
       propertyPath: '_objectsToShowInPlay.Array.data[0]'
       value: 
       objectReference: {fileID: 275427009}
+    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3539183820512013210, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: _spawnPoint
       value: 
@@ -5133,6 +5142,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1917661724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6020002596322780777, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+  m_PrefabInstance: {fileID: 415421058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &1960033643
 GameObject:
   m_ObjectHideFlags: 0
