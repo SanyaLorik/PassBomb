@@ -1,5 +1,6 @@
 using Architecture_M;
 using LuringPlayer_M;
+using MediaKit_M.SkinChanger;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 [Serializable]
 public class GameSave : GameSaveBase,
-    IDailyRewardSaveLoader, IWheelFortuneSaveLoader, IDailyQuestSaveLoader
+    IDailyRewardSaveLoader, IWheelFortuneSaveLoader, IDailyQuestSaveLoader, ISkinSaveLoader
 {
     public long Money;
     public bool IsBoughtPurchase = false;
@@ -28,6 +29,7 @@ public class GameSave : GameSaveBase,
     public DailyRewardSave DailyRewardSave;
     public WheelFortuneSave WheelFortuneSave;
     public DailyQuestSave DailyQuestSave;
+    public SkinSave SkinSave;
 
     public void AddNewSkin(string id) {
         if(Skins.Any(s => s.Id == id)) return;
@@ -117,6 +119,11 @@ public class GameSave : GameSaveBase,
     DailyQuestSave IDailyQuestSaveLoader.Load()
     {
         return DailyQuestSave;
+    }
+
+    SkinSave ISkinSaveLoader.Load()
+    {
+        return SkinSave;
     }
 }
 

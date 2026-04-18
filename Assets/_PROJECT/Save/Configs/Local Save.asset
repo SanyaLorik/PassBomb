@@ -53,3 +53,20 @@ MonoBehaviour:
       LastDateTimeSpined: 07.04.2026 22:43:20
     DailyQuestSave:
       LastDateTimeEntered: 16.04.2026 15:45:41
+    SkinSave:
+      SkinSets:
+      - GroupId: 1
+        BoughtIds: 0100000002000000
+        EquippedId: -1
+      - GroupId: 2
+        BoughtIds: 01000000
+        EquippedId: -1
+      - GroupId: 3
+        BoughtIds: 01000000
+        EquippedId: -1
+      - GroupId: 4
+        BoughtIds: 01000000
+        EquippedId: -1
+      - GroupId: 5
+        BoughtIds: 01000000
+        EquippedId: -1
