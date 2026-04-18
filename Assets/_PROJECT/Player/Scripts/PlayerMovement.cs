@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Diagnostics;
 using Architecture_M;
 using UnityEngine;
 using Zenject;
@@ -17,6 +15,8 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private bool _wasGroundedLastFrame;
     private Vector3 _externalMotion;
     private float _walkSpeed;
+    private float _firstJumpForce;
+
     
     public event Action JumpPressed;
     public event Action DoubleJumpPressed;
@@ -27,7 +27,8 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     public bool IsRunning { get; private set; }
     
     public CharacterController Controller => _controller;
-    
+    public bool MoveEnable { get; private set; } = true;
+    public event Action<bool> MoveEnabled;
     
     [Inject] private IInputDirection2 _inputDirection2;
     [Inject] private IInputActivity _inputActivity;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private int _jumpsUsed;
 
     private void Start() {
+        SetBigJump(false);
         SetDefaultSpeed();
     }
 
@@ -85,19 +87,40 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         }
     }
 
+    public void SetBigJump(bool bigJump) {
+        _firstJumpForce = bigJump ? _gameData.JumpBonusHeight : _gameData.JumpForce;
+    }
+
+    public void SetInvinsible(bool invnincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
+    }
+
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
-    
+
+
+
     public void SetMovingStatus(bool enable) {
         if (enable) {
             _inputActivity.Enable();
+            MoveEnable = true;
         }
         else {
             _inputActivity.Disable();
+            MoveEnable = false;
         }
+        MoveEnabled?.Invoke(MoveEnable);
     }
 
-    public void SetBiggerSpeed(float speed) {
-        _walkSpeed = speed;
+    public void SetDefaultRoundSpeed() {
+        _walkSpeed = _gameData.WalkSpeed;
+    }
+
+    public void SetHunterSpeed() {
+        _walkSpeed = _gameData.HunterSpeed;
+    }
+
+    public void SetBonusSpeed() {
+        _walkSpeed = _gameData.VelocityBonusSpeed;
     }
 
     public void SetDefaultSpeed() {
@@ -112,7 +135,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
     public void OnJump() {
         if (_jumpsUsed == 0) {
-            _verticalVelocity = _gameData.JumpForce;
+            _verticalVelocity = _firstJumpForce;
             JumpPressed?.Invoke();
             _jumpsUsed = 1;
         }
@@ -137,6 +160,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
 
     private void Walk() {
+        
         Transform cam = Camera.main.transform;
         Vector3 camForward = cam.forward;
         Vector3 camRight = cam.right;
@@ -148,7 +172,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         camRight.Normalize();
 
         Vector3 move = camRight * MoveInput.x + camForward * MoveInput.y;
-        bool hasInput = move.sqrMagnitude > 0.001f;
+        bool hasInput = move.sqrMagnitude > 0.001f && MoveEnable;
 
         if (hasInput != IsRunning) {
             IsRunning = hasInput;
@@ -160,13 +184,13 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
             _verticalVelocity += Physics.gravity.y * _gameData.GravityScale * Time.deltaTime;
         }
 
-
         Vector3 horizontalMove = hasInput
             ? move.normalized * _walkSpeed * Time.deltaTime
             : Vector3.zero;
 
         Vector3 verticalMove = Vector3.up * _verticalVelocity * Time.deltaTime;
 
+        
         _controller.Move(horizontalMove + verticalMove + _externalMotion);
         _externalMotion = Vector3.zero;
         // Проверяем grounded ПОСЛЕ Move

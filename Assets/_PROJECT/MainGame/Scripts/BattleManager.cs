@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 public class BattleManager : MonoBehaviour {
     
     public bool MainPlayerPlay { get; private set; }
-    public bool AllowToPlay { get; private set; }
 
     public int CountPlayersToBattle => _mapsToBattleChanger.CurrentMapSpawnPoints.Length;
     public Transform[] PlayersSpawnPoints => _mapsToBattleChanger.CurrentMapSpawnPoints;
@@ -32,14 +31,16 @@ public class BattleManager : MonoBehaviour {
     [Inject] private Bomb _bomb;
     [Inject] private BattleStartVisualizer _battleStartVisualizer;
     [Inject] private MainGameStarter _gameStarter;
+    [Inject] private GameData _gameData;
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     
     
     private void OnEnable() {
         _bomb.BombExploded += CheckPlayers;
+        
     }
     
-    
+
     private void OnDisable() {
         _bomb.BombExploded -= CheckPlayers;
     }
@@ -84,7 +85,7 @@ public class BattleManager : MonoBehaviour {
         
         while (_players.Count > 1) {
             Debug.Log("Игроков: " + _players.Count);
-            _playersRoleManager.InitNewPlayers(_players);
+            _playersRoleManager.InitNewPlayersToRound(_players);
             _bomb.StartNewBombTimer();
             await UniTask.WaitUntil(() => _bomb.BombExplode);
             await ShowStartAnimation();
@@ -115,7 +116,7 @@ public class BattleManager : MonoBehaviour {
     private void GameEnded() {
         Debug.Log("Игра кончилась");
         foreach (IPassBombPlayer player in _players) {
-            player.RoleBehaviour.GameStarted(false);
+            player.RoleBehaviour.NewRoundStarted(false);
             player.SetPlayStatus(false);
         }
         _players.Clear();
@@ -125,11 +126,14 @@ public class BattleManager : MonoBehaviour {
     private void CheckPlayers() {
         foreach (IPassBombPlayer player in _players) {
             if (player.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
-                Debug.Log("Игрок сдох!");
-                if (player.RoleBehaviour.gameObject.TryGetComponent(out BotMonolog botMonolog)) {
+                Debug.Log("Игрок выбыл!");
+                
+                BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
+                if (botMonolog != null) {
                     PlayedDied?.Invoke(botMonolog.NickName);
                 }
-                player.RoleBehaviour.GameStarted(false);
+                
+                player.RoleBehaviour.NewRoundStarted(false);
                 _players.Remove(player);
                 player.SetPlayStatus(false);
                 PlayersCountChanged?.Invoke(_players.Count);

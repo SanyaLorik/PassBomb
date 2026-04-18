@@ -23,11 +23,15 @@ public class CanvasOpenerWithTrigger : TriggerBehaviourBase {
 
     protected override void PlayerBehaviourOnEnter() {
         _advTimerStarter.DisableTimer();
+        if (_delayedTrigger == null) return;
+            
         _delayedTrigger.DelayedTriggerAction(TriggerAction); 
     }
     
     protected override void PlayerBehaviourOnExit() {
         _advTimerStarter.EnableTimer();
+        if (_delayedTrigger == null) return;
+        
         _delayedTrigger.CancelTriggerAction();
     }
 

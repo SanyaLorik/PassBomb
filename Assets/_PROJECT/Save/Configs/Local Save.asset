@@ -26,6 +26,8 @@ MonoBehaviour:
       Count: 4
     - Id: SpeedBonus
       Count: 3
+    - Id: BigJumpBonus
+      Count: 3
     Tasks:
     - Id: Parkour
       Count: 0

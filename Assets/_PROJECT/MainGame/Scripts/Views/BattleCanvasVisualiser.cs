@@ -4,8 +4,6 @@ using UnityEngine;
 using Zenject;
 
 public class BattleCanvasVisualiser : MonoBehaviour {
-    [Header("Игрок")]
-    [SerializeField] private PlayerRoleBehaviour _mainPlayer; 
     [Header("Данные по канвасу")]
     [SerializeField] private GameObject _youHaveBomb;
     [SerializeField] private GameObject _bombPointer;
@@ -15,6 +13,8 @@ public class BattleCanvasVisualiser : MonoBehaviour {
     [Inject] private Bomb _bomb;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
+    [Inject] IPassBombPlayer _mainPlayer;
+
 
     
     private void OnEnable() {
@@ -40,7 +40,7 @@ public class BattleCanvasVisualiser : MonoBehaviour {
 
     private void BombOnPlayerBecameHunter(PlayerRoleBehaviour player) {
         if (!_battleManager.MainPlayerPlay) return;
-        if (player == _mainPlayer) {
+        if (player == _mainPlayer.RoleBehaviour) {
             _youHaveBomb.ActiveSelf();
             _bombPointer.DisactiveSelf();
         }

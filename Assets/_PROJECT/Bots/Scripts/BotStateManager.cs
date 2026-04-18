@@ -82,12 +82,28 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         }
     }
 
-    public void SetBiggerSpeed(float speed) {
-        _agent.speed = speed;
+    public void SetDefaultRoundSpeed() {
+        _agent.speed = _gameData.BotSpeed;
+    }
+    
+    public void SetHunterSpeed() {
+        _agent.speed = _gameData.HunterSpeed;
+    }
+
+    public void SetBonusSpeed() {
+        _agent.speed = _gameData.VelocityBonusSpeed;
     }
 
     public void SetDefaultSpeed() {
         _agent.speed = _gameData.BotSpeed;
+    }
+
+    public void SetBigJump(bool state) {
+        // IN DEV...
+    }
+
+    public void SetInvinsible(bool invnincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
     }
 
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;

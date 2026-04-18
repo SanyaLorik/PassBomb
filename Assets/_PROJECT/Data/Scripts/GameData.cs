@@ -1,6 +1,7 @@
 ﻿using System;
 using SanyaBeerExtension;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class GameData : GameDataBase
@@ -56,7 +57,11 @@ public class GameData : GameDataBase
     [field: Header("Главная Игра")]
     [field: SerializeField] public float TimeToBombExplode { get; private set; }
     [field: SerializeField] public float TimeToInvinsibleAfterPass { get; private set; }
-    [field: SerializeField] public float DefaultSpeedInGame { get; private set; }
+    [field: SerializeField] public float DefaultSpeedInRound { get; private set; }
+    [field: SerializeField] public float HunterSpeed { get; private set; }
+    [field: SerializeField] public float VelocityBonusSpeed { get; private set; }
+    [field: SerializeField] public float JumpBonusHeight { get; private set; }
+    [field: SerializeField] public float BonusDuration { get; private set; }
     
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }

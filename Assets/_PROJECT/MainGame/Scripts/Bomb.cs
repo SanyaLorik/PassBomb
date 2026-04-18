@@ -29,16 +29,19 @@ public class Bomb : MonoBehaviour {
     [Inject] private GameData _gameData;
     [Inject] private MainGameStarter _gameStarter;
 
+    
     private void OnEnable() {
         _gameStarter.GameStarted += OnGameStarted;
     }
 
+    
     private void OnGameStarted(bool started) {
         if (!started) {
             _bombInstance.DisactiveSelf();
         }
     }
 
+    
     private void Start() {
         _bombInstance.DisactiveSelf();
         _barWidth = RectTransformHelper.CalculateXEnd(_parentProgressToExplode);
@@ -51,10 +54,12 @@ public class Bomb : MonoBehaviour {
         _bombInstance.ActiveSelf();
     }
 
+    
     public void TeleportBombToSpawn(Transform spawn) {
         _bombInstance.ActiveSelf();
         _bombInstance.transform.SetParent(spawn, false); 
     }
+    
     
     public void StartNewBombTimer() {
         UniTaskHelper.DisposeTask(ref _tokenSource);

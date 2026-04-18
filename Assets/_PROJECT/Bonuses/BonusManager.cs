@@ -9,7 +9,6 @@ public class BonusManager : MonoBehaviour {
     // [SerializeField] private List<WeightedItem<IBonus>> _bonusValuesForBots;
     [SerializeField] private List<BonusSlot> _bonusSlots;
     // [Range(0,1), SerializeField] private float _chanseToTryAgainFindBonusBot;
-    
     private BonusSlot _choosedModifierChanger;
     
     
@@ -41,18 +40,19 @@ public class BonusManager : MonoBehaviour {
         
     }
     
+    
     public void UseBonusByClick(IBonus bonus, BonusSlot bonusSlot) {
         TryUseBonus(bonus, bonusSlot);
     }
 
-    
+    public void DisableAllBonuses() {
+        // Пока ток у игрока
+        _bonusSlots.ForEach(b => b.StopBonusWork());
+    }
     
     private void TryUseBonus(IBonus bonus, BonusSlot bonusSlot) {
-        if(!_battleManager.AllowToPlay) return;
-        // bonus.Use(Damageable);
+        bonusSlot.UseBonusAfterCheck();
         BonusUsed?.Invoke(bonus);
-        bonusSlot.GetOneBonus(true);
-        _bonusSlots.ForEach(b => b.SetUnvailable());
     }
     
   

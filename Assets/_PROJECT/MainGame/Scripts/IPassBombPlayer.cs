@@ -6,7 +6,11 @@ public interface IPassBombPlayer {
     public void TeleportToPoint(Vector3 point);
     public void RotateToTarget(Vector3 point);
     public void SetMovingStatus(bool enable);
-    public void SetBiggerSpeed(float speed);
+    public void SetDefaultRoundSpeed();
+    public void SetHunterSpeed();
+    public void SetBonusSpeed();
     public void SetDefaultSpeed();
+    public void SetBigJump(bool state);
+    public void SetInvinsible(bool invnincible);
     public PlayerRoleBehaviour RoleBehaviour { get; }
 }

@@ -26,7 +26,7 @@ public class BonusesLoader : MonoBehaviour {
     // }
     //
     // private void OnEnable() {
-    //     _starter.GameStarted += StarterOnGameStarted;
+    //     _starter.NewRoundStarted += StarterOnGameStarted;
     // }
     //
     //

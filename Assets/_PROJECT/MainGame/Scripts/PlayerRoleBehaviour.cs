@@ -17,6 +17,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     [SerializeField] private Collider _collider;
 
     [field:  SerializeField] public bool IsInvincibleAfterBomb { get; private set; }
+    [field:  SerializeField] public bool IsInvincibleAfterBonus { get; private set; }
     [field:  SerializeField] public bool PlayerHandle { get; private set; }
     [field:  SerializeField] public BotRoleInGame CurrentRole { get; private set; }
     
@@ -35,7 +36,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     }
 
     
-    public void GameStarted(bool started) {
+    public void NewRoundStarted(bool started) {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CurrentRole = BotRoleInGame.Wanderer;
         SetColliderEnable(started);
@@ -43,6 +44,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
 
     
     private void OnTriggerEnter(Collider collider) {
+        if(IsInvincibleAfterBonus) return; 
         if(IsInvincibleAfterBomb) return;
         // Если просто бродилка то никак не влияет на триггеры,
         if(CurrentRole != BotRoleInGame.Hunter) return;
@@ -53,6 +55,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         }
         
         if (!collider.TryGetComponent(out PlayerRoleBehaviour player)) return;
+        if (player.IsInvincibleAfterBonus) return;
         
         // Debug.Log($"Охотник передал бомбу, PlayerHandle = {PlayerHandle}");
         
@@ -85,7 +88,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
                 break;
         }
     }
-    
+
+
+    public void SetInvincibleAfterBonus(bool invincible) {
+        IsInvincibleAfterBonus = invincible;
+    }
     
     
     private async UniTask StartHunting(CancellationToken token) {

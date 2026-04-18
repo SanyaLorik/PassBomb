@@ -59,6 +59,7 @@ public class CameraOrbitalController : MonoBehaviour {
     [Inject] private IInputActivity _inputActivity;
     [Inject] private BattleManager _battleManager;
     [Inject] private MainGameStarter _gameStarter;
+    [Inject] private PlayerMovement _playerMovement;
 
 
     private void OnEnable()  {
@@ -67,6 +68,32 @@ public class CameraOrbitalController : MonoBehaviour {
         SystemEvents.ForbidZoomChanged += ForbidZoom;
         _gameStarter.GameStarted += OnGameStarted;
         GameEvents.ShakeCamera += ShakeCamera;
+        _playerMovement.MoveEnabled += PlayerMovementOnMoveEnabled;
+    }
+    
+    
+    private void Start() {
+        ChangeCameraZoomPercent(_settings.CameraZoomValue);
+        
+        _orbitalFollow.TrackerSettings.PositionDamping = Vector3.zero;
+        
+        _walkZoom = CurrentFovPercent;
+        if (IsMobile)
+            _rotationHandler = HandleJoystickOrbit;
+        else {
+            // Получаем ссылку на мышь
+            _mouse = Mouse.current;
+            _rotationHandler = HandleMouseOrbit;
+        }
+        _defaultX = _orbitalFollow.HorizontalAxis.Value;
+        _defaultY = _orbitalFollow.VerticalAxis.Value;
+    }
+    
+    
+
+    private void PlayerMovementOnMoveEnabled(bool enabled) {
+        _isOrbiting = enabled;
+        _allowRotation = enabled;
     }
 
 
@@ -143,22 +170,6 @@ public class CameraOrbitalController : MonoBehaviour {
         _cinemachineCamera.Follow = target;
     }
     
-    private void Start() {
-        ChangeCameraZoomPercent(_settings.CameraZoomValue);
-        
-        _orbitalFollow.TrackerSettings.PositionDamping = Vector3.zero;
-        
-        _walkZoom = CurrentFovPercent;
-        if (IsMobile)
-            _rotationHandler = HandleJoystickOrbit;
-        else {
-            // Получаем ссылку на мышь
-            _mouse = Mouse.current;
-            _rotationHandler = HandleMouseOrbit;
-        }
-        _defaultX = _orbitalFollow.HorizontalAxis.Value;
-        _defaultY = _orbitalFollow.VerticalAxis.Value;
-    }
 
     private void ChangeCameraZoomPercent(float percent) {
         float zoomValue = Mathf.Lerp(_gameData.ZoomDiapasone.From, _gameData.ZoomDiapasone.To, percent);
@@ -201,8 +212,7 @@ public class CameraOrbitalController : MonoBehaviour {
         Cursor.visible = false;
     }
     
-    private void StopOrbiting()
-    {
+    private void StopOrbiting() {
         _isOrbiting = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

@@ -43,10 +43,10 @@ public class TutorialManager : MonoBehaviour {
     //
     // public void OnEnable() {
     //     if (!TutorialPassed) {
-    //         _battleManager.GameStarted += StartTutorial;
+    //         _battleManager.NewRoundStarted += StartTutorial;
     //         _bonusManager.BonusUsed += OnBonusUsed;
     //         _modifierManager.ModifierChoosed += OnChoosedModifier;
-    //         _mainGameStarter.GameStarted += OnGameStarted;
+    //         _mainGameStarter.NewRoundStarted += OnGameStarted;
     //     }
     // }
     //
@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour {
     // private async UniTask HideMobileInput() {
     //     await UniTask.WaitForSeconds(.5f);
     //     _playerStateManager.MobileInputHide(true);
-    //     _inputActivity.Disable();
+    //     _inputActivity.StopWork();
     // }
     //
     //
@@ -92,7 +92,7 @@ public class TutorialManager : MonoBehaviour {
     //
     // private void StartTutorial() {
     //     _playerStateManager.MobileInputHide(true);
-    //     _inputActivity.Disable();
+    //     _inputActivity.StopWork();
     //     TutorialStartAsync().Forget();
     // }
     //
@@ -188,10 +188,10 @@ public class TutorialManager : MonoBehaviour {
     //     Saves.TutorialPassed = true;
     //     _saver.Save();
     //     _narrator.DisableNarrator();
-    //     _battleManager.GameStarted -= StartTutorial;
+    //     _battleManager.NewRoundStarted -= StartTutorial;
     //     _bonusManager.BonusUsed -= OnBonusUsed;
     //     _modifierManager.ModifierChoosed -= OnChoosedModifier;
-    //     _mainGameStarter.GameStarted -= OnGameStarted;
+    //     _mainGameStarter.NewRoundStarted -= OnGameStarted;
     // }
 
 }

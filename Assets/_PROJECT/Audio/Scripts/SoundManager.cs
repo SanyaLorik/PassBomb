@@ -77,7 +77,7 @@ public class SoundManager : MonoBehaviour {
         _settings.MusicValueChanged += SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged += SettingsOnEffectsValueChanged;
         // Play Events
-        // _bonusManager.BonusUsed += PlayBonuseUse;
+        _bonusManager.BonusUsed += PlayBonuseUse;
         _gameOverShower.PlayerWin += PlayerWin;
         GameEvents.FloorHited += PlayFloorHit;
         GameEvents.PlayerHited += PlayPlayerHit;
@@ -105,7 +105,7 @@ public class SoundManager : MonoBehaviour {
         _settings.MusicValueChanged -= SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged -= SettingsOnEffectsValueChanged;
         // Play Events
-        // _bonusManager.BonusUsed -= PlayBonuseUse;
+        _bonusManager.BonusUsed -= PlayBonuseUse;
         _gameOverShower.PlayerWin -= PlayerWin;
         GameEvents.FloorHited -= PlayFloorHit;
         GameEvents.PlayerHited -= PlayPlayerHit;

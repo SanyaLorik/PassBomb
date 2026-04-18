@@ -456,11 +456,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd804cb867d301349afaf14642d04474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BonusSlot
-  _timeToColldown: 10
-  _availableImage: {fileID: 8889015970773248648}
   <BonusItem>k__BackingField: {fileID: 0}
   _countText: {fileID: 3455027416796127735}
   _bonusNameText: {fileID: 7231204123371202967}
+  _reloadProgress: {fileID: 8889015970773248648}
+  _button: {fileID: 2219096580696750502}
 --- !u!1 &5899833184219769604
 GameObject:
   m_ObjectHideFlags: 0
