@@ -1,12 +1,9 @@
-using UnityEngine;
 using Zenject;
 
 public class BotInstaller: MonoInstaller {
-    [SerializeField] private Transform[] _pointsToWalk;
     
     public override void InstallBindings() {
         BindBotStateManager();
-        BindWalkPoints();
     }
 
     private void BindBotStateManager() {
@@ -17,13 +14,4 @@ public class BotInstaller: MonoInstaller {
             .AsTransient();
 
     }
-
-    private void BindWalkPoints() {
-        Container.Bind<Transform[]>()
-            .WithId("WalkPoints")
-            .FromInstance(_pointsToWalk)
-            .AsSingle().NonLazy();
-    }
-
-
 }

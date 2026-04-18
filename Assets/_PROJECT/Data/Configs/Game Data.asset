@@ -25,7 +25,6 @@ MonoBehaviour:
     <GravityScale>k__BackingField: 4
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
-    <FlightCameraFov>k__BackingField: 0
     <DefaultCameraSens>k__BackingField: 0.137
     <ZoomSpeed>k__BackingField: 0.1
     <PlayerWinnerAxis>k__BackingField:
@@ -38,7 +37,7 @@ MonoBehaviour:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
-    <BotSpeed>k__BackingField: 14
+    <BotSpeed>k__BackingField: 10
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 1
@@ -49,25 +48,22 @@ MonoBehaviour:
     <ChanseToChangeNickname>k__BackingField: 0
     <TimeToStayAfterSpawn>k__BackingField:
       <From>k__BackingField: 0
-      <To>k__BackingField: 0
+      <To>k__BackingField: 10
     <RotationSpeed>k__BackingField: 10
     <ChanceToJump>k__BackingField: 0.374
     <ChanseToGoPlayer>k__BackingField: 0.1
-    <StoppingDistance>k__BackingField:
-      <From>k__BackingField: 5
-      <To>k__BackingField: 10
     <TimeToStayOnPoint>k__BackingField:
       <From>k__BackingField: 7
       <To>k__BackingField: 14
     <TimeToBombExplode>k__BackingField: 10
     <TimeToInvinsibleAfterPass>k__BackingField: 2
-    <DefaultSpeedInRound>k__BackingField: 14
-    <HunterSpeed>k__BackingField: 24
-    <VelocityBonusSpeed>k__BackingField: 30
-    <JumpBonusHeight>k__BackingField: 40
+    <DefaultSpeedInRound>k__BackingField: 12
+    <HunterSpeed>k__BackingField: 20
+    <VelocityBonusSpeed>k__BackingField: 25
+    <JumpBonusHeight>k__BackingField: 30
     <BonusDuration>k__BackingField: 10
     <ColldownToStartGame>k__BackingField: 3
     <DistanceToFloor>k__BackingField: 30
     <DurationToHuntWithoutCheck>k__BackingField: 2
-    <DurationToGoInPoint>k__BackingField: 0
-    <RunStoppingDistance>k__BackingField: 0.3
+    <DurationToGoInPoint>k__BackingField: 0.1
+    <RunStoppingDistance>k__BackingField: 0

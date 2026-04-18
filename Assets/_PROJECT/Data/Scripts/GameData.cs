@@ -18,7 +18,6 @@ public class GameData : GameDataBase
     [field: Header("Дефолтные значения в процентах")]
     [field: SerializeField, Range(0,1)] public float MobileCameraFov { get; private set; }
     [field: SerializeField, Range(0,1)] public float DesktopCameraFov { get; private set; }
-    [field: SerializeField, Range(0,1)] public float FlightCameraFov { get; private set; }
     [field: SerializeField, Range(0,1)] public float DefaultCameraSens { get; private set; }
     [field: SerializeField, Range(0,1)] public float ZoomSpeed { get; private set; }
     
@@ -51,7 +50,6 @@ public class GameData : GameDataBase
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanceToJump { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanseToGoPlayer { get; private set; }
-    [field: SerializeField] public PairedValue<float> StoppingDistance { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayOnPoint { get; private set; }
     
     [field: Header("Главная Игра")]

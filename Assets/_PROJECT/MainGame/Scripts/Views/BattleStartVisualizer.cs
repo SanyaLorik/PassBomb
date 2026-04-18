@@ -6,6 +6,7 @@ using Zenject;
 
 public class BattleStartVisualizer : MonoBehaviour {
     [SerializeField] private GameObject _timerContainer;
+    [SerializeField] private GameObject _timerShadow;
     [SerializeField] private TextMeshProUGUI _timerText;
     
     
@@ -16,7 +17,8 @@ public class BattleStartVisualizer : MonoBehaviour {
     public bool AnimationPlay { get; private set; }
 
     
-    public void ShowAnimation() {
+    public void ShowAnimation(bool showShadow) {
+        _timerShadow.SetActive(showShadow);
         AnimationPlay = true;
         PlayAnimation().Forget();
     }
@@ -27,7 +29,7 @@ public class BattleStartVisualizer : MonoBehaviour {
         
         _timerContainer.ActiveSelf();
         while (elapsedTime != 0) {
-            _timerText.text = _localization.GetPrettyTime((int)elapsedTime);
+            _timerText.text = elapsedTime.ToString();
             await UniTask.WaitForSeconds(1f);
             elapsedTime--;
         }

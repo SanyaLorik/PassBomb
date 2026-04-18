@@ -461,6 +461,11 @@ MonoBehaviour:
   _audioMixer: {fileID: 24100000, guid: 4dbd4f10ca94e134a8a090e3394d5f41, type: 2}
   _musicMixerGroup: {fileID: 223581915536063257, guid: 4dbd4f10ca94e134a8a090e3394d5f41, type: 2}
   _soundMixerGroup: {fileID: 750195993760700612, guid: 4dbd4f10ca94e134a8a090e3394d5f41, type: 2}
+--- !u!1 &202488750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8701328123647655578, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &210083585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1063157433029759311, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -1058,6 +1063,10 @@ PrefabInstance:
     - target: {fileID: 4840553483760333895, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_LocalPosition.z
       value: 6.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328391839767338016, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585436515926121274, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_Name
@@ -4776,6 +4785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleStartVisualizer
   _timerContainer: {fileID: 1120491806}
+  _timerShadow: {fileID: 202488750}
   _timerText: {fileID: 943425955}
 --- !u!1 &1554717877
 GameObject:

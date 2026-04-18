@@ -51,7 +51,9 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         SetColliderEnable(started);
         _otherPlayers.Clear();
         _otherPlayers = _battleManager.Players.Where(p => p.RoleBehaviour != this).ToList();
-        SetRole(BotRoleInGame.Wanderer);
+        if (started) {
+            SetRole(BotRoleInGame.Wanderer);
+        }
     }
 
     

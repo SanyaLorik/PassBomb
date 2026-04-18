@@ -80,7 +80,7 @@ public class BattleManager : MonoBehaviour {
 
     private async UniTask GoBattleAsync() {
         RotatePlayersToBomb();
-        await ShowStartAnimation();
+        await ShowStartAnimation(true);
         GameReadyToPlay?.Invoke();
         
         while (_players.Count > 1) {
@@ -88,20 +88,22 @@ public class BattleManager : MonoBehaviour {
             _playersRoleManager.InitNewPlayersToRound(_players);
             _bomb.StartNewBombTimer();
             await UniTask.WaitUntil(() => _bomb.BombExplode);
-            await ShowStartAnimation();
+            await ShowStartAnimation(false);
         }
         GameEnded();
     }
 
-    private async UniTask ShowStartAnimation() {
+    
+    private async UniTask ShowStartAnimation(bool forbidMove) {
         _bomb.TeleportBombToSpawn(BombSpawnPoint);
         
         await UniTask.Yield();
         
-        EnablePlayersMove(false);
-        _battleStartVisualizer.ShowAnimation();
+        if(forbidMove) EnablePlayersMove(false);
+        _battleStartVisualizer.ShowAnimation(forbidMove);
         await UniTask.WaitWhile(() => _battleStartVisualizer.AnimationPlay);
-        EnablePlayersMove(true);
+        if(forbidMove) EnablePlayersMove(true);
+
     }
 
     private void EnablePlayersMove(bool enable) {
@@ -133,8 +135,8 @@ public class BattleManager : MonoBehaviour {
                     PlayedDied?.Invoke(botMonolog.NickName);
                 }
                 
-                player.RoleBehaviour.NewRoundStarted(false);
                 _players.Remove(player);
+                player.RoleBehaviour.NewRoundStarted(false);
                 player.SetPlayStatus(false);
                 PlayersCountChanged?.Invoke(_players.Count);
                 return;

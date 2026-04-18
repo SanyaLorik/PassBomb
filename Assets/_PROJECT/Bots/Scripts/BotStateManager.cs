@@ -62,9 +62,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     
     public void SetMovingStatus(bool enable) {
-        if (!enable) {
-            _botWander.StartWanderSpawn();
-        }
+        _botWander.SetMovingStatus(enable);
     }
 
     public void SetDefaultRoundSpeed() {

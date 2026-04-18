@@ -23,48 +23,15 @@ public class BotWander : MonoBehaviour {
     public Action<bool> Grounded;
     private Transform _chooseCube;
     private CancellationTokenSource _botTokenSource;
+    private CancellationTokenSource _jumpTokenSource; 
     private NavMeshAgent _agent;
     
     
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private GameData _gameData;
     
-
-    private void Awake() {
-        _agent = GetComponent<NavMeshAgent>();
-    }
-
-    
-    
-    public void StopWanderSpawn() {
-        UniTaskHelper.DisposeTask(ref _botTokenSource);
-        _botTokenSource = new CancellationTokenSource();
-        MonitorMovementAsync(_botTokenSource.Token).Forget();
-        _walkingParticles.Stop();
-        StartWandering?.Invoke(false);
-    }
-    
-    
-    public void StartWanderSpawn() {
-        // _botTokenSource = new CancellationTokenSource();
-        // StartWanderingCycleAsync().Forget();
-        // _walkingParticles.Stop();
-        // StartWandering?.Invoke(false);
-    }
-
-    
-    private async UniTask StartWanderingCycleAsync() {
-        UniTaskHelper.DisposeTask(ref _botTokenSource);
-        _botTokenSource = new CancellationTokenSource();
-        float durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
-        await UniTask.WaitForSeconds(durationToStay, cancellationToken: _botTokenSource.Token);
-        LifeCycleAsync(_botTokenSource.Token).Forget();
-        MonitorMovementAsync(_botTokenSource.Token).Forget();
-    }
-    
-
-    private async UniTask MonitorMovementAsync(CancellationToken token) {
-        while (!token.IsCancellationRequested) {
+    private async UniTask MonitorMovementAsync() {
+        while (true) {
             if (_agent.enabled && _agent.velocity.sqrMagnitude > 0.05f) {
                 if (!_walkingParticles.IsPlaying) {
                     _walkingParticles.Play();
@@ -78,29 +45,72 @@ public class BotWander : MonoBehaviour {
                 }
             }
 
-            await UniTask.Yield(token);
+            await UniTask.Yield();
         }
+    }
+    
+    
+    private void Awake() {
+        _agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start() {
+        MonitorMovementAsync().Forget();
+    }
+
+
+    public void StopWanderSpawn() {
+        Debug.Log("StopWanderSpawn");
+        UniTaskHelper.DisposeTask(ref _botTokenSource);
+        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
+        
+        _agent.ResetPath();
+        _walkingParticles.Stop();
+        StartWandering?.Invoke(false);
+    }
+    
+    
+    public void StartWanderSpawn() {
+        Debug.Log("StartWanderSpawn");
+        UniTaskHelper.DisposeTask(ref _botTokenSource);
+        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
+        
+        _botTokenSource = new CancellationTokenSource();
+        _agent.ResetPath();
+        _agent.isStopped = false;
+        StartWanderingCycleAsync().Forget();
+        _walkingParticles.Stop();
+        StartWandering?.Invoke(false);
+    }
+
+    public void SetMovingStatus(bool enable) {
+        _agent.isStopped = !enable;
+        Debug.Log("SetMovingStatus " + enable);
     }
 
     
+    private async UniTask StartWanderingCycleAsync() {
+        float durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
+        await UniTask.WaitForSeconds(durationToStay, cancellationToken: _botTokenSource.Token);
+        await LifeCycleAsync(_botTokenSource.Token);
+    }
+    
+    
     private async UniTask LifeCycleAsync(CancellationToken token) {
         while (!token.IsCancellationRequested) {
-            
+            Debug.Log("LifeCycleAsync");
             Vector3 target = GetTargetPoint(_spawnPlace);
             _agent.SetDestination(target);
-            _agent.stoppingDistance = Random.Range(
-                _gameData.StoppingDistance.From,
-                _gameData.StoppingDistance.To);
-            
             
             await UniTask.WaitUntil(() => !_agent.pathPending && _agent.hasPath, cancellationToken: token);
-            Jump().Forget();
+            Jump(token).Forget();
 
             await UniTask.WaitUntil(() => 
                 !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance,
                 cancellationToken: token);
             
             await RotateTowardsAsync(target, _gameData.RotationSpeed, token);
+            
 
             float waitTime = Random.Range(
                 _gameData.TimeToStayOnPoint.From, 
@@ -126,28 +136,22 @@ public class BotWander : MonoBehaviour {
     
     public async UniTask SetAgentGoToPointAsync(Vector3 point, CancellationToken token) {
         _agent.SetDestination(point);
-
+    
         await UniTask.WaitUntil(() => !_agent.pathPending, cancellationToken: token);
-
+        await Jump(token);
+    
         if (_agent.pathStatus != NavMeshPathStatus.PathComplete) {
             return;
         }
+        //
+        // // Запускаем поворот В ФОНЕ — теперь крутимся ПО СКОРОСТИ, а не на точку
+        RotateByVelocityAsync(_gameData.RotationSpeed, token).Forget();
+    
+        await UniTask.WaitUntil(
+            () => !_agent.pathPending && _agent.remainingDistance <= _gameData.RunStoppingDistance,
+            cancellationToken: token
+        );
 
-        // Запускаем поворот В ФОНЕ — теперь крутимся ПО СКОРОСТИ, а не на точку
-        var rotationTask = RotateByVelocityAsync(_gameData.RotationSpeed, token);
-
-        try {
-            await UniTask.WaitUntil(
-                () => !_agent.pathPending && _agent.remainingDistance <= _gameData.RunStoppingDistance,
-                cancellationToken: token
-            );
-        }
-        catch (OperationCanceledException) {
-            _agent.ResetPath();
-            throw;
-        }
-
-        _agent.ResetPath();
     }
 
     // Новый метод — крутит по velocity (туда, куда РЕАЛЬНО бежит)
@@ -181,30 +185,36 @@ public class BotWander : MonoBehaviour {
     }
 
     
-    private async UniTask Jump() {
+    private async UniTask Jump(CancellationToken token) {
         if (Random.value > _gameData.ChanceToJump) return;
         
         float startPathLength = _agent.remainingDistance;
         float jumpLength = startPathLength / Random.Range(1.5f, 2f);
 
+
+        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
+        _jumpTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token);
+        CancellationToken jumpToken = _jumpTokenSource.Token;
+        
         await UniTask.WaitUntil(() => 
                 !_agent.pathPending &&
                 _agent.remainingDistance <= jumpLength &&
-                _agent.remainingDistance > _agent.stoppingDistance 
-        );
+                _agent.remainingDistance > _agent.stoppingDistance, 
+            cancellationToken: jumpToken);
 
-        FakeJump().Forget();
+        FakeJump(jumpToken).Forget();
     }
     
+    
     [SerializeField] private float _jumpDuration;
-    private async UniTask FakeJump() {
+    private async UniTask FakeJump(CancellationToken token) {
         float height = _gameData.JumpForce / 2f;
         float t = 0f;
 
         _jumpParticlesController.Play();
         OnJump?.Invoke();
         Grounded?.Invoke(false);
-        while (t < _jumpDuration) {
+        while (t < _jumpDuration && !token.IsCancellationRequested) {
             t += Time.deltaTime;
             float normalized = t / _jumpDuration;
             float yOffset = Mathf.Sin(normalized * Mathf.PI) * height;
@@ -214,7 +224,7 @@ public class BotWander : MonoBehaviour {
 
             transform.position = pos;
 
-            await UniTask.Yield();
+            await UniTask.Yield(token);
         }
         Grounded?.Invoke(true);
         _landParticleController.Play();
@@ -257,8 +267,8 @@ public class BotWander : MonoBehaviour {
     }
     
     private void OnDestroy() {
-        _botTokenSource?.Cancel();
-        _botTokenSource?.Dispose();
+        UniTaskHelper.DisposeTask(ref _botTokenSource);
+        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
     }
     
 }

@@ -43,6 +43,7 @@ public class BotsMainManager : IInitializable, IDisposable {
         bot.SetBotSkin(skin);
         bot.InitAnimator();
     }
+    
 
     public List<BotStateManager> GetBotsToGame(int count) {
         return _bots.GetRange(0, count);
