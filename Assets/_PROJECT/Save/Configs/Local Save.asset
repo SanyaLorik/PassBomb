@@ -23,11 +23,11 @@ MonoBehaviour:
     SkinWearId: obby
     Bonuses:
     - Id: InvisibleBonus
-      Count: 4
+      Count: 9
     - Id: SpeedBonus
-      Count: 3
+      Count: 10
     - Id: BigJumpBonus
-      Count: 3
+      Count: 10
     Tasks:
     - Id: Parkour
       Count: 0

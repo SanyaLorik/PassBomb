@@ -60,6 +60,7 @@ public class CameraOrbitalController : MonoBehaviour {
     [Inject] private BattleManager _battleManager;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private PlayerMovement _playerMovement;
+    [Inject] private Bomb _bomb;
 
 
     private void OnEnable()  {
@@ -69,9 +70,15 @@ public class CameraOrbitalController : MonoBehaviour {
         _gameStarter.GameStarted += OnGameStarted;
         GameEvents.ShakeCamera += ShakeCamera;
         _playerMovement.MoveEnabled += PlayerMovementOnMoveEnabled;
+        _bomb.BombExploded += OnBombExploded;
     }
-    
-    
+
+    private void OnBombExploded() {
+        if(!_battleManager.MainPlayerPlay) return;
+        ShakeCamera();
+    }
+
+
     private void Start() {
         ChangeCameraZoomPercent(_settings.CameraZoomValue);
         
@@ -90,16 +97,11 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
     
-
-    private void PlayerMovementOnMoveEnabled(bool enabled) {
-        _isOrbiting = enabled;
-        _allowRotation = enabled;
-    }
-
-
     private void Update() {
         _rotationHandler.Invoke();
     }
+    
+    
 
     public void WatchToPoint(Transform point) {
         Debug.Log("WatchToPoint " + point.position);
@@ -118,6 +120,7 @@ public class CameraOrbitalController : MonoBehaviour {
         CancelInvoke(nameof(StopShake));
         Invoke(nameof(StopShake), _duration);
     }
+    
     
     
     public void SetLeftPlayerWinnerAxises(bool leftWinner) {
@@ -160,6 +163,12 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
 
+    private void PlayerMovementOnMoveEnabled(bool enabled) {
+        // Уберу покачто т.к игрок камерой не может крутить во время отсчета
+        // _isOrbiting = enabled;
+        // _allowRotation = enabled;
+    }
+    
     private void SetAxisToFollow(float horizontal, float vertical) {
         _orbitalFollow.HorizontalAxis.Value = horizontal;
         _orbitalFollow.VerticalAxis.Value = vertical;

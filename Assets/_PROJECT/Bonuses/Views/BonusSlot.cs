@@ -61,6 +61,12 @@ public class BonusSlot : MonoBehaviour {
             Debug.Log("Бонусов нема");
             return;
         }
+        
+        if(_mainPlayer.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter){ 
+            Debug.Log("Игрок хантер, он не может юзать бонусы");
+            return;
+        }
+        
         _bonusManager.UseBonusByClick(BonusItem.Bonus, this);
     }
 

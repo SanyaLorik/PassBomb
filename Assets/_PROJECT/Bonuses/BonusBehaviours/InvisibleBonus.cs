@@ -4,7 +4,6 @@ using UnityEngine;
 [Serializable]
 public class InvisibleBonus : IBonus {
     public void Use(IPassBombPlayer passBombPlayer) {
-        if(passBombPlayer.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) return; 
         passBombPlayer.SetInvinsible(true);
         Debug.Log("Включена невидимость");
     }
