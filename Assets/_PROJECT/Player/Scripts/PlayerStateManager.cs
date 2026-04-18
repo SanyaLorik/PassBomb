@@ -22,10 +22,10 @@ public class PlayerStateManager : MonoBehaviour{
     
     [Inject] private IInterstitialDelaying  _interstitialDelaying;
     [Inject] private IInterstitialActivity  _interstitialActivity;
+    [InjectOptional] private IActivityButtonPC _activityButtonPC;
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private BattleManager _battleManager;
     [Inject] private IGameSave _saver;
-    [InjectOptional] private IActivityButtonPC _activityButtonPC;
     [Inject] private MainGameStarter _mainGameManager;
     [Inject] private TutorialManager _tutorialManager;
 
@@ -47,7 +47,7 @@ public class PlayerStateManager : MonoBehaviour{
     }
 
     public void SetupCanvases(bool playerGoPlay) {
-        MobileInputHide(playerGoPlay);
+        // MobileInputHide(playerGoPlay);
         _canvases.DisactiveSelf();
         if (playerGoPlay) {
             // _playContainer.ActiveSelf();
