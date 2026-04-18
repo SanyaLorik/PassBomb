@@ -61,9 +61,13 @@ MonoBehaviour:
       <To>k__BackingField: 14
     <TimeToBombExplode>k__BackingField: 10
     <TimeToInvinsibleAfterPass>k__BackingField: 2
-    <DefaultSpeedInRound>k__BackingField: 16
-    <HunterSpeed>k__BackingField: 25
+    <DefaultSpeedInRound>k__BackingField: 14
+    <HunterSpeed>k__BackingField: 24
     <VelocityBonusSpeed>k__BackingField: 30
     <JumpBonusHeight>k__BackingField: 40
     <BonusDuration>k__BackingField: 10
     <ColldownToStartGame>k__BackingField: 3
+    <DistanceToFloor>k__BackingField: 30
+    <DurationToHuntWithoutCheck>k__BackingField: 2
+    <DurationToGoInPoint>k__BackingField: 0
+    <RunStoppingDistance>k__BackingField: 0.3

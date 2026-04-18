@@ -1,5 +1,7 @@
 using SanyaBeerExtension;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class MapsToBattleChanger : MonoBehaviour {
@@ -14,7 +16,7 @@ public class MapsToBattleChanger : MonoBehaviour {
 
     public void ChooseNextMap() {
         MapIndex++;
-        if (MapIndex >= _mapitems.Length) {
+        if (MapIndex >= _mapitems.Length-1) {
             MapIndex = 0;
         }
         _mapitems.ForEach(m => m.DisactiveSelf());
@@ -23,4 +25,6 @@ public class MapsToBattleChanger : MonoBehaviour {
 
     public Transform[] CurrentMapSpawnPoints => _mapitems[MapIndex].SpawnPoints;
     public Transform GetCurrentBombSpawn => _mapitems[MapIndex].BombCenterSpawn;
+    public Transform GetCurrentMapFloor => _mapitems[MapIndex].Floor;
+    public NavMeshSurface GetCurrentMapSurface => _mapitems[MapIndex].Surface;
 }

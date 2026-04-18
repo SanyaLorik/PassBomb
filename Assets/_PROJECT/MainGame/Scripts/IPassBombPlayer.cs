@@ -13,4 +13,5 @@ public interface IPassBombPlayer {
     public void SetBigJump(bool state);
     public void SetInvinsible(bool invnincible);
     public PlayerRoleBehaviour RoleBehaviour { get; }
+    Transform Transform { get; }
 }

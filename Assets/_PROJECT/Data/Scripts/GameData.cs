@@ -66,5 +66,12 @@ public class GameData : GameDataBase
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }
     
+    [field: Header("Боты в игре")]
+    [field: SerializeField] public float DistanceToFloor { get; private set; }
+    [field: SerializeField] public float DurationToHuntWithoutCheck { get; private set; }
+    [field: SerializeField] public float DurationToGoInPoint { get; private set; }
+    [field: SerializeField] public float RunStoppingDistance { get; private set; }
+    
+    
     
 }

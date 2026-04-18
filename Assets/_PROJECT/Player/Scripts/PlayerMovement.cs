@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private CharacterController _controller; // 
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
-    
+    [field: SerializeField] public Transform Transform { get; private set; }
+
     public Vector2 MoveInput => _inputDirection2.Direction2;
     private float _currentRoll;
     private float _rollVelocity;
@@ -96,7 +97,6 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     }
 
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
-
 
 
     public void SetMovingStatus(bool enable) {

@@ -1,7 +1,10 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 public enum BotRoleInGame {
@@ -15,6 +18,7 @@ public enum BotRoleInGame {
 public class PlayerRoleBehaviour : MonoBehaviour {
     [SerializeField] public Transform _pointToHoldBomb;
     [SerializeField] private Collider _collider;
+    [SerializeField] private BotWander _botWander;
 
     [field:  SerializeField] public bool IsInvincibleAfterBomb { get; private set; }
     [field:  SerializeField] public bool IsInvincibleAfterBonus { get; private set; }
@@ -22,13 +26,18 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     [field:  SerializeField] public BotRoleInGame CurrentRole { get; private set; }
     
     private CancellationTokenSource _tokenSource;
+    private CancellationTokenSource _hunterTokenSource;
     
     // Для асинхронной передачи
     private static float _lastPassTime = -999f;
     private const float PASS_COOLDOWN = 0.5f;
     
-    [Inject] private GameData _gameData;
     [Inject] private Bomb _bomb;
+    [Inject] private MapsToBattleChanger _mapsChanger;
+    [Inject] private BattleManager _battleManager;
+    [Inject] private GameData _gameData;
+    
+    private List<IPassBombPlayer> _otherPlayers = new();
     
     
     private void Awake() {
@@ -40,6 +49,9 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CurrentRole = BotRoleInGame.Wanderer;
         SetColliderEnable(started);
+        _otherPlayers.Clear();
+        _otherPlayers = _battleManager.Players.Where(p => p.RoleBehaviour != this).ToList();
+        SetRole(BotRoleInGame.Wanderer);
     }
 
     
@@ -73,6 +85,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public void SetRole(BotRoleInGame role) {
         CurrentRole = role;
         UniTaskHelper.DisposeTask(ref _tokenSource);
+        UniTaskHelper.DisposeTask(ref _hunterTokenSource);
         _tokenSource = new CancellationTokenSource();
         
         switch (role) {
@@ -93,26 +106,87 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public void SetInvincibleAfterBonus(bool invincible) {
         IsInvincibleAfterBonus = invincible;
     }
+
     
+    private IPassBombPlayer _targetToHunt;
     
     private async UniTask StartHunting(CancellationToken token) {
         if(PlayerHandle) return;
-        Debug.Log("Starting hunting...");
-        // while (!token.IsCancellationRequested) {
-        //     
-        // }
+        GetNextPlayerVictim();
+        // Запускаем таймер каждый раз в фоне просто чекать ближайшего
+        GetNextVictimByTimerAsync(token).Forget();
+        while (!token.IsCancellationRequested) {
+            // За типом бегаем постоянно выбранным
+            _botWander.SetAgentGoToPoint(GetNavMeshPosition(_targetToHunt.Transform.position));
+            await UniTask.WaitForSeconds(_gameData.DurationToGoInPoint ,cancellationToken: token);
+            if (_targetToHunt.RoleBehaviour.IsInvincibleAfterBomb || _targetToHunt.RoleBehaviour.IsInvincibleAfterBonus) {
+                GetNextPlayerVictim();
+            }
+        }
     }
+
+    private Vector3 GetNavMeshPosition(Vector3 target) {
+        if (NavMesh.SamplePosition(target, out NavMeshHit hit, _gameData.DistanceToFloor, NavMesh.AllAreas)) {
+            return hit.position;
+        }
+        else {
+            return target;
+        }
+    }
+
+    private async UniTask GetNextVictimByTimerAsync(CancellationToken token) {
+        while (!token.IsCancellationRequested) {
+            await UniTask.WaitForSeconds(_gameData.DurationToHuntWithoutCheck, cancellationToken: token);
+            GetNextPlayerVictim();
+        }
+    }
+
+    private CancellationToken GetNewHuntToken() {
+        UniTaskHelper.DisposeTask(ref _hunterTokenSource);
+        _hunterTokenSource = new CancellationTokenSource();
+        return _hunterTokenSource.Token;
+    }
+    
+    private void GetNextPlayerVictim() {
+        IPassBombPlayer closest = _otherPlayers[0];
+        float minSqrDistance = float.MaxValue;
+    
+        foreach (var victim in _otherPlayers) {
+            if(victim.RoleBehaviour.IsInvincibleAfterBomb || victim.RoleBehaviour.IsInvincibleAfterBonus) continue;
+            Vector3 offset = victim.Transform.position - transform.position;
+            float sqrDist = offset.sqrMagnitude; // БЕЗ КОРНЯ!
+        
+            if (sqrDist < minSqrDistance) {
+                minSqrDistance = sqrDist;
+                closest = victim;
+            }
+        }
+        // Debug.Log("Найдена жертва: " +  closest.);
+        _targetToHunt = closest;
+    }
+    
+
+
     
     
     private async UniTask Run(CancellationToken token) {
         if(PlayerHandle) return;
-        Debug.Log("Starting running...");
+        Debug.Log("Run");
+        // Пока просто бегает по площади
+        while (!token.IsCancellationRequested) {
+            Vector3 target = _botWander.GetTargetPoint(_mapsChanger.GetCurrentMapFloor);
+            await _botWander.SetAgentGoToPointAsync(target, token);
+        }
     }
     
     
     private async UniTask WanderingInPlace(CancellationToken token) {
         if(PlayerHandle) return;
         Debug.Log("WanderingInPlace");
+        while (!token.IsCancellationRequested) {
+            Vector3 target = _botWander.GetTargetPoint(_mapsChanger.GetCurrentMapFloor);
+            await _botWander.SetAgentGoToPointAsync(target, token);
+        }
     }
 
     

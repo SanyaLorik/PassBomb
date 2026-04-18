@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public enum BotState {
-    Wandering
-}
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BotStateManager : MonoBehaviour, IPassBombPlayer {
+    [field: SerializeField] public Transform Transform { get; private set; }
     [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
     [SerializeField] private GameObject _skinInstance;
@@ -19,12 +17,9 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
     
     private Vector3 _posBeforeTeleport;
-    private IBotBehaviour _currentBotBehaviour;
 
     public bool IsPlaying { get; private set; }
     public string Nickname => _botMonolog.NickName;
-    
-    public BotState State { get; private set; }
     
     
     public string SkinId { get; private set; }
@@ -37,27 +32,19 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     
     private void Start() {
-        ChangeBotState(BotState.Wandering);
+        _botWander.StartWanderSpawn();
     }
     
     
     public void SetPlayStatus(bool goPlay) {
-        // if (goPlay) {
-        //     _botMonolog.HideNickname();
-        // }
-        // else {
-        //     _botMonolog.ShowNickname();
-        // }
-        // Debug.Log("SetPlayStatus: " + goPlay);
-        // Debug.Log("_posBeforeTeleport: " + _posBeforeTeleport);
         IsPlaying = goPlay;
         if (goPlay) {
-            _currentBotBehaviour?.Exit();
+            _botWander.StopWanderSpawn();
         }
         // Возвращение на спавн
         else {
             TeleportToPoint(_posBeforeTeleport);
-            ChangeBotState(BotState.Wandering);
+            _botWander.StartWanderSpawn();
         }
     }
 
@@ -76,14 +63,12 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     public void SetMovingStatus(bool enable) {
         if (!enable) {
-            // Это фигня поидее не надо итак
-            _currentBotBehaviour.Exit();
-            // допом вырубать их движ
+            _botWander.StartWanderSpawn();
         }
     }
 
     public void SetDefaultRoundSpeed() {
-        _agent.speed = _gameData.BotSpeed;
+        _agent.speed = _gameData.DefaultSpeedInRound;
     }
     
     public void SetHunterSpeed() {
@@ -118,19 +103,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
 
-    public void ChangeBotState(BotState newState) {
-        _currentBotBehaviour?.Exit();
-        
-        State = newState;
-        _currentBotBehaviour = State switch {
-            BotState.Wandering => _botWander,
-            _ => _currentBotBehaviour
-        };
-
-        // Debug.Log(_currentBotBehaviour);
-        _currentBotBehaviour?.Enter();
-    }
-    
     public void ChangeNickname() {
         // _botMonolog.ChangeNickname();
     }

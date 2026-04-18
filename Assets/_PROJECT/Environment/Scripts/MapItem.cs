@@ -5,4 +5,5 @@ public class MapItem : MonoBehaviour {
     [field: SerializeField] public Transform[] SpawnPoints;
     [field: SerializeField] public Transform BombCenterSpawn;
     [field: SerializeField] public NavMeshSurface Surface;
+    [field: SerializeField] public Transform Floor;
 }
