@@ -767,7 +767,6 @@ MonoBehaviour:
   - {fileID: 7559952784622317018}
   - {fileID: 1164745546286655917}
   BombCenterSpawn: {fileID: 3598272472388772314}
-  Surface: {fileID: 3100680242726987324}
   Floor: {fileID: 3039492280940388765}
 --- !u!1 &2015505961877311291
 GameObject:
@@ -1786,6 +1785,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6015263447396240962, guid: c6a0f83462d2f3f42ac37f8b994a41a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951759773664569903, guid: c6a0f83462d2f3f42ac37f8b994a41a8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

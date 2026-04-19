@@ -100,7 +100,6 @@ MonoBehaviour:
   - {fileID: 389277547396558063}
   - {fileID: 1486924636333438075}
   BombCenterSpawn: {fileID: 6380388630318402401}
-  Surface: {fileID: 224625934159270257}
   Floor: {fileID: 4208207996392344110}
 --- !u!1 &402734165547102424
 GameObject:
