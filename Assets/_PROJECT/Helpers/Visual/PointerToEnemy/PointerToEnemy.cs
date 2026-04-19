@@ -38,7 +38,7 @@ public class PointerToEnemy : MonoBehaviour  {
         if(!_battleManager.MainPlayerPlay) return; 
         
         UniTaskHelper.DisposeTask(ref _tokenSource);
-        Debug.Log("MonitorMovementAsync остановлен");
+        // Debug.Log("MonitorMovementAsync остановлен");
         _containerRect.DisactiveSelf();
     }
 
@@ -59,18 +59,9 @@ public class PointerToEnemy : MonoBehaviour  {
             Vector3 direction = transform.position - _playerTransform.transform.position;
             Ray ray = new Ray(_playerTransform.position, direction);
         
-            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
-        
-            float minDistance = float.MaxValue;
-        
-            for (int i = 0; i < planes.Length; i++) {
-                if (planes[i].Raycast(ray, out float distance)) {
-                    if (minDistance > distance) {
-                        minDistance = distance;
-                    }
-                }
-            }
+            float minDistance = CalculateDistanceToCameraPlane(ray);
             minDistance = Mathf.Clamp(minDistance, 0, direction.magnitude);
+            
             if (direction.magnitude > minDistance) {
                 _ememyPointer.ActiveSelf();
         
@@ -86,6 +77,21 @@ public class PointerToEnemy : MonoBehaviour  {
             }
             await UniTask.Yield();
         }
+    }
+
+    private float CalculateDistanceToCameraPlane(Ray ray) {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
+        
+        float minDistance = float.MaxValue;
+        foreach (Plane plane in planes) {
+            // Луч пересекает плоскость
+            if (plane.Raycast(ray, out float distance)) {
+                if (minDistance > distance) {
+                    minDistance = distance;
+                }
+            }
+        }
+        return minDistance;
     }
 
 

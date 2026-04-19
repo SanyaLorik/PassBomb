@@ -16,10 +16,15 @@ public class BotWander : MonoBehaviour {
     [SerializeField] private JumpParticlesController _landParticleController;
     [SerializeField] private DualLegParticles _walkingParticles;
     [SerializeField] private Transform _spawnPlace;
+    [SerializeField] private AnimatedLinkTraversal _animatedLinkTraversal;
+
+
+    private float _jumpForce;
     
     
     public Action<bool> StartWandering;
     public Action OnJump;
+    public Action OnDoubleJump;
     public Action<bool> Grounded;
     private Transform _chooseCube;
     private CancellationTokenSource _botTokenSource;
@@ -30,6 +35,7 @@ public class BotWander : MonoBehaviour {
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private GameData _gameData;
     
+
     private async UniTask MonitorMovementAsync() {
         while (true) {
             if (_agent.enabled && _agent.velocity.sqrMagnitude > 0.05f) {
@@ -39,12 +45,12 @@ public class BotWander : MonoBehaviour {
                 }
             }
             else {
-                if (_walkingParticles.IsPlaying) {
+                if (_walkingParticles.IsPlaying && !_animatedLinkTraversal.IsJumpingTraversal) {
                     _walkingParticles.Stop();
                     StartWandering?.Invoke(false);
                 }
             }
-
+   
             await UniTask.Yield();
         }
     }
@@ -56,6 +62,8 @@ public class BotWander : MonoBehaviour {
 
     private void Start() {
         MonitorMovementAsync().Forget();
+        SetBigJump(false);
+        _agent.updateRotation = false;
     }
 
 
@@ -88,6 +96,9 @@ public class BotWander : MonoBehaviour {
         Debug.Log("SetMovingStatus " + enable);
     }
 
+    public void SetBigJump(bool bigJump) {
+        _jumpForce = bigJump ? _gameData.BotJumpBonusHeight : _gameData.BotDefaultJumpHeight;
+    }
     
     private async UniTask StartWanderingCycleAsync() {
         float durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
@@ -103,14 +114,11 @@ public class BotWander : MonoBehaviour {
             _agent.SetDestination(target);
             
             await UniTask.WaitUntil(() => !_agent.pathPending && _agent.hasPath, cancellationToken: token);
-            RotateTowardsAsync(target, _gameData.RotationSpeed, token).Forget();
             Jump(token).Forget();
 
             await UniTask.WaitUntil(() => 
                 !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance,
                 cancellationToken: token);
-            
-            
 
             float waitTime = Random.Range(
                 _gameData.TimeToStayOnPoint.From, 
@@ -139,7 +147,6 @@ public class BotWander : MonoBehaviour {
         
         // // Запускаем поворот В ФОНЕ — теперь крутимся ПО СКОРОСТИ, а не на точку
         await UniTask.WaitUntil(() => !_agent.pathPending, cancellationToken: token);
-        RotateByVelocityAsync(_gameData.RotationSpeed*5, token).Forget();
         await Jump(token);
     
         if (_agent.pathStatus != NavMeshPathStatus.PathComplete) {
@@ -154,33 +161,25 @@ public class BotWander : MonoBehaviour {
     }
 
     // Новый метод — крутит по velocity (туда, куда РЕАЛЬНО бежит)
-    private async UniTask RotateByVelocityAsync(float rotationSpeed, CancellationToken token) {
-        while (!token.IsCancellationRequested) {
-            Vector3 velocity = _agent.velocity;
-            velocity.y = 0;
+    private void Update() {
+        RotateByVelocity();
+    }
 
-            // Если скорость почти нулевая — ждем
-            if (velocity.sqrMagnitude < 0.1f) {
-                await UniTask.Yield(token);
-                continue;
-            }
+    private void RotateByVelocity()
+    {
+        Vector3 velocity = _agent.velocity;
+        velocity.y = 0;
 
-            Quaternion targetRotation = Quaternion.LookRotation(velocity.normalized);
-            float angle = Quaternion.Angle(transform.rotation, targetRotation);
+        if (velocity.sqrMagnitude < 0.01f && !_animatedLinkTraversal.IsJumpingTraversal)
+            return;
 
-            if (angle <= 0.5f) {
-                await UniTask.Yield(token);
-                continue;
-            }
+        Quaternion targetRotation = Quaternion.LookRotation(velocity);
 
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
-
-            await UniTask.Yield(token);
-        }
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            _gameData.RotationSpeed * Time.deltaTime
+        );
     }
 
     
@@ -207,11 +206,17 @@ public class BotWander : MonoBehaviour {
     
     [SerializeField] private float _jumpDuration;
     private async UniTask FakeJump(CancellationToken token) {
-        float height = _gameData.JumpForce / 2f;
+        float height = _jumpForce;
         float t = 0f;
 
         _jumpParticlesController.Play();
-        OnJump?.Invoke();
+        if (Random.value > 0.7f) {
+            OnJump?.Invoke();
+        }
+        else {
+            OnDoubleJump?.Invoke();
+        }
+        
         Grounded?.Invoke(false);
         while (t < _jumpDuration && !token.IsCancellationRequested) {
             t += Time.deltaTime;
@@ -246,24 +251,6 @@ public class BotWander : MonoBehaviour {
     }
 
     
-    private async UniTask RotateTowardsAsync(Vector3 target, float rotationSpeed, CancellationToken token) {
-        Vector3 direction = (target - transform.position).normalized;
-        direction.y = 0; // Игнорируем разницу по высоте
-    
-        if (direction == Vector3.zero) return;
-    
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-    
-        // Плавный поворот
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.5f && !token.IsCancellationRequested) {
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation, 
-                targetRotation, 
-                rotationSpeed * Time.deltaTime
-            );
-            await UniTask.Yield(token);
-        }
-    }
     
     private void OnDestroy() {
         UniTaskHelper.DisposeTask(ref _botTokenSource);

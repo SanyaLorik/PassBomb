@@ -23,20 +23,33 @@ MonoBehaviour:
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
     <GravityScale>k__BackingField: 4
+    <InitBonusCounts>k__BackingField: 0
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
     <DefaultCameraSens>k__BackingField: 0.137
     <ZoomSpeed>k__BackingField: 0.1
-    <PlayerWinnerAxis>k__BackingField:
-      <From>k__BackingField: 0
-      <To>k__BackingField: 0
-    <ZoomToWinnerView>k__BackingField: 0.201
     <JoystickSensivityMultiplier>k__BackingField: 500
     <MouseSensivityMultiplier>k__BackingField: 0.4
     <ZoomDiapasone>k__BackingField:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
+    <RotationSpeed>k__BackingField: 10
+    <ChanceToJump>k__BackingField: 0.374
+    <ChanseToGoPlayer>k__BackingField: 0.1
+    <TimeToStayOnPoint>k__BackingField:
+      <From>k__BackingField: 7
+      <To>k__BackingField: 14
+    <TimeToBombExplode>k__BackingField: 10
+    <TimeToInvinsibleAfterPass>k__BackingField: 2
+    <DefaultSpeedInRound>k__BackingField: 12
+    <HunterSpeed>k__BackingField: 20
+    <VelocityBonusSpeed>k__BackingField: 25
+    <JumpBonusHeight>k__BackingField: 24
+    <DoubleJumpBonusHeight>k__BackingField: 30
+    <BonusReload>k__BackingField: 7
+    <BonusDuration>k__BackingField: 100
+    <ColldownToStartGame>k__BackingField: 3
     <BotSpeed>k__BackingField: 10
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
@@ -49,21 +62,12 @@ MonoBehaviour:
     <TimeToStayAfterSpawn>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 10
-    <RotationSpeed>k__BackingField: 10
-    <ChanceToJump>k__BackingField: 0.374
-    <ChanseToGoPlayer>k__BackingField: 0.1
-    <TimeToStayOnPoint>k__BackingField:
-      <From>k__BackingField: 7
-      <To>k__BackingField: 14
-    <TimeToBombExplode>k__BackingField: 10
-    <TimeToInvinsibleAfterPass>k__BackingField: 2
-    <DefaultSpeedInRound>k__BackingField: 12
-    <HunterSpeed>k__BackingField: 20
-    <VelocityBonusSpeed>k__BackingField: 25
-    <JumpBonusHeight>k__BackingField: 30
-    <BonusDuration>k__BackingField: 10
-    <ColldownToStartGame>k__BackingField: 3
     <DistanceToFloor>k__BackingField: 30
     <DurationToHuntWithoutCheck>k__BackingField: 2
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
+    <BotDefaultJumpHeight>k__BackingField: 6
+    <BotJumpBonusHeight>k__BackingField: 12
+    <BotBonusUseCheckDiapasone>k__BackingField:
+      <From>k__BackingField: 6
+      <To>k__BackingField: 12

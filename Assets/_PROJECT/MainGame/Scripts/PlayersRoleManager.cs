@@ -13,6 +13,7 @@ public class PlayersRoleManager : MonoBehaviour {
 
     private IPassBombPlayer _currentHunter;
     
+    
     private void OnEnable() {
         _bomb.PlayerBecameHunter += BombOnPlayerBecameHunter;
     }
@@ -40,7 +41,7 @@ public class PlayersRoleManager : MonoBehaviour {
     public void InitNewPlayersToRound(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (var player in players) {
             player.RoleBehaviour.NewRoundStarted(true);
-            player.SetDefaultRoundSpeed();
+            // player.SetDefaultRoundSpeed();
         }
         
         // Назначение роли у типочка

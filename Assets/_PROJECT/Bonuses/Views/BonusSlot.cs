@@ -2,6 +2,7 @@ using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Architecture_M;
 using Cysharp.Threading.Tasks;
+using SanyaBeerExtension;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,11 @@ public class BonusSlot : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private TextMeshProUGUI _bonusNameText;
     [SerializeField] private Image _reloadProgress;
+    [Header("Время использования")]
+    [SerializeField] private GameObject _useContainer;
+    [SerializeField] private RectTransform _useTimeProgress;
+    
+    
     [SerializeField] private Button _button;
 
 
@@ -22,7 +28,8 @@ public class BonusSlot : MonoBehaviour {
     private GameSave Saves => _saver.GetSave<GameSave>();
     
     private CancellationTokenSource _tokenSource;
-    
+
+    private Vector2 _startOffset;
     
     [Inject] private BonusManager _bonusManager;
     [Inject] private DiContainer _diContainer;
@@ -45,15 +52,17 @@ public class BonusSlot : MonoBehaviour {
 
     
     private void Start() {
+        _startOffset = _useTimeProgress.offsetMax;
         CheckAvailable();
+        SetProgressBarVisible(false);
         _bonusNameText.text =
             _localization.GetTranslatedText(BonusItem, _localization.BonusesTranslates);
     }
 
-
-    public void TryUse() {
+    
+    private void TryUse() {
         if (!IsAvailable) {
-            Debug.Log("Бонус на перезарядке именно что");
+            Debug.Log("Бонус на перезарядке или уже юзается ");
             return;
         }
 
@@ -66,17 +75,26 @@ public class BonusSlot : MonoBehaviour {
             Debug.Log("Игрок хантер, он не может юзать бонусы");
             return;
         }
-        
-        _bonusManager.UseBonusByClick(BonusItem.Bonus, this);
+        UseBonus();
     }
+    
+    
+    private void SetProgressBarVisible(bool visible) {
+        _useContainer.SetActive(visible);
+        _useTimeProgress.offsetMax = _startOffset;
+    }
+    
 
-    public void UseBonusAfterCheck() {
+    private void UseBonus() {
+        GameEvents.BonusUseInvoke();
         Bonus.Use(_mainPlayer);
         GetOneBonus(true);
+        IsAvailable = false;
+        
         
         UniTaskHelper.DisposeTask(ref _tokenSource);
         _tokenSource = new  CancellationTokenSource();
-        DisableBonusTimerAsync(_tokenSource.Token).Forget();
+        StartUseTimerAsync(_tokenSource.Token).Forget();
     }
     
     
@@ -84,17 +102,58 @@ public class BonusSlot : MonoBehaviour {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CheckAvailable();
         Bonus.StopWork(_mainPlayer);
+        SetProgressBarVisible(false);
     }
 
-    private async UniTask DisableBonusTimerAsync(CancellationToken token) {
+
+    private async UniTask StartUseTimerAsync(CancellationToken token) {
+        SetProgressBarVisible(true);
+
+        float yEnd = _useTimeProgress.rect.height;
+        
         float duration = _gameData.BonusDuration;
         float elapsedTime = _gameData.BonusDuration;
+        
+        
+        while (elapsedTime > 0 && !token.IsCancellationRequested) {
+            float progress = elapsedTime/duration;
+
+            float y = GetYPoseByPercent(progress, yEnd, _useTimeProgress);
+            _useTimeProgress.offsetMax = new Vector2(_useTimeProgress.offsetMax.x, y);
+            
+            elapsedTime -= Time.deltaTime;
+            await UniTask.Yield(cancellationToken: token);
+        }
+
+        SetProgressBarVisible(false);
+        _useTimeProgress.offsetMax = _startOffset;
+        
+        SetReloadBonusTimerAsync(token).Forget();
+    }
+    
+    private static float GetYPoseByPercent(float percent, float yEnd, RectTransform parent) {
+        if (yEnd < 0) {
+            Canvas.ForceUpdateCanvases();
+            yEnd = parent.rect.height;
+        }
+        return -yEnd * (1f - percent);
+    }
+
+
+    private async UniTask SetReloadBonusTimerAsync(CancellationToken token) {
+        float duration = _gameData.BonusReload;
+        float elapsedTime = _gameData.BonusReload;
         while (elapsedTime > 0 && !token.IsCancellationRequested) {
             _reloadProgress.fillAmount = elapsedTime/duration;
             
             elapsedTime -= Time.deltaTime;
             await UniTask.Yield(cancellationToken: token);
         }
+
+        if (BonusCount != 0) {
+            GameEvents.BonusReloadedInvoke();
+        }
+
         StopBonusWork();
     }
 

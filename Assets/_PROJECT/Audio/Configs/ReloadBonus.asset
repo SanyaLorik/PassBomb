@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c82936931e992644aaf1500c865c36a7, type: 3}
-  m_Name: Throw
+  m_Name: ReloadBonus
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  <SoundType>k__BackingField: 8
+  <SoundType>k__BackingField: 10
   <AudioClips>k__BackingField:
-  - {fileID: 8300000, guid: ab19658dde135824d9ef4ee758e1c184, type: 3}
-  - {fileID: 8300000, guid: 72eecb1038159e246a376d2069e970a6, type: 3}
+  - {fileID: 8300000, guid: 30026e286630a474885756ba5d6e7a9c, type: 3}
   <Volume>k__BackingField: 1
   <PitchDiapasone>k__BackingField:
-    <From>k__BackingField: 0.8
-    <To>k__BackingField: 1.5
+    <From>k__BackingField: 0.9
+    <To>k__BackingField: 1.1
   <MixerGroup>k__BackingField: {fileID: 750195993760700612, guid: 4dbd4f10ca94e134a8a090e3394d5f41, type: 2}
   <Loop>k__BackingField: 0
   <SpatialBlend>k__BackingField: 0

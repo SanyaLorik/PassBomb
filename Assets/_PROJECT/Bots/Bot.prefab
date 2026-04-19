@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1402330233937831249}
   - component: {fileID: 7393878432037271427}
   - component: {fileID: 790296001332029354}
+  - component: {fileID: 7300230832171583333}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
@@ -52,9 +53,9 @@ NavMeshAgent:
   m_Speed: 6
   m_Acceleration: 100
   avoidancePriority: 50
-  m_AngularSpeed: 200
+  m_AngularSpeed: 40
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 4.34
@@ -77,6 +78,7 @@ MonoBehaviour:
   _landParticleController: {fileID: 6972192133631246126}
   _walkingParticles: {fileID: 8628414548119378546}
   _spawnPlace: {fileID: 0}
+  _animatedLinkTraversal: {fileID: 7300230832171583333}
   _jumpDuration: 1
 --- !u!114 &7393878432037271427
 MonoBehaviour:
@@ -113,6 +115,53 @@ MonoBehaviour:
   _botMonolog: {fileID: 7393878432037271427}
   _agent: {fileID: 1212541108296832897}
   _roleBehaviour: {fileID: 5885440733740190721}
+--- !u!114 &7300230832171583333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593425612949582850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439a80f070c34dca92326caac5099ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedLinkTraversal
+  jumpDuration: 1.2
+  jumpHeight: 4
+  horizontalCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.2493298
+      outSlope: 1.2493298
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.42030036
+      value: 0.5250938
+      inSlope: 1.0342789
+      outSlope: 1.0342789
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.81922805
+      outSlope: 0.81922805
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &734268474806474848
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,11 +7,9 @@
     Loose,
     Money,
     UIButton,
-    Throw,
-    HitFloor,
     HitPlayer,
     Explosion,
-    ReloadModifier,
+    ReloadBonus,
     BonusUse,
-    NextStep
+    PlayerStayHunter
 }

@@ -80,10 +80,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         _lastPassTime = Time.time;
         
     }
-    
-    
 
-   
     public void SetRole(BotRoleInGame role) {
         CurrentRole = role;
         UniTaskHelper.DisposeTask(ref _tokenSource);
@@ -113,6 +110,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private IPassBombPlayer _targetToHunt;
     
     private async UniTask StartHunting(CancellationToken token) {
+        GameEvents.PlayerStayHunterInvoke(this);
         if(PlayerHandle) return;
         GetNextPlayerVictim();
         // Запускаем таймер каждый раз в фоне просто чекать ближайшего
@@ -131,9 +129,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         if (NavMesh.SamplePosition(target, out NavMeshHit hit, _gameData.DistanceToFloor, NavMesh.AllAreas)) {
             return hit.position;
         }
-        else {
-            return target;
-        }
+        return target;
     }
 
     private async UniTask GetNextVictimByTimerAsync(CancellationToken token) {
@@ -166,10 +162,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         // Debug.Log("Найдена жертва: " +  closest.);
         _targetToHunt = closest;
     }
-    
 
-
-    
     
     private async UniTask Run(CancellationToken token) {
         if(PlayerHandle) return;

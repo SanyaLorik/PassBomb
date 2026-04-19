@@ -77,15 +77,13 @@ public class SoundManager : MonoBehaviour {
         _settings.MusicValueChanged += SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged += SettingsOnEffectsValueChanged;
         // Play Events
-        _bonusManager.BonusUsed += PlayBonuseUse;
+        GameEvents.BonusUsed += PlayBonuseUse;
         _gameOverShower.PlayerWin += PlayerWin;
-        GameEvents.FloorHited += PlayFloorHit;
-        GameEvents.PlayerHited += PlayPlayerHit;
-        GameEvents.ObjectExploded += PlayExplode;
-        GameEvents.ModifierReloaded += ModifierReloaded;
+        GameEvents.BonusReloaded += BonusReloaded;
         GameEvents.TriggerUsed += UiButtonClick;
-        _bomb.BombExploded += OnBombExploded;
-
+        GameEvents.PlayerStayHunter += StayHunter;
+        _bomb.BombExploded += PlayExplode;
+        _bomb.BombExploded += PlayerHit;
     }
 
 
@@ -105,20 +103,22 @@ public class SoundManager : MonoBehaviour {
         _settings.MusicValueChanged -= SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged -= SettingsOnEffectsValueChanged;
         // Play Events
-        _bonusManager.BonusUsed -= PlayBonuseUse;
+        GameEvents.BonusUsed -= PlayBonuseUse;
         _gameOverShower.PlayerWin -= PlayerWin;
-        GameEvents.FloorHited -= PlayFloorHit;
-        GameEvents.PlayerHited -= PlayPlayerHit;
-        GameEvents.ObjectExploded -= PlayExplode;
-        GameEvents.ModifierReloaded -= ModifierReloaded;
+        GameEvents.BonusReloaded -= BonusReloaded;
         GameEvents.TriggerUsed -= UiButtonClick;
-        _bomb.BombExploded -= OnBombExploded;
+        GameEvents.PlayerStayHunter -= StayHunter;
+        _bomb.BombExploded -= PlayExplode;
+        _bomb.BombExploded -= PlayerHit;
     }
     
-    private void OnBombExploded() {
-        PlaySoundByType(SoundType.Explosion);
-    }
     
+    
+    private void StayHunter(PlayerRoleBehaviour obj) {
+        if(!_battleManager.MainPlayerPlay) return;
+        PlaySoundByType(SoundType.PlayerStayHunter);
+    }
+
     
     private void CreateAudioSourceContainer() {
         _audioSourcesContainer = new GameObject("AudioSources");
@@ -131,27 +131,18 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(win ? SoundType.Win : SoundType.Loose);
     }
 
-    private void PlayBonuseUse(IBonus _) {
+    private void PlayBonuseUse() {
         if(!_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.BonusUse);
     }
 
-    private void ModifierReloaded() {
+    private void BonusReloaded() {
         if(!_battleManager.MainPlayerPlay) return;
-        PlaySoundByType(SoundType.ReloadModifier);
+        PlaySoundByType(SoundType.ReloadBonus);
     }
 
-    private void ThrowerOnObjectThrowed(Transform _) {
-        if(!_battleManager.MainPlayerPlay) return;
-        PlaySoundByType(SoundType.Throw);
-    }
-
-    private void PlayFloorHit() {
-        if(!_battleManager.MainPlayerPlay) return;
-        PlaySoundByType(SoundType.HitFloor);
-    }
     
-    private void PlayPlayerHit() {
+    private void PlayerHit() {
         if(!_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.HitPlayer);
     }
@@ -162,13 +153,6 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(SoundType.Explosion);
     }
     
-    
-    
-    private void NewPlayerStep() {
-        if(!_battleManager.MainPlayerPlay) return;
-        PlaySoundByType(SoundType.NextStep);
-    }
-
 
     private AudioSource CreateNewAudioSource() {
         if (_audioSourcesContainer == null) {

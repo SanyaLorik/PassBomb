@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private Vector3 _externalMotion;
     private float _walkSpeed;
     private float _firstJumpForce;
+    private float _secondJumpForce;
 
     
     public event Action JumpPressed;
@@ -90,6 +91,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
     public void SetBigJump(bool bigJump) {
         _firstJumpForce = bigJump ? _gameData.JumpBonusHeight : _gameData.JumpForce;
+        _secondJumpForce = bigJump ? _gameData.DoubleJumpBonusHeight : _gameData.SecondJumpForce;
     }
 
     public void SetInvinsible(bool invnincible) {
@@ -140,7 +142,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
             _jumpsUsed = 1;
         }
         else if (_jumpsUsed == 1) {
-            _verticalVelocity = _gameData.SecondJumpForce;
+            _verticalVelocity = _secondJumpForce;
             DoubleJumpPressed?.Invoke();
             _jumpsUsed = 2;
         }

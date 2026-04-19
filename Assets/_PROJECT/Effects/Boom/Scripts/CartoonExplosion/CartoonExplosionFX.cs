@@ -34,7 +34,7 @@ namespace RavingBots.CartoonExplosion
 		[ContextMenu("Play")]
 		public void Play()
 		{
-            Debug.Log("Play animation");
+            // Debug.Log("Play animation");
 			Play(Time.time);
 		}
 

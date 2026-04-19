@@ -536,6 +536,8 @@ MonoBehaviour:
   _countText: {fileID: 3455027416796127735}
   _bonusNameText: {fileID: 7231204123371202967}
   _reloadProgress: {fileID: 8889015970773248648}
+  _useContainer: {fileID: 7636153004691326672}
+  _useTimeProgress: {fileID: 418978055067945506}
   _button: {fileID: 2219096580696750502}
 --- !u!1 &3890048841329371350
 GameObject:

@@ -6,12 +6,13 @@ using UnityEngine.Serialization;
 [Serializable]
 public class GameData : GameDataBase
 {
-    [field: Header("Player Movement")]
+    [field: Header("Player")]
     [field: SerializeField] public float WalkSpeed { get; private set; }
     [field: SerializeField] public float JumpForce { get; private set; }
     [field: SerializeField] public float SecondJumpForce { get; private set; }
     [field: SerializeField] public float RotateSpeed { get; private set; }
     [field: SerializeField] public float GravityScale { get; private set; }
+    [field: SerializeField] public int InitBonusCounts { get; private set; }
     
     
     [field: Header("Camera")]
@@ -21,13 +22,6 @@ public class GameData : GameDataBase
     [field: SerializeField, Range(0,1)] public float DefaultCameraSens { get; private set; }
     [field: SerializeField, Range(0,1)] public float ZoomSpeed { get; private set; }
     
-    [field: Header("Камера для окна gameover")]
-    [field: SerializeField] public PairedValue<float> PlayerWinnerAxis { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ZoomToWinnerView { get; private set; }
-    
-    
-    
-    
     [field: Header("Множители сенсы")]
     [field: SerializeField] public float JoystickSensivityMultiplier  { get; private set; }
     [field: SerializeField] public float MouseSensivityMultiplier { get; private set; }
@@ -36,16 +30,8 @@ public class GameData : GameDataBase
     [field: SerializeField] public PairedValue<float> ZoomDiapasone  { get; private set; }
     [field: SerializeField] public float MinSensValue  { get; private set; }
     
-    // Боты (потом уберу ненужное)
-    [field: Header("БОТЫ")]
-    [field: SerializeField] public float BotSpeed { get; private set; }
-    [field: SerializeField] public PairedValue<int> CountSpeakingBotsPerTime  { get; private set; }
-    [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ChanseToChangeSkin { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ChanseToChangeNickname { get; private set; }
-    [field: SerializeField] public PairedValue<float> TimeToStayAfterSpawn { get; private set; }
-
     
+
     [field: Header("Movement")]
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanceToJump { get; private set; }
@@ -59,17 +45,29 @@ public class GameData : GameDataBase
     [field: SerializeField] public float HunterSpeed { get; private set; }
     [field: SerializeField] public float VelocityBonusSpeed { get; private set; }
     [field: SerializeField] public float JumpBonusHeight { get; private set; }
+    [field: SerializeField] public float DoubleJumpBonusHeight { get; private set; }
+    [field: SerializeField] public float BonusReload { get; private set; }
     [field: SerializeField] public float BonusDuration { get; private set; }
     
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }
+    
+    [field: Header("БОТЫ")]
+    [field: SerializeField] public float BotSpeed { get; private set; }
+    [field: SerializeField] public PairedValue<int> CountSpeakingBotsPerTime  { get; private set; }
+    [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
+    [field: SerializeField, Range(0,1)] public float ChanseToChangeSkin { get; private set; }
+    [field: SerializeField, Range(0,1)] public float ChanseToChangeNickname { get; private set; }
+    [field: SerializeField] public PairedValue<float> TimeToStayAfterSpawn { get; private set; }
     
     [field: Header("Боты в игре")]
     [field: SerializeField] public float DistanceToFloor { get; private set; }
     [field: SerializeField] public float DurationToHuntWithoutCheck { get; private set; }
     [field: SerializeField] public float DurationToGoInPoint { get; private set; }
     [field: SerializeField] public float RunStoppingDistance { get; private set; }
-    
+    [field: SerializeField] public float BotDefaultJumpHeight { get; private set; }
+    [field: SerializeField] public float BotJumpBonusHeight { get; private set; }
+    [field: SerializeField] public PairedValue<float> BotBonusUseCheckDiapasone { get; private set; }
     
     
 }

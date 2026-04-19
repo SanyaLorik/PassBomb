@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BotAnimator : MonoBehaviour {
     private static readonly int Jump = Animator.StringToHash("jump");
+    private static readonly int DoubleJump = Animator.StringToHash("doubleJump");
     private static readonly int Run = Animator.StringToHash("isRunning");
     [SerializeField] private Animator _animator;
 
@@ -21,6 +22,7 @@ public class BotAnimator : MonoBehaviour {
     public void InitAnimator(BotWander botWander) {
         _botWander = botWander;
         _botWander.OnJump += OnJump;
+        _botWander.OnDoubleJump += OnDoubleJump;
         _botWander.StartWandering += OnStartWandering;
         _botWander.Grounded += BotGrounded;
     }
@@ -59,5 +61,9 @@ public class BotAnimator : MonoBehaviour {
 
     private void OnJump() {
         _animator.SetTrigger(Jump);
+    }
+    
+    private void OnDoubleJump() {
+        _animator.SetTrigger(DoubleJump);
     }
 }

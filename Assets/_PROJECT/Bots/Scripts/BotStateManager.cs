@@ -82,7 +82,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
     public void SetBigJump(bool state) {
-        // IN DEV...
+        _botWander.SetBigJump(state);
     }
 
     public void SetInvinsible(bool invnincible) {
