@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 266870034967626136, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266870034967626136, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: _skinApplyer._purchaseAdapter
       value: 
       objectReference: {fileID: 2543909618296501385}
@@ -102,6 +106,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2204271111251291901, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619888546199805785, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: m_Size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2619888546199805785, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3394740717230847505, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}

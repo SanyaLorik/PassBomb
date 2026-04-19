@@ -1107,6 +1107,114 @@ Transform:
   - {fileID: 749518683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &383076192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383076193}
+  - component: {fileID: 383076194}
+  m_Layer: 0
+  m_Name: SkinChangerComposite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383076193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383076192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1883334078}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383076194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383076192}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ad56b5fc73d7c40b67251aa96a4a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinChangerComposite
+  _tabSelecter:
+    _tabs:
+    - _tab: {fileID: 1819934151}
+      _button: {fileID: 1819934162}
+      _groupId: 1
+      _skinItems:
+      - {fileID: 1819934156}
+      - {fileID: 1819934155}
+      - {fileID: 1819934154}
+      - {fileID: 1819934153}
+      - {fileID: 1819934152}
+    - _tab: {fileID: 1819934144}
+      _button: {fileID: 1819934161}
+      _groupId: 2
+      _skinItems:
+      - {fileID: 1819934150}
+      - {fileID: 1819934149}
+      - {fileID: 1819934148}
+      - {fileID: 1819934147}
+      - {fileID: 1819934146}
+      - {fileID: 1819934145}
+    - _tab: {fileID: 1819934136}
+      _button: {fileID: 1819934160}
+      _groupId: 3
+      _skinItems:
+      - {fileID: 1819934143}
+      - {fileID: 1819934142}
+      - {fileID: 1819934141}
+      - {fileID: 1819934140}
+      - {fileID: 1819934139}
+      - {fileID: 1819934138}
+      - {fileID: 1819934137}
+    - _tab: {fileID: 1819934127}
+      _button: {fileID: 1819934159}
+      _groupId: 4
+      _skinItems:
+      - {fileID: 1819934135}
+      - {fileID: 1819934134}
+      - {fileID: 1819934133}
+      - {fileID: 1819934132}
+      - {fileID: 1819934131}
+      - {fileID: 1819934130}
+      - {fileID: 1819934129}
+      - {fileID: 1819934128}
+    - _tab: {fileID: 1819934117}
+      _button: {fileID: 1819934158}
+      _groupId: 5
+      _skinItems:
+      - {fileID: 1819934126}
+      - {fileID: 1819934125}
+      - {fileID: 1819934124}
+      - {fileID: 1819934123}
+      - {fileID: 1819934122}
+      - {fileID: 1819934121}
+      - {fileID: 1819934120}
+      - {fileID: 1819934119}
+      - {fileID: 1819934118}
+    _scrollRect: {fileID: 1819934157}
+  _skinApplyer:
+    _boughtButton: {fileID: 1819934116}
+    _selectedButton: {fileID: 1819934114}
+    _canSelectButton: {fileID: 1819934113}
+    _boughtText: {fileID: 1819934115}
+    _purchaseAdapter: {fileID: 1819934163}
 --- !u!114 &384195529 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8443074002481752629, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -5965,6 +6073,537 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.AdInstaller
   _alertAd: {fileID: 967158673}
   _advertisingMonetization: {fileID: 7884425874105686572, guid: 1bf00c072a644e0469bd1eb8c8dff897, type: 3}
+--- !u!114 &1819934113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5719180091574862665, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9001837889727888327, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7974473813381068945, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1819934116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8535249959543093073, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!224 &1819934117 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 462987663541449192, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819934118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 414321299799583238, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6007500835547118759, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934120 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8585462632476772532, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8698161094714911628, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8237458669024331668, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2545015029488726296, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8098170884865619714, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7015002178553380630, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2585247992123459886, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!224 &1819934127 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2950532761195368465, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819934128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5244887292181101269, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 464653911356187995, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 862610277839272339, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8255152460691967822, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7555854614373929328, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1320772635673776019, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6851658503673308351, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6331306151590435261, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!224 &1819934136 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7924551729691309258, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819934137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 786371868548336326, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3109941516749950291, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2063338260761378667, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4109554030422866738, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3591448551064177893, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7390199726378937211, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3863914841356581805, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!224 &1819934144 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8231569187956037916, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819934145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8527174672187455771, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6186885406660514115, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4863338967521458114, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4319784836994877065, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4734575942726675100, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7851821315028620360, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!224 &1819934151 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8155171134239081266, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819934152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2203160966984810438, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6350975345706211606, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3177783707730964906, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6041248693767088575, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2991623032188962590, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &1819934157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3904313317306663404, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
+--- !u!114 &1819934158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4759884957626163059, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6931914094189062922, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7621324250524489518, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3608772896884245182, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1532522408331523967, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1819934163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8981450645208049866, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d83f949966c0eb449aa921f45616296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBankAdapter
 --- !u!1 &1830645675
 GameObject:
   m_ObjectHideFlags: 0
@@ -6140,6 +6779,7 @@ Transform:
   - {fileID: 449236013}
   - {fileID: 349319953}
   - {fileID: 1426750789}
+  - {fileID: 383076193}
   m_Father: {fileID: 1407686364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1889167959
