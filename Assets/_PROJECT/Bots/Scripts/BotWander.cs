@@ -103,13 +103,13 @@ public class BotWander : MonoBehaviour {
             _agent.SetDestination(target);
             
             await UniTask.WaitUntil(() => !_agent.pathPending && _agent.hasPath, cancellationToken: token);
+            RotateTowardsAsync(target, _gameData.RotationSpeed, token).Forget();
             Jump(token).Forget();
 
             await UniTask.WaitUntil(() => 
                 !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance,
                 cancellationToken: token);
             
-            await RotateTowardsAsync(target, _gameData.RotationSpeed, token);
             
 
             float waitTime = Random.Range(
@@ -136,16 +136,15 @@ public class BotWander : MonoBehaviour {
     
     public async UniTask SetAgentGoToPointAsync(Vector3 point, CancellationToken token) {
         _agent.SetDestination(point);
-    
+        
+        // // Запускаем поворот В ФОНЕ — теперь крутимся ПО СКОРОСТИ, а не на точку
         await UniTask.WaitUntil(() => !_agent.pathPending, cancellationToken: token);
+        RotateByVelocityAsync(_gameData.RotationSpeed*5, token).Forget();
         await Jump(token);
     
         if (_agent.pathStatus != NavMeshPathStatus.PathComplete) {
             return;
         }
-        //
-        // // Запускаем поворот В ФОНЕ — теперь крутимся ПО СКОРОСТИ, а не на точку
-        RotateByVelocityAsync(_gameData.RotationSpeed, token).Forget();
     
         await UniTask.WaitUntil(
             () => !_agent.pathPending && _agent.remainingDistance <= _gameData.RunStoppingDistance,

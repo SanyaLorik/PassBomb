@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour {
     public bool MainPlayerPlay { get; private set; }
 
     public int CountPlayersToBattle => _mapsToBattleChanger.CurrentMapSpawnPoints.Length;
+    public int AllRoundsCount => CountPlayersToBattle - 1;
     public Transform[] PlayersSpawnPoints => _mapsToBattleChanger.CurrentMapSpawnPoints;
     public Transform BombSpawnPoint => _mapsToBattleChanger.GetCurrentBombSpawn;
 
@@ -34,6 +35,7 @@ public class BattleManager : MonoBehaviour {
     [Inject] private GameData _gameData;
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     [Inject] private PlayersRoleManager _playersRoleManager;
+    [Inject] private IPassBombPlayer _mainPlayer;
     
     
     private void OnEnable() {
@@ -87,10 +89,12 @@ public class BattleManager : MonoBehaviour {
 
         int roundNumber = 1;
         while (_players.Count > 1) {
+            NewRoundStarted?.Invoke(roundNumber);
+            
             Debug.Log("Игроков: " + _players.Count);
             _playersRoleManager.InitNewPlayersToRound(_players);
-            NewRoundStarted?.Invoke(roundNumber);
             _bomb.StartNewBombTimer();
+            
             await UniTask.WaitUntil(() => _bomb.BombExplode);
             await ShowStartAnimation(false);
             roundNumber++;
@@ -131,6 +135,10 @@ public class BattleManager : MonoBehaviour {
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
                     PlayedDied?.Invoke(botMonolog.NickName);
+                }
+                else if (player == _mainPlayer) {
+                    MainPlayerPlay = false;
+                    Debug.Log("Вы выбыли из игры");
                 }
                 
                 _players.Remove(player);
