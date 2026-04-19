@@ -1048,6 +1048,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1407686364}
     m_Modifications:
     - target: {fileID: 9321932104774899, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9321932104774899, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
@@ -1059,6 +1063,10 @@ PrefabInstance:
       propertyPath: _spawnPlace
       value: 
       objectReference: {fileID: 86201217}
+    - target: {fileID: 368571268633995030, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 368571268633995030, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
@@ -1112,6 +1120,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3757816178164414345, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757816178164414345, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
@@ -1160,6 +1172,10 @@ PrefabInstance:
       value: Bots
       objectReference: {fileID: 0}
     - target: {fileID: 5611695674004780979, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611695674004780979, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
@@ -1171,6 +1187,10 @@ PrefabInstance:
       propertyPath: _spawnPlace
       value: 
       objectReference: {fileID: 86201217}
+    - target: {fileID: 5845050956672221091, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5845050956672221091, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
@@ -1192,12 +1212,20 @@ PrefabInstance:
       value: 20.78
       objectReference: {fileID: 0}
     - target: {fileID: 6997123168126895741, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997123168126895741, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997123168126895741, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_ObstacleAvoidanceType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011625263458989163, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7011625263458989163, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
@@ -1215,6 +1243,10 @@ PrefabInstance:
       propertyPath: _spawnPlace
       value: 
       objectReference: {fileID: 86201217}
+    - target: {fileID: 8371422441746018995, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: avoidancePriority
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8371422441746018995, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
