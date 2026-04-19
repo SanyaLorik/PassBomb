@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour {
     
     private readonly List<IPassBombPlayer> _players = new(8);
     
-    public event Action<string> PlayedDied;
+    public event Action<string> PlayerDied;
     public event Action<int> PlayersCountChanged;
     public event Action<int> NewRoundStarted;
     public event Action GameReadyToPlay;
@@ -134,7 +134,7 @@ public class BattleManager : MonoBehaviour {
                 
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
-                    PlayedDied?.Invoke(botMonolog.NickName);
+                    PlayerDied?.Invoke(botMonolog.NickName);
                 }
                 else if (player == _mainPlayer) {
                     MainPlayerPlay = false;
