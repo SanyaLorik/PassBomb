@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 266870034967626136, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: _skinApplyer._purchaseAdapter
+      value: 
+      objectReference: {fileID: 2543909618296501385}
     - target: {fileID: 1699179134731894710, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -126,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539901788306631756, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Name
-      value: Skin Changer Variant
+      value: Skin Changer
       objectReference: {fileID: 0}
     - target: {fileID: 4539901788306631756, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_IsActive
@@ -266,6 +270,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5887094022632589656, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6107862493314984942, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6372286960860076376, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
@@ -444,8 +452,33 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8769587908747985709, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2796786254959624722, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2543909618296501385}
   m_SourcePrefab: {fileID: 100100000, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+--- !u!1 &2812803163076766578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2796786254959624722, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
+  m_PrefabInstance: {fileID: 133203450163456352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2543909618296501385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812803163076766578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d83f949966c0eb449aa921f45616296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBankAdapter
+  _playerBank: {fileID: 0}

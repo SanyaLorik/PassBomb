@@ -1,9 +1,10 @@
+using Architecture_M;
 using System;
 using Zenject;
 
 public class NumberFormatter {
 
-    [Inject] private LocalizationData _localizationDataPC;  
+    [Inject] private LocalizationDataBase _localizationDataPC;  
     
     public string ValuteFormatter(double value) {
         if (value < 1000)

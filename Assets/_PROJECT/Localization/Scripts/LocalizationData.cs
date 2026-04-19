@@ -8,9 +8,6 @@ using UnityEngine;
 public class LocalizationData : LocalizationDataBase,
     IDailyRewardLocalization
 {
-    [Header("Для  больших чисел")]
-    public string[] Suffixies = {"", "K", "M", "B", "T", "Кв", "Ка"};
-
     public string[] BotsPhrases;
 
     public string Timer;

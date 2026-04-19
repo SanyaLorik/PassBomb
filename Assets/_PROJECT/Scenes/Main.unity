@@ -497,11 +497,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6193023629573007774, guid: 10708828ab29a564cb02e99460462b49, type: 3}
   m_PrefabInstance: {fileID: 390170465}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &202488750 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8701328123647655578, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &210083585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1063157433029759311, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -3717,6 +3712,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 432
       objectReference: {fileID: 0}
+    - target: {fileID: 8981450645208049866, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: _playerBank
+      value: 
+      objectReference: {fileID: 1189014761}
     - target: {fileID: 9076788113006749997, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4297,6 +4296,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6278525158390120559, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
   m_PrefabInstance: {fileID: 1189014759}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189014761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6584472137099475329, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
+  m_PrefabInstance: {fileID: 1189014759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ba32d5beb19ad42a6dc44929f05c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBank
 --- !u!1 &1238978113
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,7 +5281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleStartVisualizer
   _timerContainer: {fileID: 1120491806}
-  _timerShadow: {fileID: 202488750}
+  _timerShadow: {fileID: 0}
   _timerText: {fileID: 943425955}
 --- !u!1 &1554717877
 GameObject:
