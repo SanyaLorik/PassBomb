@@ -15,10 +15,10 @@ public class BattleDiesInformator : MonoBehaviour {
     [Inject] private LocalizationData _localization;
 
     private void OnEnable() {
-        _battleManager.PlayedDied += BattleManagerOnPlayedDied;
+        _battleManager.PlayerDied += BattleManagerOnPlayerDied;
     }
 
-    private void BattleManagerOnPlayedDied(string nickName) {
+    private void BattleManagerOnPlayerDied(string nickName) {
         if(_battleManager.MainPlayerPlay) return; 
         _textFieldContainer.ActiveSelf();
         _textFieldToInformate.text = string.Format(
