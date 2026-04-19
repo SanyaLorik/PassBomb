@@ -22,17 +22,18 @@ public class BattleManager : MonoBehaviour {
     
     public event Action<string> PlayedDied;
     public event Action<int> PlayersCountChanged;
+    public event Action<int> NewRoundStarted;
     public event Action GameReadyToPlay;
     
     
     [Inject] private PlayerMovement _mainPlayerMovement;
     [Inject] private BotsMainManager _botsMainManager;
-    [Inject] private PlayersRoleManager _playersRoleManager;
     [Inject] private Bomb _bomb;
     [Inject] private BattleStartVisualizer _battleStartVisualizer;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private GameData _gameData;
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
+    [Inject] private PlayersRoleManager _playersRoleManager;
     
     
     private void OnEnable() {
@@ -78,21 +79,26 @@ public class BattleManager : MonoBehaviour {
         GoBattleAsync().Forget();
     }
 
+    
     private async UniTask GoBattleAsync() {
         RotatePlayersToBomb();
         await ShowStartAnimation(true);
         GameReadyToPlay?.Invoke();
-        
+
+        int roundNumber = 1;
         while (_players.Count > 1) {
             Debug.Log("Игроков: " + _players.Count);
             _playersRoleManager.InitNewPlayersToRound(_players);
+            NewRoundStarted?.Invoke(roundNumber);
             _bomb.StartNewBombTimer();
             await UniTask.WaitUntil(() => _bomb.BombExplode);
             await ShowStartAnimation(false);
+            roundNumber++;
         }
         GameEnded();
     }
 
+    
     
     private async UniTask ShowStartAnimation(bool forbidMove) {
         _bomb.TeleportBombToSpawn(BombSpawnPoint);
@@ -104,14 +110,6 @@ public class BattleManager : MonoBehaviour {
         await UniTask.WaitWhile(() => _battleStartVisualizer.AnimationPlay);
         if(forbidMove) EnablePlayersMove(true);
 
-    }
-
-    private void EnablePlayersMove(bool enable) {
-        _players.ForEach(p => p.SetMovingStatus(enable));
-    }
-
-    private void RotatePlayersToBomb() {
-        _players.ForEach(p => p.RotateToTarget(BombSpawnPoint.position));
     }
 
 
@@ -159,6 +157,14 @@ public class BattleManager : MonoBehaviour {
         }
     }
     
+    private void EnablePlayersMove(bool enable) {
+        _players.ForEach(p => p.SetMovingStatus(enable));
+    }
+
+    
+    private void RotatePlayersToBomb() {
+        _players.ForEach(p => p.RotateToTarget(BombSpawnPoint.position));
+    }
     
     
     public void SetGameOverToBots() {

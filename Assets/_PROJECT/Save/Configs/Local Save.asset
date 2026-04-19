@@ -17,10 +17,8 @@ MonoBehaviour:
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Skins:
-    - Id: creeper_skin
-    - Id: tits_skin
-    - Id: obby
-    SkinWearId: obby
+    - Id: univesal
+    SkinWearId: univesal
     Bonuses:
     - Id: InvisibleBonus
       Count: 9
