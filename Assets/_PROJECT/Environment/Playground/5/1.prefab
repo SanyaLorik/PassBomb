@@ -843,7 +843,6 @@ GameObject:
   - component: {fileID: 3132300548932431808}
   - component: {fileID: 6794782216633793096}
   - component: {fileID: 6702096407347545744}
-  - component: {fileID: 469728412095569914}
   - component: {fileID: 878774845437190229}
   m_Layer: 0
   m_Name: 1
@@ -959,36 +958,6 @@ MonoBehaviour:
   - {fileID: 7328127305346250377}
   - {fileID: 8777461919973102119}
   - {fileID: 7026122702888105202}
---- !u!114 &469728412095569914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109456282826580346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0fe072bbabe9f746ab3b6f8991677a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SanyaBeerExtension.RandomScaleAndOffsetEditor
-  Transforms:
-  - {fileID: 7945521501646552079}
-  - {fileID: 2222728220091853547}
-  - {fileID: 8053563618043231019}
-  - {fileID: 7616595912033856610}
-  - {fileID: 4450872069235611177}
-  - {fileID: 5316255022225833200}
-  - {fileID: 5416576437319228025}
-  - {fileID: 6810119066038574282}
-  - {fileID: 7328127305346250377}
-  - {fileID: 8777461919973102119}
-  - {fileID: 7026122702888105202}
-  Scale:
-    <From>k__BackingField: {x: 1, y: 1, z: 1}
-    <To>k__BackingField: {x: 1, y: 4, z: 1}
-  Offset:
-    <From>k__BackingField: {x: 0, y: 0, z: 0}
-    <To>k__BackingField: {x: 0, y: 5, z: 0}
 --- !u!114 &878774845437190229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +985,6 @@ MonoBehaviour:
   Scale:
     <From>k__BackingField: {x: 1, y: 1, z: 1}
     <To>k__BackingField: {x: 1, y: 5, z: 1}
-  Floor: {fileID: 1593173375033887648}
 --- !u!1 &2120006827631634448
 GameObject:
   m_ObjectHideFlags: 0
