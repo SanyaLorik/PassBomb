@@ -10,6 +10,6 @@ public class SpeedBonus : IBonus {
 
     public void StopWork(IPassBombPlayer passBombPlayer) {
         passBombPlayer.SetDefaultSpeed();
-        Debug.Log("Выключена суперскорость");
+        Debug.Log("Суперскорость выключена");
     }
 }

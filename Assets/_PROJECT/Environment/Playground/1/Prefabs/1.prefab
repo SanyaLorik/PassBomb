@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: 1486924636333438075}
   BombCenterSpawn: {fileID: 6380388630318402401}
   Floor: {fileID: 4208207996392344110}
+  YToFind: 10
 --- !u!1 &402734165547102424
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,8 +748,8 @@ MonoBehaviour:
   m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 1
-  m_Size: {x: 105.8, y: 19.1, z: 111.04}
-  m_Center: {x: -2.7, y: 2, z: 8.5}
+  m_Size: {x: 105.8, y: 9, z: 111.04}
+  m_Center: {x: -2.7, y: -3.5, z: 8.5}
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

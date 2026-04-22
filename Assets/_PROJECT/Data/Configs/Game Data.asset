@@ -23,7 +23,7 @@ MonoBehaviour:
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
     <GravityScale>k__BackingField: 4
-    <InitBonusCounts>k__BackingField: 0
+    <InitBonusCounts>k__BackingField: 3
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
     <DefaultCameraSens>k__BackingField: 0.137
@@ -62,12 +62,14 @@ MonoBehaviour:
     <TimeToStayAfterSpawn>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 10
-    <DistanceToFloor>k__BackingField: 30
+    <DistanceToFloor>k__BackingField: 50
     <DurationToHuntWithoutCheck>k__BackingField: 2
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
+    <BotJumpDuration>k__BackingField: 1
     <BotDefaultJumpHeight>k__BackingField: 6
     <BotJumpBonusHeight>k__BackingField: 12
+    <BotUseNewBonusTime>k__BackingField: 10
     <BotBonusUseCheckDiapasone>k__BackingField:
       <From>k__BackingField: 6
       <To>k__BackingField: 12

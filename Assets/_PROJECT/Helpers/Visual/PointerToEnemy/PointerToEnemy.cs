@@ -49,7 +49,6 @@ public class PointerToEnemy : MonoBehaviour  {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         _tokenSource = new CancellationTokenSource();
         
-        Debug.Log("MonitorMovementAsync запущен");
         MonitorMovementAsync(_tokenSource.Token).Forget();
     }
 

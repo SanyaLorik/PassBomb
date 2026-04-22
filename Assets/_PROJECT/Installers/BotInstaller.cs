@@ -4,6 +4,7 @@ public class BotInstaller: MonoInstaller {
     
     public override void InstallBindings() {
         BindBotStateManager();
+        Container.BindInterfacesAndSelfTo<NavMeshHelper>().AsSingle().NonLazy();
     }
 
     private void BindBotStateManager() {

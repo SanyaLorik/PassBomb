@@ -5,6 +5,7 @@ using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Zenject;
 
 public enum BotRoleInGame {
@@ -18,7 +19,7 @@ public enum BotRoleInGame {
 public class PlayerRoleBehaviour : MonoBehaviour {
     [SerializeField] public Transform _pointToHoldBomb;
     [SerializeField] private Collider _collider;
-    [SerializeField] private BotWander _botWander;
+    [FormerlySerializedAs("_botWander")] [SerializeField] private BotWalkManager botWalkManager;
 
     [field:  SerializeField] public bool IsInvincibleAfterBomb { get; private set; }
     [field:  SerializeField] public bool IsInvincibleAfterBonus { get; private set; }
@@ -117,7 +118,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         GetNextVictimByTimerAsync(token).Forget();
         while (!token.IsCancellationRequested) {
             // За типом бегаем постоянно выбранным
-            _botWander.SetAgentGoToPoint(GetNavMeshPosition(_targetToHunt.Transform.position));
+            botWalkManager.SetAgentGoToPoint(GetNavMeshPosition(_targetToHunt.Transform.position));
             await UniTask.WaitForSeconds(_gameData.DurationToGoInPoint ,cancellationToken: token);
             if (_targetToHunt.RoleBehaviour.IsInvincibleAfterBomb || _targetToHunt.RoleBehaviour.IsInvincibleAfterBonus) {
                 GetNextPlayerVictim();
@@ -169,25 +170,23 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         Debug.Log("Run");
         // Пока просто бегает по площади
         while (!token.IsCancellationRequested) {
-            Vector3 target = _botWander.GetTargetPoint(_mapsChanger.GetCurrentMapFloor);
-            await _botWander.SetAgentGoToPointAsync(target, token);
+            Vector3 target = botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            await botWalkManager.SetAgentGoToPointAsync(target, token);
         }
     }
     
     
     private async UniTask WanderingInPlace(CancellationToken token) {
         if(PlayerHandle) return;
-        Debug.Log("WanderingInPlace");
         while (!token.IsCancellationRequested) {
-            Vector3 target = _botWander.GetTargetPoint(_mapsChanger.GetCurrentMapFloor);
-            await _botWander.SetAgentGoToPointAsync(target, token);
+            Vector3 target = botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            await botWalkManager.SetAgentGoToPointAsync(target, token);
         }
     }
 
     
     private async UniTask StartInvinsibleTimer(float time) {
         SetColliderEnable(false);
-        Debug.Log($"StartInvinsibleTimer, PlayerHandle = {PlayerHandle}");
         await UniTask.WaitForSeconds(time);
         SetColliderEnable(true);
     }

@@ -35,7 +35,6 @@ public class GameData : GameDataBase
     [field: Header("Movement")]
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanceToJump { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ChanseToGoPlayer { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayOnPoint { get; private set; }
     
     [field: Header("Главная Игра")]
@@ -65,9 +64,9 @@ public class GameData : GameDataBase
     [field: SerializeField] public float DurationToHuntWithoutCheck { get; private set; }
     [field: SerializeField] public float DurationToGoInPoint { get; private set; }
     [field: SerializeField] public float RunStoppingDistance { get; private set; }
+    [field: SerializeField] public float BotJumpDuration { get; private set; }
     [field: SerializeField] public float BotDefaultJumpHeight { get; private set; }
     [field: SerializeField] public float BotJumpBonusHeight { get; private set; }
-    [field: SerializeField] public PairedValue<float> BotBonusUseCheckDiapasone { get; private set; }
-    
+    [field: SerializeField] public PairedValue<float> BotUseNewBonusTime { get; private set; }
     
 }

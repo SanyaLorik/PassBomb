@@ -11,7 +11,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
     [SerializeField] private GameObject _skinInstance;
-    [SerializeField] private BotWander _botWander;
+    [SerializeField] private BotWalkManager botWalkManager;
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
@@ -32,19 +32,19 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     
     private void Start() {
-        _botWander.StartWanderSpawn();
+        botWalkManager.StartWanderSpawn();
     }
     
     
     public void SetPlayStatus(bool goPlay) {
         IsPlaying = goPlay;
         if (goPlay) {
-            _botWander.StopWanderSpawn();
+            botWalkManager.StopWanderSpawn();
         }
         // Возвращение на спавн
         else {
             TeleportToPoint(_posBeforeTeleport);
-            _botWander.StartWanderSpawn();
+            botWalkManager.StartWanderSpawn();
         }
     }
 
@@ -62,7 +62,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     
     public void SetMovingStatus(bool enable) {
-        _botWander.SetMovingStatus(enable);
+        botWalkManager.SetMovingStatus(enable);
     }
 
     public void SetDefaultRoundSpeed() {
@@ -82,7 +82,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
     public void SetBigJump(bool state) {
-        _botWander.SetBigJump(state);
+        botWalkManager.SetBigJump(state);
     }
 
     public void SetInvinsible(bool invnincible) {
@@ -108,7 +108,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     private bool _previousBotState;
     public void InitAnimator() {
-        _botAnimator.InitAnimator(_botWander);
+        _botAnimator.InitAnimator(botWalkManager);
     }
     public void SetBotSkin(SkinItemConfig skinItemConfig) {
         SkinId = skinItemConfig.Id;

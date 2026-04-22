@@ -9,7 +9,7 @@ public class BotAnimator : MonoBehaviour {
     private static readonly int Run = Animator.StringToHash("isRunning");
     [SerializeField] private Animator _animator;
 
-    private BotWander _botWander;
+    private BotWalkManager _botWalkManager;
     private SkinElementsController _skinController;
     private CancellationTokenSource _tokenSource;
     
@@ -19,12 +19,12 @@ public class BotAnimator : MonoBehaviour {
     }
 
 
-    public void InitAnimator(BotWander botWander) {
-        _botWander = botWander;
-        _botWander.OnJump += OnJump;
-        _botWander.OnDoubleJump += OnDoubleJump;
-        _botWander.StartWandering += OnStartWandering;
-        _botWander.Grounded += BotGrounded;
+    public void InitAnimator(BotWalkManager botWalkManager) {
+        _botWalkManager = botWalkManager;
+        _botWalkManager.OnJump += OnJump;
+        _botWalkManager.OnDoubleJump += OnDoubleJump;
+        _botWalkManager.StartWandering += OnStartWandering;
+        _botWalkManager.Grounded += BotGrounded;
     }
 
     private void BotGrounded(bool grounded) {

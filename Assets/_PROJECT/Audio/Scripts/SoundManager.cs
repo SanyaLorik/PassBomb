@@ -212,16 +212,14 @@ public class SoundManager : MonoBehaviour {
     
     private void OnMoneyPlus(long _) {
         PlaySoundByType(SoundType.Money);
-        Debug.Log("OnMoneyPlus");
+        // Debug.Log("OnMoneyPlus");
     }
     
     private void BuyOrUnlock(long _) {
         if(!_allowToSound) return;
-        Debug.Log("BuyOrUnlock sound");
+        // Debug.Log("BuyOrUnlock sound");
         PlaySoundByType(SoundType.Money);
         StartCoroutine(WaitForSoundDelay(_soundDelay));
-        Debug.Log("BuyOrUnlock");
-        
     }
     
     private IEnumerator WaitForSoundDelay(float time) {

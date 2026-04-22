@@ -18911,6 +18911,7 @@ MonoBehaviour:
   - {fileID: 3218583973834855692}
   BombCenterSpawn: {fileID: 1558617048777433639}
   Floor: {fileID: 7889221811273728250}
+  YToFind: 50
 --- !u!1 &3610912323570108809
 GameObject:
   m_ObjectHideFlags: 0

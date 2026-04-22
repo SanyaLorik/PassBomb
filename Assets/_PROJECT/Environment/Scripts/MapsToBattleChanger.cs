@@ -26,4 +26,5 @@ public class MapsToBattleChanger : MonoBehaviour {
     public Transform[] CurrentMapSpawnPoints => _mapitems[MapIndex].SpawnPoints;
     public Transform GetCurrentBombSpawn => _mapitems[MapIndex].BombCenterSpawn;
     public Transform GetCurrentMapFloor => _mapitems[MapIndex].Floor;
+    public float GetCurrentMapHeight => _mapitems[MapIndex].YToFind;
 }
