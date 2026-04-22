@@ -391,7 +391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -0.16}
   m_SizeDelta: {x: 8, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3604364183876653541
@@ -581,8 +581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.3, y: -0.1}
-  m_SizeDelta: {x: 10, y: 10}
+  m_AnchoredPosition: {x: 1.3, y: 1}
+  m_SizeDelta: {x: 10, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1078180074829325859
 Canvas:
@@ -639,10 +639,10 @@ RectTransform:
   - {fileID: 5172768330626198101}
   m_Father: {fileID: 7604684193717913225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.05, y: 4.2}
-  m_SizeDelta: {x: 7.4935, y: 2.6568}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.05, y: -0.8000002}
+  m_SizeDelta: {x: 7.4935, y: 2.6568003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4498811110346982220
 GameObject:
@@ -654,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1668935998703359361}
   m_Layer: 0
-  m_Name: GachaPetStation_Base
+  m_Name: Station_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,10 +1420,10 @@ RectTransform:
   - {fileID: 7833223042144643197}
   m_Father: {fileID: 7604684193717913225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.04}
-  m_SizeDelta: {x: 3.9234, y: 1.2963}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -6.04}
+  m_SizeDelta: {x: 3.9234, y: 1.2962999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7412315404419989349
 GameObject:
