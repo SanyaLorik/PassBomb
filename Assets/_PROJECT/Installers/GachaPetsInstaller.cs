@@ -8,7 +8,7 @@ public class GachaPetsInstaller: MonoInstaller {
     
     public override void InstallBindings() {
         Container.Bind<PetOpenView>().FromComponentInHierarchy().AsSingle().NonLazy();
-        Container.Bind<PetsManager>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<PlayerPetsManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<PetStatusColorConfig>().FromScriptableObject(_petStatusColorConfig).AsSingle().NonLazy();
         BindPetItems();
     }

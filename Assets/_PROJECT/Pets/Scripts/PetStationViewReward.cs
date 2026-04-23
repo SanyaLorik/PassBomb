@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using TMPro;
 using UnityEngine;
-using Zenject;
 
 public class PetStationViewReward : PetStationViewBase {
     [SerializeField] private int _timeToWaitSec;
@@ -16,8 +15,7 @@ public class PetStationViewReward : PetStationViewBase {
     private void Awake() {
         StartNewWaitCycle();
     }
-    
-
+ 
     
     private async UniTask WaitForRewardAsync(CancellationToken token) {
         int elapsedTimeSec = 0;
@@ -42,7 +40,7 @@ public class PetStationViewReward : PetStationViewBase {
         if(!AllowToGetPet) return;
         AllowToGetPet = false;
         PetChance pet = GetRandomPet(_config);
-        _petsManager.AddPet(pet.PetItemConfig);
+        PlayerPetsManager.AddPet(pet.PetItemConfig);
         _petOpenView.ShowOpenPetView(pet, _config.EggIcon);
         StartNewWaitCycle();
     }

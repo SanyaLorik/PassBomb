@@ -40,7 +40,7 @@ public class PetStationViewAdv : PetStationViewBase {
         if (_showedReward == _countToShowReward) {
             // наградить 
             PetChance pet = GetRandomPet(_config);
-            _petsManager.AddPet(pet.PetItemConfig);
+            PlayerPetsManager.AddPet(pet.PetItemConfig);
             _petOpenView.ShowOpenPetView(pet, _config.EggIcon);
             _showedReward = 0;
         }

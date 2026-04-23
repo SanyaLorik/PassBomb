@@ -11,9 +11,9 @@ public class PetStationsManager : MonoBehaviour  {
     [Inject] private TutorialManager _tutorialManager;
 
 
-    private void OnTutorialIsOver() {
-        InitStationsUse(true);
-    }
+    // private void OnTutorialIsOver() {
+    //     InitStationsUse(true);
+    // }
 
     private void CheckPetsStationsStep(int tutorialStep) {
         if(tutorialStep != _indexToAllowPetOpen) return;

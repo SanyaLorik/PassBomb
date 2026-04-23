@@ -1,5 +1,4 @@
-﻿using System;
-using SanyaBeerExtension;
+﻿using SanyaBeerExtension;
 using UnityEngine;
 
 public class CanvasTriggerShow : MonoBehaviour {
@@ -10,6 +9,7 @@ public class CanvasTriggerShow : MonoBehaviour {
         _canvas.DisactiveSelf();
     }
 
+    
     private void OnTriggerEnter(Collider collider) {
         if (collider.TryGetComponent(out PlayerMovement _)) {
             _canvas.ActiveSelf();

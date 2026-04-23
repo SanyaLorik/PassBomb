@@ -45,7 +45,8 @@ public class SoundManager : MonoBehaviour {
     [Inject] private BonusManager _bonusManager;
     [Inject] private GameOverView _gameOverView;
     [Inject] private Bomb _bomb;
-    [Inject] private PetsManager _petsManager;
+    [Inject] private PlayerPetsManager _playerPetsManager;
+    [Inject] private PetOpenView _petOpenView;
     
     
     private void Awake() {
@@ -85,7 +86,8 @@ public class SoundManager : MonoBehaviour {
         GameEvents.PlayerStayHunter += StayHunter;
         _bomb.BombExploded += PlayExplode;
         _bomb.BombExploded += PlayerHit;
-        _petsManager.GetPet += () => OnMoneyPlus(0);
+        _petOpenView.PetCanasOpen += PlayerMovementOnJumpPressed;
+        _petOpenView.PetNewOpen += () => OnMoneyPlus(0);
     }
 
 
@@ -112,6 +114,7 @@ public class SoundManager : MonoBehaviour {
         GameEvents.PlayerStayHunter -= StayHunter;
         _bomb.BombExploded -= PlayExplode;
         _bomb.BombExploded -= PlayerHit;
+        _petOpenView.PetCanasOpen -= PlayerMovementOnJumpPressed;
     }
     
     

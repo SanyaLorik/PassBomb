@@ -1,38 +1,28 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using UnityEngine.UI;
 using Zenject;
 using Random = UnityEngine.Random;
 
 
-[Serializable]
-public class EntityView {
-    public Image Icon;
-    public TMP_Text Percentage;
-}
-
 public abstract class PetStationViewBase : MonoBehaviour {
-
-    [SerializeField] protected string _stationNameId;
+    
     [SerializeField] protected TextMeshProUGUI _statonNameText;
     [SerializeField] protected DelayedTrigger _customTrigger;
     [SerializeField] protected PetStationConfig _config;
-    [SerializeField] protected EntityView[] _views;
+    [SerializeField] protected PetEntityView[] _views;
     [SerializeField] private bool _sortByUp;
 
-    
     [Inject] protected NumberFormatter _formatter;
     [Inject] protected PlayerBank _bank;
     [Inject] protected PetOpenView _petOpenView;
-    [Inject] protected PetsManager _petsManager;
+    [Inject] protected PlayerPetsManager PlayerPetsManager;
     [Inject] protected LocalizationData _localization;
 
-    
-    protected bool _allowToUse;
+    protected bool AllowToGetPet = true;
+    protected bool _allowToUse = true;
     protected int _showedReward = 0;
     private float _divider;
 
@@ -45,7 +35,7 @@ public abstract class PetStationViewBase : MonoBehaviour {
         _divider = ChanceSum(_config.Pets);
         Initialize();
         StartInit();
-        // _statonNameText.text = _localization.GetTranslatedText(_stationNameId, _localization.EggStationNameTranslates);
+        _statonNameText.text = _localization.GetTranslatedText(_config.StationNameId, _localization.EggStationNameTranslates);
     }
 
 
@@ -96,7 +86,6 @@ public abstract class PetStationViewBase : MonoBehaviour {
         
     }
 
-    protected bool AllowToGetPet = true;
 
     protected PetChance GetRandomPet(PetStationConfig config) {
         float random = Random.Range(0f, _divider);

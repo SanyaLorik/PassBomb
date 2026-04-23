@@ -49,6 +49,10 @@ MonoBehaviour:
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 100
     <ColldownToStartGame>k__BackingField: 3
+    <MaxPetsCount>k__BackingField: 6
+    <BotPetCountDiapasone>k__BackingField:
+      <From>k__BackingField: 0
+      <To>k__BackingField: 3
     <BotSpeed>k__BackingField: 10
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
@@ -56,8 +60,6 @@ MonoBehaviour:
     <TimeToSpeak>k__BackingField:
       <From>k__BackingField: 4
       <To>k__BackingField: 7
-    <ChanseToChangeSkin>k__BackingField: 0
-    <ChanseToChangeNickname>k__BackingField: 0
     <TimeToStayAfterSpawn>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 10
@@ -66,8 +68,10 @@ MonoBehaviour:
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
     <BotJumpDuration>k__BackingField: 1
+    <BotJumpBonusDuration>k__BackingField: 0
     <BotDefaultJumpHeight>k__BackingField: 6
     <BotJumpBonusHeight>k__BackingField: 20
+    <ChanceToGoPlayerInHunt>k__BackingField: 0.444
     <BotUseNewBonusTime>k__BackingField:
       <From>k__BackingField: 5
       <To>k__BackingField: 10

@@ -50,10 +50,141 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498811110346982220, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
       propertyPath: m_Name
-      value: GachaPetStation_Money
+      value: Station_Money
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4498811110346982220, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1984793768669962078}
   m_SourcePrefab: {fileID: 100100000, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+--- !u!114 &2760956161868869780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3085151701850252819, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &3254021372277595388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2425418275992488571, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &3259272680493143821 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2430546443191878026, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &3670071951507281355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4498811110346982220, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984793768669962078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670071951507281355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059ed70c5064bda4680b1052ae23f8e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PetStationViewPurchase
+  _statonNameText: {fileID: 3254021372277595388}
+  _customTrigger: {fileID: 8151439467259905556}
+  _config: {fileID: 0}
+  _views:
+  - Icon: {fileID: 7517962847020537045}
+    Percentage: {fileID: 4552161153592085366}
+  - Icon: {fileID: 3920110109248996793}
+    Percentage: {fileID: 6858560679452866580}
+  - Icon: {fileID: 3259272680493143821}
+    Percentage: {fileID: 2760956161868869780}
+  _sortByUp: 0
+  _priceText: {fileID: 5234251037960614792}
+--- !u!114 &3920110109248996793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4244446382352700222, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &4552161153592085366 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3723575651707854321, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &5234251037960614792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4909910641486849295, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &6858560679452866580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6029979848344645267, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &7517962847020537045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7265820503038296658, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &8151439467259905556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9052218900481511571, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2505bd4cb240e4caaca8ac5d1b2250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DelayedTrigger

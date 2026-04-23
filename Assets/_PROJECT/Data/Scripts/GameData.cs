@@ -50,13 +50,16 @@ public class GameData : GameDataBase
     
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }
+    [field: Header("Птенцы")]
+    [field: SerializeField] public int MaxPetsCount { get; private set; }
+    [field: SerializeField] public PairedValue<int> BotPetCountDiapasone { get; private set; }
+    
     
     [field: Header("БОТЫ")]
     [field: SerializeField] public float BotSpeed { get; private set; }
     [field: SerializeField] public PairedValue<int> CountSpeakingBotsPerTime  { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayAfterSpawn { get; private set; }
-    [field: SerializeField] public PairedValue<int> PetCount { get; private set; }
     
     [field: Header("Боты в игре")]
     [field: SerializeField] public float DistanceToFloor { get; private set; }
