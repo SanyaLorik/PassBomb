@@ -17,10 +17,10 @@ public class InstancePets {
 
 
 public class PetsManager : MonoBehaviour {
-    [SerializeField] private List<Transform> _petsPoints;
+    [SerializeField] private List<Transform> _playersPetsPoints;
     [SerializeField] private int _maxPetCount;
     
-    public GameSave Saver => _gameSave.GetSave<GameSave>();
+    private GameSave Saver => _gameSave.GetSave<GameSave>();
     
     private Dictionary<PetItemConfig, int> _petToCountDict = new();
     public List<InstancePets> PetsInstances { get; private set; } = new();
@@ -131,7 +131,7 @@ public class PetsManager : MonoBehaviour {
 
         for (var i = 0; i < topPets.Count; i++) {
             PetItemConfig pet = topPets[i];
-            GameObject instance = Instantiate(pet.Prefab, _petsPoints[i].position,  Quaternion.identity, _petsPoints[i]);
+            GameObject instance = Instantiate(pet.Prefab, _playersPetsPoints[i].position,  Quaternion.identity, _playersPetsPoints[i]);
             PetsInstances.Add(new InstancePets {
                 PetInstance = instance,
                 PetInfo = pet

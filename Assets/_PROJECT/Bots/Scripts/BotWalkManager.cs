@@ -27,11 +27,11 @@ public class BotWalkManager : MonoBehaviour {
     public Action OnJump;
     public Action OnDoubleJump;
 
-    private Transform _chooseCube;
     private CancellationTokenSource _botTokenSource;
     private CancellationTokenSource _jumpTokenSource; 
     private NavMeshAgent _agent;
     private Vector3 _lastDestination;
+    
     private float _jumpForce;
     private float _jumpDuration;
     
@@ -82,6 +82,7 @@ public class BotWalkManager : MonoBehaviour {
 
     
     public void SetMovingStatus(bool enable) {
+        if(!gameObject.activeSelf) return;
         _agent.isStopped = !enable;
         Debug.Log("SetMovingStatus " + enable);
     }
@@ -105,6 +106,7 @@ public class BotWalkManager : MonoBehaviour {
     
     
     private async UniTask StartWanderingCycleAsync() {
+        if (!gameObject.activeSelf) return;
         float durationToStay = 0f;
         if (Random.value > 0.5f) {
             durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);

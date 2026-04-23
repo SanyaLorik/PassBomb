@@ -7,6 +7,7 @@ using Zenject;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BotStateManager : MonoBehaviour, IPassBombPlayer {
+    [field: SerializeField] public bool ShowInSpawn { get; private set; }
     [field: SerializeField] public Transform Transform { get; private set; }
     [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
@@ -20,33 +21,45 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     public bool IsPlaying { get; private set; }
     public string Nickname => _botMonolog.NickName;
+    public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
     
     
     public string SkinId { get; private set; }
     
-    private bool _previousBotState;
     
     [Inject] private GameData _gameData;
 
+    
     private void Awake() {
         Destroy(_skinInstance);
     }
     
     
     private void Start() {
-        botWalkManager.StartWanderSpawn();
+        SetStartWanderIfActive(true);
     }
     
-    
+
+    private void SetStartWanderIfActive(bool startWander) {
+        if (ShowInSpawn == false) return;
+        
+        if(startWander) botWalkManager.StartWanderSpawn();
+        else botWalkManager.StopWanderSpawn();
+    }
+
+
     public void SetPlayStatus(bool goPlay) {
+        gameObject.SetActive(ShowInSpawn || goPlay);
+        
+        SetStartWanderIfActive(!goPlay);
         IsPlaying = goPlay;
         if (goPlay) {
-            botWalkManager.StopWanderSpawn();
+            ActiveBotInGame();
         }
         // Возвращение на спавн
         else {
+            SetBotStateBeforeGame();
             TeleportToPoint(_posBeforeTeleport);
-            botWalkManager.StartWanderSpawn();
         }
     }
 
@@ -91,7 +104,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         _roleBehaviour.SetInvincibleAfterBonus(invnincible);
     }
 
-    public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
 
     public void RotateToTarget(Vector3 targetPosition) {
         Vector3 direction = targetPosition - transform.position;
@@ -101,19 +113,39 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
             transform.rotation = targetRotation;
         }
     }
-
-
-    public void ChangeNickname() {
-        // _botMonolog.ChangeNickname();
-    }
-
+    
 
     public void InitAnimator() {
         _botAnimator.InitAnimator(botWalkManager);
     }
+    
+    
+    private void SetBotStateBeforeGame() {
+        if (ShowInSpawn) {
+            _agent.gameObject.ActiveSelf();
+        }
+        else {
+            _agent.gameObject.DisactiveSelf();
+        }
+    }
+
+    private void ActiveBotInGame() {
+        if (ShowInSpawn == false) {
+            _agent.gameObject.ActiveSelf();
+        }
+    }
+    
+
+    public void SetBotSpeak() {
+        _botMonolog.SaySomething();
+    }
+
+    public void SetBotStfu() {
+        _botMonolog.Stfu();
+    }
+
     public void SetBotSkin(SkinItemConfig skinItemConfig) {
         SkinId = skinItemConfig.Id;
-        _previousBotState = gameObject.activeSelf;
         gameObject.ActiveSelf();
         StartCoroutine(ChangeSkinRoutine(skinItemConfig));
     }
@@ -129,22 +161,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         _skinInstance = Instantiate(skin.SkinPrefab, _skinParent);
         var skinItem = _skinInstance.GetComponent<SkinElementsController>();
         _botAnimator.SetModelData(skin.Avatar, skinItem);
-        gameObject.SetActive(_previousBotState);
-    }
-
-
-    public void EnableBot(bool state) {
-        _agent.enabled = state;
-        _agent.gameObject.SetActive(state);
-    }
-    
-
-    public void SetBotSpeak() {
-        _botMonolog.SaySomething();
-    }
-
-    public void SetBotStfu() {
-        _botMonolog.Stfu();
+        gameObject.SetActive(ShowInSpawn);
     }
 
 }
