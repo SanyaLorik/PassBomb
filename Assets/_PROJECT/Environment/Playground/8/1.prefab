@@ -1089,7 +1089,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739015067346451438}
-  - component: {fileID: 4804031848270089239}
   - component: {fileID: 838653753969819212}
   m_Layer: 0
   m_Name: 1
@@ -1122,28 +1121,6 @@ Transform:
   - {fileID: 5213259477224276102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4804031848270089239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2498086655341941946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8a8bbf8336669a49ac6f3414fcf157a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SanyaBeerExtension.RandomArrangeEditor
-  Transforms:
-  - {fileID: 4725244617280883426}
-  - {fileID: 1998002878916175170}
-  - {fileID: 2460747362892553921}
-  - {fileID: 599120536989386498}
-  - {fileID: 257487124734363386}
-  - {fileID: 95744763217210869}
-  - {fileID: 8761838812197333525}
-  - {fileID: 5551932491276318508}
-  - {fileID: 5213259477224276102}
 --- !u!114 &838653753969819212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,8 +1144,8 @@ MonoBehaviour:
   - {fileID: 5551932491276318508}
   - {fileID: 5213259477224276102}
   Offset:
-    <From>k__BackingField: {x: 0, y: -0.2, z: 0}
-    <To>k__BackingField: {x: 0, y: 0.2, z: 0}
+    <From>k__BackingField: {x: 0, y: -0.75, z: 0}
+    <To>k__BackingField: {x: 0, y: 0.75, z: 0}
 --- !u!1 &2664434723896823742
 GameObject:
   m_ObjectHideFlags: 0
