@@ -69,7 +69,7 @@ public class TasksManager : MonoBehaviour {
     [Inject] private LocalizationData _localization; 
     [Inject] private BattleManager _battleManager; 
     [Inject] private MainGameStarter _mainGameStarter; 
-    [Inject] private GameOverShower _gameOverShower; 
+    [Inject] private GameOverView _gameOverView; 
     [Inject] private IGameSave _gameSave; 
     [Inject] private AdvertisingMonetizationMirra _advertisingMonetization;
 
@@ -81,7 +81,7 @@ public class TasksManager : MonoBehaviour {
         //
         // _hpSystem.MainPlayerHeal += OnPlayerHeal;
         // _parkourCompleteTrigger.ParkourCompleted += UpdateParkourTask;
-        // _gameOverShower.PlayerWin += PlayerWinCheck;
+        // _gameOverView.PlayerWin += PlayerWinCheck;
         // _dailyQuest.OnTimerPassed += ResetCompletedTasks;
     }
     

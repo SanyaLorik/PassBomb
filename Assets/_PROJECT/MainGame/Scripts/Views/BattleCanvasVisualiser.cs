@@ -24,7 +24,7 @@ public class BattleCanvasVisualiser : MonoBehaviour {
     }
 
     private void OnChangePlayersCount(int count) {
-        _countPlayersText.text = $"{count}/{_battleManager.CountPlayersToBattle}";
+        _countPlayersText.text = $"{count}/{_battleManager.CountPlayersToNewBattle}";
     }
 
     

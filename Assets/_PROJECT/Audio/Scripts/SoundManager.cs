@@ -43,8 +43,9 @@ public class SoundManager : MonoBehaviour {
     [Inject] private PlayerSkinInventory _playerSkinInventory;
     [Inject] private BattleManager _battleManager;
     [Inject] private BonusManager _bonusManager;
-    [Inject] private GameOverShower _gameOverShower;
+    [Inject] private GameOverView _gameOverView;
     [Inject] private Bomb _bomb;
+    [Inject] private PetsManager _petsManager;
     
     
     private void Awake() {
@@ -78,12 +79,13 @@ public class SoundManager : MonoBehaviour {
         _settings.EffectsValueChanged += SettingsOnEffectsValueChanged;
         // Play Events
         GameEvents.BonusUsed += PlayBonuseUse;
-        _gameOverShower.PlayerWin += PlayerWin;
+        _battleManager.MainPlayerWin += PlayerWin;
         GameEvents.BonusReloaded += BonusReloaded;
         GameEvents.TriggerUsed += UiButtonClick;
         GameEvents.PlayerStayHunter += StayHunter;
         _bomb.BombExploded += PlayExplode;
         _bomb.BombExploded += PlayerHit;
+        _petsManager.GetPet += () => OnMoneyPlus(0);
     }
 
 
@@ -104,7 +106,7 @@ public class SoundManager : MonoBehaviour {
         _settings.EffectsValueChanged -= SettingsOnEffectsValueChanged;
         // Play Events
         GameEvents.BonusUsed -= PlayBonuseUse;
-        _gameOverShower.PlayerWin -= PlayerWin;
+        _battleManager.MainPlayerWin -= PlayerWin;
         GameEvents.BonusReloaded -= BonusReloaded;
         GameEvents.TriggerUsed -= UiButtonClick;
         GameEvents.PlayerStayHunter -= StayHunter;
@@ -115,7 +117,7 @@ public class SoundManager : MonoBehaviour {
     
     
     private void StayHunter(PlayerRoleBehaviour obj) {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.PlayerStayHunter);
     }
 
@@ -127,29 +129,29 @@ public class SoundManager : MonoBehaviour {
 
 
     private void PlayerWin(bool win) {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(win ? SoundType.Win : SoundType.Loose);
     }
 
     private void PlayBonuseUse() {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.BonusUse);
     }
 
     private void BonusReloaded() {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.ReloadBonus);
     }
 
     
     private void PlayerHit() {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.HitPlayer);
     }
     
     
     private void PlayExplode() {
-        if(!_battleManager.MainPlayerPlay) return;
+        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.Explosion);
     }
     

@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     
     public bool IsGrounded { get; private set; }
     public bool IsRunning { get; private set; }
+    public bool PlayerInSpawn { get; private set; } = true;
     
     public CharacterController Controller => _controller;
     public bool MoveEnable { get; private set; } = true;
@@ -79,8 +80,11 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         _jumpsUsed = 0; // Сброс прыжков
     }
 
+
     public void SetPlayStatus(bool goPlay) {
+        PlayerInSpawn = !goPlay;
         _stateManager.SetupCanvases(goPlay);
+        
         if (goPlay) {
             
         }

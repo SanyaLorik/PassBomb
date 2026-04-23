@@ -55,9 +55,8 @@ public class GameData : GameDataBase
     [field: SerializeField] public float BotSpeed { get; private set; }
     [field: SerializeField] public PairedValue<int> CountSpeakingBotsPerTime  { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ChanseToChangeSkin { get; private set; }
-    [field: SerializeField, Range(0,1)] public float ChanseToChangeNickname { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayAfterSpawn { get; private set; }
+    [field: SerializeField] public PairedValue<int> PetCount { get; private set; }
     
     [field: Header("Боты в игре")]
     [field: SerializeField] public float DistanceToFloor { get; private set; }
@@ -65,8 +64,10 @@ public class GameData : GameDataBase
     [field: SerializeField] public float DurationToGoInPoint { get; private set; }
     [field: SerializeField] public float RunStoppingDistance { get; private set; }
     [field: SerializeField] public float BotJumpDuration { get; private set; }
+    [field: SerializeField] public float BotJumpBonusDuration { get; private set; }
     [field: SerializeField] public float BotDefaultJumpHeight { get; private set; }
     [field: SerializeField] public float BotJumpBonusHeight { get; private set; }
+    [field: SerializeField, Range(0,1)] public float ChanceToGoPlayerInHunt { get; private set; }
     [field: SerializeField] public PairedValue<float> BotUseNewBonusTime { get; private set; }
     
 }

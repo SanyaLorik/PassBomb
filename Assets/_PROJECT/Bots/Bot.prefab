@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439a80f070c34dca92326caac5099ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatedLinkTraversal
-  jumpDuration: 1.2
+  jumpDuration: 1
   jumpHeight: 4
   horizontalCurve:
     serializedVersion: 2

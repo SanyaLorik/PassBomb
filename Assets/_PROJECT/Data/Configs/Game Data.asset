@@ -35,8 +35,7 @@ MonoBehaviour:
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
     <RotationSpeed>k__BackingField: 10
-    <ChanceToJump>k__BackingField: 0.374
-    <ChanseToGoPlayer>k__BackingField: 0.1
+    <ChanceToJump>k__BackingField: 0.813
     <TimeToStayOnPoint>k__BackingField:
       <From>k__BackingField: 7
       <To>k__BackingField: 14
@@ -68,8 +67,7 @@ MonoBehaviour:
     <RunStoppingDistance>k__BackingField: 0
     <BotJumpDuration>k__BackingField: 1
     <BotDefaultJumpHeight>k__BackingField: 6
-    <BotJumpBonusHeight>k__BackingField: 12
-    <BotUseNewBonusTime>k__BackingField: 10
-    <BotBonusUseCheckDiapasone>k__BackingField:
-      <From>k__BackingField: 6
-      <To>k__BackingField: 12
+    <BotJumpBonusHeight>k__BackingField: 20
+    <BotUseNewBonusTime>k__BackingField:
+      <From>k__BackingField: 5
+      <To>k__BackingField: 10

@@ -24,6 +24,8 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     public string SkinId { get; private set; }
     
+    private bool _previousBotState;
+    
     [Inject] private GameData _gameData;
 
     private void Awake() {
@@ -106,7 +108,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
 
-    private bool _previousBotState;
     public void InitAnimator() {
         _botAnimator.InitAnimator(botWalkManager);
     }

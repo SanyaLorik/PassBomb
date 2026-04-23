@@ -21,7 +21,7 @@ public class MainGameStarter : MonoBehaviour  {
 
     [Inject] private BattleManager _battleManager;
     [Inject] private LocalizationData _localization;
-    [Inject] private AdvTimerStarter _advTimerStarter;
+    [Inject] private AdvHelper _advHelper;
     [Inject] private TutorialManager _tutorialManager;
 
 
@@ -38,6 +38,13 @@ public class MainGameStarter : MonoBehaviour  {
     public bool GameIsStarted { get; private set; }
     
     
+    private void OnEnable() {
+        _afkButton.onClick.AddListener(() => ChangeAfkStatus(!_afkPressed));
+        _goPlayButton.onClick.AddListener(StartOnlineGame);
+        SystemEvents.WindowOpened += EnableAfkWindow;
+    }
+    
+    
     private void Start() {
         float timeToStart = _tutorialManager.TutorialPassed ? _timerDuration : 0f;
         StartTimer(timeToStart);
@@ -49,7 +56,7 @@ public class MainGameStarter : MonoBehaviour  {
         GameStarted?.Invoke(false);
         GameIsStarted = false;
         if (_battleManager.MainPlayerPlay) {
-            _advTimerStarter.ShowAdvAfterBattle();
+            _advHelper.ShowAdvAfterBattle();
         }
         
         if (!_startGamePressed) {
@@ -68,11 +75,7 @@ public class MainGameStarter : MonoBehaviour  {
     }
 
 
-    private void OnEnable() {
-        _afkButton.onClick.AddListener(() => ChangeAfkStatus(!_afkPressed));
-        _goPlayButton.onClick.AddListener(StartOnlineGame);
-        SystemEvents.WindowOpened += EnableAfkWindow;
-    }
+
 
     private bool _cachedAfkState;
     private void EnableAfkWindow(bool windowOpened) {
@@ -87,6 +90,7 @@ public class MainGameStarter : MonoBehaviour  {
 
     
     public void StartOnlineGame() {
+        _battleManager.ForceEndNewGame();
         ChangeAfkStatus(false);
         _startGamePressed = true;
         Debug.Log("StartOnlineGame");
@@ -104,8 +108,8 @@ public class MainGameStarter : MonoBehaviour  {
             _afkStatusText.SetActive(_afkPressed);
         }
         // Ушел в афк врубаем таймер
-        if (afk && _advTimerStarter != null) {
-            _advTimerStarter.EnableTimer();
+        if (afk && _advHelper != null) {
+            _advHelper.EnableTimer();
         }
 
     }
@@ -121,7 +125,7 @@ public class MainGameStarter : MonoBehaviour  {
         _tokenSource = new CancellationTokenSource();
         // Таймер стартанул где игрок будет играть, вырубаем таймер нахуй
         if (!_afkPressed) {
-            _advTimerStarter.DisableTimer();
+            _advHelper.DisableTimer();
         }
         NewGameTimer(time, _tokenSource.Token).Forget();
     }

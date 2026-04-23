@@ -19,7 +19,7 @@ public class MainGameInstaller : MonoInstaller {
 
 
     private void BindViews() {
-        Container.Bind<GameOverShower>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<GameOverView>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BattleStartVisualizer>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BattleDiesInformator>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<MapsToBattleChanger>().FromComponentInHierarchy().AsSingle().NonLazy();

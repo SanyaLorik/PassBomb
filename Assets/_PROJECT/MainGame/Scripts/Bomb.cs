@@ -28,13 +28,20 @@ public class Bomb : MonoBehaviour {
     
     [Inject] private GameData _gameData;
     [Inject] private MainGameStarter _gameStarter;
+    [Inject] private BattleManager _battleManager;
 
     
     private void OnEnable() {
         _gameStarter.GameStarted += OnGameStarted;
+        _battleManager.ForceStartedNewGame += StopBomb; 
     }
 
-    
+    private void StopBomb() {
+        _bombInstance.DisactiveSelf();
+        UniTaskHelper.DisposeTask(ref  _tokenSource);
+    }
+
+
     private void OnGameStarted(bool started) {
         if (!started) {
             _bombInstance.DisactiveSelf();

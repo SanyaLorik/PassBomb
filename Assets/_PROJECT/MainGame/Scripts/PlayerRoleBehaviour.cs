@@ -28,6 +28,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     
     private CancellationTokenSource _tokenSource;
     private CancellationTokenSource _hunterTokenSource;
+    private IPassBombPlayer _targetToHunt;
+    
     
     // Для асинхронной передачи
     private static float _lastPassTime = -999f;
@@ -37,6 +39,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     [Inject] private MapsToBattleChanger _mapsChanger;
     [Inject] private BattleManager _battleManager;
     [Inject] private GameData _gameData;
+    [Inject] private IPassBombPlayer _mainPlayer;
+    
     
     private List<IPassBombPlayer> _otherPlayers = new();
     
@@ -44,23 +48,10 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private void Awake() {
         SetColliderEnable(false);
     }
-
     
-    public void NewRoundStarted(bool started) {
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-        CurrentRole = BotRoleInGame.Wanderer;
-        SetColliderEnable(started);
-        _otherPlayers.Clear();
-        _otherPlayers = _battleManager.Players.Where(p => p.RoleBehaviour != this).ToList();
-        if (started) {
-            SetRole(BotRoleInGame.Wanderer);
-        }
-    }
-
     
     private void OnTriggerEnter(Collider collider) {
-        if(IsInvincibleAfterBonus) return; 
-        if(IsInvincibleAfterBomb) return;
+        if(IsInvincibleAfterBonus || IsInvincibleAfterBomb) return; 
         // Если просто бродилка то никак не влияет на триггеры,
         if(CurrentRole != BotRoleInGame.Hunter) return;
         
@@ -81,6 +72,18 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         _lastPassTime = Time.time;
         
     }
+    
+    public void NewRoundStarted(bool started) {
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        CurrentRole = BotRoleInGame.Wanderer;
+        SetColliderEnable(started);
+        _otherPlayers.Clear();
+        _otherPlayers = _battleManager.Players.Where(p => p.RoleBehaviour != this).ToList();
+        if (started) {
+            SetRole(BotRoleInGame.Wanderer);
+        }
+    }
+    
 
     public void SetRole(BotRoleInGame role) {
         CurrentRole = role;
@@ -106,9 +109,12 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public void SetInvincibleAfterBonus(bool invincible) {
         IsInvincibleAfterBonus = invincible;
     }
+    
+    public void SetInvinsibleAfterBomb(bool invinsible) {
+        IsInvincibleAfterBomb = invinsible;
+    }
 
     
-    private IPassBombPlayer _targetToHunt;
     
     private async UniTask StartHunting(CancellationToken token) {
         GameEvents.PlayerStayHunterInvoke(this);
@@ -147,6 +153,10 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     }
     
     private void GetNextPlayerVictim() {
+        if (Random.value < _gameData.ChanceToGoPlayerInHunt && _battleManager.MainPlayerPlay) {
+            _targetToHunt = _mainPlayer;
+            return;
+        }
         IPassBombPlayer closest = _otherPlayers[0];
         float minSqrDistance = float.MaxValue;
     

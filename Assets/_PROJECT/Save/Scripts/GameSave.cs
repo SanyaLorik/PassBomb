@@ -24,6 +24,8 @@ public class GameSave : GameSaveBase,
     // Task
     public List<TaskItem> Tasks = new ();
 
+    // Pets
+    public List<PetsData> Pets = new ();
     
     // Daily Rewards
     public DailyRewardSave DailyRewardSave;
@@ -61,7 +63,6 @@ public class GameSave : GameSaveBase,
     public int GetBonusCount(string id) {
         BonuseItem bonus = Bonuses.FirstOrDefault(b => b.Id == id);
         var count = bonus == null ? 0 : bonus.Count;
-        Debug.Log($"Id бонуса игрока: {id}, количество: {count}");
         return count;
     }
     
@@ -106,6 +107,20 @@ public class GameSave : GameSaveBase,
         return task;
     }
 
+    public int AddNewPet(string id, int count) {
+        var pet = Pets.FirstOrDefault(pet => pet.Id == id);
+        if (pet == null) {
+            Pets.Add(new PetsData() {
+                Id = id,
+                Count = count,
+            });
+            return count;
+        }
+        pet.Count+=count;
+        return pet.Count;
+    }
+    
+    
     public DailyRewardSave Load()
     {
         return DailyRewardSave;
@@ -144,4 +159,11 @@ public class TaskItem {
     public string Id = "";
     public int Count = 0;
     public bool IsGetReward = false;
+}
+
+
+[Serializable]
+public class PetsData {
+    public string Id = "";
+    public int Count = 0;
 }

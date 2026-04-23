@@ -33,6 +33,7 @@ public class BotWalkManager : MonoBehaviour {
     private NavMeshAgent _agent;
     private Vector3 _lastDestination;
     private float _jumpForce;
+    private float _jumpDuration;
     
     [Inject] private GameData _gameData;
     [Inject] private NavMeshHelper _navMeshHelper;
@@ -99,11 +100,16 @@ public class BotWalkManager : MonoBehaviour {
     
     public void SetBigJump(bool bigJump) {
         _jumpForce = bigJump ? _gameData.BotJumpBonusHeight : _gameData.BotDefaultJumpHeight;
+        _jumpDuration = bigJump ? _gameData.BotJumpBonusDuration : _gameData.BotJumpDuration;
     }
     
     
     private async UniTask StartWanderingCycleAsync() {
-        float durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
+        float durationToStay = 0f;
+        if (Random.value > 0.5f) {
+            durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
+        }
+        
         await UniTask.WaitForSeconds(durationToStay, cancellationToken: _botTokenSource.Token);
         await LifeCycleAsync(_botTokenSource.Token);
     }
@@ -235,9 +241,9 @@ public class BotWalkManager : MonoBehaviour {
         }
         
         Grounded?.Invoke(false);
-        while (t < _gameData.BotJumpDuration && !token.IsCancellationRequested) {
+        while (t < _jumpDuration && !token.IsCancellationRequested) {
             t += Time.deltaTime;
-            float normalized = t / _gameData.BotJumpDuration;
+            float normalized = t / _jumpDuration;
             float yOffset = Mathf.Sin(normalized * Mathf.PI) * height;
 
             Vector3 pos = transform.position;
