@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     [Inject] private IInputJumping _inputJumping;
     [Inject] private GameData _gameData;
     [Inject] private PlayerStateManager _stateManager;
+    [Inject] private PlayerPetsManager _petsManager;
     
     // Для гравитации и прыжков
     private float _verticalVelocity;
@@ -118,19 +119,19 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     }
 
     public void SetDefaultRoundSpeed() {
-        _walkSpeed = _gameData.WalkSpeed;
+        _walkSpeed = _gameData.WalkSpeed + _petsManager.PetsRatioSum;
     }
 
     public void SetHunterSpeed() {
-        _walkSpeed = _gameData.HunterSpeed;
+        _walkSpeed = _gameData.HunterSpeed + _petsManager.PetsRatioSum;
     }
 
     public void SetBonusSpeed() {
-        _walkSpeed = _gameData.VelocityBonusSpeed;
+        _walkSpeed = _gameData.VelocityBonusSpeed + _petsManager.PetsRatioSum;
     }
 
     public void SetDefaultSpeed() {
-        _walkSpeed = _gameData.WalkSpeed;
+        _walkSpeed = _gameData.WalkSpeed + _petsManager.PetsRatioSum;
     }
 
     

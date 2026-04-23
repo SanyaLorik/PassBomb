@@ -9,7 +9,10 @@ using UnityEngine;
 using Zenject;
 
 public class Bomb : MonoBehaviour {
-    [SerializeField] private GameObject _bombInstance;
+    [SerializeField] private GameObject _allBomb;
+    [SerializeField] private GameObject _bombModel;
+    [SerializeField] private Transform _permanentBombParent;
+    
     [SerializeField] private CartoonExplosionFX _cartoonExplosionFX;
     [Header("Визуал таймера")]
     [SerializeField] private TextMeshProUGUI _timerText;
@@ -37,37 +40,47 @@ public class Bomb : MonoBehaviour {
     }
 
     private void StopBomb() {
-        _bombInstance.DisactiveSelf();
+        _allBomb.DisactiveSelf();
         UniTaskHelper.DisposeTask(ref  _tokenSource);
     }
 
 
     private void OnGameStarted(bool started) {
         if (!started) {
-            _bombInstance.DisactiveSelf();
+            _allBomb.DisactiveSelf();
         }
     }
 
     
     private void Start() {
-        _bombInstance.DisactiveSelf();
+        _allBomb.DisactiveSelf();
         _barWidth = RectTransformHelper.CalculateXEnd(_parentProgressToExplode);
     }
 
     
     public void InitBombToNewPlayer(Transform playerTransform, PlayerRoleBehaviour playerRoleBehaviour) {
         PlayerBecameHunter?.Invoke(playerRoleBehaviour);
-        _bombInstance.transform.SetParent(playerTransform, false); 
-        _bombInstance.ActiveSelf();
+        
+        SetNewBombParent(playerTransform, false);
+        
+        _allBomb.ActiveSelf();
     }
 
     
     public void TeleportBombToSpawn(Transform spawn) {
-        _bombInstance.ActiveSelf();
-        _bombInstance.transform.SetParent(spawn, false); 
+        _allBomb.ActiveSelf();
+        SetNewBombParent(spawn, false);
     }
+
     
-    
+    private void SetNewBombParent(Transform spawn, bool worldPositionStays) {
+        _allBomb.transform.SetParent(spawn, worldPositionStays);
+        if (!worldPositionStays) {
+            _allBomb.transform.localPosition = Vector3.zero;
+        }
+    }
+
+
     public void StartNewBombTimer() {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         _tokenSource = new CancellationTokenSource();
@@ -78,6 +91,8 @@ public class Bomb : MonoBehaviour {
     
     private async UniTask BombTimerAsync(CancellationToken token) {
         _timerContainer.ActiveSelf();
+        _bombModel.ActiveSelf();
+        
         float timeToBombExplode = _gameData.TimeToBombExplode;
         float elapsedTime = _gameData.TimeToBombExplode;
         SetFullBar();
@@ -105,9 +120,12 @@ public class Bomb : MonoBehaviour {
 
 
     private void Explode() {
+        SetNewBombParent(_permanentBombParent, true);
+        
         Debug.Log("Взрыв БОМБЫ!");
         BombExploded?.Invoke();
         BombExplode = true;
+        _bombModel.DisactiveSelf();
         _cartoonExplosionFX.Play();
     }
     

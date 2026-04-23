@@ -86,6 +86,8 @@ public class BonusShopView : MonoBehaviour {
 
     
     private void OpenBonusCanvasAnimation() {
+        _advHelper.ShowAdv();
+
         OnOpenCanvas();
         _canvas.ActiveSelf();
         GameEvents.TriggerUseInvoke();

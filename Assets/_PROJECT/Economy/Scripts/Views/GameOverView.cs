@@ -65,6 +65,9 @@ public class GameOverView : MonoBehaviour {
     
 
     private void GetReward(bool doubleReward) {
+        if (!doubleReward) {
+            _advHelper.ShowAdv();
+        }
         _roundMoney = doubleReward ? _roundMoney*2 : _roundMoney;
         _bank.AddMoney(_roundMoney);
         _roundMoney = 0;

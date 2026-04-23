@@ -9,6 +9,9 @@ using Zenject;
 public class PlayerPetsManager : MonoBehaviour {
     [SerializeField] private List<Transform> _playersPetsPoints;
     
+    
+    public float PetsRatioSum { get; private set; }
+    
     private GameSave Saver => _gameSave.GetSave<GameSave>();
     
     private Dictionary<PetItemConfig, int> _petToCountDict = new();
@@ -72,6 +75,7 @@ public class PlayerPetsManager : MonoBehaviour {
 
     private void UpdatePetsVisual() {
         List<PetItemConfig> topPets = GetBestPets(_petToCountDict);
+        PetsRatioSum = 0;
 
         foreach (var pet in PetsInstances) {
             Destroy(pet.PetInstance);   
@@ -80,6 +84,7 @@ public class PlayerPetsManager : MonoBehaviour {
 
         for (var i = 0; i < topPets.Count; i++) {
             PetItemConfig pet = topPets[i];
+            PetsRatioSum += pet.Modifier;
             // GameObject instance = Instantiate(pet.Prefab, _playersPetsPoints[i].position,  Quaternion.identity, _playersPetsPoints[i]);
             GameObject instance = Instantiate(pet.Prefab, _playersPetsPoints[i]);
             instance.transform.localPosition = Vector3.zero;

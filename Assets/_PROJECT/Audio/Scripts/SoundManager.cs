@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour {
     [Header("Конфиги")]
     [SerializeField] private List<SoundConfig> soundConfigs;
     [Header("Тонкая настройка")]
-    [SerializeField] private int _poolSize;
+    [SerializeField] private int _poolSize; 
     [SerializeField] private float _fadeTime = 1f;
     [SerializeField] private float _stepTiming = 0.2f;
     [Header("Background Music")]

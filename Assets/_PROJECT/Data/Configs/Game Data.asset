@@ -49,6 +49,7 @@ MonoBehaviour:
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 100
     <ColldownToStartGame>k__BackingField: 3
+    <TimeAfterBombExplode>k__BackingField: 1
     <MaxPetsCount>k__BackingField: 6
     <BotPetCountDiapasone>k__BackingField:
       <From>k__BackingField: 0
@@ -68,10 +69,10 @@ MonoBehaviour:
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
     <BotJumpDuration>k__BackingField: 1
-    <BotJumpBonusDuration>k__BackingField: 0
+    <BotJumpBonusDuration>k__BackingField: 2
     <BotDefaultJumpHeight>k__BackingField: 6
     <BotJumpBonusHeight>k__BackingField: 20
-    <ChanceToGoPlayerInHunt>k__BackingField: 0.444
+    <ChanceToGoPlayerInHunt>k__BackingField: 0.777
     <BotUseNewBonusTime>k__BackingField:
       <From>k__BackingField: 5
       <To>k__BackingField: 10

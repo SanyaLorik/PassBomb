@@ -74,6 +74,25 @@ public class BattleManager : MonoBehaviour {
         ForceStartedNewGame?.Invoke();
         GameEnded(false);
     }
+
+    
+    public void SetLooseMainPlayer() {
+        if(!MainPlayerPlay) return;
+        
+        MainPlayerPlay = false;
+        Debug.Log("Вы выбыли из игры");
+        MainPlayerWin?.Invoke(false);
+        WaitPlayerPressGameOverAsync().Forget();
+    }
+
+    
+    public void SetGameOverToBot(IPassBombPlayer player) {
+        BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
+        if (botMonolog != null) {
+            PlayerDied?.Invoke(botMonolog.NickName);
+            player.SetPlayStatus(false);
+        }
+    }
     
     
     private void GetNewPlayers(bool mainPlayerPlay) {
@@ -114,6 +133,10 @@ public class BattleManager : MonoBehaviour {
             _bomb.StartNewBombTimer();
             
             await UniTask.WaitUntil(() => _bomb.BombExplode, cancellationToken: token);
+            
+            await UniTask.WaitForSeconds(_gameData.TimeAfterBombExplode, cancellationToken: token);
+            
+            _bomb.TeleportBombToSpawn(BombSpawnPoint);
             await ShowStartAnimation(false, token);
             RoundNumber++;
         }
@@ -128,7 +151,6 @@ public class BattleManager : MonoBehaviour {
     
     
     private async UniTask ShowStartAnimation(bool forbidMove, CancellationToken token) {
-        _bomb.TeleportBombToSpawn(BombSpawnPoint);
         
         await UniTask.Yield();
         
@@ -172,10 +194,7 @@ public class BattleManager : MonoBehaviour {
                     player.SetPlayStatus(false);
                 }
                 else if (player == _mainPlayer) {
-                    MainPlayerPlay = false;
-                    Debug.Log("Вы выбыли из игры");
-                    MainPlayerWin?.Invoke(false);
-                    WaitPlayerPressGameOverAsync().Forget();
+                    SetLooseMainPlayer();
                 }
                 
                 _players.Remove(player);
