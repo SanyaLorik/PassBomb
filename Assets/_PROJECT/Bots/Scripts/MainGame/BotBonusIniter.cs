@@ -69,7 +69,7 @@ public class BotBonusIniter : MonoBehaviour {
     private void UseRandomBonus() {
         StopPreviousBonus();
         _currentBonus = ItemValueBase.GetRandomItemByWeight(_bonusesWeights, _totalWeight);
-        Debug.Log("Бот юзает " + _currentBonus.GetType());
+        // Debug.Log("Бот юзает " + _currentBonus.GetType());
         _currentBonus.Use(_bot);
     }
     

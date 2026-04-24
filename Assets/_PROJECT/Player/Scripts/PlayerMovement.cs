@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Architecture_M;
 using UnityEngine;
 using Zenject;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     public CharacterController Controller => _controller;
     public bool MoveEnable { get; private set; } = true;
     public event Action<bool> MoveEnabled;
+    public event Action PlayerHit;
     
     [Inject] private IInputDirection2 _inputDirection2;
     [Inject] private IInputActivity _inputActivity;
@@ -97,6 +99,49 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     public void SetBigJump(bool bigJump) {
         _firstJumpForce = bigJump ? _gameData.JumpBonusHeight : _gameData.JumpForce;
         _secondJumpForce = bigJump ? _gameData.DoubleJumpBonusHeight : _gameData.SecondJumpForce;
+    }
+
+    public bool IsPushed { get; private set; }
+    
+    public void PushAway(Vector3 direction)
+    {
+        Debug.Log("PushAway player");
+        IsPushed = true;
+        PlayerHit?.Invoke();
+        StartCoroutine(PushWithController(_controller, direction.normalized));
+            
+    }
+
+    private IEnumerator PushWithController(CharacterController controller, Vector3 direction) {
+        float elapsed = 0f;
+
+        Vector3 horizontal = direction.normalized * _gameData.PlayerPushForce;
+        float verticalVelocity = _gameData.PlayerUpPushRatio;
+
+        Vector3 velocity = horizontal;
+
+        while (elapsed < _gameData.PushTime)
+        {
+            elapsed += Time.deltaTime;
+
+            // гравитация
+            verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
+            Vector3 move = new Vector3(
+                velocity.x,
+                verticalVelocity,
+                velocity.z
+            );
+
+            controller.Move(move * Time.deltaTime);
+
+            // затухание только по XZ
+            velocity *= 0.97f;
+
+            yield return null;
+        }
+
+        IsPushed = false;
     }
 
     public void SetInvinsible(bool invnincible) {

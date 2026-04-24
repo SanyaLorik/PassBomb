@@ -1,19 +1,17 @@
-using System;
 using System.Collections;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-
 [RequireComponent(typeof(NavMeshAgent))]
 public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [field: SerializeField] public bool ShowInSpawn { get; private set; }
     [field: SerializeField] public Transform Transform { get; private set; }
+    [field: SerializeField] public BotWalkManager BotWalkManager { get; private set; }
     [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
     [SerializeField] private GameObject _skinInstance;
-    [SerializeField] private BotWalkManager botWalkManager;
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
@@ -44,12 +42,13 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     private void SetStartWanderIfActive(bool startWander) {
         if (ShowInSpawn == false) return;
         
-        if(startWander) botWalkManager.StartWanderSpawn();
-        else botWalkManager.StopWanderSpawn();
+        if(startWander) BotWalkManager.StartWanderSpawn();
+        else BotWalkManager.StopWanderSpawn();
     }
 
 
     public void SetPlayStatus(bool goPlay) {
+        _agent.enabled = true;
         gameObject.SetActive(ShowInSpawn || goPlay);
         
         SetStartWanderIfActive(!goPlay);
@@ -71,14 +70,14 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     public void TeleportToPoint(Vector3 pos) {
         _posBeforeTeleport = transform.position;
-        if (NavMesh.SamplePosition(pos, out var hit, 5f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(pos, out var hit, 10f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
         }
     }
 
     
     public void SetMovingStatus(bool enable) {
-        botWalkManager.SetMovingStatus(enable);
+        BotWalkManager.SetMovingStatus(enable);
     }
 
     public void SetDefaultRoundSpeed() {
@@ -98,8 +97,16 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
     public void SetBigJump(bool state) {
-        botWalkManager.SetBigJump(state);
+        BotWalkManager.SetBigJump(state);
     }
+
+
+    public void PushAway(Vector3 direction) {
+        Debug.Log("PushAway bot");
+        BotWalkManager.PushAway(direction);
+    }
+
+    public bool IsPushed => BotWalkManager.IsPushed;
 
     public void SetInvinsible(bool invnincible) {
         _roleBehaviour.SetInvincibleAfterBonus(invnincible);
@@ -117,22 +124,22 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
 
     public void InitAnimator() {
-        _botAnimator.InitAnimator(botWalkManager);
+        _botAnimator.InitAnimator(BotWalkManager);
     }
     
     
     private void SetBotStateBeforeGame() {
         if (ShowInSpawn) {
-            _agent.gameObject.ActiveSelf();
+            _agent.ActiveSelf();
         }
         else {
-            _agent.gameObject.DisactiveSelf();
+            _agent.DisactiveSelf();
         }
     }
 
     private void ActiveBotInGame() {
         if (ShowInSpawn == false) {
-            _agent.gameObject.ActiveSelf();
+            _agent.ActiveSelf();
         }
     }
     

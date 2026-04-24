@@ -80,9 +80,11 @@ public class BattleManager : MonoBehaviour {
         if(!MainPlayerPlay) return;
         
         MainPlayerPlay = false;
-        Debug.Log("Вы выбыли из игры");
+        _players.Remove(_mainPlayer);
         MainPlayerWin?.Invoke(false);
+        PlayersCountChanged?.Invoke(_players.Count);
         WaitPlayerPressGameOverAsync().Forget();
+        Debug.Log("Вы выбыли из игры");
     }
 
     
@@ -90,7 +92,10 @@ public class BattleManager : MonoBehaviour {
         BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
         if (botMonolog != null) {
             PlayerDied?.Invoke(botMonolog.NickName);
+            _players.Remove(player);
             player.SetPlayStatus(false);
+            PlayersCountChanged?.Invoke(_players.Count);
+            Debug.Log($"{botMonolog.NickName} проиграл");
         }
     }
     
@@ -102,7 +107,7 @@ public class BattleManager : MonoBehaviour {
             countBots--;
         }
         IEnumerable<IPassBombPlayer> bots = _botsMainManager.GetBotsToGame(countBots);
-        Debug.Log("Кол-во доп игроков: " + bots.Count());
+        // Debug.Log("Кол-во доп игроков: " + bots.Count());
         _players.AddRange(bots);
     }
 

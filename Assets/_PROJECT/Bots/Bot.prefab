@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3667074117147502011}
   - component: {fileID: 1212541108296832897}
+  - component: {fileID: 9222768071546413318}
   - component: {fileID: 1402330233937831249}
   - component: {fileID: 7393878432037271427}
   - component: {fileID: 790296001332029354}
   - component: {fileID: 7300230832171583333}
   - component: {fileID: 3461060845432587824}
+  - component: {fileID: 5080053104704692055}
   m_Layer: 0
   m_Name: Bot
   m_TagString: Untagged
@@ -64,6 +66,33 @@ NavMeshAgent:
   m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
+--- !u!54 &9222768071546413318
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593425612949582850}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &1402330233937831249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4b651628ff0b842b0ee90923173f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotWander
+  _rb: {fileID: 9222768071546413318}
   _jumpParticlesController: {fileID: 1722108337831614623}
   _landParticleController: {fileID: 6972192133631246126}
   _walkingParticles: {fileID: 8628414548119378546}
@@ -111,10 +141,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BotStateManager
   <ShowInSpawn>k__BackingField: 0
   <Transform>k__BackingField: {fileID: 3667074117147502011}
+  <BotWalkManager>k__BackingField: {fileID: 1402330233937831249}
   _skinParent: {fileID: 4005745868750855142}
   _botAnimator: {fileID: 586101920010288029}
   _skinInstance: {fileID: 8916066414712164287}
-  botWalkManager: {fileID: 1402330233937831249}
   _botMonolog: {fileID: 7393878432037271427}
   _agent: {fileID: 1212541108296832897}
   _roleBehaviour: {fileID: 5885440733740190721}
@@ -200,6 +230,27 @@ MonoBehaviour:
     - rid: 6522072584283750470
       type: {class: SpeedBonus, ns: , asm: Assembly-CSharp}
       data: 
+--- !u!65 &5080053104704692055
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593425612949582850}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3363099, y: 3.963375, z: 1.4662476}
+  m_Center: {x: -0.015286684, y: 1.4816873, z: 0.034395218}
 --- !u!1 &734268474806474848
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +911,14 @@ PrefabInstance:
       propertyPath: botWalkManager
       value: 
       objectReference: {fileID: 1402330233937831249}
+    - target: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: _passBombPlayer
+      value: 
+      objectReference: {fileID: 1402330233937831249}
+    - target: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: _botStateManager
+      value: 
+      objectReference: {fileID: 790296001332029354}
     - target: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
       propertyPath: <PlayerHandle>k__BackingField
       value: 0

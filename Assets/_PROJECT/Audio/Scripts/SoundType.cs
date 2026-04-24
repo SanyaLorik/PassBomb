@@ -8,6 +8,7 @@
     Money,
     UIButton,
     HitPlayer,
+    PlayerAugh,
     Explosion,
     ReloadBonus,
     BonusUse,

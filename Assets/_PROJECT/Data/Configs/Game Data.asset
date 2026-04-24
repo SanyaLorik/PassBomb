@@ -34,11 +34,6 @@ MonoBehaviour:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
-    <RotationSpeed>k__BackingField: 10
-    <ChanceToJump>k__BackingField: 0.813
-    <TimeToStayOnPoint>k__BackingField:
-      <From>k__BackingField: 7
-      <To>k__BackingField: 14
     <TimeToBombExplode>k__BackingField: 10
     <TimeToInvinsibleAfterPass>k__BackingField: 2
     <DefaultSpeedInRound>k__BackingField: 12
@@ -48,8 +43,14 @@ MonoBehaviour:
     <DoubleJumpBonusHeight>k__BackingField: 30
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 100
+    <BotPushForce>k__BackingField: 40
+    <BotUpPushRatio>k__BackingField: 5
+    <PlayerPushForce>k__BackingField: 100
+    <PlayerUpPushRatio>k__BackingField: 25
+    <PushTime>k__BackingField: 1.4
     <ColldownToStartGame>k__BackingField: 3
     <TimeAfterBombExplode>k__BackingField: 1
+    <TimeToShowDieInfo>k__BackingField: 2
     <MaxPetsCount>k__BackingField: 6
     <BotPetCountDiapasone>k__BackingField:
       <From>k__BackingField: 0
@@ -58,6 +59,11 @@ MonoBehaviour:
     <CountSpeakingBotsPerTime>k__BackingField:
       <From>k__BackingField: 0
       <To>k__BackingField: 1
+    <RotationSpeed>k__BackingField: 10
+    <ChanceToJump>k__BackingField: 0.066
+    <TimeToStayOnPoint>k__BackingField:
+      <From>k__BackingField: 7
+      <To>k__BackingField: 14
     <TimeToSpeak>k__BackingField:
       <From>k__BackingField: 4
       <To>k__BackingField: 7
@@ -69,6 +75,7 @@ MonoBehaviour:
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
     <BotJumpDuration>k__BackingField: 1
+    <BotFallSpeed>k__BackingField: 8
     <BotJumpBonusDuration>k__BackingField: 2
     <BotDefaultJumpHeight>k__BackingField: 6
     <BotJumpBonusHeight>k__BackingField: 20

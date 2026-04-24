@@ -71,6 +71,7 @@ public class SoundManager : MonoBehaviour {
         _playerMovement.DoubleJumpPressed += PlayerMovementOnJumpPressed;
         _playerMovement.RunningStateChanged += PlayerMovementOnRunningStateChanged;
         _playerMovement.Floored += PlayerMovementOnFloored;
+        _playerMovement.PlayerHit += OnPlayerHit;
         // BANK / WEAR
         _bank.BankNewMoneyPlus += OnMoneyPlus;
         _bank.BankNewMoneyMinus += OnMoneyPlus;
@@ -85,10 +86,12 @@ public class SoundManager : MonoBehaviour {
         GameEvents.TriggerUsed += UiButtonClick;
         GameEvents.PlayerStayHunter += StayHunter;
         _bomb.BombExploded += PlayExplode;
-        _bomb.BombExploded += PlayerHit;
+        _bomb.BombExploded += PlayerAugh;
         _petOpenView.PetCanasOpen += PlayerMovementOnJumpPressed;
         _petOpenView.PetNewOpen += () => OnMoneyPlus(0);
     }
+
+    
 
 
     private void OnDisable() {
@@ -99,6 +102,7 @@ public class SoundManager : MonoBehaviour {
         _playerMovement.DoubleJumpPressed -= PlayerMovementOnJumpPressed;
         _playerMovement.RunningStateChanged -= PlayerMovementOnRunningStateChanged;
         _playerMovement.Floored -= PlayerMovementOnFloored;
+        _playerMovement.PlayerHit -= OnPlayerHit;
         // BANK / WEAR
         _bank.BankNewMoneyPlus -= OnMoneyPlus;
         _bank.BankNewMoneyMinus -= OnMoneyPlus;
@@ -113,7 +117,7 @@ public class SoundManager : MonoBehaviour {
         GameEvents.TriggerUsed -= UiButtonClick;
         GameEvents.PlayerStayHunter -= StayHunter;
         _bomb.BombExploded -= PlayExplode;
-        _bomb.BombExploded -= PlayerHit;
+        _bomb.BombExploded -= PlayerAugh;
         _petOpenView.PetCanasOpen -= PlayerMovementOnJumpPressed;
     }
     
@@ -124,6 +128,9 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(SoundType.PlayerStayHunter);
     }
 
+    private void OnPlayerHit() {
+        PlaySoundByType(SoundType.HitPlayer);
+    }
     
     private void CreateAudioSourceContainer() {
         _audioSourcesContainer = new GameObject("AudioSources");
@@ -147,9 +154,9 @@ public class SoundManager : MonoBehaviour {
     }
 
     
-    private void PlayerHit() {
+    private void PlayerAugh() {
         if(_battleManager.PlayerReturnToSpawn) return;
-        PlaySoundByType(SoundType.HitPlayer);
+        PlaySoundByType(SoundType.PlayerAugh);
     }
     
     
@@ -250,7 +257,7 @@ public class SoundManager : MonoBehaviour {
     
     private async UniTask StepCycleAsync(CancellationToken token) {
         while (!token.IsCancellationRequested) {
-            if (!_playerMovement.IsGrounded || _playGame) {
+            if (!_playerMovement.IsGrounded) {
                 return;
             }
             PlaySoundByType(SoundType.Step);

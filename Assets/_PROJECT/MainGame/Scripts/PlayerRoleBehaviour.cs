@@ -17,9 +17,11 @@ public enum BotRoleInGame {
 
 [RequireComponent(typeof(Collider))]
 public class PlayerRoleBehaviour : MonoBehaviour {
+    [SerializeField] private BotStateManager _botStateManager;
+    
+    
     [SerializeField] public Transform _pointToHoldBomb;
     [SerializeField] private Collider _collider;
-    [FormerlySerializedAs("_botWander")] [SerializeField] private BotWalkManager botWalkManager;
 
     [field:  SerializeField] public bool IsInvincibleAfterBomb { get; private set; }
     [field:  SerializeField] public bool IsInvincibleAfterBonus { get; private set; }
@@ -34,7 +36,13 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     // Для асинхронной передачи
     private static float _lastPassTime = -999f;
     private const float PASS_COOLDOWN = 0.5f;
-    
+    private float _lastRepulseTime = -999f;
+    private float REPULSE_COOLDOWN = 0.5f;
+    private BotWalkManager _botWalkManager;
+
+    private IPassBombPlayer PassBombPlayer;
+
+
     [Inject] private Bomb _bomb;
     [Inject] private MapsToBattleChanger _mapsChanger;
     [Inject] private BattleManager _battleManager;
@@ -47,21 +55,46 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     
     private void Awake() {
         SetColliderEnable(false);
+        InitPassBomb();
     }
-    
-    
+
+    private void InitPassBomb() {
+        if (_botStateManager != null) {
+            _botWalkManager = _botStateManager.BotWalkManager;
+            PassBombPlayer = _botStateManager;
+        }
+        else {
+            PassBombPlayer = _mainPlayer;
+        }
+    }
+
+
     private void OnTriggerEnter(Collider collider) {
         if(IsInvincibleAfterBonus || IsInvincibleAfterBomb) return; 
         // Если просто бродилка то никак не влияет на триггеры,
+        if (!collider.TryGetComponent(out PlayerRoleBehaviour player)) return;
+        if(player == this) return;
+        if(player.PassBombPlayer == PassBombPlayer) return;
+        
+        if (player.IsInvincibleAfterBonus) return;
+        
+        if (Time.time - _lastRepulseTime > REPULSE_COOLDOWN) {
+            // Vector3 direction = (player.PassBombPlayer.Transform.position - transform.position).normalized;
+            Vector3 direction = new Vector3(Random.value, Random.value, Random.value);
+            if (direction.sqrMagnitude < 0.001f)
+                return;
+
+            player.PassBombPlayer.PushAway(direction);
+            _lastRepulseTime = Time.time;
+        }
+        
+        
         if(CurrentRole != BotRoleInGame.Hunter) return;
         
         if (Time.time - _lastPassTime < PASS_COOLDOWN) {
             // Debug.Log("Передача заблокирована глобальным кулдауном");
             return;
         }
-        
-        if (!collider.TryGetComponent(out PlayerRoleBehaviour player)) return;
-        if (player.IsInvincibleAfterBonus) return;
         
         // Debug.Log($"Охотник передал бомбу, PlayerHandle = {PlayerHandle}");
         
@@ -72,6 +105,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         _lastPassTime = Time.time;
         
     }
+
+    
     
     public void NewRoundStarted(bool started) {
         UniTaskHelper.DisposeTask(ref _tokenSource);
@@ -124,7 +159,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         GetNextVictimByTimerAsync(token).Forget();
         while (!token.IsCancellationRequested) {
             // За типом бегаем постоянно выбранным
-            botWalkManager.SetAgentGoToPoint(GetNavMeshPosition(_targetToHunt.Transform.position));
+            _botWalkManager.SetAgentGoToPoint(GetNavMeshPosition(_targetToHunt.Transform.position));
             await UniTask.WaitForSeconds(_gameData.DurationToGoInPoint ,cancellationToken: token);
             if (_targetToHunt.RoleBehaviour.IsInvincibleAfterBomb || _targetToHunt.RoleBehaviour.IsInvincibleAfterBonus) {
                 GetNextPlayerVictim();
@@ -180,8 +215,9 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         Debug.Log("Run");
         // Пока просто бегает по площади
         while (!token.IsCancellationRequested) {
-            Vector3 target = botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
-            await botWalkManager.SetAgentGoToPointAsync(target, token);
+            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            await UniTask.WaitWhile(() => _botWalkManager.IsPushed, cancellationToken: token);
+            await _botWalkManager.SetAgentGoToPointAsync(target, token);
         }
     }
     
@@ -189,8 +225,9 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private async UniTask WanderingInPlace(CancellationToken token) {
         if(PlayerHandle) return;
         while (!token.IsCancellationRequested) {
-            Vector3 target = botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
-            await botWalkManager.SetAgentGoToPointAsync(target, token);
+            await UniTask.WaitWhile(() => _botWalkManager.IsPushed, cancellationToken: token);
+            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            await _botWalkManager.SetAgentGoToPointAsync(target, token);
         }
     }
 

@@ -714,7 +714,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4cecd2d07b6476a4ba189bc4220dfc77, type: 2}
   - {fileID: 11400000, guid: ec997e2f20157994abbfd5edfd376c88, type: 2}
   - {fileID: 11400000, guid: a86ea1bd8054a1441acafccdc60fd099, type: 2}
-  - {fileID: 11400000, guid: be1067da85aceac4a9f6d84cc2483f14, type: 2}
   _poolSize: 0
   _fadeTime: 1
   _stepTiming: 0.3
@@ -6914,7 +6913,6 @@ GameObject:
   - component: {fileID: 1965576584}
   - component: {fileID: 1965576583}
   - component: {fileID: 1965576582}
-  - component: {fileID: 1965576587}
   m_Layer: 0
   m_Name: GameOverTrigger
   m_TagString: Untagged
@@ -6931,8 +6929,8 @@ Transform:
   m_GameObject: {fileID: 1965576580}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 183.3035, y: -30, z: -18.7069}
-  m_LocalScale: {x: 313.3255, y: 32.01351, z: 414.7807}
+  m_LocalPosition: {x: 107.5539, y: -26.3, z: 0.2305}
+  m_LocalScale: {x: 161.83333, y: 32.01351, z: 197.7358}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6108034796597380318}
@@ -7040,33 +7038,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965576580}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &1965576587
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1965576580}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1988927018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6824706950518206388, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}

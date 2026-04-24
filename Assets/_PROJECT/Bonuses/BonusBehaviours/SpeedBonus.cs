@@ -5,11 +5,11 @@ using UnityEngine;
 public class SpeedBonus : IBonus {
     public void Use(IPassBombPlayer passBombPlayer) {
         passBombPlayer.SetBonusSpeed();
-        Debug.Log("Включена суперскорость");
+        // Debug.Log("Включена суперскорость");
     }
 
     public void StopWork(IPassBombPlayer passBombPlayer) {
         passBombPlayer.SetDefaultSpeed();
-        Debug.Log("Суперскорость выключена");
+        // Debug.Log("Суперскорость выключена");
     }
 }

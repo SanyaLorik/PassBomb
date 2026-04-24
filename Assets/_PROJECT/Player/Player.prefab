@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _controller: {fileID: 6165380883207411591}
   _spawnPoint: {fileID: 0}
-  _roleBehaviour: {fileID: 0}
+  _roleBehaviour: {fileID: 7425658207102932552}
   <Transform>k__BackingField: {fileID: 0}
 --- !u!114 &6584472137099475329
 MonoBehaviour:
@@ -486,6 +486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRoleBehaviour
       objectReference: {fileID: 0}
+    - target: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+      propertyPath: _passBombPlayer
+      value: 
+      objectReference: {fileID: 3539183820512013210}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -496,6 +500,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
   m_PrefabInstance: {fileID: 1759702745585960008}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7425658207102932552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9180170683328221696, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
+  m_PrefabInstance: {fileID: 1759702745585960008}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a084eb1172c4e08982efad95bc3cc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRoleBehaviour
 --- !u!1001 &2269276909364486326
 PrefabInstance:
   m_ObjectHideFlags: 0

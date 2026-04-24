@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-
+﻿using System;
+using UnityEngine;
 
 public interface IPassBombPlayer {
     public void SetPlayStatus(bool goPlay);
@@ -11,6 +11,9 @@ public interface IPassBombPlayer {
     public void SetBonusSpeed();
     public void SetDefaultSpeed();
     public void SetBigJump(bool state);
+    public void PushAway(Vector3 direction);
+    public bool IsPushed { get;  }
+
     public void SetInvinsible(bool invnincible);
     public PlayerRoleBehaviour RoleBehaviour { get; }
     Transform Transform { get; }
