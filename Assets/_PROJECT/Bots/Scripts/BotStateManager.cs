@@ -48,11 +48,13 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        IsPlaying = goPlay;
         _agent.enabled = true;
+        BotWalkManager.StopPhys();
+        RoleBehaviour.DisposeAllLogic();
+        
         gameObject.SetActive(ShowInSpawn || goPlay);
         
-        SetStartWanderIfActive(!goPlay);
-        IsPlaying = goPlay;
         if (goPlay) {
             ActiveBotInGame();
         }
@@ -61,6 +63,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
             SetBotStateBeforeGame();
             TeleportToPoint(_posBeforeTeleport);
         }
+        SetStartWanderIfActive(!goPlay);
     }
 
     public void SetPlayStatusSilent(bool goPlay) {

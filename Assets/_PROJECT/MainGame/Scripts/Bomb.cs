@@ -28,7 +28,6 @@ public class Bomb : MonoBehaviour {
     private CancellationTokenSource _tokenSource;
     private float _barWidth;
     
-    
     [Inject] private GameData _gameData;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
@@ -87,7 +86,14 @@ public class Bomb : MonoBehaviour {
         BombExplode = false;
         BombTimerAsync(_tokenSource.Token).Forget();
     }
-    
+
+    public void ExlodeBombLater() {
+        if(BombExplode) return;
+        Debug.Log("Преждевременный взрыв бомбы");
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        Explode();
+        _timerContainer.DisactiveSelf();
+    }
     
     private async UniTask BombTimerAsync(CancellationToken token) {
         _timerContainer.ActiveSelf();
@@ -120,11 +126,12 @@ public class Bomb : MonoBehaviour {
 
 
     private void Explode() {
+        if (BombExplode) return;
         SetNewBombParent(_permanentBombParent, true);
         
         Debug.Log("Взрыв БОМБЫ!");
-        BombExploded?.Invoke();
         BombExplode = true;
+        BombExploded?.Invoke();
         _bombModel.DisactiveSelf();
         _cartoonExplosionFX.Play();
     }

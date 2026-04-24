@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 20000
+    Money: 45651
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Skins:
@@ -21,11 +21,11 @@ MonoBehaviour:
     SkinWearId: univesal
     Bonuses:
     - Id: InvisibleBonus
-      Count: 9
+      Count: 99
     - Id: SpeedBonus
-      Count: 10
+      Count: 95
     - Id: BigJumpBonus
-      Count: 10
+      Count: 99
     Tasks:
     - Id: Parkour
       Count: 0
@@ -45,6 +45,9 @@ MonoBehaviour:
     - Id: HealsLifesCount
       Count: 0
       IsGetReward: 0
+    Pets:
+    - Id: bugatti_pet
+      Count: 1
     DailyRewardSave:
       LastDateTimeReceived: 16.04.2026 15:18:54
       LastDayNumber: -1

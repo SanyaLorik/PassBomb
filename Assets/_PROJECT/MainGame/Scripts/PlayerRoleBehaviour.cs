@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using _PROJECT.Scripts.Helpers;
@@ -7,6 +8,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public enum BotRoleInGame {
     Hunter, 
@@ -106,8 +108,13 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         
     }
 
-    
-    
+
+    public void DisposeAllLogic() {
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        UniTaskHelper.DisposeTask(ref _hunterTokenSource);
+    }
+
+
     public void NewRoundStarted(bool started) {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CurrentRole = BotRoleInGame.Wanderer;
@@ -181,11 +188,6 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         }
     }
 
-    private CancellationToken GetNewHuntToken() {
-        UniTaskHelper.DisposeTask(ref _hunterTokenSource);
-        _hunterTokenSource = new CancellationTokenSource();
-        return _hunterTokenSource.Token;
-    }
     
     private void GetNextPlayerVictim() {
         if (Random.value < _gameData.ChanceToGoPlayerInHunt && _battleManager.MainPlayerPlay) {

@@ -43,7 +43,7 @@ MonoBehaviour:
     <DoubleJumpBonusHeight>k__BackingField: 30
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 100
-    <BotPushForce>k__BackingField: 20
+    <BotPushForce>k__BackingField: 25
     <BotUpPushRatio>k__BackingField: 5
     <PlayerPushForce>k__BackingField: 100
     <PlayerUpPushRatio>k__BackingField: 25

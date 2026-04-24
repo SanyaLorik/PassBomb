@@ -75,10 +75,23 @@ public class BattleManager : MonoBehaviour {
         GameEnded(false);
     }
 
-    
-    public void SetLooseMainPlayer() {
-        if(!MainPlayerPlay) return;
+
+    public void PlayerFalled(IPassBombPlayer passBombPlayer) {
+        if (passBombPlayer.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
+            _bomb.ExlodeBombLater();
+            return;
+        }
         
+        if (passBombPlayer == _mainPlayer) {
+            SetLooseMainPlayer();
+        }
+        else {
+            SetLooseBot(passBombPlayer);
+        }
+    }
+    
+    private void SetLooseMainPlayer() {
+        if(!MainPlayerPlay) return;
         MainPlayerPlay = false;
         _players.Remove(_mainPlayer);
         MainPlayerWin?.Invoke(false);
@@ -88,7 +101,7 @@ public class BattleManager : MonoBehaviour {
     }
 
     
-    public void SetGameOverToBot(IPassBombPlayer player) {
+    private void SetLooseBot(IPassBombPlayer player) {
         BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
         if (botMonolog != null) {
             PlayerDied?.Invoke(botMonolog.NickName);

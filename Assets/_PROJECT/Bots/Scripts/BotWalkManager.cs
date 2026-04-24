@@ -70,6 +70,9 @@ public class BotWalkManager : MonoBehaviour {
         
     private async UniTask StartWanderingCycleAsync() {
         if (!gameObject.activeSelf) return;
+        
+        _botTokenSource = new CancellationTokenSource();
+
         float durationToStay = 0f;
         if (Random.value > 0.5f) {
             durationToStay = Random.Range(_gameData.TimeToStayAfterSpawn.From, _gameData.TimeToStayAfterSpawn.To);
@@ -191,7 +194,7 @@ public class BotWalkManager : MonoBehaviour {
             // проверка: коснулись ли чего-то
             if (Physics.Raycast(pos, Vector3.down, out RaycastHit hit, 0.5f)) {
                 // проверяем NavMesh
-                if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 2f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 15f, NavMesh.AllAreas)) {
                     FinishLanding(navHit.position);
                     return;
                 }
@@ -200,6 +203,7 @@ public class BotWalkManager : MonoBehaviour {
             // улетел в бездну
             if (t > maxTime || pos.y < -200f) {
                 Debug.Log("Bot fell into void");
+                StopPhys();
                 Grounded?.Invoke(true);
                 return;
             }
@@ -211,9 +215,7 @@ public class BotWalkManager : MonoBehaviour {
     
     private void FinishLanding(Vector3 navMeshPos) {
         // стопаем физику
-        _rb.linearVelocity = Vector3.zero;
-        _rb.isKinematic = true;
-        _rb.useGravity = false;
+        StopPhys();
 
         // возвращаем агента
         _agent.enabled = true;
@@ -224,36 +226,43 @@ public class BotWalkManager : MonoBehaviour {
 
         Grounded?.Invoke(true);
         _landParticleController.Play();
+    }
 
+    public void StopPhys() {
+        _rb.linearVelocity = Vector3.zero;
+        _rb.isKinematic = true;
+        _rb.useGravity = false;
         IsPushed = false;
     }
-    
-    
+
+
     public void StopWanderSpawn() {
-        Debug.Log("StopWanderSpawn");
-        UniTaskHelper.DisposeTask(ref _botTokenSource);
-        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
-        
-        _agent.ResetPath();
-        _walkingParticles.Stop();
-        StartWandering?.Invoke(false);
+        ResetLogic();
     }
     
     
     public void StartWanderSpawn() {
+        ResetLogic();
+
+        _agent.isStopped = false;
+        StartWanderingCycleAsync().Forget();
+    }
+
+    
+    private void ResetLogic() {
         Debug.Log("StartWanderSpawn");
         UniTaskHelper.DisposeTask(ref _botTokenSource);
         UniTaskHelper.DisposeTask(ref _jumpTokenSource);
         
-        _botTokenSource = new CancellationTokenSource();
+        _agent.velocity = Vector3.zero;
         _agent.ResetPath();
-        _agent.isStopped = false;
-        StartWanderingCycleAsync().Forget();
+        _agent.nextPosition = transform.position;
+
         _walkingParticles.Stop();
         StartWandering?.Invoke(false);
     }
 
-    
+
     public void SetMovingStatus(bool enable) {
         if(!gameObject.activeSelf) return;
         _agent.isStopped = !enable;
@@ -324,6 +333,10 @@ public class BotWalkManager : MonoBehaviour {
     private void RotateByVelocity() {
         Vector3 velocity = _agent.velocity;
         velocity.y = 0;
+        
+        
+        if (velocity.sqrMagnitude < 0.001f)
+            return;
     
         float sqrMag = velocity.sqrMagnitude;
     
