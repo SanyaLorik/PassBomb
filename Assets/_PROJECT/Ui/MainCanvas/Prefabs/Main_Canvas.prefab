@@ -10405,6 +10405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed Bonus Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5252964978649007511, guid: c348a8b08179479409a99f281ebd8199, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7231204123371202967, guid: c348a8b08179479409a99f281ebd8199, type: 3}
       propertyPath: m_fontSize
       value: 43.65
@@ -12557,6 +12561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jump Bonus Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5252964978649007511, guid: c348a8b08179479409a99f281ebd8199, type: 3}
+      propertyPath: m_text
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6199113523947959815, guid: c348a8b08179479409a99f281ebd8199, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -12690,6 +12698,10 @@ PrefabInstance:
     - target: {fileID: 3783247221436498314, guid: c348a8b08179479409a99f281ebd8199, type: 3}
       propertyPath: m_Name
       value: Invisibility Bonus Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252964978649007511, guid: c348a8b08179479409a99f281ebd8199, type: 3}
+      propertyPath: m_text
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6199113523947959815, guid: c348a8b08179479409a99f281ebd8199, type: 3}
       propertyPath: m_Color.b
