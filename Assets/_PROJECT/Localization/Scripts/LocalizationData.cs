@@ -13,6 +13,10 @@ public class LocalizationData : LocalizationDataBase,
     public string Timer;
     public string Enemy;
     public string TakePet;
+    public string GetButton;
+    public string Money;
+    public string SelectSkinButton;
+    public string SelectedSkinButton;
     // Battle info
     public string PlayerWinner;
     public string PlayerExploded;

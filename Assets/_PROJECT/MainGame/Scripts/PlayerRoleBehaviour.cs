@@ -79,10 +79,10 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         if (player.IsInvincibleAfterBonus) return;
         
         if (Time.time - _lastRepulseTime > REPULSE_COOLDOWN) {
-            // Vector3 direction = (player.PassBombPlayer.Transform.position - transform.position).normalized;
-            Vector3 direction = new Vector3(Random.value, Random.value, Random.value);
+            Vector3 direction = (player.PassBombPlayer.Transform.position - transform.position).normalized;
             if (direction.sqrMagnitude < 0.001f)
-                return;
+                direction = new Vector3(Random.value, Random.value, Random.value);
+
 
             player.PassBombPlayer.PushAway(direction);
             _lastRepulseTime = Time.time;
