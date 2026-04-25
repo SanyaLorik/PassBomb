@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class TeleporterTrigger : MonoBehaviour {
+public class PortalTrigger : MonoBehaviour {
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     
     private void OnTriggerEnter(Collider collider) {

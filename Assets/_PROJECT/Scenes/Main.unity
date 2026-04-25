@@ -2872,6 +2872,10 @@ PrefabInstance:
       propertyPath: <Bonus>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 90d408a111db82948b57ffd9ad6ecc6c, type: 2}
+    - target: {fileID: 110228637070847977, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 160277521484968119, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3707,6 +3711,10 @@ PrefabInstance:
     - target: {fileID: 5550261296167726216, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646238485328987371, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5646868227618997240, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5212,6 +5220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407686364}
+  - component: {fileID: 1407686365}
   m_Layer: 0
   m_Name: -----Environment-----
   m_TagString: Untagged
@@ -5241,6 +5250,19 @@ Transform:
   - {fileID: 6108034796597380318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1407686365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407686363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63547e40cb24bc78090076c69823e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
+  <SpawnPoint>k__BackingField: {fileID: 1276183571}
 --- !u!114 &1411325109 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7425658207102932552, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
@@ -6224,6 +6246,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8149789604903084940, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8316654761407481716, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7202,7 +7228,7 @@ GameObject:
   - component: {fileID: 1889167962}
   - component: {fileID: 1889167961}
   m_Layer: 0
-  m_Name: TeleportToSpawnTrigger
+  m_Name: FallVoidTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7235,7 +7261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47a18bf10660fa488afd0d9a2decc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ColliderTeleport
-  _spawnPoint: {fileID: 1276183571}
 --- !u!65 &1889167962
 BoxCollider:
   m_ObjectHideFlags: 0

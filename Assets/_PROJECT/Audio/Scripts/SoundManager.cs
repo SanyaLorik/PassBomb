@@ -122,6 +122,11 @@ public class SoundManager : MonoBehaviour {
     }
     
     
+    private void Start() {
+        SettingsOnMusicValueChanged(_settings.MusicValue);
+        SettingsOnEffectsValueChanged(_settings.EffectsValue);
+    }
+    
     
     private void StayHunter(PlayerRoleBehaviour obj) {
         if(_battleManager.PlayerReturnToSpawn) return;
@@ -139,23 +144,19 @@ public class SoundManager : MonoBehaviour {
 
 
     private void PlayerWin(bool win) {
-        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(win ? SoundType.Win : SoundType.Loose);
     }
 
     private void PlayBonuseUse() {
-        if(_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.BonusUse);
     }
 
     private void BonusReloaded() {
-        if(_battleManager.MainPlayerPlay) return;
         PlaySoundByType(SoundType.ReloadBonus);
     }
 
     
     private void PlayerAugh() {
-        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.PlayerAugh);
     }
     
@@ -202,11 +203,7 @@ public class SoundManager : MonoBehaviour {
     private void SkinAction(SkinItemConfig _) {
         BuyOrUnlock(0);
     }
-    
-    private void Start() {
-        SettingsOnMusicValueChanged(_settings.MusicValue);
-        SettingsOnEffectsValueChanged(_settings.EffectsValue);
-    }
+
     
     private void SettingsOnMusicValueChanged(float value) {
         float db = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20;

@@ -95,6 +95,7 @@ public class BonusSlot : MonoBehaviour {
     
     private void HideShowElementsByRole(PlayerRoleInGame role) {
         if (role == PlayerRoleInGame.Hunter) {
+            StopBonusWork();
             IsAvailable = false;
             _reloadProgress.fillAmount = 1f;
         }
@@ -142,7 +143,7 @@ public class BonusSlot : MonoBehaviour {
     }
     
     
-    public void StopBonusWork() {
+    private void StopBonusWork() {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         CheckAvailable();
         Bonus.StopWork(_mainPlayer);
@@ -201,8 +202,8 @@ public class BonusSlot : MonoBehaviour {
         StopBonusWork();
     }
 
-    
-    public void CheckAvailable() {
+
+    private void CheckAvailable() {
         _countText.text = BonusCount.ToString();
         if (BonusCount == 0) {
             IsAvailable = false;
@@ -215,13 +216,10 @@ public class BonusSlot : MonoBehaviour {
     }
 
 
-    
-    public void GetOneBonus(bool useSaves = false) {
-        if (BonusCount != 0) {
-            if (useSaves) {
-                _saver.GetSave<GameSave>().SetMinusOneBonus(BonusItem.Id);
-                _saver.Save();
-            }
+    private void GetOneBonus(bool useSaves = false) {
+        if (useSaves) {
+            _saver.GetSave<GameSave>().SetMinusOneBonus(BonusItem.Id);
+            _saver.Save();
         }
         CheckAvailable();
     }

@@ -42,7 +42,6 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private static float _lastPassTime = -999f;
     private const float PASS_COOLDOWN = 0.5f;
     private float _lastRepulseTime = -999f;
-    private float REPULSE_COOLDOWN = 0.5f;
     private BotWalkManager _botWalkManager;
 
     private IPassBombPlayer PassBombPlayer;
@@ -84,7 +83,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         
         if (player.IsInvincibleAfterBonus) return;
         
-        if (Time.time - _lastRepulseTime > REPULSE_COOLDOWN) {
+        if (Time.time - _lastRepulseTime > _gameData.PushColldown) {
             Vector3 direction = (player.PassBombPlayer.Transform.position - transform.position).normalized;
             if (direction.sqrMagnitude < 0.001f)
                 direction = new Vector3(Random.value, Random.value, Random.value);
@@ -132,8 +131,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     
 
     public void SetRole(PlayerRoleInGame role) {
-        CurrentRole = role;
-        PlayerRoleChanged?.Invoke(role);
+        if (CurrentRole != role) {
+            CurrentRole = role;
+            PlayerRoleChanged?.Invoke(role);
+        }
+
         
         UniTaskHelper.DisposeTask(ref _tokenSource);
         UniTaskHelper.DisposeTask(ref _hunterTokenSource);

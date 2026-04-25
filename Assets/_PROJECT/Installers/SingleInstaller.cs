@@ -7,6 +7,7 @@ public class SingleInstaller : MonoInstaller {
     public override void InstallBindings() {
         Container.Bind<AdvHelper>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<FallVoidCollider>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<SpawnManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         BindCamera();
         BindSettings();
         BindValuteFormatter();

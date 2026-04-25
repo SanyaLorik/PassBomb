@@ -47,6 +47,7 @@ public class GameData : GameDataBase
     [field: SerializeField] public float PlayerPushForce { get; private set; }
     [field: SerializeField] public float PlayerUpPushRatio { get; private set; }
     [field: SerializeField] public float PushTime { get; private set; }
+    [field: SerializeField] public float PushColldown { get; private set; }
     
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }

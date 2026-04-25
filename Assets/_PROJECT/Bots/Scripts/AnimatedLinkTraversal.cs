@@ -86,7 +86,11 @@ public class AnimatedLinkTraversal : MonoBehaviour
 
     void FinishJump()
     {
-        agent.CompleteOffMeshLink();
+        if (agent.enabled && agent.isOnNavMesh && agent.isOnOffMeshLink)
+        {
+            agent.CompleteOffMeshLink();
+        }
+
         agent.updatePosition = true;
         IsJumpingTraversal = false;
     }

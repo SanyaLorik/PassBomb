@@ -39,7 +39,6 @@ public class BotWalkManager : MonoBehaviour {
     private float _jumpDuration;
     public bool IsPushed { get; private set; }
     private bool _isJumping;
-    private float _lastPushTime;
     
     [Inject] private GameData _gameData;
     [Inject] private NavMeshHelper _navMeshHelper;
@@ -125,9 +124,6 @@ public class BotWalkManager : MonoBehaviour {
 
     public void PushAway(Vector3 direction) {
         if (IsPushed) return;
-        if (Time.time - _lastPushTime < 1f) return;
-
-        _lastPushTime = Time.time;
 
         UniTaskHelper.DisposeTask(ref _pushTokenSource);
         _pushTokenSource = new CancellationTokenSource();
@@ -185,7 +181,8 @@ public class BotWalkManager : MonoBehaviour {
         _rb.useGravity = true;
 
         // важно: задаём начальную скорость вниз
-        _rb.linearVelocity = Vector3.one * _gameData.BotFallSpeed;
+        _rb.angularVelocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.down * _gameData.BotFallSpeed;
 
         while (!token.IsCancellationRequested) {
             t += Time.fixedDeltaTime;
@@ -193,9 +190,19 @@ public class BotWalkManager : MonoBehaviour {
             Vector3 pos = _rb.position;
 
             // проверка: коснулись ли чего-то
-            if (Physics.Raycast(pos, Vector3.down, out RaycastHit hit, 0.5f)) {
-                // проверяем NavMesh
-                if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 2f, NavMesh.AllAreas)) {
+            bool grounded = Physics.SphereCast(
+                pos + Vector3.up * 0.2f, 
+                0.3f,
+                Vector3.down,
+                out RaycastHit hit,
+                1.5f
+            );
+
+            if (grounded && _rb.linearVelocity.y <= 0f)
+            {
+                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, 2.0f, NavMesh.AllAreas))
+                {
+                    _rb.position = hit.point;
                     FinishLanding(navHit.position);
                     return;
                 }
@@ -215,16 +222,28 @@ public class BotWalkManager : MonoBehaviour {
     }
     
     
-    private void FinishLanding(Vector3 navMeshPos) {
-        // стопаем физику
+    private void FinishLanding(Vector3 navMeshPos)
+    {
         StopPhys();
 
-        // возвращаем агента
         _agent.enabled = true;
-        _agent.Warp(navMeshPos);
-        _agent.nextPosition = navMeshPos;
-        _agent.ResetPath();
-        _agent.isStopped = false;
+
+        if (NavMesh.SamplePosition(navMeshPos, out var hit, 1f, NavMesh.AllAreas))
+        {
+            _agent.Warp(hit.position);
+        }
+
+        // ВАЖНО: проверка перед любыми действиями
+        if (_agent.isOnNavMesh) {
+            _agent.nextPosition = _agent.transform.position;
+            _agent.ResetPath();
+            _agent.isStopped = false;
+        }
+        else {
+            Debug.LogWarning("Agent not on NavMesh after landing");
+            _mainManager.FellInVoidWanderer(this);
+            return;
+        }
 
         Grounded?.Invoke(true);
         _landParticleController.Play();
@@ -232,6 +251,8 @@ public class BotWalkManager : MonoBehaviour {
 
     public void StopPhys() {
         _rb.linearVelocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        
         _rb.isKinematic = true;
         _rb.useGravity = false;
         IsPushed = false;

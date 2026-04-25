@@ -15,8 +15,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
-    
-    private Vector3 _posBeforeTeleport;
 
     public bool IsPlaying { get; private set; }
     public string Nickname => _botMonolog.NickName;
@@ -27,6 +25,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     
     [Inject] private GameData _gameData;
+    [Inject] private SpawnManager _spawn;
 
     
     private void Awake() {
@@ -60,9 +59,9 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         }
         // Возвращение на спавн
         else {
-            Debug.Log("Возвращение на спавн игрока " + _botMonolog.NickName);
+            Debug.Log($"Возвращение на спавн игрока {_botMonolog.NickName} in {_spawn.SpawnPoint.position}");
             SetBotStateBeforeGame();
-            TeleportToPoint(_posBeforeTeleport);
+            TeleportToPoint(_spawn.SpawnPoint.position);
         }
         SetStartWanderIfActive(!goPlay);
     }
@@ -73,8 +72,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void TeleportToPoint(Vector3 pos) {
-        Debug.Log($"TeleportToPoint {pos}  игрока {_botMonolog.NickName}");
-        _posBeforeTeleport = transform.position;
         if (NavMesh.SamplePosition(pos, out var hit, 10f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
         }
@@ -85,22 +82,27 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         BotWalkManager.SetMovingStatus(enable);
     }
 
+    
     public void SetDefaultRoundSpeed() {
         _agent.speed = _gameData.DefaultSpeedInRound;
     }
+    
     
     public void SetHunterSpeed() {
         _agent.speed = _gameData.HunterSpeed;
     }
 
+    
     public void SetBonusSpeed() {
         _agent.speed = _gameData.VelocityBonusSpeed;
     }
 
+    
     public void SetDefaultSpeed() {
         _agent.speed = _gameData.BotSpeed;
     }
 
+    
     public void SetBigJump(bool state) {
         BotWalkManager.SetBigJump(state);
     }
@@ -110,8 +112,10 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         BotWalkManager.PushAway(direction);
     }
 
+    
     public bool IsPushed => BotWalkManager.IsPushed;
 
+    
     public void SetInvinsible(bool invnincible) {
         _roleBehaviour.SetInvincibleAfterBonus(invnincible);
     }
@@ -141,6 +145,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         }
     }
 
+    
     private void ActiveBotInGame() {
         if (ShowInSpawn == false) {
             _agent.ActiveSelf();
@@ -177,3 +182,4 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
 }
+

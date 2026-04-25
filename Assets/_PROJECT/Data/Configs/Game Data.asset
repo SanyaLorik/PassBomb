@@ -42,12 +42,13 @@ MonoBehaviour:
     <JumpBonusHeight>k__BackingField: 24
     <DoubleJumpBonusHeight>k__BackingField: 30
     <BonusReload>k__BackingField: 7
-    <BonusDuration>k__BackingField: 100
-    <BotPushForce>k__BackingField: 30
+    <BonusDuration>k__BackingField: 9
+    <BotPushForce>k__BackingField: 15
     <BotUpPushRatio>k__BackingField: 5
-    <PlayerPushForce>k__BackingField: 100
-    <PlayerUpPushRatio>k__BackingField: 25
+    <PlayerPushForce>k__BackingField: 40
+    <PlayerUpPushRatio>k__BackingField: 15
     <PushTime>k__BackingField: 1.4
+    <PushColldown>k__BackingField: 1
     <ColldownToStartGame>k__BackingField: 3
     <TimeAfterBombExplode>k__BackingField: 1
     <TimeToShowDieInfo>k__BackingField: 2
@@ -75,10 +76,10 @@ MonoBehaviour:
     <DurationToGoInPoint>k__BackingField: 0.1
     <RunStoppingDistance>k__BackingField: 0
     <BotJumpDuration>k__BackingField: 1
-    <BotFallSpeed>k__BackingField: 8
+    <BotFallSpeed>k__BackingField: 15
     <BotJumpBonusDuration>k__BackingField: 2
     <BotDefaultJumpHeight>k__BackingField: 6
-    <BotJumpBonusHeight>k__BackingField: 20
+    <BotJumpBonusHeight>k__BackingField: 15
     <ChanceToGoPlayerInHunt>k__BackingField: 0.777
     <BotUseNewBonusTime>k__BackingField:
       <From>k__BackingField: 5

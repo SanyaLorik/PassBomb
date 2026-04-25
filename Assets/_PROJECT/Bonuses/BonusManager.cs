@@ -38,30 +38,12 @@ public class BonusManager : MonoBehaviour {
         }
     }
     
-    private void DisableAllPlayersBonuses() {
-        // Пока ток у игрока
-        _bonusSlots.ForEach(b => b.StopBonusWork());
-    }
-    
     
     private void PlayerStayHunter(PlayerRoleBehaviour player) {
         IPassBombPlayer passPlayer = _battleManager.Players.First(p => p.RoleBehaviour == player);
-        DisablePlayerBonuses(passPlayer);
+        passPlayer.SetBigJump(false);
+        passPlayer.SetInvinsible(false);
     }
 
-    
-    private void DisablePlayerBonuses(IPassBombPlayer player) {
-        if (player == _mainPlayer) {
-            DisableAllPlayersBonuses();
-        }
-        if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
-            player.SetHunterSpeed();
-        }
-        else {
-            player.SetDefaultRoundSpeed();
-        }
-        player.SetBigJump(false);
-        player.SetInvinsible(false);
-    }
   
 }
