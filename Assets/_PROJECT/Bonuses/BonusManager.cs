@@ -54,7 +54,7 @@ public class BonusManager : MonoBehaviour {
         if (player == _mainPlayer) {
             DisableAllPlayersBonuses();
         }
-        if (player.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
+        if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
             player.SetHunterSpeed();
         }
         else {

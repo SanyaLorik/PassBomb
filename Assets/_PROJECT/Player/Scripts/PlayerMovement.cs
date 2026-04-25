@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        IsPlaying = goPlay;
         PlayerInSpawn = !goPlay;
         _stateManager.SetupCanvases(goPlay);
         
@@ -102,10 +103,9 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     }
 
     public bool IsPushed { get; private set; }
-    
-    public void PushAway(Vector3 direction)
-    {
-        Debug.Log("PushAway player");
+    public bool IsPlaying { get;  private set; }
+
+    public void PushAway(Vector3 direction) {
         IsPushed = true;
         PlayerHit?.Invoke();
         StartCoroutine(PushWithController(_controller, direction.normalized));

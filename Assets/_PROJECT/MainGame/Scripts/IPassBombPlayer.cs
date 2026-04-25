@@ -13,6 +13,7 @@ public interface IPassBombPlayer {
     public void SetBigJump(bool state);
     public void PushAway(Vector3 direction);
     public bool IsPushed { get;  }
+    public bool IsPlaying { get; }
 
     public void SetInvinsible(bool invnincible);
     public PlayerRoleBehaviour RoleBehaviour { get; }

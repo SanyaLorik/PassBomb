@@ -43,6 +43,7 @@ public class BotWalkManager : MonoBehaviour {
     
     [Inject] private GameData _gameData;
     [Inject] private NavMeshHelper _navMeshHelper;
+    [Inject] private BotsMainManager _mainManager;
     
     
     private void Awake() {
@@ -194,7 +195,7 @@ public class BotWalkManager : MonoBehaviour {
             // проверка: коснулись ли чего-то
             if (Physics.Raycast(pos, Vector3.down, out RaycastHit hit, 0.5f)) {
                 // проверяем NavMesh
-                if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 15f, NavMesh.AllAreas)) {
+                if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 2f, NavMesh.AllAreas)) {
                     FinishLanding(navHit.position);
                     return;
                 }
@@ -203,6 +204,7 @@ public class BotWalkManager : MonoBehaviour {
             // улетел в бездну
             if (t > maxTime || pos.y < -200f) {
                 Debug.Log("Bot fell into void");
+                _mainManager.FellInVoidWanderer(this);
                 StopPhys();
                 Grounded?.Invoke(true);
                 return;
@@ -267,7 +269,6 @@ public class BotWalkManager : MonoBehaviour {
         if(!gameObject.activeSelf) return;
         _agent.isStopped = !enable;
         _agent.ResetPath();
-        Debug.Log("SetMovingStatus " + enable);
     }
 
     

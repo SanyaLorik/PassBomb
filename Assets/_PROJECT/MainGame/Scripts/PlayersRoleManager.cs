@@ -40,20 +40,20 @@ public class PlayersRoleManager : MonoBehaviour {
 
     public void InitNewPlayersToRound(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (var player in players) {
-            player.RoleBehaviour.NewRoundStarted(true);
+            player.RoleBehaviour.NewRoundStart(true);
             // player.SetDefaultRoundSpeed();
         }
         
         // Назначение роли у типочка
         int randomPlayer = Random.Range(0, players.Count);
-        players.ElementAt(randomPlayer).RoleBehaviour.SetRole(BotRoleInGame.Hunter);
+        players.ElementAt(randomPlayer).RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
         // Debug.Log("назначение охотника");
     }
 
     
     public void SetGameOver(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (var player in players) {
-            player.RoleBehaviour.NewRoundStarted(false);
+            player.RoleBehaviour.NewRoundStart(false);
             player.SetDefaultSpeed();
         }
     }

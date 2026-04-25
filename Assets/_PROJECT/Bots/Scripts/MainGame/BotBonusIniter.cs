@@ -59,7 +59,7 @@ public class BotBonusIniter : MonoBehaviour {
         while (!token.IsCancellationRequested) {
             float waitTime = Random.Range(_gameData.BotUseNewBonusTime.From, _gameData.BotUseNewBonusTime.To);
             await UniTask.WaitForSeconds(waitTime, cancellationToken: token);
-            if (_bot.RoleBehaviour.CurrentRole != BotRoleInGame.Hunter) {
+            if (_bot.RoleBehaviour.CurrentRole != PlayerRoleInGame.Hunter) {
                 UseRandomBonus();
             }
         }

@@ -43,10 +43,10 @@ public class TutorialManager : MonoBehaviour {
     //
     // public void OnEnable() {
     //     if (!TutorialPassed) {
-    //         _battleManager.NewRoundStarted += StartTutorial;
+    //         _battleManager.NewRoundStart += StartTutorial;
     //         _bonusManager.BonusUsed += OnBonusUsed;
     //         _modifierManager.ModifierChoosed += OnChoosedModifier;
-    //         _mainGameStarter.NewRoundStarted += OnGameStarted;
+    //         _mainGameStarter.NewRoundStart += OnGameStarted;
     //     }
     // }
     //
@@ -188,10 +188,10 @@ public class TutorialManager : MonoBehaviour {
     //     Saves.TutorialPassed = true;
     //     _saver.Save();
     //     _narrator.DisableNarrator();
-    //     _battleManager.NewRoundStarted -= StartTutorial;
+    //     _battleManager.NewRoundStart -= StartTutorial;
     //     _bonusManager.BonusUsed -= OnBonusUsed;
     //     _modifierManager.ModifierChoosed -= OnChoosedModifier;
-    //     _mainGameStarter.NewRoundStarted -= OnGameStarted;
+    //     _mainGameStarter.NewRoundStart -= OnGameStarted;
     // }
 
 }

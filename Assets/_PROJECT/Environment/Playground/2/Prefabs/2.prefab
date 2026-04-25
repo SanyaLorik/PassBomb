@@ -1015,13 +1015,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapItem
   SpawnPoints:
   - {fileID: 1049489440972555692}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6675594650294946891}
+  - {fileID: 7487873044091714110}
+  - {fileID: 4185290127297638532}
+  - {fileID: 4413425542263072342}
+  - {fileID: 3629069758627856636}
+  - {fileID: 2266780905929747851}
+  - {fileID: 8444439499805867812}
+  - {fileID: 6308311270519658471}
+  - {fileID: 4646945406096631358}
   BombCenterSpawn: {fileID: 3598272472388772314}
   Floor: {fileID: 3039492280940388765}
   YToFind: 20
@@ -2193,8 +2195,8 @@ MonoBehaviour:
   m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 1
-  m_Size: {x: 105.8, y: 19.1, z: 111.04}
-  m_Center: {x: -2.7, y: 2, z: 8.5}
+  m_Size: {x: 107.92, y: 19.1, z: 109.68}
+  m_Center: {x: 0.5, y: 2, z: 5.6}
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2208,7 +2210,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9f2808b08b785764a8d73b23ccb598c9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 537a4b3cf98313f4c97eb7b2d4fb89ab, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &7982037561239821495
 GameObject:

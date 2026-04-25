@@ -35,7 +35,7 @@ public class BattleManager : MonoBehaviour {
     public event Action ForceStartedNewGame;
 
     private CancellationTokenSource _tokenSource;
-    
+    private int PlayersCount => _players.Count;
     
     [Inject] private PlayerMovement _mainPlayerMovement;
     [Inject] private BotsMainManager _botsMainManager;
@@ -77,7 +77,7 @@ public class BattleManager : MonoBehaviour {
 
 
     public void PlayerFalled(IPassBombPlayer passBombPlayer) {
-        if (passBombPlayer.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
+        if (passBombPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
             _bomb.ExlodeBombLater();
             return;
         }
@@ -93,9 +93,8 @@ public class BattleManager : MonoBehaviour {
     private void SetLooseMainPlayer() {
         if(!MainPlayerPlay) return;
         MainPlayerPlay = false;
-        _players.Remove(_mainPlayer);
         MainPlayerWin?.Invoke(false);
-        PlayersCountChanged?.Invoke(_players.Count);
+        RemovePlayer(_mainPlayer);
         WaitPlayerPressGameOverAsync().Forget();
         Debug.Log("Вы выбыли из игры");
     }
@@ -105,10 +104,9 @@ public class BattleManager : MonoBehaviour {
         BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
         if (botMonolog != null) {
             PlayerDied?.Invoke(botMonolog.NickName);
-            _players.Remove(player);
-            player.SetPlayStatus(false);
-            PlayersCountChanged?.Invoke(_players.Count);
             Debug.Log($"{botMonolog.NickName} проиграл");
+            player.SetPlayStatus(false);
+            RemovePlayer(player);
         }
     }
     
@@ -143,19 +141,20 @@ public class BattleManager : MonoBehaviour {
         GameReadyToPlay?.Invoke();
 
         RoundNumber = 1;
-        while (!token.IsCancellationRequested && _players.Count > 1) {
+        while (!token.IsCancellationRequested && PlayersCount > 1) {
             NewRoundStarted?.Invoke(RoundNumber);
             
-            Debug.Log("Игроков: " + _players.Count);
             _playersRoleManager.InitNewPlayersToRound(_players);
             _bomb.StartNewBombTimer();
             
-            await UniTask.WaitUntil(() => _bomb.BombExplode, cancellationToken: token);
+            await UniTask.WaitUntil(() => _bomb.BombExplode || PlayersCount == 1, cancellationToken: token);
             
             await UniTask.WaitForSeconds(_gameData.TimeAfterBombExplode, cancellationToken: token);
             
             _bomb.TeleportBombToSpawn(BombSpawnPoint);
-            await ShowStartAnimation(false, token);
+            if (PlayersCount != 1) {
+                await ShowStartAnimation(false, token);
+            }
             RoundNumber++;
         }
         
@@ -169,7 +168,6 @@ public class BattleManager : MonoBehaviour {
     
     
     private async UniTask ShowStartAnimation(bool forbidMove, CancellationToken token) {
-        
         await UniTask.Yield();
         
         if(forbidMove) EnablePlayersMove(false);
@@ -190,7 +188,7 @@ public class BattleManager : MonoBehaviour {
     private void GameEnded(bool setGameOver = true) {
         Debug.Log("Игра кончилась");
         foreach (IPassBombPlayer player in _players) {
-            player.RoleBehaviour.NewRoundStarted(false);
+            player.RoleBehaviour.NewRoundStart(false);
             player.SetPlayStatus(false);
         }
         _players.Clear();
@@ -203,28 +201,32 @@ public class BattleManager : MonoBehaviour {
     
     private void CheckPlayers() {
         foreach (IPassBombPlayer player in _players) {
-            if (player.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter) {
+            if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
                 Debug.Log("Игрок выбыл!");
                 player.RoleBehaviour.SetInvinsibleAfterBomb(true);
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
                     PlayerDied?.Invoke(botMonolog.NickName);
                     player.SetPlayStatus(false);
+                    RemovePlayer(player);
                 }
                 else if (player == _mainPlayer) {
                     SetLooseMainPlayer();
                 }
-                
-                _players.Remove(player);
-                player.RoleBehaviour.NewRoundStarted(false);
-                PlayersCountChanged?.Invoke(_players.Count);
                 return;
             }
         }
         Debug.LogError("Игрок не сдох после взрыва бомбы, WTF");
     }
-    
-    
+
+    private void RemovePlayer(IPassBombPlayer player) {
+        player.RoleBehaviour.NewRoundStart(false);
+        _players.Remove(player);
+        PlayersCountChanged?.Invoke(PlayersCount);
+        Debug.Log("Игроков: " + PlayersCount);
+    }
+
+
     private void TeleportPlayersToPoints(List<IPassBombPlayer> players, Transform[] points) {
         if (players.Count < points.Length) {
             Debug.LogWarning("Кол-во игроков < кол-ва точек спавна");

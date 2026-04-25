@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
-public enum BotRoleInGame {
+public enum PlayerRoleInGame {
     Hunter, 
     Victim,
     Wanderer
@@ -28,8 +28,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     [field:  SerializeField] public bool IsInvincibleAfterBomb { get; private set; }
     [field:  SerializeField] public bool IsInvincibleAfterBonus { get; private set; }
     [field:  SerializeField] public bool PlayerHandle { get; private set; }
-    [field:  SerializeField] public BotRoleInGame CurrentRole { get; private set; }
-    
+    [field:  SerializeField] public PlayerRoleInGame CurrentRole { get; private set; }
+
+    public PlayerRoleBehaviour LastPlayerContact { get; private set; }
+
+
     private CancellationTokenSource _tokenSource;
     private CancellationTokenSource _hunterTokenSource;
     private IPassBombPlayer _targetToHunt;
@@ -44,6 +47,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
 
     private IPassBombPlayer PassBombPlayer;
 
+    public event Action<PlayerRoleInGame> PlayerRoleChanged;
 
     [Inject] private Bomb _bomb;
     [Inject] private MapsToBattleChanger _mapsChanger;
@@ -85,13 +89,13 @@ public class PlayerRoleBehaviour : MonoBehaviour {
             if (direction.sqrMagnitude < 0.001f)
                 direction = new Vector3(Random.value, Random.value, Random.value);
 
-
+            LastPlayerContact = player;
             player.PassBombPlayer.PushAway(direction);
             _lastRepulseTime = Time.time;
         }
         
         
-        if(CurrentRole != BotRoleInGame.Hunter) return;
+        if(CurrentRole != PlayerRoleInGame.Hunter) return;
         
         if (Time.time - _lastPassTime < PASS_COOLDOWN) {
             // Debug.Log("Передача заблокирована глобальным кулдауном");
@@ -100,8 +104,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         
         // Debug.Log($"Охотник передал бомбу, PlayerHandle = {PlayerHandle}");
         
-        player.SetRole(BotRoleInGame.Hunter);
-        SetRole(BotRoleInGame.Wanderer);
+        player.SetRole(PlayerRoleInGame.Hunter);
+        SetRole(PlayerRoleInGame.Wanderer);
         
         StartInvinsibleTimer(_gameData.TimeToInvinsibleAfterPass).Forget();
         _lastPassTime = Time.time;
@@ -115,33 +119,35 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     }
 
 
-    public void NewRoundStarted(bool started) {
+    public void NewRoundStart(bool started) {
         UniTaskHelper.DisposeTask(ref _tokenSource);
-        CurrentRole = BotRoleInGame.Wanderer;
+        CurrentRole = PlayerRoleInGame.Wanderer;
         SetColliderEnable(started);
         _otherPlayers.Clear();
         _otherPlayers = _battleManager.Players.Where(p => p.RoleBehaviour != this).ToList();
         if (started) {
-            SetRole(BotRoleInGame.Wanderer);
+            SetRole(PlayerRoleInGame.Wanderer);
         }
     }
     
 
-    public void SetRole(BotRoleInGame role) {
+    public void SetRole(PlayerRoleInGame role) {
         CurrentRole = role;
+        PlayerRoleChanged?.Invoke(role);
+        
         UniTaskHelper.DisposeTask(ref _tokenSource);
         UniTaskHelper.DisposeTask(ref _hunterTokenSource);
         _tokenSource = new CancellationTokenSource();
         
         switch (role) {
-            case BotRoleInGame.Hunter:
+            case PlayerRoleInGame.Hunter:
                 _bomb.InitBombToNewPlayer(_pointToHoldBomb, this);
                 StartHunting(_tokenSource.Token).Forget();
                 break;
-            case BotRoleInGame.Victim:
+            case PlayerRoleInGame.Victim:
                 Run(_tokenSource.Token).Forget();
                 break;
-            case BotRoleInGame.Wanderer:
+            case PlayerRoleInGame.Wanderer:
                 WanderingInPlace(_tokenSource.Token).Forget();
                 break;
         }

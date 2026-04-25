@@ -16,7 +16,7 @@ public class MapsToBattleChanger : MonoBehaviour {
 
     public void ChooseNextMap() {
         MapIndex++;
-        if (MapIndex >= _mapitems.Length-1) {
+        if (MapIndex > _mapitems.Length-1) {
             MapIndex = 0;
         }
         _mapitems.ForEach(m => m.DisactiveSelf());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using IInitializable = Zenject.IInitializable;
 using Random = UnityEngine.Random;
@@ -11,6 +12,7 @@ public class BotsMainManager : IInitializable, IDisposable {
     private readonly List<BotStateManager> _bots;
     private readonly List<SkinItemConfig> _skins;
     private readonly GameData _gameData;
+    private readonly BattleManager _battleManager;
 
     
     private CancellationTokenSource _tokenSource;
@@ -19,11 +21,13 @@ public class BotsMainManager : IInitializable, IDisposable {
 
     public BotsMainManager(List<BotStateManager> bots, 
         GameData gameData, 
-        List<SkinItemConfig> skins) 
+        List<SkinItemConfig> skins,
+        BattleManager battleManager)
     {
         _bots = bots;
         _skins = skins;
         _gameData = gameData;
+        _battleManager = battleManager;
     }
 
     
@@ -130,7 +134,13 @@ public class BotsMainManager : IInitializable, IDisposable {
         return result;
     }
 
-
+    
+    public void FellInVoidWanderer(BotWalkManager manager) {
+        BotStateManager bot = _bots.Find(b => b.BotWalkManager == manager);
+        Debug.Log($"Игрока {bot.Nickname} достали из пустоты ангелы");
+        _battleManager.PlayerFalled(bot);
+    }
+    
     public void Dispose() {
     }
 }

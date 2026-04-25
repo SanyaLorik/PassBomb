@@ -60,6 +60,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         }
         // Возвращение на спавн
         else {
+            Debug.Log("Возвращение на спавн игрока " + _botMonolog.NickName);
             SetBotStateBeforeGame();
             TeleportToPoint(_posBeforeTeleport);
         }
@@ -72,6 +73,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void TeleportToPoint(Vector3 pos) {
+        Debug.Log($"TeleportToPoint {pos}  игрока {_botMonolog.NickName}");
         _posBeforeTeleport = transform.position;
         if (NavMesh.SamplePosition(pos, out var hit, 10f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
@@ -105,7 +107,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void PushAway(Vector3 direction) {
-        Debug.Log("PushAway bot");
         BotWalkManager.PushAway(direction);
     }
 

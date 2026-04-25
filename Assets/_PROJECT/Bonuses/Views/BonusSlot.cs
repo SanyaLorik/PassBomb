@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Architecture_M;
@@ -5,33 +6,38 @@ using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using Zenject;
+
+[Serializable]
+public enum KeyBoardKey {
+    One,
+    Two,
+    Three
+}
 
 
 public class BonusSlot : MonoBehaviour {
     [field: SerializeField] public BonusItemConfig BonusItem { get; private set; }
+    [field: SerializeField] public KeyBoardKey KeyBoardKey { get; private set; }
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private TextMeshProUGUI _bonusNameText;
     [SerializeField] private Image _reloadProgress;
     [Header("Время использования")]
     [SerializeField] private GameObject _useContainer;
     [SerializeField] private RectTransform _useTimeProgress;
-    
-    
     [SerializeField] private Button _button;
-
     [Header("Выключать на мобил.")]
     [SerializeField] private GameObject _desktopObject;
-
-
+    
+    
     public bool IsAvailable { get; private set; }
     public IBonus Bonus => BonusItem.Bonus;
     public int BonusCount => Saves.GetBonusCount(BonusItem.Id);
-    private GameSave Saves => _saver.GetSave<GameSave>();
     
+    private GameSave Saves => _saver.GetSave<GameSave>();
     private CancellationTokenSource _tokenSource;
-
     private Vector2 _startOffset;
     
     [Inject] private BonusManager _bonusManager;
@@ -41,7 +47,6 @@ public class BonusSlot : MonoBehaviour {
     [Inject] IPassBombPlayer _mainPlayer;
     [Inject] GameData _gameData;
     [Inject] IDeviceTypeProvider _deviceTypeProvider;
-    
     
     [Inject]
     private void Init() {
@@ -55,18 +60,50 @@ public class BonusSlot : MonoBehaviour {
     }
 
     
+    
     private void Start() {
+        _mainPlayer.RoleBehaviour.PlayerRoleChanged += HideShowElementsByRole;
+        
+        
         _startOffset = _useTimeProgress.offsetMax;
         CheckAvailable();
         SetProgressBarVisible(false);
         _bonusNameText.text =
             _localization.GetTranslatedText(BonusItem, _localization.BonusesTranslates);
-
+        
         if (_deviceTypeProvider.DeviceType == DeviceTypeEnum.Mobile)
             _desktopObject.DisactiveSelf();
     }
 
+    private void Update() {
+        if (CheckKey()) {
+            TryUse();
+        }
+    }
     
+    private bool CheckKey() {
+        var keyboard = Keyboard.current;
+        return KeyBoardKey switch
+        {
+            KeyBoardKey.One => keyboard.digit1Key.wasPressedThisFrame || keyboard.numpad1Key.wasPressedThisFrame,
+            KeyBoardKey.Two => keyboard.digit2Key.wasPressedThisFrame || keyboard.numpad2Key.wasPressedThisFrame,
+            KeyBoardKey.Three => keyboard.digit3Key.wasPressedThisFrame || keyboard.numpad3Key.wasPressedThisFrame,
+            _ => false
+        };
+    }
+    
+    
+    private void HideShowElementsByRole(PlayerRoleInGame role) {
+        if (role == PlayerRoleInGame.Hunter) {
+            IsAvailable = false;
+            _reloadProgress.fillAmount = 1f;
+        }
+        else {
+            CheckAvailable(); 
+        }
+    }
+
+
     private void TryUse() {
         if (!IsAvailable) {
             Debug.Log("Бонус на перезарядке или уже юзается ");
@@ -78,7 +115,7 @@ public class BonusSlot : MonoBehaviour {
             return;
         }
         
-        if(_mainPlayer.RoleBehaviour.CurrentRole == BotRoleInGame.Hunter){ 
+        if(_mainPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter){ 
             Debug.Log("Игрок хантер, он не может юзать бонусы");
             return;
         }

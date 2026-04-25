@@ -4,11 +4,14 @@ using Zenject;
 
 
 public class EconomyCalculator : MonoBehaviour {
-    [Header("Economy")]
+    [Header("Экономкика конца игры")]
     [SerializeField] public int _minimalReward;
     [SerializeField] private float _ratioForGame;
     [SerializeField] private int _curveRatio;
     [SerializeField] private AnimationCurve _animationCurve;
+
+    [Header("Экономкика конца игры")] 
+    [SerializeField] private int _pushToVoidReward;
 
     
     [Inject] BattleManager _battleManager;
@@ -22,6 +25,10 @@ public class EconomyCalculator : MonoBehaviour {
             _curveRatio * _animationCurve.Evaluate(roundProgress)
         );
         return reward;
+    }
+
+    public int CalcRewardToFall() {
+        return _pushToVoidReward;
     }
     
     
