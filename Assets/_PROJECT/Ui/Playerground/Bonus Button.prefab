@@ -540,6 +540,7 @@ MonoBehaviour:
   _useContainer: {fileID: 7636153004691326672}
   _useTimeProgress: {fileID: 418978055067945506}
   _button: {fileID: 2219096580696750502}
+  _desktopObject: {fileID: 9188450601103287363}
 --- !u!1 &3890048841329371350
 GameObject:
   m_ObjectHideFlags: 0

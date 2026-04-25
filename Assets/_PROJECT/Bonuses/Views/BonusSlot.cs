@@ -21,6 +21,9 @@ public class BonusSlot : MonoBehaviour {
     
     [SerializeField] private Button _button;
 
+    [Header("Выключать на мобил.")]
+    [SerializeField] private GameObject _desktopObject;
+
 
     public bool IsAvailable { get; private set; }
     public IBonus Bonus => BonusItem.Bonus;
@@ -37,6 +40,7 @@ public class BonusSlot : MonoBehaviour {
     [Inject] LocalizationData _localization;
     [Inject] IPassBombPlayer _mainPlayer;
     [Inject] GameData _gameData;
+    [Inject] IDeviceTypeProvider _deviceTypeProvider;
     
     
     [Inject]
@@ -57,6 +61,9 @@ public class BonusSlot : MonoBehaviour {
         SetProgressBarVisible(false);
         _bonusNameText.text =
             _localization.GetTranslatedText(BonusItem, _localization.BonusesTranslates);
+
+        if (_deviceTypeProvider.DeviceType == DeviceTypeEnum.Mobile)
+            _desktopObject.DisactiveSelf();
     }
 
     
