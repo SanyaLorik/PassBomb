@@ -1,7 +1,5 @@
 using SanyaBeerExtension;
-using Unity.AI.Navigation;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class MapsToBattleChanger : MonoBehaviour {
@@ -27,4 +25,5 @@ public class MapsToBattleChanger : MonoBehaviour {
     public Transform GetCurrentBombSpawn => _mapitems[MapIndex].BombCenterSpawn;
     public Transform GetCurrentMapFloor => _mapitems[MapIndex].Floor;
     public float GetCurrentMapHeight => _mapitems[MapIndex].YToFind;
+    public float FallBotFindSamplePosition => _mapitems[MapIndex].FallBotFindSamplePosition;
 }

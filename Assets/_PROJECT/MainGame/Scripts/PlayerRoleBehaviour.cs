@@ -101,9 +101,9 @@ public class PlayerRoleBehaviour : MonoBehaviour {
             return;
         }
         
-        // Debug.Log($"Охотник передал бомбу, PlayerHandle = {PlayerHandle}");
-        
         player.SetRole(PlayerRoleInGame.Hunter);
+        GameEvents.PlayerPassBombInvoke(this);
+        
         SetRole(PlayerRoleInGame.Wanderer);
         
         StartInvinsibleTimer(_gameData.TimeToInvinsibleAfterPass).Forget();

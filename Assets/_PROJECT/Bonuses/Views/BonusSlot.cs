@@ -30,11 +30,11 @@ public class BonusSlot : MonoBehaviour {
     [SerializeField] private Button _button;
     [Header("Выключать на мобил.")]
     [SerializeField] private GameObject _desktopObject;
-    
-    
-    public bool IsAvailable { get; private set; }
-    public IBonus Bonus => BonusItem.Bonus;
-    public int BonusCount => Saves.GetBonusCount(BonusItem.Id);
+
+
+    private bool IsAvailable { get; set; }
+    private IBonus Bonus => BonusItem.Bonus;
+    private int BonusCount => Saves.GetBonusCount(BonusItem.Id);
     
     private GameSave Saves => _saver.GetSave<GameSave>();
     private CancellationTokenSource _tokenSource;
@@ -131,7 +131,7 @@ public class BonusSlot : MonoBehaviour {
     
 
     private void UseBonus() {
-        GameEvents.BonusUseInvoke();
+        GameEvents.BonusUseInvoke(Bonus);
         Bonus.Use(_mainPlayer);
         GetOneBonus(true);
         IsAvailable = false;

@@ -37,6 +37,7 @@ public class BattleManager : MonoBehaviour {
     private CancellationTokenSource _tokenSource;
     private int PlayersCount => _players.Count;
     
+    
     [Inject] private PlayerMovement _mainPlayerMovement;
     [Inject] private BotsMainManager _botsMainManager;
     [Inject] private Bomb _bomb;

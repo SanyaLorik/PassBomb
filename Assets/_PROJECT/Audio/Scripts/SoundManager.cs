@@ -147,7 +147,7 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(win ? SoundType.Win : SoundType.Loose);
     }
 
-    private void PlayBonuseUse() {
+    private void PlayBonuseUse(IBonus _) {
         PlaySoundByType(SoundType.BonusUse);
     }
 

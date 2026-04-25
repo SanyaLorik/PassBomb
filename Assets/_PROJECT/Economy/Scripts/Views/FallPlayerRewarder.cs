@@ -9,10 +9,11 @@ public class FallPlayerRewarder : MonoBehaviour {
 
 
     private void OnEnable() {
-        _fallVoidCollider.PlayerFalledInVoid += FallVoidColliderOnPlayerFalledInVoid;
+        _fallVoidCollider.PlayerFalledInVoid += OnPlayerFalledInVoid;
     }
+    
 
-    private void FallVoidColliderOnPlayerFalledInVoid(IPassBombPlayer faller) {
+    private void OnPlayerFalledInVoid(IPassBombPlayer faller) {
         if(faller == _mainPlayer) return; // Соболезнуем
         
         if (faller.RoleBehaviour.LastPlayerContact == _mainPlayer.RoleBehaviour) {

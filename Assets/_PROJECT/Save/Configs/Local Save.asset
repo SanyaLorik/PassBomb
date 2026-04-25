@@ -26,25 +26,7 @@ MonoBehaviour:
       Count: 95
     - Id: BigJumpBonus
       Count: 99
-    Tasks:
-    - Id: Parkour
-      Count: 0
-      IsGetReward: 0
-    - Id: WinCount
-      Count: 0
-      IsGetReward: 0
-    - Id: HitCount
-      Count: 3
-      IsGetReward: 0
-    - Id: UseHealCount
-      Count: 0
-      IsGetReward: 0
-    - Id: ShieldCount
-      Count: 8
-      IsGetReward: 0
-    - Id: HealsLifesCount
-      Count: 0
-      IsGetReward: 0
+    Tasks: []
     Pets:
     - Id: bugatti_pet
       Count: 1
@@ -55,21 +37,21 @@ MonoBehaviour:
       CountSpinAllow: 5
       LastDateTimeSpined: 07.04.2026 22:43:20
     DailyQuestSave:
-      LastDateTimeEntered: 16.04.2026 15:45:41
+      LastDateTimeEntered: 25.04.2026 23:46:52
     SkinSave:
       SkinSets:
       - GroupId: 1
         BoughtIds: 0100000002000000
-        EquippedId: -1
+        EquippedId: 1
       - GroupId: 2
         BoughtIds: 01000000
-        EquippedId: -1
+        EquippedId: 1
       - GroupId: 3
         BoughtIds: 01000000
-        EquippedId: -1
+        EquippedId: 1
       - GroupId: 4
         BoughtIds: 01000000
-        EquippedId: -1
+        EquippedId: 1
       - GroupId: 5
         BoughtIds: 01000000
-        EquippedId: -1
+        EquippedId: 1

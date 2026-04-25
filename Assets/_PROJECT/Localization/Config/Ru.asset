@@ -31,21 +31,37 @@ MonoBehaviour:
   Timer: "\u041D\u0430\u0447\u0430\u043B\u043E \u0447\u0435\u0440\u0435\u0437 {0}..."
   Enemy: "\u0412\u0440\u0430\u0433"
   TakePet: "\u041F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u043F\u0435\u0442\u0430!"
+  GetButton: 
+  Money: 
+  SelectSkinButton: 
+  SelectedSkinButton: 
   PlayerWinner: "{0} \u0432\u044B\u0438\u0433\u0440\u0430\u043B!"
   PlayerExploded: "{0} \u0432\u044B\u0431\u044B\u043B!"
   TaskTranslates:
   - <Id>k__BackingField: 0
-    _text: 
+    _text: "\u041F\u0435\u0440\u0435\u0434\u0430\u0439 \u0431\u043E\u043C\u0431\u0443
+      {0} \u0440\u0430\u0437."
   - <Id>k__BackingField: 1
-    _text: 
+    _text: "\u0421\u0431\u0440\u043E\u0441\u044C \u0432\u0440\u0430\u0433\u0430 {0}
+      \u0440\u0430\u0437."
   - <Id>k__BackingField: 2
-    _text: 
+    _text: "\u041F\u0440\u043E\u0436\u0438\u0432\u0438 {0} \u0441\u0435\u043A\u0443\u043D\u0434."
   - <Id>k__BackingField: 3
-    _text: 
+    _text: "\u0421\u044B\u0433\u0440\u0430\u0439 {0} \u0440\u0430\u0443\u043D\u0434\u043E\u0432."
   - <Id>k__BackingField: 4
-    _text: 
+    _text: "\u0412\u044B\u0438\u0433\u0440\u0430\u0439 {0} \u0440\u0430\u0437."
   - <Id>k__BackingField: 5
-    _text: 
+    _text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0431\u043E\u043D\u0443\u0441
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438 {0} \u0440\u0430\u0437."
+  - <Id>k__BackingField: 6
+    _text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0431\u043E\u043D\u0443\u0441
+      \u043F\u0440\u044B\u0436\u043A\u0430 {0} \u0440\u0430\u0437."
+  - <Id>k__BackingField: 7
+    _text: "\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439 \u0431\u043E\u043D\u0443\u0441
+      \u043D\u0435\u0432\u0438\u0434\u0438\u043C\u043E\u0441\u0442\u0438 {0} \u0440\u0430\u0437."
+  - <Id>k__BackingField: 8
+    _text: "\u041F\u0440\u043E\u0439\u0434\u0438 \u043F\u0430\u0440\u043A\u0443\u0440
+      {0} \u0440\u0430\u0437."
   TutorialTranslates: []
   BonusesTranslates:
   - <Id>k__BackingField: {fileID: 11400000, guid: f4665fba6592ecd4da333ef6375d5ead, type: 2}
@@ -55,6 +71,7 @@ MonoBehaviour:
   - <Id>k__BackingField: {fileID: 11400000, guid: 90d408a111db82948b57ffd9ad6ecc6c, type: 2}
     _text: "\u0421\u0443\u043F\u0435\u0440 \u043F\u0440\u044B\u0436\u043E\u043A"
   SkinTranslates: []
+  EggStationNameTranslates: []
   <StaticTranslates>k__BackingField: []
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"

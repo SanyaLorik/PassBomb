@@ -72,8 +72,14 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void TeleportToPoint(Vector3 pos) {
-        if (NavMesh.SamplePosition(pos, out var hit, 10f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(pos, out var hit, 4f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
+        }
+        else {
+            Debug.Log($"Телепортировать игрока {_botMonolog.NickName} in {_spawn.SpawnPoint.position} не удалось, пробуем еще раз");
+            if (NavMesh.SamplePosition(pos, out hit, 15f, NavMesh.AllAreas)) {
+                _agent.Warp(hit.position);
+            }
         }
     }
 

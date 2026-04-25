@@ -12,18 +12,21 @@ using Zenject;
 
 [Serializable]
 public enum TaskType {
-   HitCount,
+   PassBomb,
+   PassInVoid,
+   LifeSec,
+   LifeRound,
    WinCount,
-   UseHealCount,
-   ShieldCount,
-   HealsLifesCount,  
-   Parkour,
+   UseSpeedBonus,
+   UseSuperJumpBonus,
+   UseInvincibleBonus,
+   ParkourCount,
 }
 
 [Serializable]
 public class TaskInfo {
-    public int FullValue;
-    public int TaskMoney;
+    public int Count;
+    public int RewardMoney;
     public TaskType TaskType;
     public string TaskId;
 }
@@ -54,16 +57,20 @@ public class TasksManager : MonoBehaviour {
         
     
     // Стата игрока в данный момент 
-    private int _hitCount;
-    private int _parkour;
+    private int _passBomb;
+    private int _passInVoid;
+    private int _lifeSec;
+    private int _lifeRound;
     private int _winCount;
-    private int _useHealCount;
-    private int _healsLifesCount;
-    private int _shieldCount;
-  
+    private int _useSpeedBonus;
+    private int _useSuperJumpBonus;
+    private int _useInvincibleBonus;
+    private int _parkourCount;
+
     public event Action TaskComplete;
     private GameSave Saver => _gameSave.GetSave<GameSave>();
 
+    
     [Inject] private PlayerBank _bank;
     [Inject] private NumberFormatter _formatter; 
     [Inject] private LocalizationData _localization; 
@@ -72,18 +79,10 @@ public class TasksManager : MonoBehaviour {
     [Inject] private GameOverView _gameOverView; 
     [Inject] private IGameSave _gameSave; 
     [Inject] private AdvertisingMonetizationMirra _advertisingMonetization;
+    [Inject] private AdvHelper _advHelper;
+    [Inject] private FallVoidCollider _fallVoidCollider;
+    [Inject] private IPassBombPlayer _mainPlayer;
 
-    
-    private void OnEnable() {
-        // _openCanvasButton.onClick.AddListener(() => _canvas.ActiveSelf());
-        // _closeCanvasButton.onClick.AddListener(() => _canvas.DisactiveSelf());
-        // _resetButton.onClick.AddListener(ShowAdv);
-        //
-        // _hpSystem.MainPlayerHeal += OnPlayerHeal;
-        // _parkourCompleteTrigger.ParkourCompleted += UpdateParkourTask;
-        // _gameOverView.PlayerWin += PlayerWinCheck;
-        // _dailyQuest.OnTimerPassed += ResetCompletedTasks;
-    }
     
     
     private void Start() {
@@ -93,53 +92,65 @@ public class TasksManager : MonoBehaviour {
             ResetCompletedTasks();
         }
     }
-
-
-    private void ShowAdv() {
-        _advertisingMonetization.InvokeRewarded(
-            null,
-            (isSuccess) => 
-            {
-                if (isSuccess) {
-                    // Debug.Log("Обновление тасок");
-                    ResetCompletedTasks();
-                }
-            }
-        );
-    }
     
-    private void ResetCompletedTasks() {
-        _dailyQuest.ShowDailies();
-        foreach (var taskVisual in _taskVisualIdToViewDictionary) {
-            // Debug.Log(taskVisual.Value.TaskId);
-            if (Saver.GetTaskInfo(taskVisual.Value.TaskId).IsGetReward) {
-                TaskInfo taskInfo = _taskIdToInfoDictionary[taskVisual.Value.TaskId];
-                SetPlayerValue(taskVisual.Value.TaskType, 0, taskVisual.Value.TaskId);
-                taskVisual.Value.EnableTask(taskInfo);
-            }
+    private void OnEnable() {
+        _openCanvasButton.onClick.AddListener(() => _canvas.ActiveSelf());
+        _closeCanvasButton.onClick.AddListener(() => _canvas.DisactiveSelf());
+        _advHelper.AddToButtonAdvRewardListener(_resetButton, ResetCompletedTasks);
+        _dailyQuest.OnTimerPassed += ResetCompletedTasks;
+        
+        // Подписка на тасочки
+        _battleManager.MainPlayerWin += PlayerWinCheck;
+        _parkourCompleteTrigger.ParkourCompleted += UpdateParkourTask;
+        GameEvents.BonusUsed += OnBonusUsed;
+        GameEvents.PlayerPassedBomb += OnPlayerPassedBomb;
+        _fallVoidCollider.PlayerFalledInVoid += OnPlayerFalledInVoid;
+        _battleManager.NewRoundStarted += OnNewRoundStarted;
+    }
+
+
+    // Обновления --------------------------
+    
+    private void OnBonusUsed(IBonus bonus) {
+        if (bonus is SpeedBonus) {
+            _useSpeedBonus++;
+            UpdateTaskProgress(TaskType.UseSpeedBonus);
         }
-        _gameSave.Save();
+        else if (bonus is BigJumpBonus) {
+            _useSuperJumpBonus++;
+            UpdateTaskProgress(TaskType.UseSuperJumpBonus);
+        }
+        else if (bonus is InvisibleBonus) {
+            _useInvincibleBonus++;
+            UpdateTaskProgress(TaskType.UseInvincibleBonus);
+        }
     }
 
     
-    private TaskInfo GetTaskInfoByType(TaskType taskType)
-        => _tasksInfo.First(t => t.TaskType == taskType);
-    
-    
-    
-    private void OnPlayerHeal(int count) {
-        ++_useHealCount;
-        UpdateTaskProgress(TaskType.UseHealCount);
-
-        _healsLifesCount += count;
-        UpdateTaskProgress(TaskType.HealsLifesCount);
-        // Debug.Log($"Игрок использовал аптечку  {_useHealCount} раз, излечил {_healsLifesCount} здоровья");
+    private void OnNewRoundStarted(int roundNumber) {
+        if(roundNumber == 1 || !_battleManager.MainPlayerPlay) return;
+        _lifeRound++;
+        UpdateTaskProgress(TaskType.LifeRound);
     }
-
+    
+    
+    private void OnPlayerPassedBomb(PlayerRoleBehaviour player) {
+        if(player != _mainPlayer.RoleBehaviour) return;
+        _passBomb++;
+        UpdateTaskProgress(TaskType.PassBomb);
+    }
+    
+    
+    private void OnPlayerFalledInVoid(IPassBombPlayer bedolaga) {
+        if (bedolaga.RoleBehaviour.LastPlayerContact == _mainPlayer.RoleBehaviour) {
+            _passInVoid++;
+            UpdateTaskProgress(TaskType.PassInVoid);
+        }
+    }
     
     private void PlayerWinCheck(bool winner) {
         if (winner) {
-            ++_winCount;
+            _winCount++;
             UpdateTaskProgress(TaskType.WinCount);
             // Debug.Log($"Игрок выиграл {_winCount} раз");
         }
@@ -147,15 +158,15 @@ public class TasksManager : MonoBehaviour {
 
     
     private void UpdateParkourTask() {
-        _parkour = 1;
-        UpdateTaskProgress(TaskType.Parkour);
-        // Debug.Log($"Игрок прошел паркур");
+        _parkourCount++;
+        UpdateTaskProgress(TaskType.ParkourCount);
     }
 
     
     
+    // Логика работы --------------------------
+    
     private void TableInitialize() {
-        int countNotReady = 0;
         int iterator = 0;
         foreach (var taskInfoPair in _taskIdToInfoDictionary) {
             // Initialize
@@ -166,46 +177,21 @@ public class TasksManager : MonoBehaviour {
             // Get save data
             TaskItem taskSaveInfo = Saver.GetTaskInfo(taskId);
             
-            
             if (!taskSaveInfo.IsGetReward) {
                 _taskVisualIdToViewDictionary[taskId].SetTaskVisual(taskInfo, taskSaveInfo.Count);
-                if (taskSaveInfo.Count >= taskInfo.FullValue) {
+                if (taskSaveInfo.Count >= taskInfo.Count) {
                     _taskCountView.PlusOne();
                 }
                 SetPlayerValue(taskInfo.TaskType, taskSaveInfo.Count, taskInfo.TaskId);
-                countNotReady++;
             }
             else {
                 // Debug.Log($"Задача {taskSaveInfo.Id} загрузилась как выполненная");
                 _taskVisualIdToViewDictionary[taskId].DisableTask();
             }
         }
-
-        // foreach (var taskVisual in _taskVisualIdToViewDictionary) {
-        //     TaskInfo taskInfo = _taskIdToInfoDictionary[taskVisual.Value.TaskId];
-        //     TaskItem taskSaveInfo = Saver.GetTaskInfo(taskInfo.TaskId);
-        //     _taskVisualIdToViewDictionary[taskVisual.Key].SetTaskLocalizationText();
-        //     if (!taskSaveInfo.IsGetReward) {
-        //         _taskVisualIdToViewDictionary[taskVisual.Key].SetTaskVisual(taskInfo, taskSaveInfo.Count);
-        //         if (taskSaveInfo.Count >= taskInfo.FullValue) {
-        //             _taskCountView.PlusOne();
-        //         }
-        //         SetPlayerValue(taskInfo.TaskType, taskSaveInfo.Count);
-        //         countNotReady++;
-        //     }
-        //     else {
-        //         Debug.Log($"Задача {taskSaveInfo.Id} загрузилась как выполненная");
-        //         _taskVisualIdToViewDictionary[taskVisual.Key].DisableTask();
-        //     }
-        // }
-        //
-        // if (countNotReady == 0) {
-        //     _dailyQuest.ShowAllDaliesDone();
-        // }
     }
 
-   
-
+    
     private void CreateTaskInfoDictionary() {
         int iterator = 0;
         foreach (var task in _tasksInfo) {
@@ -220,48 +206,56 @@ public class TasksManager : MonoBehaviour {
     
 
     private int GetPlayerValue(TaskType taskType) {
-        switch (taskType) {
-            case TaskType.HitCount:
-                return _hitCount;
-            case TaskType.Parkour:
-                return _parkour;
-            case TaskType.WinCount:
-                return _winCount;
-            case TaskType.UseHealCount:
-                return _useHealCount;
-            case TaskType.ShieldCount:
-                return _shieldCount;
-            case TaskType.HealsLifesCount:
-                return _healsLifesCount;
-            default: return -1;
-        }
+        return taskType switch {
+            TaskType.PassBomb => _passBomb,
+            TaskType.PassInVoid => _passInVoid,
+            TaskType.LifeSec => _lifeSec,
+            TaskType.LifeRound => _lifeRound,
+            TaskType.WinCount => _winCount,
+            TaskType.UseSpeedBonus => _useSpeedBonus,
+            TaskType.UseSuperJumpBonus => _useSuperJumpBonus,
+            TaskType.UseInvincibleBonus => _useInvincibleBonus,
+            TaskType.ParkourCount => _parkourCount,
+            _ => 0
+        };
+
     }
 
+    
     private void SetPlayerValue(TaskType taskType, int count, string id) {
         Debug.Log($"SetPlayerValue {id} {count} {false}");
         Saver.UpdateTaskInfo(id, count, false);
         switch (taskType) {
-            case TaskType.HitCount:
-                 _hitCount = count;
+            case TaskType.PassBomb:
+                _passBomb = count;
                 break;
-            case TaskType.Parkour:
-                 _parkour = count;
+            case TaskType.PassInVoid:
+                _passInVoid = count;
+                break;
+            case TaskType.LifeSec:
+                _lifeSec = count;
+                break;
+            case TaskType.LifeRound:
+                _lifeRound = count;
                 break;
             case TaskType.WinCount:
                 _winCount = count;
                 break;
-            case TaskType.UseHealCount:
-                 _useHealCount = count;
+            case TaskType.UseSpeedBonus:
+                _useSpeedBonus = count;
+                break;  
+            case TaskType.UseSuperJumpBonus:
+                _useSuperJumpBonus = count;
                 break;
-            case TaskType.ShieldCount:
-                 _shieldCount = count;
+            case TaskType.UseInvincibleBonus:
+                _useInvincibleBonus = count;
                 break;
-            case TaskType.HealsLifesCount:
-                 _healsLifesCount = count;
+            case TaskType.ParkourCount:
+                _parkourCount = count;
                 break;
         }
     }
-
+    
     
     private void UpdateTaskProgress(TaskType type) {
         foreach (var taskVisualPair in _taskVisualIdToViewDictionary) {
@@ -274,41 +268,40 @@ public class TasksManager : MonoBehaviour {
             Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
             _gameSave.Save();
         
-            if (currentValue >= taskInfo.FullValue && !taskVisual.TaskIsComplete) {
-                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.FullValue);
+            if (currentValue >= taskInfo.Count && !taskVisual.TaskIsComplete) {
+                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.Count);
                 _taskCountView.PlusOne();
                 ShowNotification(taskInfo);
             }
             else {
-                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.FullValue);
+                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.Count);
             }
             Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
             _gameSave.Save();
         
-            if (currentValue >= taskInfo.FullValue && !taskVisual.TaskIsComplete) {
-                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.FullValue);
+            if (currentValue >= taskInfo.Count && !taskVisual.TaskIsComplete) {
+                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.Count);
                 _taskCountView.PlusOne();
                 ShowNotification(taskInfo);
             }
             else {
-                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.FullValue);
+                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.Count);
             }
             
         }
     }
     
-
+    
     public void SetCompleteTask(string taskId) {
         // Обновляем данные
         TaskInfo taskInfo = _taskIdToInfoDictionary[taskId];
-        Saver.UpdateTaskInfo(taskInfo.TaskId, taskInfo.FullValue, true);
-        _bank.AddMoney(taskInfo.TaskMoney);
+        Saver.UpdateTaskInfo(taskInfo.TaskId, taskInfo.Count, true);
+        _bank.AddMoney(taskInfo.RewardMoney);
         _taskCountView.MinusOne();
         CheckTaskCount();
     }
-    
-    
 
+    
     private void CheckTaskCount() {
         foreach (var taskVisual in _taskVisualIdToViewDictionary) {
             TaskInfo taskInfo = _taskIdToInfoDictionary[taskVisual.Value.TaskId];
@@ -319,10 +312,23 @@ public class TasksManager : MonoBehaviour {
         _dailyQuest.ShowAllDaliesDone();
     }
 
+    private void ResetCompletedTasks() {
+        _dailyQuest.ShowDailies();
+        foreach (var taskVisual in _taskVisualIdToViewDictionary) {
+            // Debug.Log(taskVisual.Value.TaskId);
+            if (Saver.GetTaskInfo(taskVisual.Value.TaskId).IsGetReward) {
+                TaskInfo taskInfo = _taskIdToInfoDictionary[taskVisual.Value.TaskId];
+                SetPlayerValue(taskVisual.Value.TaskType, 0, taskVisual.Value.TaskId);
+                taskVisual.Value.EnableTask(taskInfo);
+            }
+        }
+        _gameSave.Save();
+    }
+    
     private void ShowNotification(TaskInfo taskInfo) {
         TaskComplete?.Invoke();
         // Debug.LogWarning("Таска выполнена!");
-        // _taskNotification.ShowNotification("+"+ _formatter.ValuteFormatter(taskInfo.TaskMoney));
+        // _taskNotification.ShowNotification("+"+ _formatter.ValuteFormatter(taskInfo.RewardMoney));
     }
 
 }

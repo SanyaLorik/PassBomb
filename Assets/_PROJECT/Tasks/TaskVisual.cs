@@ -16,7 +16,10 @@ public class TaskVisual : MonoBehaviour {
     public bool TaskIsComplete { get; private set; }
     private string _taskLocalizationText;
     [field: SerializeField] public TaskType TaskType { get; private set; }
+    
+    [field: Header("Чисто для проверки в PlayMode")]
     [field: SerializeField] public string TaskId { get; private set; }
+    
     
     [Inject] private NumberFormatter _formatter;
     [Inject] private LocalizationData _localization;
@@ -58,10 +61,11 @@ public class TaskVisual : MonoBehaviour {
     }
 
     public void SetTaskVisual(TaskInfo taskInfo, int playerValue) {
-        _rewardMoneyText.text = _formatter.ValuteFormatter(taskInfo.TaskMoney);
-        _taskText.text = string.Format(_taskLocalizationText, _formatter.ValuteFormatter(taskInfo.FullValue));
+        Debug.Log($"taskInfo = {taskInfo}, {taskInfo.TaskId}");
+        _rewardMoneyText.text = _formatter.ValuteFormatter(taskInfo.RewardMoney);
+        _taskText.text = string.Format(_taskLocalizationText, _formatter.ValuteFormatter(taskInfo.Count));
 
-        if (playerValue >= taskInfo.FullValue) {
+        if (playerValue >= taskInfo.Count) {
             _takeRewardButton.interactable = true;
             TaskIsComplete = true;
         }
@@ -69,7 +73,7 @@ public class TaskVisual : MonoBehaviour {
             _takeRewardButton.interactable = false;
             TaskIsComplete = false;
         }
-        UpdateTaskScoreVisual(playerValue, taskInfo.FullValue);
+        UpdateTaskScoreVisual(playerValue, taskInfo.Count);
     }
 
     public void UpdateTaskScoreVisual(float currentValue, float fullValue) {

@@ -43,6 +43,7 @@ public class BotWalkManager : MonoBehaviour {
     [Inject] private GameData _gameData;
     [Inject] private NavMeshHelper _navMeshHelper;
     [Inject] private BotsMainManager _mainManager;
+    [Inject] private MapsToBattleChanger _mapsChanger;
     
     
     private void Awake() {
@@ -192,15 +193,15 @@ public class BotWalkManager : MonoBehaviour {
             // проверка: коснулись ли чего-то
             bool grounded = Physics.SphereCast(
                 pos + Vector3.up * 0.2f, 
-                0.3f,
+                5f,
                 Vector3.down,
                 out RaycastHit hit,
-                1.5f
+                7f
             );
 
             if (grounded && _rb.linearVelocity.y <= 0f)
             {
-                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, 2.0f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, _mapsChanger.FallBotFindSamplePosition, NavMesh.AllAreas))
                 {
                     _rb.position = hit.point;
                     FinishLanding(navHit.position);
