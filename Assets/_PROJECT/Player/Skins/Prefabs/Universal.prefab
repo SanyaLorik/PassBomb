@@ -1503,7 +1503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5311078786194333247
 Transform:
   m_ObjectHideFlags: 0
@@ -2836,28 +2836,28 @@ MonoBehaviour:
     - ClothId: 4
       ClothObject: {fileID: 3143731157411785581}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 5
       ClothObject: {fileID: 5586748878561425628}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 6
       ClothObject: {fileID: 6954924494315052152}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 7
       ClothObject: {fileID: 6413169289787540684}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 8
       ClothObject: {fileID: 6413169289787540684}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 9
       ClothObject: {fileID: 5880220274971057969}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 10
       ClothObject: {fileID: 6270142344090694502}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 11
       ClothObject: {fileID: 3701315938031229045}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
+    - ClothId: 12
       ClothObject: {fileID: 5880220274971057969}
       BodyPartObject: {fileID: 4574697782738039216}
   - TabId: 2
@@ -2874,17 +2874,29 @@ MonoBehaviour:
     - ClothId: 4
       ClothObject: {fileID: 2522147649833301915}
       BodyPartObject: {fileID: 4257248508716050269}
+    - ClothId: 5
+      ClothObject: {fileID: 7149067450008992692}
+      BodyPartObject: {fileID: 4257248508716050269}
+    - ClothId: 6
+      ClothObject: {fileID: 7218264438859172547}
+      BodyPartObject: {fileID: 4257248508716050269}
+    - ClothId: 7
+      ClothObject: {fileID: 2322452626432300539}
+      BodyPartObject: {fileID: 3498230353959296146}
   - TabId: 3
     ClothesInfo:
     - ClothId: 1
       ClothObject: {fileID: 5498390430463321516}
       BodyPartObject: {fileID: 8566853795422601033}
+    - ClothId: 2
+      ClothObject: {fileID: 5716285470968072174}
+      BodyPartObject: {fileID: 7157078821740394826}
   - TabId: 4
     ClothesInfo:
     - ClothId: 1
       ClothObject: {fileID: 9020242656411790960}
       BodyPartObject: {fileID: 0}
-    - ClothId: 1
+    - ClothId: 2
       ClothObject: {fileID: 4088041275847002351}
       BodyPartObject: {fileID: 0}
   - TabId: 5
@@ -2895,11 +2907,24 @@ MonoBehaviour:
     - ClothId: 2
       ClothObject: {fileID: 7311900258668281190}
       BodyPartObject: {fileID: 0}
+    - ClothId: 3
+      ClothObject: {fileID: 2353852711710062765}
+      BodyPartObject: {fileID: 0}
+    - ClothId: 4
+      ClothObject: {fileID: 317603749062681417}
+      BodyPartObject: {fileID: 0}
+    - ClothId: 5
+      ClothObject: {fileID: 929669515801824536}
+      BodyPartObject: {fileID: 0}
+    - ClothId: 6
+      ClothObject: {fileID: 7653621151653420325}
+      BodyPartObject: {fileID: 0}
+    - ClothId: 7
+      ClothObject: {fileID: 7311900258668281190}
+      BodyPartObject: {fileID: 9064208879415798017}
   BodyParts:
   - TabId: 1
-    BodyPartObjects:
-    - {fileID: 5586748878561425628}
-    - {fileID: 6954924494315052152}
+    BodyPartObjects: []
   - TabId: 2
     BodyPartObjects:
     - {fileID: 3498230353959296146}
@@ -2932,7 +2957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &304682688536171490
 Transform:
   m_ObjectHideFlags: 0
@@ -3146,7 +3171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5955098536467831399
 Transform:
   m_ObjectHideFlags: 0
@@ -4440,7 +4465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4982085570171344111
 Transform:
   m_ObjectHideFlags: 0
@@ -4547,7 +4572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2706600587724485825
 Transform:
   m_ObjectHideFlags: 0
@@ -5507,7 +5532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4078383301519336680
 Transform:
   m_ObjectHideFlags: 0
@@ -5753,7 +5778,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8879714272935017630
 Transform:
   m_ObjectHideFlags: 0

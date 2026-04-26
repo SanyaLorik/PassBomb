@@ -61,7 +61,12 @@ public class SkinWearer : MonoBehaviour {
 
 
     private void ActivateClothById(Clothes clothes, int clothId) {
-        ClothInfo cloth = clothes.ClothesInfo.First(c => c.ClothId  == clothId);
+        ClothInfo cloth = clothes.ClothesInfo.FirstOrDefault(c => c.ClothId  == clothId);
+        if (cloth.ClothObject == null) {
+            Debug.Log($"для clothId {clothId} не выбран скин");
+            return;
+        }
+        
         cloth.ClothObject.ActiveSelf();
         Debug.Log("Надеваем " + cloth.ClothObject);
         if (cloth.BodyPartObject != null) {

@@ -78,7 +78,7 @@ MonoBehaviour:
         EquippedId: 1
       - GroupId: 4
         BoughtIds: 010000000200000003000000
-        EquippedId: 2
+        EquippedId: 1
       - GroupId: 5
         BoughtIds: 010000000200000003000000
-        EquippedId: 3
+        EquippedId: 1
