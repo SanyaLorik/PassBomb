@@ -2846,18 +2846,15 @@ MonoBehaviour:
       ClothObject: {fileID: 6413169289787540684}
       BodyPartObject: {fileID: 4574697782738039216}
     - ClothId: 8
-      ClothObject: {fileID: 6413169289787540684}
-      BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 9
       ClothObject: {fileID: 5880220274971057969}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 10
+    - ClothId: 9
       ClothObject: {fileID: 6270142344090694502}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 11
+    - ClothId: 10
       ClothObject: {fileID: 3701315938031229045}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 12
+    - ClothId: 11
       ClothObject: {fileID: 5880220274971057969}
       BodyPartObject: {fileID: 4574697782738039216}
   - TabId: 2
