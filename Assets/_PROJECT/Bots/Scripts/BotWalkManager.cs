@@ -192,11 +192,11 @@ public class BotWalkManager : MonoBehaviour {
 
             // проверка: коснулись ли чего-то
             bool grounded = Physics.SphereCast(
-                pos + Vector3.up * 0.2f, 
-                5f,
+                pos + Vector3.up * 0.1f,
+                0.3f,              
                 Vector3.down,
                 out RaycastHit hit,
-                7f
+                1.2f           
             );
 
             if (grounded && _rb.linearVelocity.y <= 0f)

@@ -65,7 +65,7 @@ NavMeshAgent:
   m_Height: 3.72
   m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 3
 --- !u!54 &9222768071546413318
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439a80f070c34dca92326caac5099ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatedLinkTraversal
-  jumpDuration: 1
-  jumpHeight: 4
+  jumpDuration: 0.7
+  jumpHeight: 3
   horizontalCurve:
     serializedVersion: 2
     m_Curve:

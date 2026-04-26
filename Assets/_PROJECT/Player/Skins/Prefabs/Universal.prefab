@@ -1623,17 +1623,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5054873612918744711}
-  - {fileID: 7090998669011329579}
   - {fileID: 296270252868075556}
   - {fileID: 7690180261304791310}
   - {fileID: 491591862073177256}
+  - {fileID: 5125106768579229334}
+  - {fileID: 5054873612918744711}
+  - {fileID: 7090998669011329579}
+  - {fileID: 5632451099797085272}
   - {fileID: 5311078786194333247}
   - {fileID: 4776710651835175463}
   - {fileID: 4833848473661292534}
   - {fileID: 344032357832496063}
-  - {fileID: 5632451099797085272}
-  - {fileID: 5125106768579229334}
   m_Father: {fileID: 6026507507266018135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3701315938031229045
@@ -2143,7 +2143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3797246300299011793
 Transform:
   m_ObjectHideFlags: 0
@@ -2294,19 +2294,19 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8091446696193004743}
+  - {fileID: 7122413408278746818}
+  - {fileID: 8452656731512880437}
+  - {fileID: 4202835247141507237}
   - {fileID: 3740073871310783916}
   - {fileID: 6424836801346235545}
   - {fileID: 8142950364962782402}
-  - {fileID: 8091446696193004743}
-  - {fileID: 7122413408278746818}
-  - {fileID: 6894587157839714506}
-  - {fileID: 2900747518373739257}
-  - {fileID: 8452656731512880437}
-  - {fileID: 4202835247141507237}
   - {fileID: 4803987106749031306}
   - {fileID: 7206121022235732353}
   - {fileID: 3001004046350938821}
   - {fileID: 5728992453636023628}
+  - {fileID: 6894587157839714506}
+  - {fileID: 2900747518373739257}
   m_Father: {fileID: 6026507507266018135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4558606018654342102
@@ -2835,6 +2835,30 @@ MonoBehaviour:
       BodyPartObject: {fileID: 4574697782738039216}
     - ClothId: 4
       ClothObject: {fileID: 3143731157411785581}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 5586748878561425628}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 6954924494315052152}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 6413169289787540684}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 6413169289787540684}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 5880220274971057969}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 6270142344090694502}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 3701315938031229045}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 5880220274971057969}
       BodyPartObject: {fileID: 4574697782738039216}
   - TabId: 2
     ClothesInfo:
@@ -5374,7 +5398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2900747518373739257
 Transform:
   m_ObjectHideFlags: 0
