@@ -1,4 +1,3 @@
-using System.Collections;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,9 +8,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [field: SerializeField] public bool ShowInSpawn { get; private set; }
     [field: SerializeField] public Transform Transform { get; private set; }
     [field: SerializeField] public BotWalkManager BotWalkManager { get; private set; }
-    [SerializeField] private Transform _skinParent;
     [SerializeField] private BotAnimator _botAnimator;
-    [SerializeField] private GameObject _skinInstance;
     [SerializeField] private BotMonolog _botMonolog;
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
@@ -21,19 +18,13 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
     
     
-    public string SkinId { get; private set; }
-    
-    
     [Inject] private GameData _gameData;
     [Inject] private SpawnManager _spawn;
 
     
-    private void Awake() {
-        Destroy(_skinInstance);
-    }
-    
     
     private void Start() {
+        if (!ShowInSpawn) gameObject.DisactiveSelf();
         SetStartWanderIfActive(true);
     }
     
@@ -136,11 +127,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         }
     }
     
-
-    public void InitAnimator() {
-        _botAnimator.InitAnimator(BotWalkManager);
-    }
-    
     
     private void SetBotStateBeforeGame() {
         if (ShowInSpawn) {
@@ -165,26 +151,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
     public void SetBotStfu() {
         _botMonolog.Stfu();
-    }
-
-    public void SetBotSkin(SkinItemConfig skinItemConfig) {
-        SkinId = skinItemConfig.Id;
-        gameObject.ActiveSelf();
-        StartCoroutine(ChangeSkinRoutine(skinItemConfig));
-    }
-
-    
-    private IEnumerator ChangeSkinRoutine(SkinItemConfig skin) {
-        if (_skinInstance != null) {
-            Destroy(_skinInstance);
-            _botAnimator.SetModelData(null, null);
-        }
-        yield return null; // дождаться конца кадра
-
-        _skinInstance = Instantiate(skin.SkinPrefab, _skinParent);
-        var skinItem = _skinInstance.GetComponent<SkinElementsController>();
-        _botAnimator.SetModelData(skin.Avatar, skinItem);
-        gameObject.SetActive(ShowInSpawn);
     }
 
 }

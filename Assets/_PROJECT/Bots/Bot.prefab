@@ -62,7 +62,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 4.34
+  m_Height: 3.72
   m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
@@ -142,9 +142,7 @@ MonoBehaviour:
   <ShowInSpawn>k__BackingField: 0
   <Transform>k__BackingField: {fileID: 3667074117147502011}
   <BotWalkManager>k__BackingField: {fileID: 1402330233937831249}
-  _skinParent: {fileID: 4005745868750855142}
   _botAnimator: {fileID: 586101920010288029}
-  _skinInstance: {fileID: 8916066414712164287}
   _botMonolog: {fileID: 7393878432037271427}
   _agent: {fileID: 1212541108296832897}
   _roleBehaviour: {fileID: 5885440733740190721}
@@ -249,8 +247,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3363099, y: 3.963375, z: 1.4662476}
-  m_Center: {x: -0.015286684, y: 1.4816873, z: 0.034395218}
+  m_Size: {x: 1.3363099, y: 4.7597804, z: 1.4662476}
+  m_Center: {x: -0.015286684, y: 1.8798902, z: 0.034395218}
 --- !u!1 &734268474806474848
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 4288806925868324768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.944, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -443,7 +441,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4288806925868324768}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3b9c9b9403406114b8d5e18259fb9eaa, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 65c525c486a7b0e428a4f091330af1b1, type: 3}
   m_Controller: {fileID: 9100000, guid: 24cbfbad7319a3c4a92de604b001b9fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -469,6 +467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BotAnimator
   _animator: {fileID: 8305540036435365303}
+  _skinController: {fileID: 3179251272697559363}
+  _botWalkManager: {fileID: 1402330233937831249}
 --- !u!1 &4315618399937222898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,11 +1426,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1397508025197451149, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
   m_PrefabInstance: {fileID: 3721145737843212637}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8916066414712164287 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5194921409329958626, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+--- !u!114 &3179251272697559363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2286371093910534174, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
   m_PrefabInstance: {fileID: 3721145737843212637}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816ac3c35e3aed34ab8f5a73cf5435af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkinElementsController
 --- !u!1001 &5121719498599766661
 PrefabInstance:
   m_ObjectHideFlags: 0

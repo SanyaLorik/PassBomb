@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 4463336047555587298}
   - component: {fileID: 3686266338711202666}
   - component: {fileID: 7508950050209255313}
-  - component: {fileID: 2916237858321643455}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -206,23 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
   _animator: {fileID: 3686266338711202666}
-  _skinElementsController: {fileID: 7682088252923796735}
---- !u!114 &2916237858321643455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5928220643738429436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ff33b73728738c4d91eaa6aa84944d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerSkinWear
-  _playerWearSkinParent: {fileID: 4463336047555587298}
-  _animator: {fileID: 3686266338711202666}
-  _currentSkin: {fileID: 4413107117038529027}
-  _playerAnimator: {fileID: 7508950050209255313}
+  skinShadow: {fileID: 7682088252923796735}
 --- !u!1 &7913775590206704768
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,13 +358,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 4.28
+  m_Height: 3.8
   m_Radius: 1.28
   m_SlopeLimit: 60
   m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &3539183820512013210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +380,7 @@ MonoBehaviour:
   _controller: {fileID: 6165380883207411591}
   _spawnPoint: {fileID: 0}
   _roleBehaviour: {fileID: 7425658207102932552}
-  <Transform>k__BackingField: {fileID: 0}
+  <Transform>k__BackingField: {fileID: 6278525158390120559}
 --- !u!114 &6584472137099475329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,9 +414,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateManager
   _flooringParticlesController: {fileID: 5046418865743339272}
   _jumpParticlesController: {fileID: 6621020384720390277}
-  _objectsToShowInPlay: []
-  _objectsToHideInPlay: []
-  _canvases: []
+  _objectsToShowInPlay:
+  - {fileID: 0}
+  _objectsToHideInPlay:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _canvases:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &1759702745585960008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,15 +443,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00579
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.69372034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.02397
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 103917889006886709, guid: d162bdedf2b6b4c4fa8fb16f333a6ca3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1375,11 +1374,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
---- !u!1 &4413107117038529027 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5194921409329958626, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
-  m_PrefabInstance: {fileID: 8441593937352418529}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7368560589605286764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1397508025197451149, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
@@ -1390,7 +1384,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2286371093910534174, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
   m_PrefabInstance: {fileID: 8441593937352418529}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4413107117038529027}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 816ac3c35e3aed34ab8f5a73cf5435af, type: 3}

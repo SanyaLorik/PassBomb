@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 
 public class BotsMainManager : IInitializable, IDisposable {
     private readonly List<BotStateManager> _bots;
-    private readonly List<SkinItemConfig> _skins;
     private readonly GameData _gameData;
     private readonly BattleManager _battleManager;
 
@@ -21,11 +20,9 @@ public class BotsMainManager : IInitializable, IDisposable {
 
     public BotsMainManager(List<BotStateManager> bots, 
         GameData gameData, 
-        List<SkinItemConfig> skins,
         BattleManager battleManager)
     {
         _bots = bots;
-        _skins = skins;
         _gameData = gameData;
         _battleManager = battleManager;
     }
@@ -34,19 +31,8 @@ public class BotsMainManager : IInitializable, IDisposable {
     public void Initialize() {
         _tokenSource = new CancellationTokenSource();
         BotSpeakCycleAsync(_tokenSource.Token).Forget();
-        foreach (var bot in _bots) {
-            bot.SetBotSkin(_skins.GetRandomElement());
-            bot.InitAnimator();
-            // Установка ников
-        }
+        
     }
-    
-    public void SetBotSkin(BotStateManager bot, string id) {
-        SkinItemConfig skin = _skins.Find(s => s.Id == id);
-        bot.SetBotSkin(skin);
-        bot.InitAnimator();
-    }
-    
 
     public List<BotStateManager> GetBotsToGame(int count) {
         return _bots.GetRange(0, count);

@@ -40,7 +40,6 @@ public class SoundManager : MonoBehaviour {
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private PlayerBank _bank;
     [Inject] private SettingsManager _settings;
-    [Inject] private PlayerSkinInventory _playerSkinInventory;
     [Inject] private BattleManager _battleManager;
     [Inject] private BonusManager _bonusManager;
     [Inject] private GameOverView _gameOverView;
@@ -75,7 +74,6 @@ public class SoundManager : MonoBehaviour {
         // BANK / WEAR
         _bank.BankNewMoneyPlus += OnMoneyPlus;
         _bank.BankNewMoneyMinus += OnMoneyPlus;
-        _playerSkinInventory.SkinEquipped += SkinAction;
         // Settings
         _settings.MusicValueChanged += SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged += SettingsOnEffectsValueChanged;
@@ -106,7 +104,6 @@ public class SoundManager : MonoBehaviour {
         // BANK / WEAR
         _bank.BankNewMoneyPlus -= OnMoneyPlus;
         _bank.BankNewMoneyMinus -= OnMoneyPlus;
-        _playerSkinInventory.SkinEquipped -= SkinAction;
         // Settings
         _settings.MusicValueChanged -= SettingsOnMusicValueChanged;
         _settings.EffectsValueChanged -= SettingsOnEffectsValueChanged;
@@ -199,11 +196,6 @@ public class SoundManager : MonoBehaviour {
     //     
     //     PlayInSource(source, clip, config);
     // }
-    
-    private void SkinAction(SkinItemConfig _) {
-        BuyOrUnlock(0);
-    }
-
     
     private void SettingsOnMusicValueChanged(float value) {
         float db = Mathf.Log10(Mathf.Clamp(value, 0.0001f, 1f)) * 20;

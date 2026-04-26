@@ -1754,9 +1754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45840b7ee878d8649994ffa40e57a0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInstaller
-  _defaultSkinConfig: {fileID: 11400000, guid: 0185b29bfffa92349beee66f59ffd9e4, type: 2}
-  _skinItemConfigs:
-  - {fileID: 11400000, guid: 0185b29bfffa92349beee66f59ffd9e4, type: 2}
 --- !u!1 &349319952
 GameObject:
   m_ObjectHideFlags: 0
@@ -7049,10 +7046,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1407686364}
     m_Modifications:
     - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: _canvases.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: '_canvases.Array.data[0]'
       value: 
       objectReference: {fileID: 967158680}
@@ -7080,14 +7073,6 @@ PrefabInstance:
       propertyPath: '_canvases.Array.data[6]'
       value: 
       objectReference: {fileID: 468536774}
-    - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: _objectsToHideInPlay.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: _objectsToShowInPlay.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: '_objectsToHideInPlay.Array.data[0]'
       value: 
@@ -7121,37 +7106,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 967158674}
     - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: '_objectsToHideInPlay.Array.data[8]'
-      value: 
-      objectReference: {fileID: 1831422309}
-    - target: {fileID: 1270892518284674774, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: '_objectsToShowInPlay.Array.data[0]'
       value: 
       objectReference: {fileID: 275427009}
-    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1808908378588453757, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3539183820512013210, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: _spawnPoint
       value: 
       objectReference: {fileID: 1276183571}
-    - target: {fileID: 3539183820512013210, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: _roleBehaviour
-      value: 
-      objectReference: {fileID: 1411325109}
-    - target: {fileID: 3539183820512013210, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-      propertyPath: <Transform>k__BackingField
-      value: 
-      objectReference: {fileID: 1189014760}
     - target: {fileID: 6278525158390120559, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8180,17 +8141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   <SpawnPoint>k__BackingField: {fileID: 1276183571}
---- !u!114 &1411325109 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7425658207102932552, guid: 7c5e4d14ece8f6246808912708c29a12, type: 3}
-  m_PrefabInstance: {fileID: 1189014759}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a084eb1172c4e08982efad95bc3cc86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerRoleBehaviour
 --- !u!1 &1413287109 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5361320257529021711, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}

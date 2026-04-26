@@ -24,7 +24,6 @@ public class GameOverView : MonoBehaviour {
     
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
-    [Inject] private PlayerSkinInventory _skinInventory;
     [Inject] private BotsMainManager _botsMainManager;
     [Inject] private IGameSave _gameSave;
     [Inject] private AdvHelper _advHelper;

@@ -2,7 +2,7 @@ using System;
 using SanyaBeerExtension;
 using UnityEngine;
 
-public class SkinElementsController : MonoBehaviour {
+public class SkinShadow : MonoBehaviour {
     [SerializeField] private GameObject _shadow;
 
     private void OnEnable() {

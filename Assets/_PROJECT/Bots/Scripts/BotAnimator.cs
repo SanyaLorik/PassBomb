@@ -8,25 +8,20 @@ public class BotAnimator : MonoBehaviour {
     private static readonly int DoubleJump = Animator.StringToHash("doubleJump");
     private static readonly int Run = Animator.StringToHash("isRunning");
     [SerializeField] private Animator _animator;
+    [SerializeField] private SkinShadow _skinController;
+    [SerializeField] private BotWalkManager _botWalkManager;
 
-    private BotWalkManager _botWalkManager;
-    private SkinElementsController _skinController;
     private CancellationTokenSource _tokenSource;
+
     
-    public void SetModelData(Avatar avatar, SkinElementsController controller) {
-        _animator.avatar = avatar;
-        _skinController = controller;
-    }
-
-
-    public void InitAnimator(BotWalkManager botWalkManager) {
-        _botWalkManager = botWalkManager;
+    public void OnEnable() {
         _botWalkManager.OnJump += OnJump;
         _botWalkManager.OnDoubleJump += OnDoubleJump;
         _botWalkManager.StartWandering += OnStartWandering;
         _botWalkManager.Grounded += BotGrounded;
     }
 
+    
     private void BotGrounded(bool grounded) {
         if(_skinController == null) return;
         if (grounded) {
