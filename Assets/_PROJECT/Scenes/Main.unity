@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapsToBattleChanger
   <CentralTeleport>k__BackingField: {fileID: 977837456}
   _mapitems:
-  - {fileID: 1145189140}
+  - {fileID: 1987258151}
 --- !u!1 &355022125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5539804622110977255, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -2421,7 +2421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787827755550764490, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4343414195835875579, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_Name
@@ -6907,17 +6907,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
---- !u!114 &1145189140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2681147780089439292, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &1149677278 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 302780695594065749, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -11146,6 +11135,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1987258151 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2621802840029879834, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+  m_PrefabInstance: {fileID: 415421058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!114 &1988927018 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6824706950518206388, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}

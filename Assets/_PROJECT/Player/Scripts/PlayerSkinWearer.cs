@@ -5,6 +5,11 @@ using UnityEngine;
 using Zenject;
 
 public class PlayerSkinWearer : MonoBehaviour {
+    [SerializeField] private bool _playerImitate;
+    
+    [SerializeField] private SkinWearer _skinWearer;
+    
+    
     [Inject] IGameSave gameSave;
     [Inject] private ISkinSaveLoader _skinSaveLoader;
     
@@ -12,18 +17,21 @@ public class PlayerSkinWearer : MonoBehaviour {
 
     private void OnEnable() {
         skinSave.OnWearUpdated += WearUpdate;
+        if (_playerImitate) {
+            WearUpdate(skinSave.WearSkins);
+        }
+    }
+    
+    private void OnDisable() {
+        skinSave.OnWearUpdated -= WearUpdate;
     }
 
-    private void Start() {
-        WearUpdate(skinSave.WearSkins);
-        
-    }
 
     private void WearUpdate(IReadOnlyList<KeyValuePair<int, SkinData>> allSkins) {
-        // Tab и Скин, мне нужно снимать текущий скин и надевать новый,
-        // можно пробежаться по всем скинам из таба
         foreach (KeyValuePair<int, SkinData> skin in allSkins) {
-            
+            int tabId = skin.Key;
+            int skinId = skin.Value.Id;
+            _skinWearer.WearCloth(tabId, skinId);
         }
     }
 }
