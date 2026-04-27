@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 4005745868750855142}
   - component: {fileID: 8305540036435365303}
   - component: {fileID: 586101920010288029}
+  - component: {fileID: 7043408511254031771}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -469,6 +470,19 @@ MonoBehaviour:
   _animator: {fileID: 8305540036435365303}
   _skinController: {fileID: 3179251272697559363}
   _botWalkManager: {fileID: 1402330233937831249}
+--- !u!114 &7043408511254031771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4288806925868324768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6935dd076547cba3b98c1d4e37b860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotSkinChooser
+  _skinWearer: {fileID: 3543923592838772806}
 --- !u!1 &4315618399937222898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1459,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816ac3c35e3aed34ab8f5a73cf5435af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkinElementsController
+--- !u!114 &3543923592838772806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 183136780245891355, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+  m_PrefabInstance: {fileID: 3721145737843212637}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090328dceec94a26865fc46c767e6e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkinWearer
 --- !u!1001 &5121719498599766661
 PrefabInstance:
   m_ObjectHideFlags: 0

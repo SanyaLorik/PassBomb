@@ -1194,12 +1194,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3797246300299011793}
+  - {fileID: 1073374655114812812}
   - {fileID: 5771422520295613008}
-  - {fileID: 7957693003376435252}
-  - {fileID: 3931039150255468882}
   - {fileID: 3857168615828475157}
   - {fileID: 6886264146976075450}
-  - {fileID: 1073374655114812812}
+  - {fileID: 7957693003376435252}
+  - {fileID: 3931039150255468882}
   - {fileID: 5098844434630973898}
   - {fileID: 2706600587724485825}
   m_Father: {fileID: 6026507507266018135}
@@ -2943,6 +2943,13 @@ MonoBehaviour:
     BodyPartObjects: []
   - TabId: 4
     BodyPartObjects: []
+  Mouthes:
+  - {fileID: 4286266785853433581}
+  - {fileID: 7897220481472027974}
+  Eyes:
+  - {fileID: 7104902975961233846}
+  - {fileID: 7531992028867299495}
+  - {fileID: 2264857521586286435}
 --- !u!114 &1636045225519515357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2975,6 +2982,8 @@ MonoBehaviour:
   - {fileID: 233309749938093222}
   - {fileID: 76619090263025326}
   - {fileID: 9043413522065650245}
+  _botStateManager: {fileID: 0}
+  _playerMovement: {fileID: 0}
 --- !u!1 &5498390430463321516
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,7 +95,7 @@ public class BattleManager : MonoBehaviour {
     }
     
     private void SetLooseMainPlayer() {
-        if(!MainPlayerPlay) return;
+        if(!MainPlayerPlay || _players.Count < 2) return;
         MainPlayerPlay = false;
         MainPlayerWin?.Invoke(false);
         RemovePlayer(_mainPlayer);
