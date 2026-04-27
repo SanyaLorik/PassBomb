@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
+using _PROJECT.Scripts.Helpers;
+using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using UnityEngine;
+using Zenject;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public struct ClothInfo {
@@ -29,8 +34,41 @@ public struct Clothes {
 public class SkinWearer : MonoBehaviour {
     [SerializeField] private Clothes[] Clothes;
     [SerializeField] private BodyPart[] BodyParts;
+    [SerializeField] private GameObject[] Mouthes;
+    [SerializeField] private GameObject[] Eyes;
     
+    [Inject] private GameData _gameData;
+    private CancellationTokenSource _tokenSource;
+
     
+    private void OnEnable() {
+        ChangeFaceRandom();
+        UniTaskHelper.DisposeTask(ref  _tokenSource);
+        _tokenSource = new CancellationTokenSource();
+        UpdateFaceAsync(_tokenSource.Token).Forget();
+    }
+
+    private void OnDisable() {
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+    }
+
+    
+    private async UniTask UpdateFaceAsync(CancellationToken token) {
+        while (!token.IsCancellationRequested) {
+            float waitTime = Random.Range(_gameData.TimeToChangeFace.From, _gameData.TimeToChangeFace.To);
+            await UniTask.WaitForSeconds(waitTime, cancellationToken: token);
+            ChangeFaceRandom(); 
+        }
+    }
+
+    
+    private void ChangeFaceRandom() {
+        Mouthes.DisactiveSelf();
+        Eyes.DisactiveSelf();
+        Mouthes.GetRandomElement().ActiveSelf();
+        Eyes.GetRandomElement().ActiveSelf();
+    }
+
     public void WearCloth(int tabId, int clothId) {
         Debug.Log($"Надевание tabId {tabId} одежду {clothId} ");
         // Снимаем части тела и выбираем нужную
@@ -38,6 +76,18 @@ public class SkinWearer : MonoBehaviour {
         DisactivePreviousCloth(clothes);
         DisactiveBodyPartByTabId(tabId);
         ActivateClothById(clothes, clothId);
+    }
+
+
+    public void  WearRandomSkinForBot() {
+        foreach (var clothByTab in Clothes) {
+            WearCloth(
+                clothByTab.TabId, 
+                clothByTab.ClothesInfo[Random.Range(0, clothByTab.ClothesInfo.Length)].ClothId
+            );
+        }
+
+        
     }
     
     private void DisactiveBodyPartByTabId(int tabId) {

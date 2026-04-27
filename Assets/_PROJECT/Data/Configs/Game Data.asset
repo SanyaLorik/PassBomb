@@ -22,8 +22,8 @@ MonoBehaviour:
     <JumpForce>k__BackingField: 12
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
-    <GravityScale>k__BackingField: 4
-    <InitBonusCounts>k__BackingField: 3
+    <GravityScale>k__BackingField: 1
+    <InitBonusCounts>k__BackingField: 2
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
     <DefaultCameraSens>k__BackingField: 0.137
@@ -52,6 +52,9 @@ MonoBehaviour:
     <ColldownToStartGame>k__BackingField: 3
     <TimeAfterBombExplode>k__BackingField: 1
     <TimeToShowDieInfo>k__BackingField: 2
+    <TimeToChangeFace>k__BackingField:
+      <From>k__BackingField: 1
+      <To>k__BackingField: 4
     <MaxPetsCount>k__BackingField: 6
     <BotPetCountDiapasone>k__BackingField:
       <From>k__BackingField: 0
@@ -82,5 +85,5 @@ MonoBehaviour:
     <BotJumpBonusHeight>k__BackingField: 15
     <ChanceToGoPlayerInHunt>k__BackingField: 0.298
     <BotUseNewBonusTime>k__BackingField:
-      <From>k__BackingField: 5
-      <To>k__BackingField: 10
+      <From>k__BackingField: 7
+      <To>k__BackingField: 15

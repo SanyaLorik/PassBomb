@@ -12,13 +12,14 @@ public class BonusManager : MonoBehaviour {
     
     private GameSave _saves => _saver.GetSave<GameSave>();
     
+    
     [Inject] private IGameSave _saver; 
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
     [Inject] private GameData _data;
-    [Inject] private BonusesLoader _bonusesLoader;
     [Inject] private TutorialManager _tutorialManager;
     [Inject] private IPassBombPlayer _mainPlayer;
+
     
     private void OnEnable() {
         GameEvents.PlayerStayHunter += PlayerStayHunter;
@@ -26,8 +27,9 @@ public class BonusManager : MonoBehaviour {
 
 
     private void Start() {
-        if (_tutorialManager.TutorialPassed) return;
-        InitBonusesCount(_data.InitBonusCounts);
+        if (!_tutorialManager.TutorialPassed) {
+            InitBonusesCount(_data.InitBonusCounts);
+        }
     }
 
     

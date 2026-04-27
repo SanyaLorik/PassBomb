@@ -2352,6 +2352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!224 &403487570 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1832357645144347955, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -9513,12 +9518,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1883334078}
+  - {fileID: 6108034796597380318}
   - {fileID: 1507713582}
   - {fileID: 415421059}
   - {fileID: 1189014760}
   - {fileID: 1091495463}
   - {fileID: 390170466}
-  - {fileID: 6108034796597380318}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1407686365
@@ -13176,6 +13181,7 @@ MonoBehaviour:
   - {fileID: 1544021430}
   - {fileID: 1817609894}
   _randomByAdv: {fileID: 1544021428}
+  _randomByAdvTransform: {fileID: 403487570}
 --- !u!4 &1151337240808513001
 Transform:
   m_ObjectHideFlags: 0

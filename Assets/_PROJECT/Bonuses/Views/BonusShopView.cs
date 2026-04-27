@@ -18,6 +18,7 @@ public class BonusShopView : MonoBehaviour {
     [Header("Кнопки купить")]
     [SerializeField] private List<BonusShopCardView> _bonusCards;
     [SerializeField] private Button _randomByAdv;
+    [SerializeField] private Transform _randomByAdvTransform;
 
     private GameSave Saves => _save.GetSave<GameSave>();
     
@@ -26,12 +27,13 @@ public class BonusShopView : MonoBehaviour {
     [Inject] private AdvHelper _advHelper;
     [Inject] private AdvertisingMonetizationMirra _advertisingMonetization;
     [Inject] private PlayerBank _bank;
+    
 
     
     private void OnEnable() {
         _closeButton.onClick.AddListener(CloseCanvas);
         _bonusCards.ForEach(c => c.BuyButton.onClick.AddListener(() => BuyOneItem(c.Bonus.Id, c)));
-        _randomByAdv.onClick.AddListener(TryShowAdv);
+        _advHelper.AddToButtonAdvRewardListener(_randomByAdv, GetRandom);
     }
 
 
@@ -64,17 +66,6 @@ public class BonusShopView : MonoBehaviour {
     }
 
     
-    private void TryShowAdv() {
-        _advertisingMonetization.InvokeRewarded(
-            null,
-            (isSuccess) => 
-            {
-                if (isSuccess) {
-                    GetRandom();
-                }
-            }
-        );
-    }
     
     
     private void GetRandom() { 
@@ -92,6 +83,7 @@ public class BonusShopView : MonoBehaviour {
         _canvas.ActiveSelf();
         GameEvents.TriggerUseInvoke();
         _bonusCards.ForEach(c => c.Card.localScale = Vector3.zero);
+        _randomByAdvTransform.localScale = Vector3.zero;
         
         Sequence sequence = DOTween.Sequence();
         foreach (var card in _bonusCards) {
@@ -101,6 +93,11 @@ public class BonusShopView : MonoBehaviour {
                     .SetEase(_easeToShowCards)
             );
         }
+        sequence.Append(
+            _randomByAdvTransform
+                .DOScale(1f, _showCardsDuration)
+                .SetEase(_easeToShowCards)
+        );
     }
 
 
