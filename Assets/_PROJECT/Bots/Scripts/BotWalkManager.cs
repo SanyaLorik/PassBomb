@@ -173,46 +173,51 @@ public class BotWalkManager : MonoBehaviour {
         await FallWithPhysics(token);
     }
     
-    private async UniTask FallWithPhysics(CancellationToken token) {
-        float maxTime = 5f;
+    private async UniTask FallWithPhysics(CancellationToken token)
+    {
+        float maxTime = 4f;
         float t = 0f;
 
-        // включаем физику
         _rb.isKinematic = false;
         _rb.useGravity = true;
 
-        // важно: задаём начальную скорость вниз
         _rb.angularVelocity = Vector3.zero;
         _rb.linearVelocity = Vector3.down * _gameData.BotFallSpeed;
+        
 
-        while (!token.IsCancellationRequested) {
+        while (!token.IsCancellationRequested)
+        {
             t += Time.fixedDeltaTime;
 
             Vector3 pos = _rb.position;
 
-            // проверка: коснулись ли чего-то
-            bool grounded = Physics.SphereCast(
-                pos + Vector3.up * 0.1f,
-                0.3f,              
-                Vector3.down,
-                out RaycastHit hit,
-                1.2f           
-            );
-
-            if (grounded && _rb.linearVelocity.y <= 0f)
+            // ГЛАВНОЕ: ищем NavMesh напрямую (НЕ через коллайдер)
+            if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, _mapsChanger.FallBotFindSamplePosition, NavMesh.AllAreas))
             {
-                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, _mapsChanger.FallBotFindSamplePosition, NavMesh.AllAreas))
+                // приземляемся только если падаем вниз
+                if (_rb.linearVelocity.y <= 0f)
                 {
-                    _rb.position = hit.point;
                     FinishLanding(navHit.position);
                     return;
                 }
             }
 
-            // улетел в бездну
-            if (t > maxTime || pos.y < -200f) {
+            // Дополнительная страховка (если уже ниже NavMesh)
+            if (!NavMesh.SamplePosition(pos, out _, _mapsChanger.FallBotFindSamplePosition, NavMesh.AllAreas))
+            {
+                if (NavMesh.SamplePosition(pos + Vector3.up * 5f, out NavMeshHit fallbackHit, 10f, NavMesh.AllAreas))
+                {
+                    FinishLanding(fallbackHit.position);
+                    return;
+                }
+            }
+
+            // выпали в бездну
+            if (t > maxTime || pos.y < -200f)
+            {
                 Debug.Log("Bot fell into void");
                 _mainManager.FellInVoidWanderer(this);
+
                 StopPhys();
                 Grounded?.Invoke(true);
                 return;

@@ -44,10 +44,10 @@ MonoBehaviour:
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 9
     <BotPushForce>k__BackingField: 8
-    <BotUpPushRatio>k__BackingField: 3
+    <BotUpPushRatio>k__BackingField: 5
     <PlayerPushForce>k__BackingField: 20
-    <PlayerUpPushRatio>k__BackingField: 8
-    <PushTime>k__BackingField: 1.4
+    <PlayerUpPushRatio>k__BackingField: 12
+    <PushTime>k__BackingField: 1
     <PushColldown>k__BackingField: 1
     <ColldownToStartGame>k__BackingField: 3
     <TimeAfterBombExplode>k__BackingField: 1
