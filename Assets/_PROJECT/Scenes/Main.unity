@@ -2004,6 +2004,17 @@ MonoBehaviour:
   <CentralTeleport>k__BackingField: {fileID: 977837456}
   _mapitems:
   - {fileID: 1145189140}
+--- !u!114 &350261723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4236735343802257819, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355022125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5539804622110977255, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -2616,7 +2627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2681147780089439292, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: FallBotFindSamplePosition
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3069345477513190578, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: FallBotFindSamplePosition
@@ -2624,7 +2635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787827755550764490, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4343414195835875579, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_Name
@@ -3230,6 +3241,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &503312859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3825006387191191324, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!1 &510736647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3372571092676118150, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -3751,6 +3773,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!82 &653733924 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6947635192482709086, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &654550892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300191825790602951, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -3778,6 +3805,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!1 &659032163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4855361787366896034, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659210038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3301077586892381636, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -3810,6 +3842,120 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5572063524933490867, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
   m_PrefabInstance: {fileID: 967158670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &665088956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665088957}
+  - component: {fileID: 665088958}
+  m_Layer: 0
+  m_Name: WheelFortune
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &665088957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665088956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1883334078}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &665088958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665088956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be7e06993689124a93cffe094245d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.WheelFortuneBase
+  _spinWheelContainer: {fileID: 1390632910}
+  _speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0028038025
+      value: 1
+      inSlope: -0.10609437
+      outSlope: -0.10609437
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.17131117
+    - serializedVersion: 3
+      time: 0.43672204
+      value: 0.7942768
+      inSlope: -1.1262417
+      outSlope: -1.1262417
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10078538
+      outWeight: 0.1398436
+    - serializedVersion: 3
+      time: 0.75734717
+      value: 0.12891275
+      inSlope: -1.2201378
+      outSlope: -1.2201378
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.12604158
+      outWeight: 0.18502475
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _durationSpinning: 3
+  _spinDeltaTime: 0.025
+  _countSpinning: 5
+  _maxRangeAwardRotation: 5
+  _awards:
+  - {fileID: 712790293}
+  - {fileID: 1945717546}
+  - {fileID: 503312859}
+  - {fileID: 1000695571}
+  - {fileID: 1313209977}
+  - {fileID: 1593733432}
+  - {fileID: 763062786}
+  - {fileID: 1023458736}
+  _adButton: {fileID: 865709632}
+  _spinButton: {fileID: 350261723}
+  _spinButtonText: {fileID: 1341876165}
+  _spinCounterText: {fileID: 738068424}
+  _attemptContainer: {fileID: 659032163}
+  _attemptTimerText: {fileID: 1492724113}
+  _attemptDurationInMinute: 15
+  _attemptCountAdding: 3
+  _awardPopup: {fileID: 1474356620}
+  _blockPanel: {fileID: 1043138898}
+  _externalNotificationContainer: {fileID: 1902044535}
+  _externalNotificationText: {fileID: 1950213234}
+  _tikAudioSource: {fileID: 653733924}
+  _audioTik: 90
 --- !u!224 &671584855 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9104868469748280078, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -4053,6 +4199,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &712790293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7192083898706282496, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!1 &715569084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3796503346355055989, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -4172,6 +4329,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
+--- !u!114 &738068424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4197431062950968011, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &740069499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5413483626748603227, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -4305,6 +4473,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &763062786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 365801106709963870, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!1 &768866719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6449972897127986985, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -4573,6 +4752,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &865709632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 21999681984959208, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871193734 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7019424939627826708, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -7408,7 +7598,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -200
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1533894569909209414, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7539,6 +7730,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1000695571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3730649805114437260, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!1 &1009659975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2129352225957763919, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -7627,9 +7829,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1023458736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8441681790790647572, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!224 &1028592508 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7924551729691309258, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1043138898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8236773436844128381, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
   m_PrefabInstance: {fileID: 967158670}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1051416485 stripped
@@ -8860,6 +9078,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+--- !u!114 &1313209977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2979390903451818670, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!114 &1318222975 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8299547296531149697, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -8944,6 +9173,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1341876165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1512841536540941521, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1345569788 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6331306151590435261, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -9211,6 +9451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611408ef5a702e94e88d1d1cefbc15cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PurchaseSlotView
+--- !u!224 &1390632910 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 357196155048935263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1398971656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8095395718853766938, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -9639,6 +9884,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1474356620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3506849674971744036, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d19e342e6abc48438608450faf681b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PopupBase
 --- !u!1 &1477209945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3318882666910607844, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -9725,6 +9981,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1492724113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3976874558780846042, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1502825401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1737623276226716091, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -10880,6 +11147,17 @@ Transform:
   - {fileID: 967158671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593733432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7843824909511895558, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
 --- !u!1 &1598276661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7189068361437145837, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -12021,6 +12299,7 @@ Transform:
   - {fileID: 1482640627}
   - {fileID: 349319953}
   - {fileID: 889303194}
+  - {fileID: 665088957}
   m_Father: {fileID: 1407686364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1883499812 stripped
@@ -12186,6 +12465,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!1 &1902044535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6732716492818924200, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1907366798 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2430155683549716430, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -12256,6 +12540,28 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1945717546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1078819870710208141, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c544e58afc6bd84496d19f5f1684635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LuringPlayer_M.ItemAward
+--- !u!114 &1950213234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3776609544481601186, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1960033643
 GameObject:
   m_ObjectHideFlags: 0

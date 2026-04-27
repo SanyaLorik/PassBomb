@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 47267
+    Money: 82378
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Skins:
@@ -21,14 +21,14 @@ MonoBehaviour:
     SkinWearId: univesal
     Bonuses:
     - Id: InvisibleBonus
-      Count: 99
+      Count: 84
     - Id: SpeedBonus
-      Count: 90
+      Count: 33
     - Id: BigJumpBonus
-      Count: 99
+      Count: 94
     Tasks:
     - Id: pass_bomb_10
-      Count: 6
+      Count: 18
       IsGetReward: 0
     - Id: pass_in_void_5
       Count: 0
@@ -37,19 +37,19 @@ MonoBehaviour:
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 7
+      Count: 34
       IsGetReward: 0
     - Id: win_count_5
-      Count: 0
+      Count: 2
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 5
+      Count: 24
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
-      Count: 0
+      Count: 5
       IsGetReward: 0
     - Id: use_invincible_bonus_10
-      Count: 0
+      Count: 15
       IsGetReward: 0
     - Id: parkour_count_1
       Count: 0
@@ -64,15 +64,15 @@ MonoBehaviour:
       CountSpinAllow: 5
       LastDateTimeSpined: 07.04.2026 22:43:20
     DailyQuestSave:
-      LastDateTimeEntered: 26.04.2026 21:45:48
+      LastDateTimeEntered: 27.04.2026 14:50:07
     SkinSave:
       SkinSets:
       - GroupId: 1
         BoughtIds: 010000000200000003000000
         EquippedId: 2
       - GroupId: 2
-        BoughtIds: 010000000200000003000000
-        EquippedId: 1
+        BoughtIds: 01000000020000000300000004000000
+        EquippedId: 4
       - GroupId: 3
         BoughtIds: 01000000
         EquippedId: 1

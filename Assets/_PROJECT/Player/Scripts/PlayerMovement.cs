@@ -96,17 +96,12 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
            TeleportInSpawn(); 
         }
     }
+    
 
-    public void SetBigJump(bool bigJump) {
-        _firstJumpForce = bigJump ? _gameData.JumpBonusHeight : _gameData.JumpForce;
-        _secondJumpForce = bigJump ? _gameData.DoubleJumpBonusHeight : _gameData.SecondJumpForce;
-    }
-
-    public bool IsPushed { get; private set; }
     public bool IsPlaying { get;  private set; }
+    public event Action<MoveStatus, bool> MoveStatusChanged;
 
     public void PushAway(Vector3 direction) {
-        IsPushed = true;
         PlayerHit?.Invoke();
         StartCoroutine(PushWithController(_controller, direction.normalized));
             
@@ -140,13 +135,9 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
             yield return null;
         }
-
-        IsPushed = false;
     }
 
-    public void SetInvinsible(bool invnincible) {
-        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
-    }
+
 
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
 
@@ -163,22 +154,36 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         MoveEnabled?.Invoke(MoveEnable);
     }
 
-    public void SetDefaultRoundSpeed() {
+    
+    
+    public void SetDefaultSpeed() {
         _walkSpeed = _gameData.WalkSpeed + _petsManager.PetsRatioSum;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, false);
     }
-
+    
+    
     public void SetHunterSpeed() {
         _walkSpeed = _gameData.HunterSpeed + _petsManager.PetsRatioSum;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
     }
 
     public void SetBonusSpeed() {
         _walkSpeed = _gameData.VelocityBonusSpeed + _petsManager.PetsRatioSum;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
+    }
+    
+    public void SetInvinsible(bool invnincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
+        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invnincible);
     }
 
-    public void SetDefaultSpeed() {
-        _walkSpeed = _gameData.WalkSpeed + _petsManager.PetsRatioSum;
+    
+    public void SetBigJump(bool bigJump) {
+        _firstJumpForce = bigJump ? _gameData.JumpBonusHeight : _gameData.JumpForce;
+        _secondJumpForce = bigJump ? _gameData.DoubleJumpBonusHeight : _gameData.SecondJumpForce;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperJump, bigJump);
     }
-
+    
     
     public void TeleportInSpawn() {
         TeleportToPoint(_spawnPoint.position);

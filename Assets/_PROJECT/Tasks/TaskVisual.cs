@@ -13,12 +13,12 @@ public class TaskVisual : MonoBehaviour {
     [SerializeField] private RectTransform _progressRectTransform;
     [SerializeField] private Button _takeRewardButton;
     
+    [field: Header("Чисто для проверки в PlayMode")]
+    [field: SerializeField] public TaskType TaskType { get; private set; }
+    [field: SerializeField] public string TaskId { get; private set; }
+    
     public bool TaskIsComplete { get; private set; }
     private string _taskLocalizationText;
-    [field: SerializeField] public TaskType TaskType { get; private set; }
-    
-    [field: Header("Чисто для проверки в PlayMode")]
-    [field: SerializeField] public string TaskId { get; private set; }
     
     
     [Inject] private NumberFormatter _formatter;

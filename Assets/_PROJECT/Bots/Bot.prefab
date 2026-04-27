@@ -209,13 +209,13 @@ MonoBehaviour:
   _bonusesWeights:
   - Item:
       rid: 6522072584283750468
-    Weight: 1
+    Weight: 0.218
   - Item:
       rid: 6522072584283750469
-    Weight: 0
+    Weight: 0.115
   - Item:
       rid: 6522072584283750470
-    Weight: 0
+    Weight: 0.544
   references:
     version: 2
     RefIds:
@@ -1080,6 +1080,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636045225519515357, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+      propertyPath: _botStateManager
+      value: 
+      objectReference: {fileID: 790296001332029354}
+    - target: {fileID: 1636045225519515357, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+      propertyPath: _passBombPlayerBehaviour
+      value: 
+      objectReference: {fileID: 1402330233937831249}
     - target: {fileID: 1973894457098444228, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
       propertyPath: m_Layer
       value: 0

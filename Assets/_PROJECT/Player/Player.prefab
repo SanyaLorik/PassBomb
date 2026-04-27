@@ -1048,6 +1048,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1636045225519515357, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+      propertyPath: _playerMovement
+      value: 
+      objectReference: {fileID: 3539183820512013210}
+    - target: {fileID: 1636045225519515357, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
+      propertyPath: _passBombPlayerBehaviour
+      value: 
+      objectReference: {fileID: 3539183820512013210}
     - target: {fileID: 1973894457098444228, guid: 6a3c458c6c0521f48bbd39fef9453d57, type: 3}
       propertyPath: m_Layer
       value: 0

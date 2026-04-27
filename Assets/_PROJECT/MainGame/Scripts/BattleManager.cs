@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class BattleManager : MonoBehaviour {
     
     public bool MainPlayerPlay { get; private set; }
+    public bool GameIsOver { get; private set; }
     public bool PlayerReturnToSpawn => _mainPlayerMovement.PlayerInSpawn;
 
     public int CountPlayersToNewBattle => _mapsToBattleChanger.CurrentMapSpawnPoints.Length;
@@ -61,6 +62,7 @@ public class BattleManager : MonoBehaviour {
     
     
     public void InitForNewGame(bool mainPlayerPlay) {
+        GameIsOver = false;
         _mapsToBattleChanger.ChooseNextMap();
         _bomb.TeleportBombToSpawn(BombSpawnPoint);
         
@@ -78,6 +80,7 @@ public class BattleManager : MonoBehaviour {
 
 
     public void PlayerFalled(IPassBombPlayer passBombPlayer) {
+        if(GameIsOver) return;
         if (passBombPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
             _bomb.ExlodeBombLater();
             return;
@@ -188,10 +191,12 @@ public class BattleManager : MonoBehaviour {
 
     private void GameEnded(bool setGameOver = true) {
         Debug.Log("Игра кончилась");
+        GameIsOver = true;
         foreach (IPassBombPlayer player in _players) {
             player.RoleBehaviour.NewRoundStart(false);
             player.SetPlayStatus(false);
         }
+        
         _players.Clear();
         
         if (setGameOver) {

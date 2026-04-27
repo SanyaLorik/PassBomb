@@ -21,7 +21,7 @@ public class PlayersRoleManager : MonoBehaviour {
     
     private void BombOnPlayerBecameHunter(PlayerRoleBehaviour playerRole) {
         if (_currentHunter != null) {
-            _currentHunter.SetDefaultRoundSpeed();
+            _currentHunter.SetDefaultSpeed();
         }
         
         IPassBombPlayer player = _battleManager.Players

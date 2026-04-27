@@ -1,3 +1,4 @@
+using System;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,6 +15,11 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
 
     public bool IsPlaying { get; private set; }
+    public event Action<MoveStatus, bool> MoveStatusChanged;
+    public event Action<bool> PlayerStatusChanged;
+    
+    
+    
     public string Nickname => _botMonolog.NickName;
     public PlayerRoleBehaviour RoleBehaviour => _roleBehaviour;
     
@@ -24,8 +30,10 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     
     private void Start() {
-        if (!ShowInSpawn) gameObject.DisactiveSelf();
-        SetStartWanderIfActive(true);
+        if (!ShowInSpawn) 
+            gameObject.DisactiveSelf();
+        else
+            SetStartWanderIfActive(true);
     }
     
 
@@ -38,6 +46,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        PlayerStatusChanged?.Invoke(goPlay);
         IsPlaying = goPlay;
         _agent.enabled = true;
         BotWalkManager.StopPhys();
@@ -80,28 +89,28 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
     
-    public void SetDefaultRoundSpeed() {
-        _agent.speed = _gameData.DefaultSpeedInRound;
+    public void SetDefaultSpeed() {
+        _agent.speed = _gameData.BotSpeed;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, false);
     }
-    
     
     public void SetHunterSpeed() {
         _agent.speed = _gameData.HunterSpeed;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
+
     }
 
     
     public void SetBonusSpeed() {
         _agent.speed = _gameData.VelocityBonusSpeed;
+        MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
     }
 
-    
-    public void SetDefaultSpeed() {
-        _agent.speed = _gameData.BotSpeed;
-    }
 
     
-    public void SetBigJump(bool state) {
-        BotWalkManager.SetBigJump(state);
+    public void SetBigJump(bool bigJump) {
+        BotWalkManager.SetBigJump(bigJump);
+        MoveStatusChanged?.Invoke(MoveStatus.SuperJump, bigJump);
     }
 
 
@@ -115,6 +124,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     public void SetInvinsible(bool invnincible) {
         _roleBehaviour.SetInvincibleAfterBonus(invnincible);
+        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invnincible);
     }
 
 

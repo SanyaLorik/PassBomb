@@ -56,11 +56,19 @@ public class BonusSlot : MonoBehaviour {
 
     private void OnEnable() {
         CheckAvailable();
+        SetProgressBarVisible(false);
         _button.onClick.AddListener(TryUse);
+        Bonus.StopWork(_mainPlayer);
     }
 
     
-    
+    private void OnDisable() {
+        Bonus.StopWork(_mainPlayer);
+        _button.onClick.RemoveListener(TryUse);
+        IsAvailable = false;
+        _reloadProgress.fillAmount = 0f;
+    }
+
     private void Start() {
         _mainPlayer.RoleBehaviour.PlayerRoleChanged += HideShowElementsByRole;
         
@@ -95,7 +103,8 @@ public class BonusSlot : MonoBehaviour {
     
     private void HideShowElementsByRole(PlayerRoleInGame role) {
         if (role == PlayerRoleInGame.Hunter) {
-            StopBonusWork();
+            UniTaskHelper.DisposeTask(ref _tokenSource);
+            SetProgressBarVisible(false);
             IsAvailable = false;
             _reloadProgress.fillAmount = 1f;
         }
@@ -143,19 +152,12 @@ public class BonusSlot : MonoBehaviour {
     }
     
     
-    private void StopBonusWork() {
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-        CheckAvailable();
-        Bonus.StopWork(_mainPlayer);
-        SetProgressBarVisible(false);
-    }
 
 
     private async UniTask StartUseTimerAsync(CancellationToken token) {
         SetProgressBarVisible(true);
 
         float yEnd = _useTimeProgress.rect.height;
-        
         float duration = _gameData.BonusDuration;
         float elapsedTime = _gameData.BonusDuration;
         
@@ -170,20 +172,13 @@ public class BonusSlot : MonoBehaviour {
             await UniTask.Yield(cancellationToken: token);
         }
 
+        Bonus.StopWork(_mainPlayer);
         SetProgressBarVisible(false);
-        _useTimeProgress.offsetMax = _startOffset;
-        
-        SetReloadBonusTimerAsync(token).Forget();
+        if (BonusCount != 0) {
+            SetReloadBonusTimerAsync(token).Forget();
+        }
     }
     
-    private static float GetYPoseByPercent(float percent, float yEnd, RectTransform parent) {
-        if (yEnd < 0) {
-            Canvas.ForceUpdateCanvases();
-            yEnd = parent.rect.height;
-        }
-        return -yEnd * (1f - percent);
-    }
-
 
     private async UniTask SetReloadBonusTimerAsync(CancellationToken token) {
         float duration = _gameData.BonusReload;
@@ -194,12 +189,11 @@ public class BonusSlot : MonoBehaviour {
             elapsedTime -= Time.deltaTime;
             await UniTask.Yield(cancellationToken: token);
         }
-
+        
+        CheckAvailable();
         if (BonusCount != 0) {
             GameEvents.BonusReloadedInvoke();
         }
-
-        StopBonusWork();
     }
 
 
@@ -224,8 +218,13 @@ public class BonusSlot : MonoBehaviour {
         CheckAvailable();
     }
 
-
-    private void OnDisable() {
-        StopBonusWork();
+    private static float GetYPoseByPercent(float percent, float yEnd, RectTransform parent) {
+        if (yEnd < 0) {
+            Canvas.ForceUpdateCanvases();
+            yEnd = parent.rect.height;
+        }
+        return -yEnd * (1f - percent);
     }
+
+
 }

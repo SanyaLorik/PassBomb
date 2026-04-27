@@ -23,12 +23,30 @@ public class BotBonusIniter : MonoBehaviour {
     [Inject] private Bomb _bomb;
 
     
+    private void Start() {
+        CalculateValueDivider();
+    }
+
+    
     private void OnEnable() {
         _gameStarter.GameStarted += GameStarted;
         _battleManager.GameReadyToPlay += OnGameReadyToPlay;
         _bomb.PlayerBecameHunter += CheckPlayerHunter;
-        CalculateValueDivider();
-        
+        _bot.PlayerStatusChanged += BotOnPlayerStatusChanged;
+    }
+
+    
+    private void OnDisable() {
+        _gameStarter.GameStarted -= GameStarted;
+        _battleManager.GameReadyToPlay -= OnGameReadyToPlay;
+        _bomb.PlayerBecameHunter -= CheckPlayerHunter;
+        _bot.PlayerStatusChanged -= BotOnPlayerStatusChanged;
+    }
+    
+    
+    private void BotOnPlayerStatusChanged(bool changed) {
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        StopPreviousBonus();
     }
 
     
