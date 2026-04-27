@@ -2830,25 +2830,25 @@ MonoBehaviour:
   - TabId: 1
     ClothesInfo:
     - ClothId: 1
-      ClothObject: {fileID: 8240557163369491640}
-      BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 2
-      ClothObject: {fileID: 4698604220600368304}
-      BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 3
-      ClothObject: {fileID: 9056296336088115629}
-      BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 4
-      ClothObject: {fileID: 3143731157411785581}
-      BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 5
       ClothObject: {fileID: 5586748878561425628}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 6
+    - ClothId: 2
       ClothObject: {fileID: 6954924494315052152}
       BodyPartObject: {fileID: 4574697782738039216}
-    - ClothId: 7
+    - ClothId: 3
       ClothObject: {fileID: 6413169289787540684}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 4
+      ClothObject: {fileID: 8240557163369491640}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 5
+      ClothObject: {fileID: 4698604220600368304}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 6
+      ClothObject: {fileID: 9056296336088115629}
+      BodyPartObject: {fileID: 4574697782738039216}
+    - ClothId: 7
+      ClothObject: {fileID: 3143731157411785581}
       BodyPartObject: {fileID: 4574697782738039216}
     - ClothId: 8
       ClothObject: {fileID: 5880220274971057969}
@@ -2860,31 +2860,31 @@ MonoBehaviour:
       ClothObject: {fileID: 3701315938031229045}
       BodyPartObject: {fileID: 4574697782738039216}
     - ClothId: 11
-      ClothObject: {fileID: 5880220274971057969}
+      ClothObject: {fileID: 7090352996320868449}
       BodyPartObject: {fileID: 4574697782738039216}
   - TabId: 2
     ClothesInfo:
     - ClothId: 1
-      ClothObject: {fileID: 4829642011746277041}
-      BodyPartObject: {fileID: 3498230353959296146}
-    - ClothId: 2
-      ClothObject: {fileID: 2028283240213313027}
-      BodyPartObject: {fileID: 4257248508716050269}
-    - ClothId: 3
-      ClothObject: {fileID: 658937369443294403}
-      BodyPartObject: {fileID: 0}
-    - ClothId: 4
-      ClothObject: {fileID: 2522147649833301915}
-      BodyPartObject: {fileID: 4257248508716050269}
-    - ClothId: 5
       ClothObject: {fileID: 7149067450008992692}
       BodyPartObject: {fileID: 4257248508716050269}
-    - ClothId: 6
+    - ClothId: 2
       ClothObject: {fileID: 7218264438859172547}
       BodyPartObject: {fileID: 4257248508716050269}
-    - ClothId: 7
+    - ClothId: 3
+      ClothObject: {fileID: 4829642011746277041}
+      BodyPartObject: {fileID: 3498230353959296146}
+    - ClothId: 4
+      ClothObject: {fileID: 2028283240213313027}
+      BodyPartObject: {fileID: 4257248508716050269}
+    - ClothId: 5
+      ClothObject: {fileID: 658937369443294403}
+      BodyPartObject: {fileID: 0}
+    - ClothId: 6
       ClothObject: {fileID: 2322452626432300539}
       BodyPartObject: {fileID: 3498230353959296146}
+    - ClothId: 7
+      ClothObject: {fileID: 2522147649833301915}
+      BodyPartObject: {fileID: 4257248508716050269}
   - TabId: 3
     ClothesInfo:
     - ClothId: 1
@@ -2922,8 +2922,8 @@ MonoBehaviour:
       ClothObject: {fileID: 7653621151653420325}
       BodyPartObject: {fileID: 0}
     - ClothId: 7
-      ClothObject: {fileID: 7311900258668281190}
-      BodyPartObject: {fileID: 9064208879415798017}
+      ClothObject: {fileID: 9064208879415798017}
+      BodyPartObject: {fileID: 0}
   BodyParts:
   - TabId: 1
     BodyPartObjects: []
@@ -2950,6 +2950,9 @@ MonoBehaviour:
   - {fileID: 7104902975961233846}
   - {fileID: 7531992028867299495}
   - {fileID: 2264857521586286435}
+  Gloves:
+  - {fileID: 8642194167738139208}
+  - {fileID: 7347497357102959282}
 --- !u!114 &1636045225519515357
 MonoBehaviour:
   m_ObjectHideFlags: 0

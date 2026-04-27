@@ -10,6 +10,7 @@ public class PlayerInstaller : MonoInstaller {
         Container.BindInterfacesAndSelfTo<PlayerMovement>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<PlayerStateManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<PlayerBank>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<PlayerFaceChooser>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 
 

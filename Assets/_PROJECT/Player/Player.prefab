@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3686266338711202666}
   - component: {fileID: 7508950050209255313}
   - component: {fileID: 2263604586574929044}
+  - component: {fileID: 2275091813309161668}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -221,6 +222,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkinWearer
   _playerImitate: 0
   _skinWearer: {fileID: 8623321380926397946}
+--- !u!114 &2275091813309161668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928220643738429436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d7ee5fd06e44069876df12f8def399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFaceChooser
+  _button: {fileID: 0}
+  _randomWearer: {fileID: 8623321380926397946}
 --- !u!1 &7913775590206704768
 GameObject:
   m_ObjectHideFlags: 0

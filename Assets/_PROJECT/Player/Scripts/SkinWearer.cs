@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
-using _PROJECT.Scripts.Helpers;
-using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using UnityEngine;
 using Zenject;
@@ -36,39 +33,63 @@ public class SkinWearer : MonoBehaviour {
     [SerializeField] private BodyPart[] BodyParts;
     [SerializeField] private GameObject[] Mouthes;
     [SerializeField] private GameObject[] Eyes;
+    [SerializeField] private GameObject[] Gloves;
     
     [Inject] private GameData _gameData;
-    private CancellationTokenSource _tokenSource;
 
     
-    private void OnEnable() {
-        ChangeFaceRandom();
-        UniTaskHelper.DisposeTask(ref  _tokenSource);
-        _tokenSource = new CancellationTokenSource();
-        UpdateFaceAsync(_tokenSource.Token).Forget();
-    }
-
-    private void OnDisable() {
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-    }
-
-    
-    private async UniTask UpdateFaceAsync(CancellationToken token) {
-        while (!token.IsCancellationRequested) {
-            float waitTime = Random.Range(_gameData.TimeToChangeFace.From, _gameData.TimeToChangeFace.To);
-            await UniTask.WaitForSeconds(waitTime, cancellationToken: token);
-            ChangeFaceRandom(); 
+    public void  WearRandomSkin() {
+        foreach (var clothByTab in Clothes) {
+            WearCloth(
+                clothByTab.TabId, 
+                clothByTab.ClothesInfo[Random.Range(0, clothByTab.ClothesInfo.Length)].ClothId
+            );
         }
     }
-
     
-    private void ChangeFaceRandom() {
-        Mouthes.DisactiveSelf();
+        
+    public void ChangeFaceGlovesRandom() {
         Eyes.DisactiveSelf();
-        Mouthes.GetRandomElement().ActiveSelf();
+        Mouthes.DisactiveSelf();
+        Gloves.DisactiveSelf();
         Eyes.GetRandomElement().ActiveSelf();
+        Mouthes.GetRandomElement().ActiveSelf();
+        Gloves.GetRandomElement().ActiveSelf();
     }
 
+    /// <summary>
+    /// Face - т.е порядок сверху вниз глаза лицо
+    /// </summary>
+    /// <param name="mouthId"></param>
+    /// <param name="eyeId"></param>
+    public void ChangeFaceByIndexes(int eyeId, int mouthId) {
+        Eyes.DisactiveSelf();
+        Mouthes.DisactiveSelf();
+        Eyes[eyeId].ActiveSelf();
+        Mouthes[mouthId].ActiveSelf();
+    }
+
+    
+    public (int, int) GetNextFaceIndexes(int prevEyesIndex, int prevMouthIndex) {
+        int eyesIndex = GetNextCollectionIndex(Eyes.Length, prevEyesIndex);
+        int mouthIndex = GetNextCollectionIndex(Mouthes.Length, prevMouthIndex);
+        return (eyesIndex, mouthIndex);
+    }
+
+    
+    
+    public void ChooseGlovesByIndex(int glovesId) {
+        Gloves.DisactiveSelf();
+        Gloves[glovesId].ActiveSelf();
+    }
+
+    
+    public int GetNextGlovesIndex(int previousIndex) {
+        int newRandomGlovesIndex = GetNextCollectionIndex(Gloves.Length, previousIndex);
+        return newRandomGlovesIndex;
+    }
+
+    
     public void WearCloth(int tabId, int clothId) {
         Debug.Log($"Надевание tabId {tabId} одежду {clothId} ");
         // Снимаем части тела и выбираем нужную
@@ -79,16 +100,8 @@ public class SkinWearer : MonoBehaviour {
     }
 
 
-    public void  WearRandomSkinForBot() {
-        foreach (var clothByTab in Clothes) {
-            WearCloth(
-                clothByTab.TabId, 
-                clothByTab.ClothesInfo[Random.Range(0, clothByTab.ClothesInfo.Length)].ClothId
-            );
-        }
 
-        
-    }
+
     
     private void DisactiveBodyPartByTabId(int tabId) {
         BodyPart bodyPart = BodyParts.FirstOrDefault(b => b.TabId == tabId);
@@ -113,7 +126,7 @@ public class SkinWearer : MonoBehaviour {
     private void ActivateClothById(Clothes clothes, int clothId) {
         ClothInfo cloth = clothes.ClothesInfo.FirstOrDefault(c => c.ClothId  == clothId);
         if (cloth.ClothObject == null) {
-            Debug.Log($"для clothId {clothId} не выбран скин");
+            Debug.Log($"Для clothId {clothId} не выбран скин");
             return;
         }
         
@@ -129,6 +142,15 @@ public class SkinWearer : MonoBehaviour {
         => Clothes.First(c => c.TabId == tabId);
 
     
-
+    private int GetNextCollectionIndex(int collectionSize, int prevIndex) {
+        int newIndex = Random.Range(0, collectionSize);
+        if (newIndex == prevIndex) {
+            newIndex++;
+            if (newIndex > collectionSize - 1) {
+                newIndex = 0;
+            }
+        }
+        return newIndex;
+    }
     
 }
