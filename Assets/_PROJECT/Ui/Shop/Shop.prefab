@@ -5515,7 +5515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_1
+      value: 101_Money_1
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -5669,7 +5669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_2
+      value: 105_Money_2
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -6011,7 +6011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_1
+      value: 104_Money_1
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -6165,7 +6165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_3
+      value: 103_Money_3
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -6337,7 +6337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_3
+      value: 106_Money_3
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -6518,7 +6518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_4
+      value: 107_Money_4
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
@@ -6705,7 +6705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211434877637635595, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Name
-      value: Money_2
+      value: 102_Money_2
       objectReference: {fileID: 0}
     - target: {fileID: 5219459772709650215, guid: 18858429556dc7f45a95ece25faa436f, type: 3}
       propertyPath: m_Color.b
