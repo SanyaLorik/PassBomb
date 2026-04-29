@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6487785023027163926}
   - component: {fileID: 2261473329840455935}
   m_Layer: 5
-  m_Name: Bougth Counter Text
+  m_Name: Bougth X Multiplayer Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 5741346394987752671}
   - component: {fileID: 1034882400848494082}
   m_Layer: 5
-  m_Name: Yourself Counter Text
+  m_Name: Yourself Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
