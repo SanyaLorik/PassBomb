@@ -173,7 +173,29 @@ MonoBehaviour:
     <Data>k__BackingField: Ad in
   - <Id>k__BackingField: Spin
     <Data>k__BackingField: Spin
+  - <Id>k__BackingField: Selected
+    <Data>k__BackingField: Selected
+  - <Id>k__BackingField: Select
+    <Data>k__BackingField: Select
+  - <Id>k__BackingField: Skins
+    <Data>k__BackingField: Skins
+  - <Id>k__BackingField: Change Face
+    <Data>k__BackingField: Change face
+  - <Id>k__BackingField: Review
+    <Data>k__BackingField: Review
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten
     <ShowAsBlockedForReceive>k__BackingField: Soon...
+  SkinChanger:
+    Translations:
+    - <Id>k__BackingField: 1
+      <Data>k__BackingField: Header
+    - <Id>k__BackingField: 2
+      <Data>k__BackingField: Body
+    - <Id>k__BackingField: 3
+      <Data>k__BackingField: Pants
+    - <Id>k__BackingField: 4
+      <Data>k__BackingField: Shoes
+    - <Id>k__BackingField: 5
+      <Data>k__BackingField: Accessories

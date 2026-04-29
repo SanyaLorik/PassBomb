@@ -1,12 +1,13 @@
 using Architecture_M;
 using LuringPlayer_M;
+using MediaKit_M.SkinChanger;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Architecture_M/Localization/Localization Data")]
 public class LocalizationData : LocalizationDataBase,
-    IDailyRewardLocalization
+    IDailyRewardLocalization, ISkinChangerLocalization
 {
     public string[] BotsPhrases;
 
@@ -35,9 +36,12 @@ public class LocalizationData : LocalizationDataBase,
     [field: SerializeField] public StaticTranslation<string>[] StaticTranslates { get; private set; }
 
     public DailyRewardLocaliation DailyReward;
+    public SkinChangerLocalization SkinChanger;
 
     DailyRewardLocaliation IDailyRewardLocalization.DailyReward => DailyReward;
-    
+
+    SkinChangerLocalization ISkinChangerLocalization.SkinChanger => SkinChanger;
+
     public string GetTranslatedText<TId, TItem>(TId id, IEnumerable<TItem> arr)
         where TItem : IIdName<TId>
     {
