@@ -183,6 +183,12 @@ MonoBehaviour:
     <Data>k__BackingField: Change face
   - <Id>k__BackingField: Review
     <Data>k__BackingField: Review
+  - <Id>k__BackingField: Open
+    <Data>k__BackingField: Open
+  - <Id>k__BackingField: Open eggs
+    <Data>k__BackingField: Open eggs
+  - <Id>k__BackingField: Pets
+    <Data>k__BackingField: Pets
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten

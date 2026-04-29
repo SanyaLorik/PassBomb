@@ -198,6 +198,12 @@ MonoBehaviour:
     <Data>k__BackingField: "\u0421\u043C\u0435\u043D\u0438\u0442\u044C \u043B\u0438\u0446\u043E"
   - <Id>k__BackingField: Review
     <Data>k__BackingField: "\u041E\u0431\u0437\u043E\u0440"
+  - <Id>k__BackingField: Open
+    <Data>k__BackingField: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+  - <Id>k__BackingField: Open eggs
+    <Data>k__BackingField: "Open \u044F\u0439\u0446\u043E"
+  - <Id>k__BackingField: Pets
+    <Data>k__BackingField: "\u041F\u0438\u0442\u043E\u043C\u0446\u044B"
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
     <ShowAsReceived>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u043D\u043E"
