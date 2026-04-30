@@ -2839,9 +2839,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1210585404654738259, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1289313368501453460, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: FallBotFindSamplePosition
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382549115178670797, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2343683270566299301, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
@@ -2851,6 +2859,10 @@ PrefabInstance:
       propertyPath: FallBotFindSamplePosition
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2660466652378261293, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: f7903922bb5d5254785a0b376de96e63, type: 2}
     - target: {fileID: 2681147780089439292, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: FallBotFindSamplePosition
       value: 3
@@ -2865,7 +2877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787827755550764490, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4278989180203113333, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
@@ -2877,7 +2889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4368202496714112144, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4769048682245304223, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
@@ -2899,9 +2911,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5749892991226762515, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6020002596322780777, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: FallBotFindSamplePosition
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887463642611227289, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459382368346359025, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7462657142003553996, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
@@ -9565,11 +9589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460821597259095713, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 8460821597259095713, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 9.2
       objectReference: {fileID: 0}
     - target: {fileID: 8589581092858726215, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
       propertyPath: m_AnchorMax.y

@@ -69,6 +69,11 @@ public class BotWalkManager : MonoBehaviour {
         MonitorMovement();
     }
     
+    public void DisposeAllLogic() {
+        UniTaskHelper.DisposeTask(ref _botTokenSource);
+        UniTaskHelper.DisposeTask(ref _jumpTokenSource);
+        UniTaskHelper.DisposeTask(ref _pushTokenSource);
+    }
         
     private async UniTask StartWanderingCycleAsync() {
         if (!gameObject.activeSelf) return;
@@ -279,7 +284,7 @@ public class BotWalkManager : MonoBehaviour {
     }
 
     
-    private void ResetLogic() {
+    public void ResetLogic() {
         Debug.Log("StartWanderSpawn");
         UniTaskHelper.DisposeTask(ref _botTokenSource);
         UniTaskHelper.DisposeTask(ref _jumpTokenSource);
@@ -287,6 +292,8 @@ public class BotWalkManager : MonoBehaviour {
         _agent.velocity = Vector3.zero;
         _agent.ResetPath();
         _agent.nextPosition = transform.position;
+        _agent.isStopped = false;
+
 
         _walkingParticles.Stop();
         StartWandering?.Invoke(false);

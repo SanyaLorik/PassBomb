@@ -20,7 +20,6 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public bool IsPlaying { get; private set; }
     public event Action<MoveStatus, bool> MoveStatusChanged;
     public event Action<bool> PlayerStatusChanged;
-    private CancellationTokenSource _teleportTokenSource;
     
     
     public string Nickname => _botMonolog.NickName;
@@ -54,6 +53,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         _agent.enabled = true;
         BotWalkManager.StopPhys();
         RoleBehaviour.DisposeAllLogic();
+        BotWalkManager.DisposeAllLogic();
         
         gameObject.SetActive(ShowInSpawn || goPlay);
         
@@ -63,42 +63,46 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         // Возвращение на спавн
         else {
             Debug.Log($"Возвращение на спавн игрока {_botMonolog.NickName} in {_spawn.SpawnPoint.position}");
+            Debug.Log($"Игрок play статус {IsPlaying} in {_spawn.SpawnPoint.position}");
             SetBotStateBeforeGame();
-            
-            UniTaskHelper.DisposeTask(ref _teleportTokenSource);
-            _teleportTokenSource = new CancellationTokenSource();
-            TpToPointAsync(_spawn.SpawnPoint.position, _teleportTokenSource.Token).Forget();
+            TeleportToPoint(_spawn.SpawnPoint.position);
         }
         SetStartWanderIfActive(!goPlay);
     }
 
     
-    private async UniTask TpToPointAsync(Vector3 point, CancellationToken token) {
-        // Имитация задержки + меня заебало что боты не могут вернуться на спавн без траблов
-        await UniTask.WaitForSeconds(.3f, cancellationToken: token);
-        TeleportToPoint(point);
-    }
 
     public void SetPlayStatusSilent(bool goPlay) {
         IsPlaying = goPlay;
     }
 
 
-    public void TeleportToPoint(Vector3 pos) {
-        // Отменяем тп на спавн
-        UniTaskHelper.DisposeTask(ref _teleportTokenSource);
+    public void TeleportToPoint(Vector3 pos)
+    {
+        // 1. СНАЧАЛА отменяем всё у BotWalkManager
+        BotWalkManager.ResetLogic(); // этот метод уже есть, он сбрасывает токены
+    
+        if (NavMesh.SamplePosition(pos, out var hit, 1f, NavMesh.AllAreas))
+        {
+            // 2. Останавливаем агента
+            _agent.isStopped = true;
+            _agent.ResetPath();
+            _agent.velocity = Vector3.zero;
         
-        if (NavMesh.SamplePosition(pos, out var hit, 1f, NavMesh.AllAreas)) {
-            _agent.Warp(hit.position);
+            // 3. Выключаем-включаем агента (жёсткий сброс)
+            _agent.enabled = false;
+            transform.position = hit.position;
+            _agent.enabled = true;
+        
+            // 4. После включения — СРАЗУ стопорим
+            _agent.isStopped = true;
+            _agent.ResetPath();
+        
+            Debug.Log($"Телепорт успешен: {transform.position}");
         }
-        else {
-            if (NavMesh.SamplePosition(pos, out var fallbackHit, 7f, NavMesh.AllAreas)) {
-                _agent.Warp(fallbackHit.position);
-                Debug.LogWarning($"Спавн не на NavMesh, телепорт рядом: {fallbackHit.position}");
-            }
-            else {
-                Debug.LogError($"Вообще не можем найти NavMesh рядом с {pos}");
-            }
+        else
+        {
+            Debug.LogError($"SamplePosition НЕ нашел точку рядом с {pos}");
         }
     }
 
@@ -111,12 +115,14 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public void SetDefaultSpeed() {
         _agent.speed = _gameData.BotSpeed;
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, false);
+        Debug.Log($"SetDefaultSpeed {_botMonolog.NickName}");
     }
+    
     
     public void SetHunterSpeed() {
         _agent.speed = _gameData.HunterSpeed;
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
-
+        Debug.Log($"SetHunterSpeed {_botMonolog.NickName}");
     }
 
     

@@ -101,7 +101,7 @@ public class BattleManager : MonoBehaviour {
         MainPlayerPlay = false;
         MainPlayerWin?.Invoke(false);
         RemovePlayer(_mainPlayer);
-        WaitPlayerPressGameOverAsync().Forget();
+        WaitPlayerPressGameOverAsync(false).Forget();
         Debug.Log("Вы выбыли из игры");
     }
 
@@ -166,7 +166,7 @@ public class BattleManager : MonoBehaviour {
         
         if (MainPlayerPlay) {
             MainPlayerWin?.Invoke(true);
-            await WaitPlayerPressGameOverAsync();
+            await WaitPlayerPressGameOverAsync(true);
         }
         GameEnded();
     }
@@ -183,13 +183,19 @@ public class BattleManager : MonoBehaviour {
     }
 
     
-    private async UniTask WaitPlayerPressGameOverAsync() {
+    private async UniTask WaitPlayerPressGameOverAsync(bool playerWin) {
         _mainPlayer.SetMovingStatus(false);
-        _mainPlayer.HideVisualModel(true);
+
+        if (!playerWin) {
+            _mainPlayer.HideVisualModel(true);
+        }
+        
         
         await UniTask.WaitWhile(() => _gameOverView.ResultWindowShowing);
         
-        _mainPlayer.HideVisualModel(false);
+        if (!playerWin) {
+            _mainPlayer.HideVisualModel(false);
+        }
         _mainPlayer.SetPlayStatus(false);
         _mainPlayer.SetMovingStatus(true);
     }
@@ -205,9 +211,15 @@ public class BattleManager : MonoBehaviour {
         
         _players.Clear();
         
+        if (!_mainPlayer.PlayerInSpawn) {
+            _mainPlayer.SetPlayStatus(false);
+            _mainPlayer.SetMovingStatus(true);
+        }
+        
         if (setGameOver) {
             _gameStarter.GameOver();
         }
+        
     }
 
     

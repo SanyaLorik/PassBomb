@@ -44,7 +44,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private float _lastRepulseTime = -999f;
     private BotWalkManager _botWalkManager;
 
-    private IPassBombPlayer PassBombPlayer;
+    public IPassBombPlayer PassBombPlayer { get; private set; }
 
     public event Action<PlayerRoleInGame> PlayerRoleChanged;
 
@@ -63,17 +63,21 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         InitPassBomb();
     }
 
-    private void OnEnable() {
-        // Бот вернулся бегать после падения от удара
-        _botWalkManager.FallAfterPush += ReturnToRole;
+    private void Start() {
+        if (_botWalkManager != null) {
+            _botWalkManager.FallAfterPush += ReturnToRole;
+        }
     }
 
-    private void OnDisable() {
-        _botWalkManager.FallAfterPush -= ReturnToRole;
-    }
+    
     
     private void ReturnToRole() {
-        if (!_battleManager.GameIsOver) {
+        WaitAfterPushAsync().Forget();
+    }
+
+    private async UniTask WaitAfterPushAsync() {
+        await UniTask.WaitForSeconds(1f);
+        if (PassBombPlayer.IsPlaying) {
             SetRole(CurrentRole);
         }
     }

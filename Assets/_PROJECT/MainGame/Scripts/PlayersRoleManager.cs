@@ -29,12 +29,13 @@ public class PlayersRoleManager : MonoBehaviour {
         IPassBombPlayer player = _battleManager.Players
             .FirstOrDefault(p => p.RoleBehaviour == playerRole);
         
-        if (player == null) {
-            Debug.LogError("Игрок стал хантером, но не найден в системе");
+        if (player == null || !player.IsPlaying) {
+            Debug.LogWarning("Игрок стал хантером, но не найден в системе чи мёртв");
             return;
         }
         
         _currentHunter = player;
+        Debug.Log("SetHunterSpeed in BombOnPlayerBecameHunter");
         player.SetHunterSpeed();
     }
     
