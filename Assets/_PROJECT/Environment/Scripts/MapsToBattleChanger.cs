@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class MapsToBattleChanger : MonoBehaviour {
     [field: SerializeField] public Transform CentralTeleport { get; private set; }
     [SerializeField] private List<MapItem> _mapitems;
-    [Header("Ставить 0 и карту ДЛЯ ТУТОРА первой!")]
+    [Header("Ставить 0 и карту Tutorial первой!")]
     [SerializeField] private int _tutorialMapIndex;
 
     private int MapIndex { get; set; }
@@ -50,7 +50,7 @@ public class MapsToBattleChanger : MonoBehaviour {
         if (_tutorialManager.TutorialPassed) {
             MapIndex++;
             if (MapIndex > _mapitems.Count-1) {
-                MapIndex = 1;
+                MapIndex = 0;
             }
         }
         else {

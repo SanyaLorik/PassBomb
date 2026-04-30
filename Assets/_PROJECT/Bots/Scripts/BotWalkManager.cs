@@ -288,12 +288,12 @@ public class BotWalkManager : MonoBehaviour {
         Debug.Log("StartWanderSpawn");
         UniTaskHelper.DisposeTask(ref _botTokenSource);
         UniTaskHelper.DisposeTask(ref _jumpTokenSource);
-        
-        _agent.velocity = Vector3.zero;
-        _agent.ResetPath();
-        _agent.nextPosition = transform.position;
-        _agent.isStopped = false;
-
+        if (_agent != null && _agent.enabled && _agent.isOnNavMesh) {
+            _agent.velocity = Vector3.zero;
+            _agent.ResetPath();
+            _agent.nextPosition = transform.position;
+            _agent.isStopped = false;
+        }
 
         _walkingParticles.Stop();
         StartWandering?.Invoke(false);

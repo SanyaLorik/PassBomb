@@ -76,6 +76,7 @@ public class BotBonusIniter : MonoBehaviour {
     
     private void UseRandomBonus() {
         StopPreviousBonus();
+        if(Random.value > _gameData.BotChanceToUseBonus) return;
         _currentBonus = ItemValueBase.GetRandomItemByWeight(_bonusesWeights, _totalWeight);
         // Debug.Log("Бот юзает " + _currentBonus.GetType());
         _currentBonus.Use(_bot);
@@ -89,7 +90,6 @@ public class BotBonusIniter : MonoBehaviour {
         }
         if(stayHunter) _bot.SetHunterSpeed();
         else _bot.SetDefaultSpeed();
-         
     }
     
     

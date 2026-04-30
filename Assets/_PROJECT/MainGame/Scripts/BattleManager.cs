@@ -101,6 +101,7 @@ public class BattleManager : MonoBehaviour {
         MainPlayerPlay = false;
         MainPlayerWin?.Invoke(false);
         RemovePlayer(_mainPlayer);
+        PlayerDied?.Invoke(_localization.You, _mainPlayer.Transform.position);
         WaitPlayerPressGameOverAsync(false).Forget();
         Debug.Log("Вы выбыли из игры");
     }

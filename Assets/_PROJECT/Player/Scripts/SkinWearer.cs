@@ -91,7 +91,7 @@ public class SkinWearer : MonoBehaviour {
 
     
     public void WearCloth(int tabId, int clothId) {
-        Debug.Log($"Надевание tabId {tabId} одежду {clothId} ");
+        // Debug.Log($"Надевание tabId {tabId} одежду {clothId} ");
         // Снимаем части тела и выбираем нужную
         Clothes clothes = GetClothesByTabId(tabId);
         DisactivePreviousCloth(clothes);
@@ -131,7 +131,7 @@ public class SkinWearer : MonoBehaviour {
         }
         
         cloth.ClothObject.ActiveSelf();
-        Debug.Log("Надеваем " + cloth.ClothObject);
+        // Debug.Log("Надеваем " + cloth.ClothObject);
         if (cloth.BodyPartObject != null) {
             cloth.BodyPartObject.ActiveSelf();
         }

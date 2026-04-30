@@ -127,16 +127,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapItem
   SpawnPoints:
   - {fileID: 6200201394858888961}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6902738687288485630}
+  - {fileID: 6277036782112888185}
+  - {fileID: 3232787833896173079}
+  - {fileID: 9212964182079060662}
+  - {fileID: 9040441761606099312}
+  - {fileID: 5658637260500849882}
+  - {fileID: 4397095000413325925}
+  - {fileID: 6943569251234150014}
+  - {fileID: 525920154510419465}
+  - {fileID: 2686118169400203057}
+  - {fileID: 7096746402529283553}
   BombCenterSpawn: {fileID: 6380388630318402401}
   Floor: {fileID: 4208207996392344110}
   YToFind: 10
+  FallBotFindSamplePosition: 2
 --- !u!1 &402734165547102424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &780487019511671604
 Transform:
   m_ObjectHideFlags: 0

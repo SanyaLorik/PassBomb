@@ -83,5 +83,6 @@ MonoBehaviour:
     <BotJumpBonusHeight>k__BackingField: 15
     <ChanceToGoPlayerInHunt>k__BackingField: 0.298
     <BotUseNewBonusTime>k__BackingField:
-      <From>k__BackingField: 7
-      <To>k__BackingField: 15
+      <From>k__BackingField: 4
+      <To>k__BackingField: 8
+    <BotChanceToUseBonus>k__BackingField: 0.2

@@ -77,33 +77,27 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     }
 
 
-    public void TeleportToPoint(Vector3 pos)
-    {
-        // 1. СНАЧАЛА отменяем всё у BotWalkManager
-        BotWalkManager.ResetLogic(); // этот метод уже есть, он сбрасывает токены
-    
-        if (NavMesh.SamplePosition(pos, out var hit, 1f, NavMesh.AllAreas))
-        {
-            // 2. Останавливаем агента
-            _agent.isStopped = true;
-            _agent.ResetPath();
-            _agent.velocity = Vector3.zero;
+    public void TeleportToPoint(Vector3 pos) {
+            // 1. СНАЧАЛА отменяем всё у BotWalkManager
+            BotWalkManager.ResetLogic(); 
         
-            // 3. Выключаем-включаем агента (жёсткий сброс)
-            _agent.enabled = false;
-            transform.position = hit.position;
-            _agent.enabled = true;
-        
-            // 4. После включения — СРАЗУ стопорим
-            _agent.isStopped = true;
-            _agent.ResetPath();
-        
-            Debug.Log($"Телепорт успешен: {transform.position}");
-        }
-        else
-        {
-            Debug.LogError($"SamplePosition НЕ нашел точку рядом с {pos}");
-        }
+            if (NavMesh.SamplePosition(pos, out var hit, 5f, NavMesh.AllAreas)) {
+                _agent.enabled = false;
+                transform.position = hit.position;
+                _agent.enabled = true;
+            
+                // После включения агент может ещё не быть isOnNavMesh
+                // Даём кадр на инициализацию через ForceUpdateCanvases не поможет,
+                // лучше просто проверить
+                if (_agent.isOnNavMesh) {
+                    _agent.isStopped = true;
+                }
+                // Debug.Log($"Телепорт: {transform.position}");
+            } 
+            else
+            {
+                Debug.LogError($"SamplePosition НЕ нашел точку рядом с {pos}");
+            }
     }
 
     
@@ -115,14 +109,14 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public void SetDefaultSpeed() {
         _agent.speed = _gameData.BotSpeed;
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, false);
-        Debug.Log($"SetDefaultSpeed {_botMonolog.NickName}");
+        // Debug.Log($"SetDefaultSpeed {_botMonolog.NickName}");
     }
     
     
     public void SetHunterSpeed() {
         _agent.speed = _gameData.HunterSpeed;
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
-        Debug.Log($"SetHunterSpeed {_botMonolog.NickName}");
+        // Debug.Log($"SetHunterSpeed {_botMonolog.NickName}");
     }
 
     

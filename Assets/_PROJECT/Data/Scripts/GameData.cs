@@ -80,5 +80,6 @@ public class GameData : GameDataBase
     [field: SerializeField] public float BotJumpBonusHeight { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanceToGoPlayerInHunt { get; private set; }
     [field: SerializeField] public PairedValue<float> BotUseNewBonusTime { get; private set; }
+    [field: SerializeField, Range(0,1)] public float BotChanceToUseBonus { get; private set; }
     
 }
