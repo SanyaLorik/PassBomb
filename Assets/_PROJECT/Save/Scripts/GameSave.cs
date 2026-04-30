@@ -8,7 +8,7 @@ using UnityEngine;
 
 [Serializable]
 public class GameSave : GameSaveBase,
-    IDailyRewardSaveLoader, IWheelFortuneSaveLoader, IDailyQuestSaveLoader, ISkinSaveLoader
+    IDailyRewardSaveLoader, IWheelFortuneSaveLoader, IDailyQuestSaveLoader, ISkinSaveLoader, ICommunitySaveLoader
 {
     public long Money;
     public bool IsBoughtPurchase = false;
@@ -29,8 +29,8 @@ public class GameSave : GameSaveBase,
     public WheelFortuneSave WheelFortuneSave;
     public DailyQuestSave DailyQuestSave;
     public SkinSave SkinSave;
+    public CommunitySave CommunitySave;
 
-    
     public void AddNewBonusCounts(string id, int count, bool clear = false) {
         BonuseItem bonus = Bonuses.FirstOrDefault(b => b.Id == id);
         if (bonus == null) {
@@ -129,6 +129,11 @@ public class GameSave : GameSaveBase,
     SkinSave ISkinSaveLoader.Load()
     {
         return SkinSave;
+    }
+
+    CommunitySave ICommunitySaveLoader.Load()
+    {
+        return CommunitySave;
     }
 }
 
