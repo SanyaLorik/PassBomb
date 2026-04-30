@@ -63,6 +63,23 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         InitPassBomb();
     }
 
+    private void OnEnable() {
+        // Бот вернулся бегать после падения от удара
+        _botWalkManager.FallAfterPush += ReturnToRole;
+    }
+
+    private void OnDisable() {
+        _botWalkManager.FallAfterPush -= ReturnToRole;
+    }
+    
+    private void ReturnToRole() {
+        if (!_battleManager.GameIsOver) {
+            SetRole(CurrentRole);
+        }
+    }
+
+    
+
     private void InitPassBomb() {
         if (_botStateManager != null) {
             _botWalkManager = _botStateManager.BotWalkManager;

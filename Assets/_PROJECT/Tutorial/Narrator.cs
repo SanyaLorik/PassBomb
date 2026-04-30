@@ -1,4 +1,3 @@
-using Architecture_M;
 using DG.Tweening;
 using SanyaBeerExtension;
 using TMPro;
@@ -14,7 +13,7 @@ public class Narrator : MonoBehaviour {
     [Header("Анимация пальчика")]
     [SerializeField] private float _fingerDuration;
     [SerializeField] private Ease _fingerEase;
-    [SerializeField] private ScaleDownUpAnimation[] _fingersInfinitAnimations;
+    // [SerializeField] private ScaleDownUpAnimation[] _fingersInfinitAnimations;
     
     [Header("Длина подьема пальчика")]
     [SerializeField] private float _bonusFingerDeltaX;
@@ -49,7 +48,7 @@ public class Narrator : MonoBehaviour {
     public void DisableNarrator() {
         Disactive();
         _tutorialManager.NewTutorialStep -= CheckToDestroyCurrentFinger;
-        _fingersInfinitAnimations.ForEach(a => a.Kill());
+        // _fingersInfinitAnimations.ForEach(a => a.Kill());
     }
     
     
@@ -67,7 +66,7 @@ public class Narrator : MonoBehaviour {
     }
 
     public void HideScreenFinger() {
-        _bonusFinger.ActiveSelf();
+        _bonusFinger.DisactiveSelf();
     }
     
     public void ShowScreenFinger() {

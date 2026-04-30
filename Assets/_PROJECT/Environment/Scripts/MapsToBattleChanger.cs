@@ -32,6 +32,7 @@ public class MapsToBattleChanger : MonoBehaviour {
     
     private void Start() {
         if (_tutorialManager.TutorialPassed) {
+            _mapitems[_tutorialMapIndex].DisactiveSelf();
             _mapitems.RemoveAt(_tutorialMapIndex);
         }
         MapIndex = Random.Range(0, _mapitems.Count);
@@ -48,14 +49,15 @@ public class MapsToBattleChanger : MonoBehaviour {
     private void ChooseNextMap() {
         if (_tutorialManager.TutorialPassed) {
             MapIndex++;
+            if (MapIndex > _mapitems.Count-1) {
+                MapIndex = 1;
+            }
         }
         else {
             MapIndex = _tutorialMapIndex;
         }
         
-        if (MapIndex > _mapitems.Count-1) {
-            MapIndex = 1;
-        }
+        
         _mapitems.ForEach(m => m.DisactiveSelf());
         _mapitems[MapIndex].gameObject.ActiveSelf();
     }

@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
@@ -14,6 +13,7 @@ public class PointerToEnemy : MonoBehaviour  {
     private Camera _camera;
     private CancellationTokenSource _tokenSource;
     private Transform _playerTransform;
+    private int _planeIndex;
     
     
     [Inject] PlayerMovement _playerMovement;
@@ -58,7 +58,11 @@ public class PointerToEnemy : MonoBehaviour  {
             Vector3 direction = transform.position - _playerTransform.transform.position;
             Ray ray = new Ray(_playerTransform.position, direction);
         
-            float minDistance = CalculateDistanceToCameraPlane(ray);
+            
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
+            float minDistance = CalculateDistanceAndIndexToCameraPlane(ray, planes);
+            SetRotationByPlane(_planeIndex);
+            
             minDistance = Mathf.Clamp(minDistance, 0, direction.magnitude);
             
             if (direction.magnitude > minDistance) {
@@ -77,21 +81,44 @@ public class PointerToEnemy : MonoBehaviour  {
             await UniTask.Yield();
         }
     }
+    
 
-    private float CalculateDistanceToCameraPlane(Ray ray) {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
+    private float CalculateDistanceAndIndexToCameraPlane(Ray ray, Plane[] planes) {
         
         float minDistance = float.MaxValue;
-        foreach (Plane plane in planes) {
+        for (var i = 0; i < planes.Length; i++) {
+            var plane = planes[i];
             // Луч пересекает плоскость
             if (plane.Raycast(ray, out float distance)) {
                 if (minDistance > distance) {
                     minDistance = distance;
+                    _planeIndex = i;
                 }
             }
         }
+
         return minDistance;
     }
+    
+
+    private void SetRotationByPlane(int index) {
+        Quaternion rotation;
+        if (index == 0) {
+            rotation = Quaternion.Euler(0f, 0f, 90f);
+        }
+        else if (index == 1) {
+            rotation = Quaternion.Euler(0f, 0f, -90f);
+        }
+        else if (index == 2) {
+            rotation = Quaternion.Euler(0f, 0f, 180f);
+        }
+        else {
+            rotation = Quaternion.Euler(0f, 0f, 0f);
+        }
+
+        _ememyPointer.transform.rotation = rotation;
+    }
+    
 
 
     private Vector2 ClampToContainer(Vector2 screenPos) {

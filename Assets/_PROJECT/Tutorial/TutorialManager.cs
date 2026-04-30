@@ -13,11 +13,13 @@ public enum TutorialStep {
 
 public class TutorialManager : MonoBehaviour {
     [SerializeField] private Narrator _narrator;
+    [SerializeField] private float _timeToWaitForBombExplode;
+    [SerializeField] private LineToObjects _lineToObjects;
 
     
     public bool InitBombToMainPlayer { get; private set; } = true;
     public bool TutorialPassed => Saves.TutorialPassed;
-    public event Action NewTutorialStep; 
+    public event Action NewTutorialStep;  
 
 
     private GameSave Saves => _saver.GetSave<GameSave>();
@@ -72,8 +74,11 @@ public class TutorialManager : MonoBehaviour {
         _narrator.Active();
         _narrator.SetTutorialText(TutorialStep.PassBombToEnemy);
         
+        _lineToObjects.SetTarget(_battleManager.RandomEnemy.RoleBehaviour.transform);
         await UniTask.WaitWhile(() => _mainPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter);
-        await UniTask.WaitForSeconds(1f);
+        await UniTask.WaitForSeconds(_timeToWaitForBombExplode);
+        _lineToObjects.HideArrow();
+        
         InitBombToMainPlayer = false;
         _bomb.ExplodeBombLater();
     }   
@@ -82,6 +87,7 @@ public class TutorialManager : MonoBehaviour {
     // Бомба не взрывается а передается просто игроку 
     private async UniTask RunAwayFromEnemyStep() {
         _bonusManager.SetAvailableToUseBonuses(true);
+        _narrator.ShowScreenFinger();
         
         _narrator.SetTutorialText(TutorialStep.RunAwayFromEnemy);
         
@@ -90,11 +96,16 @@ public class TutorialManager : MonoBehaviour {
     
     
     private async UniTask CatchUpEnemyWithSpeedBonusStep() {
-        _narrator.ShowScreenFinger();
         _narrator.SetTutorialText(TutorialStep.CatchUpEnemyWithSpeedBonus);
+        _narrator.HideScreenFinger();
+       
+        _lineToObjects.SetTarget(_battleManager.RandomEnemy.RoleBehaviour.transform);
         
         await UniTask.WaitWhile(() => _mainPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter);
-        await UniTask.WaitForSeconds(1f);
+        await UniTask.WaitForSeconds(_timeToWaitForBombExplode);
+        
+        _lineToObjects.HideArrow();
+        
         _bomb.ExplodeBombLater();
         OnTutorialEnd();
     }  
@@ -102,17 +113,17 @@ public class TutorialManager : MonoBehaviour {
     
     private void OnBonusUsed(IBonus bonus) {
         _narrator.HideScreenFinger();
-        _bonusManager.SetAvailableToUseBonuses(false);
     }
     
     
     private void OnTutorialEnd() {
         Debug.Log("OnTutorialEnd");
         Saves.TutorialPassed = true;
-        _bonusManager.SetAvailableToUseBonuses(true);
         _saver.Save();
+        _bonusManager.SetAvailableToUseBonuses(true);
         _narrator.DisableNarrator();
-       // Отписаться не забудь
+        _battleManager.GameReadyToPlay -= StartTutorial;
+        GameEvents.BonusUsed -= OnBonusUsed;
     }
 
 }

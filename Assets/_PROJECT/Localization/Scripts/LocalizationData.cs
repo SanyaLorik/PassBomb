@@ -19,6 +19,7 @@ public class LocalizationData : LocalizationDataBase,
     public string SelectSkinButton;
     public string SelectedSkinButton;
     // Battle info
+    public string You;
     public string PlayerWinner;
     public string PlayerExploded;
 

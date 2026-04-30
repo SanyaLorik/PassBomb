@@ -83,7 +83,7 @@ public class SoundManager : MonoBehaviour {
         GameEvents.BonusReloaded += BonusReloaded;
         GameEvents.TriggerUsed += UiButtonClick;
         GameEvents.PlayerStayHunter += StayHunter;
-        _bomb.BombExploded += PlayExplode;
+        _bomb.BombExploded += BombExplode;
         _bomb.BombExploded += PlayerAugh;
         _petOpenView.PetCanasOpen += PlayerMovementOnJumpPressed;
         _petOpenView.PetNewOpen += () => OnMoneyPlus(0);
@@ -113,7 +113,7 @@ public class SoundManager : MonoBehaviour {
         GameEvents.BonusReloaded -= BonusReloaded;
         GameEvents.TriggerUsed -= UiButtonClick;
         GameEvents.PlayerStayHunter -= StayHunter;
-        _bomb.BombExploded -= PlayExplode;
+        _bomb.BombExploded -= BombExplode;
         _bomb.BombExploded -= PlayerAugh;
         _petOpenView.PetCanasOpen -= PlayerMovementOnJumpPressed;
     }
@@ -154,11 +154,12 @@ public class SoundManager : MonoBehaviour {
 
     
     private void PlayerAugh() {
+        if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.PlayerAugh);
     }
     
     
-    private void PlayExplode() {
+    private void BombExplode() {
         if(_battleManager.PlayerReturnToSpawn) return;
         PlaySoundByType(SoundType.Explosion);
     }

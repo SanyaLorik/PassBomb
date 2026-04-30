@@ -72,8 +72,6 @@ public class BonusSlot : MonoBehaviour {
 
     private void Start() {
         _mainPlayer.RoleBehaviour.PlayerRoleChanged += HideShowElementsByRole;
-        
-        
         _startOffset = _useTimeProgress.offsetMax;
         CheckAvailable();
         SetProgressBarVisible(false);
@@ -147,7 +145,13 @@ public class BonusSlot : MonoBehaviour {
     
     private void SetProgressBarVisible(bool visible) {
         _useContainer.SetActive(visible);
-        _useTimeProgress.offsetMax = _startOffset;
+        if (visible) {
+            // Принудительно обновляем Layout, чтобы размеры стали актуальными
+            Canvas.ForceUpdateCanvases();
+            // И только теперь сохраняем актуальный offsetMax
+            _startOffset = _useTimeProgress.offsetMax;
+            _useTimeProgress.offsetMax = _startOffset;
+        }
     }
     
 

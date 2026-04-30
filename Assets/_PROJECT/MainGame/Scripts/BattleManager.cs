@@ -4,6 +4,7 @@ using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -23,10 +24,11 @@ public class BattleManager : MonoBehaviour {
 
     
     public IReadOnlyCollection<IPassBombPlayer> Players => _players;
+    public IPassBombPlayer RandomEnemy => _players.Find(p => p != _mainPlayer);
     
     private readonly List<IPassBombPlayer> _players = new(8);
     
-    public event Action<string> PlayerDied;
+    public event Action<string, Vector3> PlayerDied;
     public event Action<int> PlayersCountChanged;
     public event Action<int> NewRoundStarted;
     public event Action GameReadyToPlay;
@@ -49,6 +51,7 @@ public class BattleManager : MonoBehaviour {
     [Inject] private GameData _gameData;
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     [Inject] private PlayersRoleManager _playersRoleManager;
+    [Inject] private LocalizationData _localization;
     
     
     private void OnEnable() {
@@ -106,7 +109,7 @@ public class BattleManager : MonoBehaviour {
     private void SetLooseBot(IPassBombPlayer player) {
         BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
         if (botMonolog != null) {
-            PlayerDied?.Invoke(botMonolog.NickName);
+            PlayerDied?.Invoke(botMonolog.NickName, player.Transform.position);
             Debug.Log($"{botMonolog.NickName} проиграл");
             player.SetPlayStatus(false);
             RemovePlayer(player);
@@ -182,7 +185,11 @@ public class BattleManager : MonoBehaviour {
     
     private async UniTask WaitPlayerPressGameOverAsync() {
         _mainPlayer.SetMovingStatus(false);
+        _mainPlayer.HideVisualModel(true);
+        
         await UniTask.WaitWhile(() => _gameOverView.ResultWindowShowing);
+        
+        _mainPlayer.HideVisualModel(false);
         _mainPlayer.SetPlayStatus(false);
         _mainPlayer.SetMovingStatus(true);
     }
@@ -211,12 +218,13 @@ public class BattleManager : MonoBehaviour {
                 player.RoleBehaviour.SetInvinsibleAfterBomb(true);
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
-                    PlayerDied?.Invoke(botMonolog.NickName);
+                    PlayerDied?.Invoke(botMonolog.NickName, player.Transform.position);
                     player.SetPlayStatus(false);
                     RemovePlayer(player);
                 }
                 else if (player == _mainPlayer) {
                     SetLooseMainPlayer();
+                    PlayerDied?.Invoke(_localization.You, _mainPlayer.Transform.position);
                 }
                 return;
             }

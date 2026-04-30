@@ -21,6 +21,7 @@ public class GameData : GameDataBase
     [field: SerializeField, Range(0,1)] public float DesktopCameraFov { get; private set; }
     [field: SerializeField, Range(0,1)] public float DefaultCameraSens { get; private set; }
     [field: SerializeField, Range(0,1)] public float ZoomSpeed { get; private set; }
+    [field: SerializeField] public float VerticalAxisValueToStartPlay { get; private set; }
     
     [field: Header("Множители сенсы")]
     [field: SerializeField] public float JoystickSensivityMultiplier  { get; private set; }

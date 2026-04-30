@@ -1,4 +1,7 @@
 using System;
+using System.Threading;
+using _PROJECT.Scripts.Helpers;
+using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,7 +20,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public bool IsPlaying { get; private set; }
     public event Action<MoveStatus, bool> MoveStatusChanged;
     public event Action<bool> PlayerStatusChanged;
-    
+    private CancellationTokenSource _teleportTokenSource;
     
     
     public string Nickname => _botMonolog.NickName;
@@ -61,9 +64,19 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         else {
             Debug.Log($"Возвращение на спавн игрока {_botMonolog.NickName} in {_spawn.SpawnPoint.position}");
             SetBotStateBeforeGame();
-            TeleportToPoint(_spawn.SpawnPoint.position);
+            
+            UniTaskHelper.DisposeTask(ref _teleportTokenSource);
+            _teleportTokenSource = new CancellationTokenSource();
+            TpToPointAsync(_spawn.SpawnPoint.position, _teleportTokenSource.Token).Forget();
         }
         SetStartWanderIfActive(!goPlay);
+    }
+
+    
+    private async UniTask TpToPointAsync(Vector3 point, CancellationToken token) {
+        // Имитация задержки + меня заебало что боты не могут вернуться на спавн без траблов
+        await UniTask.WaitForSeconds(.3f, cancellationToken: token);
+        TeleportToPoint(point);
     }
 
     public void SetPlayStatusSilent(bool goPlay) {
@@ -72,13 +85,19 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void TeleportToPoint(Vector3 pos) {
-        if (NavMesh.SamplePosition(pos, out var hit, 4f, NavMesh.AllAreas)) {
+        // Отменяем тп на спавн
+        UniTaskHelper.DisposeTask(ref _teleportTokenSource);
+        
+        if (NavMesh.SamplePosition(pos, out var hit, 1f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
         }
         else {
-            Debug.Log($"Телепортировать игрока {_botMonolog.NickName} in {_spawn.SpawnPoint.position} не удалось, пробуем еще раз");
-            if (NavMesh.SamplePosition(pos, out hit, 15f, NavMesh.AllAreas)) {
-                _agent.Warp(hit.position);
+            if (NavMesh.SamplePosition(pos, out var fallbackHit, 7f, NavMesh.AllAreas)) {
+                _agent.Warp(fallbackHit.position);
+                Debug.LogWarning($"Спавн не на NavMesh, телепорт рядом: {fallbackHit.position}");
+            }
+            else {
+                Debug.LogError($"Вообще не можем найти NavMesh рядом с {pos}");
             }
         }
     }

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     [SerializeField] private CharacterController _controller; // 
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private PlayerRoleBehaviour _roleBehaviour;
+    [SerializeField] private GameObject _playerVisual;
     [field: SerializeField] public Transform Transform { get; private set; }
 
     public Vector2 MoveInput => _inputDirection2.Direction2;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private float _firstJumpForce;
     private float _secondJumpForce;
 
-    
+    public event Action PlayerReturnToTarget;
     public event Action JumpPressed;
     public event Action DoubleJumpPressed;
     public event Action<bool> RunningStateChanged;
@@ -105,6 +106,10 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         PlayerHit?.Invoke();
         StartCoroutine(PushWithController(_controller, direction.normalized));
             
+    }
+
+    public void HideVisualModel(bool state) {
+        _playerVisual.SetActive(!state);
     }
 
     private IEnumerator PushWithController(CharacterController controller, Vector3 direction) {
@@ -213,6 +218,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
             transform.rotation = targetRotation;
         }
         SetCharacterControllerState(true);
+        PlayerReturnToTarget?.Invoke();
     }
 
 

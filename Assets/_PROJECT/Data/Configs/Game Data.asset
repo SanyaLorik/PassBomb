@@ -28,6 +28,7 @@ MonoBehaviour:
     <DesktopCameraFov>k__BackingField: 0.474
     <DefaultCameraSens>k__BackingField: 0.137
     <ZoomSpeed>k__BackingField: 0.1
+    <VerticalAxisValueToStartPlay>k__BackingField: 30
     <JoystickSensivityMultiplier>k__BackingField: 500
     <MouseSensivityMultiplier>k__BackingField: 0.4
     <ZoomDiapasone>k__BackingField:

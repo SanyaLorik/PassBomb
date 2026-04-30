@@ -21,7 +21,7 @@ public class BattleDiesInformator : MonoBehaviour {
         _battleManager.PlayerDied += BattleManagerOnPlayerDied;
     }
 
-    private void BattleManagerOnPlayerDied(string nickName) {
+    private void BattleManagerOnPlayerDied(string nickName, Vector3 _) {
         if(!_battleManager.PlayerReturnToSpawn) return; 
         _textFieldContainer.ActiveSelf();
         _textFieldToInformate.text = string.Format(

@@ -109,7 +109,7 @@ public class Bomb : MonoBehaviour {
         
         if(!_tutorialManager.TutorialPassed) _timerContainer.DisactiveSelf();
         
-        float elapsedTime = _gameData.TimeToBombExplode;
+        float elapsedTime = timeToBombExplode;
         SetFullBar();
         
         Vector2 startSize = new Vector2(-_barWidth,  _bombBar.offsetMax.y);

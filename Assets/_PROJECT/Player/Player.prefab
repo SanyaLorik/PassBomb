@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984022474809692337}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5912239326513500072}
-  m_Father: {fileID: 6278525158390120559}
+  m_Father: {fileID: 4463336047555587298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3094156342182722264
 MonoBehaviour:
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 2263604586574929044}
   - component: {fileID: 2275091813309161668}
   m_Layer: 0
-  m_Name: Skin
+  m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,6 +169,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2673798690561036042}
   - {fileID: 7368560589605286764}
   m_Father: {fileID: 6278525158390120559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -365,7 +366,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1808908378588453757}
-  - {fileID: 2673798690561036042}
   - {fileID: 4463336047555587298}
   - {fileID: 5304525108884347941}
   m_Father: {fileID: 0}
@@ -410,6 +410,7 @@ MonoBehaviour:
   _controller: {fileID: 6165380883207411591}
   _spawnPoint: {fileID: 0}
   _roleBehaviour: {fileID: 7425658207102932552}
+  _playerVisual: {fileID: 0}
   <Transform>k__BackingField: {fileID: 6278525158390120559}
 --- !u!114 &6584472137099475329
 MonoBehaviour:

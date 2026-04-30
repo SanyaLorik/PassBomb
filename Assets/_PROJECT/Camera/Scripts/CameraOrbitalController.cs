@@ -67,7 +67,7 @@ public class CameraOrbitalController : MonoBehaviour {
         _settings.CameraZoomChanged += ChangeCameraZoomPercent;
         SystemEvents.WindowOpened += ForbidRotate;
         SystemEvents.ForbidZoomChanged += ForbidZoom;
-        _gameStarter.GameStarted += OnGameStarted;
+        _playerMovement.PlayerReturnToTarget += OnGameStarted;
         GameEvents.ShakeCamera += ShakeCamera;
         _playerMovement.MoveEnabled += PlayerMovementOnMoveEnabled;
         _bomb.BombExploded += OnBombExploded;
@@ -148,12 +148,13 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
     
-    private void OnGameStarted(bool started) {
+    private void OnGameStarted() {
         WatchToPlayerBack();
     }
 
     private void WatchToPlayerBack() {
         _orbitalFollow.HorizontalAxis.Value = _playerMovement.transform.rotation.eulerAngles.y;
+        _orbitalFollow.VerticalAxis.Value = _gameData.VerticalAxisValueToStartPlay;
     }
 
     private void SetDamping(Vector3 newDamping) {

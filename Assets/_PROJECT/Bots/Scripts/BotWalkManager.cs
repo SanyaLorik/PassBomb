@@ -28,6 +28,7 @@ public class BotWalkManager : MonoBehaviour {
     public Action<bool> Grounded;
     public Action OnJump;
     public Action OnDoubleJump;
+    public Action FallAfterPush;
 
     private CancellationTokenSource _botTokenSource;
     private CancellationTokenSource _jumpTokenSource; 
@@ -234,8 +235,7 @@ public class BotWalkManager : MonoBehaviour {
 
         _agent.enabled = true;
 
-        if (NavMesh.SamplePosition(navMeshPos, out var hit, 1f, NavMesh.AllAreas))
-        {
+        if (NavMesh.SamplePosition(navMeshPos, out var hit, 1f, NavMesh.AllAreas)) {
             _agent.Warp(hit.position);
         }
 
@@ -244,6 +244,7 @@ public class BotWalkManager : MonoBehaviour {
             _agent.nextPosition = _agent.transform.position;
             _agent.ResetPath();
             _agent.isStopped = false;
+            FallAfterPush?.Invoke();
         }
         else {
             Debug.LogWarning("Agent not on NavMesh after landing");
