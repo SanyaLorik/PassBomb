@@ -9,7 +9,6 @@ using UnityEngine.UI;
 using Zenject;
 
 public class MainGameStarter : MonoBehaviour  {
-    // Шарит за всю инфу по игре, где кто находится 
     [Header("Время")]
     [SerializeField] private float _timerDuration;
     [SerializeField] private float _durationAfterGameOver;
@@ -31,9 +30,6 @@ public class MainGameStarter : MonoBehaviour  {
     private CancellationTokenSource _tokenSource;
     
     public event Action<bool> GameStarted;
-    private bool _firstPlayerBot;
-    public bool FirstPlayerBot => _firstPlayerBot;
-
     
     public bool GameIsStarted { get; private set; }
     
@@ -96,14 +92,12 @@ public class MainGameStarter : MonoBehaviour  {
         Debug.Log("StartOnlineGame");
         StopTimer();
         _battleManager.SetGameOverToBots();
-        _firstPlayerBot = false;
         StartTimer(.1f);
     }
     
     public void ChangeAfkStatus(bool afk, bool changeVisual = true) {
         Debug.Log("ChangeAfkStatus " + afk);
         _afkPressed = afk;  
-        _firstPlayerBot = _afkPressed;
         if (changeVisual) {
             _afkStatusText.SetActive(_afkPressed);
         }
@@ -153,8 +147,8 @@ public class MainGameStarter : MonoBehaviour  {
 
     private void StartGame() {
         GameIsStarted = true;
-        _battleManager.InitForNewGame(!_afkPressed);
         GameStarted?.Invoke(true);
+        _battleManager.InitForNewGame(!_afkPressed);
         _startGamePressed = false;
         // Debug.Log("Старт игры!");
     }

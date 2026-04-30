@@ -149,7 +149,11 @@ public class CameraOrbitalController : MonoBehaviour {
     
     
     private void OnGameStarted(bool started) {
-        
+        WatchToPlayerBack();
+    }
+
+    private void WatchToPlayerBack() {
+        _orbitalFollow.HorizontalAxis.Value = _playerMovement.transform.rotation.eulerAngles.y;
     }
 
     private void SetDamping(Vector3 newDamping) {

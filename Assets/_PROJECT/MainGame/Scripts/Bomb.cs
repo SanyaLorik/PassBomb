@@ -29,6 +29,7 @@ public class Bomb : MonoBehaviour {
     private float _barWidth;
     
     [Inject] private GameData _gameData;
+    [Inject] private TutorialManager _tutorialManager;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
 
@@ -38,6 +39,38 @@ public class Bomb : MonoBehaviour {
         _battleManager.ForceStartedNewGame += StopBomb; 
     }
 
+    
+    private void Start() {
+        _allBomb.DisactiveSelf();
+        _barWidth = RectTransformHelper.CalculateXEnd(_parentProgressToExplode);
+    }
+    
+    
+    public void InitBombToNewPlayer(Transform playerTransform, PlayerRoleBehaviour playerRoleBehaviour) {
+        PlayerBecameHunter?.Invoke(playerRoleBehaviour);
+        
+        SetNewBombParent(playerTransform, false);
+        
+        _allBomb.ActiveSelf();
+    }
+    
+    
+    public void StartNewBombTimer() {
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        _tokenSource = new CancellationTokenSource();
+        BombExplode = false;
+        BombTimerAsync(_tokenSource.Token).Forget();
+    }
+
+    public void ExplodeBombLater() {
+        if(BombExplode) return;
+        Debug.Log("Преждевременный взрыв бомбы");
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+        Explode();
+        _timerContainer.DisactiveSelf();
+    }
+    
+    
     private void StopBomb() {
         _allBomb.DisactiveSelf();
         UniTaskHelper.DisposeTask(ref  _tokenSource);
@@ -50,20 +83,6 @@ public class Bomb : MonoBehaviour {
         }
     }
 
-    
-    private void Start() {
-        _allBomb.DisactiveSelf();
-        _barWidth = RectTransformHelper.CalculateXEnd(_parentProgressToExplode);
-    }
-
-    
-    public void InitBombToNewPlayer(Transform playerTransform, PlayerRoleBehaviour playerRoleBehaviour) {
-        PlayerBecameHunter?.Invoke(playerRoleBehaviour);
-        
-        SetNewBombParent(playerTransform, false);
-        
-        _allBomb.ActiveSelf();
-    }
 
     
     public void TeleportBombToSpawn(Transform spawn) {
@@ -80,26 +99,16 @@ public class Bomb : MonoBehaviour {
     }
 
 
-    public void StartNewBombTimer() {
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-        _tokenSource = new CancellationTokenSource();
-        BombExplode = false;
-        BombTimerAsync(_tokenSource.Token).Forget();
-    }
 
-    public void ExlodeBombLater() {
-        if(BombExplode) return;
-        Debug.Log("Преждевременный взрыв бомбы");
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-        Explode();
-        _timerContainer.DisactiveSelf();
-    }
     
     private async UniTask BombTimerAsync(CancellationToken token) {
         _timerContainer.ActiveSelf();
         _bombModel.ActiveSelf();
+
+        float timeToBombExplode = _tutorialManager.TutorialPassed ? _gameData.TimeToBombExplode : 10000000f;
         
-        float timeToBombExplode = _gameData.TimeToBombExplode;
+        if(!_tutorialManager.TutorialPassed) _timerContainer.DisactiveSelf();
+        
         float elapsedTime = _gameData.TimeToBombExplode;
         SetFullBar();
         

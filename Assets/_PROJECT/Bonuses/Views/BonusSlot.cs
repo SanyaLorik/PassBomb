@@ -45,6 +45,7 @@ public class BonusSlot : MonoBehaviour {
     [Inject] private IGameSave _saver; 
     [Inject] LocalizationData _localization;
     [Inject] IPassBombPlayer _mainPlayer;
+    [Inject] TutorialManager _tutorialManager;
     [Inject] GameData _gameData;
     [Inject] IDeviceTypeProvider _deviceTypeProvider;
     
@@ -86,6 +87,17 @@ public class BonusSlot : MonoBehaviour {
     private void Update() {
         if (CheckKey()) {
             TryUse();
+        }
+    }
+
+    public void SetStateAvailable(bool available) {
+        if (available) {
+            CheckAvailable();
+        }
+        else {
+            UniTaskHelper.DisposeTask(ref _tokenSource);
+            IsAvailable = false;
+            _reloadProgress.fillAmount = 1f;
         }
     }
     
@@ -142,7 +154,7 @@ public class BonusSlot : MonoBehaviour {
     private void UseBonus() {
         GameEvents.BonusUseInvoke(Bonus);
         Bonus.Use(_mainPlayer);
-        GetOneBonus(true);
+        GetOneBonus();
         IsAvailable = false;
         
         
@@ -210,7 +222,9 @@ public class BonusSlot : MonoBehaviour {
     }
 
 
-    private void GetOneBonus(bool useSaves = false) {
+    private void GetOneBonus() {
+        // Сохранять в сейвах если туториал пройден
+        bool useSaves = _tutorialManager.TutorialPassed;
         if (useSaves) {
             _saver.GetSave<GameSave>().SetMinusOneBonus(BonusItem.Id);
             _saver.Save();

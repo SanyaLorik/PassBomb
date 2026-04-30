@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using _PROJECT.Scripts.Helpers;
 using Cysharp.Threading.Tasks;
@@ -10,10 +9,9 @@ using Random = UnityEngine.Random;
 
 
 public class BattleManager : MonoBehaviour {
-    
     public bool MainPlayerPlay { get; private set; }
     public bool GameIsOver { get; private set; }
-    public bool PlayerReturnToSpawn => _mainPlayerMovement.PlayerInSpawn;
+    public bool PlayerReturnToSpawn => _mainPlayer.PlayerInSpawn;
 
     public int CountPlayersToNewBattle => _mapsToBattleChanger.CurrentMapSpawnPoints.Length;
     public int AllRoundsCount => CountPlayersToNewBattle - 1;
@@ -38,17 +36,19 @@ public class BattleManager : MonoBehaviour {
     private CancellationTokenSource _tokenSource;
     private int PlayersCount => _players.Count;
     
-    
-    [Inject] private PlayerMovement _mainPlayerMovement;
-    [Inject] private BotsMainManager _botsMainManager;
-    [Inject] private Bomb _bomb;
+    // Views
+    [Inject] private GameOverView _gameOverView;
     [Inject] private BattleStartVisualizer _battleStartVisualizer;
+    
+    
+    // Managers
+    [Inject] private PlayerMovement _mainPlayer;
+    [Inject] private Bomb _bomb;
+    [Inject] private BotsMainManager _botsMainManager;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private GameData _gameData;
     [Inject] private MapsToBattleChanger _mapsToBattleChanger;
     [Inject] private PlayersRoleManager _playersRoleManager;
-    [Inject] private IPassBombPlayer _mainPlayer;
-    [Inject] private GameOverView _gameOverView;
     
     
     private void OnEnable() {
@@ -63,7 +63,6 @@ public class BattleManager : MonoBehaviour {
     
     public void InitForNewGame(bool mainPlayerPlay) {
         GameIsOver = false;
-        _mapsToBattleChanger.ChooseNextMap();
         _bomb.TeleportBombToSpawn(BombSpawnPoint);
         
         MainPlayerPlay = mainPlayerPlay;
@@ -82,7 +81,7 @@ public class BattleManager : MonoBehaviour {
     public void PlayerFalled(IPassBombPlayer passBombPlayer) {
         if(GameIsOver) return;
         if (passBombPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
-            _bomb.ExlodeBombLater();
+            _bomb.ExplodeBombLater();
             return;
         }
         
@@ -118,7 +117,7 @@ public class BattleManager : MonoBehaviour {
     private void GetNewPlayers(bool mainPlayerPlay) {
         int countBots = CountPlayersToNewBattle;
         if (mainPlayerPlay) {
-            _players.Add(_mainPlayerMovement);
+            _players.Add(_mainPlayer);
             countBots--;
         }
         IEnumerable<IPassBombPlayer> bots = _botsMainManager.GetBotsToGame(countBots);
@@ -182,10 +181,10 @@ public class BattleManager : MonoBehaviour {
 
     
     private async UniTask WaitPlayerPressGameOverAsync() {
-        _mainPlayerMovement.SetMovingStatus(false);
+        _mainPlayer.SetMovingStatus(false);
         await UniTask.WaitWhile(() => _gameOverView.ResultWindowShowing);
         _mainPlayer.SetPlayStatus(false);
-        _mainPlayerMovement.SetMovingStatus(true);
+        _mainPlayer.SetMovingStatus(true);
     }
 
 

@@ -5,193 +5,114 @@ using UnityEngine;
 using Zenject;
 
 public enum TutorialStep {
-    Aiming,
-    ChargePower,
-    ThrowAndCheckHit,
-    UseHeal,
-    ActivateExplosionMode,
+    PassBombToEnemy,
+    RunAwayFromEnemy,
+    CatchUpEnemyWithSpeedBonus
 }
 
 
 public class TutorialManager : MonoBehaviour {
     [SerializeField] private Narrator _narrator;
-    [Header("Timings")]
-    [SerializeField] private float _timeToAiming;
-    [SerializeField] private float _timeToCharge;
-    [SerializeField] private float _timeToRouletteChoose;
-    [SerializeField] private int _startBonusesCount;
+
     
-    
-    private bool _playerUseHeal;
-    private bool _playerChooseExplosionModifier;
-    
-    
-    public event Action NewTutorialStep; 
+    public bool InitBombToMainPlayer { get; private set; } = true;
     public bool TutorialPassed => Saves.TutorialPassed;
-    public bool AimOn { get; private set; }
-    
+    public event Action NewTutorialStep; 
+
+
     private GameSave Saves => _saver.GetSave<GameSave>();
     
     [Inject] private IGameSave _saver; 
     [Inject] private MainGameStarter _gameStarter; 
     [Inject] private BattleManager _battleManager; 
     [Inject] private MainGameStarter _mainGameStarter; 
+    [Inject] private IPassBombPlayer _mainPlayer; 
     [Inject] private BonusManager _bonusManager;
-    [Inject] private PlayerStateManager _playerStateManager;
-    [Inject] private IInputActivity _inputActivity;
+    [Inject] private Bomb _bomb;
     
-    //
-    // public void OnEnable() {
-    //     if (!TutorialPassed) {
-    //         _battleManager.NewRoundStart += StartTutorial;
-    //         _bonusManager.BonusUsed += OnBonusUsed;
-    //         _modifierManager.ModifierChoosed += OnChoosedModifier;
-    //         _mainGameStarter.NewRoundStart += OnGameStarted;
-    //     }
-    // }
-    //
-    //
-    // private void Start() {
-    //     _narrator.Disactive();
-    //     if (!TutorialPassed) {
-    //         HideMobileInput().Forget();
-    //         _bonusManager.InitBonusesCount(_startBonusesCount);
-    //         _bonusManager.SetBonusesEnable(false);
-    //         _modifierManager.SetModifiersEnable(false);
-    //     }
-    // }
-    //
-    // private async UniTask HideMobileInput() {
-    //     await UniTask.WaitForSeconds(.5f);
-    //     _playerStateManager.MobileInputHide(true);
-    //     _inputActivity.StopWork();
-    // }
-    //
-    //
-    // private void OnGameStarted(bool started) {
-    //     if (!started) {
-    //         OnTutorialEnd();
-    //     }
-    // }
-    //
-    //
-    // private void OnChoosedModifier(IThrowableModifier modifier) {
-    //     Debug.Log($"modifier = {modifier} modifier is ThrowableModifierExplosion = {modifier is ThrowableModifierExplosion}");
-    //     if (modifier is ThrowableModifierExplosion) {
-    //         _playerChooseExplosionModifier = true;
-    //     } 
-    // }
-    //
-    //
-    // private void OnBonusUsed(IBonus bonus) {
-    //     if (bonus is HealBonus) {
-    //         _playerUseHeal = true;
-    //     } 
-    // }
-    //
-    //
-    // private void StartTutorial() {
-    //     _playerStateManager.MobileInputHide(true);
-    //     _inputActivity.StopWork();
-    //     TutorialStartAsync().Forget();
-    // }
-    //
-    //
-    // private async UniTask TutorialStartAsync() {
-    //     // Зажми палец в этой зоне и двигай им — наведись на врага
-    //     NewTutorialStep?.Invoke();
-    //     await AimingStep();
-    //     
-    //     // Шкала силы = дальность броска. Чем больше зарядишь — тем дальше летит
-    //     NewTutorialStep?.Invoke();
-    //     await ChargePowerStep();
-    //     
-    //     // Отпусти палец — и снаряд полетит прямо в цель
-    //     NewTutorialStep?.Invoke();
-    //     await ThrowAndCheckHitStep();
-    //     
-    //     // Пополни свое здоровье, нажми на аптечку 
-    //     NewTutorialStep?.Invoke();
-    //     await HealStep();
-    //     
-    //     // Нажми на «Взрыв» перед броском — урон станет мощнее
-    //     NewTutorialStep?.Invoke();
-    //     await ExplosionStep();
-    // }
-    //
-    //
-    // private async UniTask AimingStep() {
-    //     await UniTask.WaitForSeconds(_timeToRouletteChoose);
-    //     _narrator.Active();
-    //     _narrator.SetTutorialText(TutorialStep.Aiming);
-    //     _narrator.ShowScreenFinger();
-    //     await UniTask.WaitWhile(() => !_inputThrowGame.Downed);
-    //     await UniTask.WaitForSeconds(_timeToAiming);
-    // }    
-    //
-    //
-    // private async UniTask ChargePowerStep() {
-    //     _narrator.SetTutorialText(TutorialStep.ChargePower);
-    //     await UniTask.WaitForSeconds(_timeToCharge);
-    // }
-    //
-    //
-    // private async UniTask ThrowAndCheckHitStep() {
-    //     _narrator.SetTutorialText(TutorialStep.ThrowAndCheckHit);
-    //     await UniTask.WaitWhile(() => _battleManager.PlayerStepInPvb);
-    //     _narrator.Disactive();
-    //     _inputThrowGame.SetAllowToThrowWhileTutorial(false);
-    // }
-    //
-    //
-    // private async UniTask HealStep() {
-    //     // Ход врага, ждем...
-    //     await UniTask.WaitWhile(() => !_battleManager.PlayerStepInPvb);
-    //     
-    //     await UniTask.WaitForSeconds(_timeToRouletteChoose + _stepView.TimeToShowBig + _stepView.TimeToHideBig);
-    //     
-    //     _bonusManager.SetBonusesEnable(true);
-    //     _bonusManager.SetPlayerEnableOnlyHeal();
-    //     
-    //     _narrator.Active();
-    //     _narrator.ShowHealFinger();
-    //     _narrator.SetTutorialText(TutorialStep.UseHeal);
-    //     
-    //     // Ждем юза хилки именно что
-    //     await UniTask.WaitWhile(() => !_playerUseHeal);
-    //     _narrator.CheckToDestroyCurrentFinger();
-    //
-    // }
-    //
-    //
-    // private async UniTask ExplosionStep() {
-    //     // Ждем пока юзнет модифиактор
-    //     _modifierManager.SetModifiersEnable(true);
-    //     _modifierManager.SetPlayerEnableOnlyExplosion();
-    //     
-    //     _narrator.ShowExplosionFinger();
-    //     _narrator.SetTutorialText(TutorialStep.ActivateExplosionMode);
-    //     await UniTask.WaitWhile(() => !_playerChooseExplosionModifier);
-    //     _narrator.CheckToDestroyCurrentFinger();
-    //     AimOn = true;
-    //     Debug.Log("Аим включен");
-    //     _inputThrowGame.SetAllowToThrowWhileTutorial(true);
-    //     _narrator.ShowScreenFinger();
-    //     await UniTask.WaitWhile(() => !_calculator.ObjectInFly);
-    //     _narrator.Disactive();
-    // }
-    //
-    //
-    // private void OnTutorialEnd() {
-    //     Debug.Log("OnTutorialEnd");
-    //     AimOn = false;
-    //     Saves.TutorialPassed = true;
-    //     _saver.Save();
-    //     _narrator.DisableNarrator();
-    //     _battleManager.NewRoundStart -= StartTutorial;
-    //     _bonusManager.BonusUsed -= OnBonusUsed;
-    //     _modifierManager.ModifierChoosed -= OnChoosedModifier;
-    //     _mainGameStarter.NewRoundStart -= OnGameStarted;
-    // }
+    
+    
+    public void OnEnable() {
+        if (!TutorialPassed) {
+            _battleManager.GameReadyToPlay += StartTutorial;
+            GameEvents.BonusUsed += OnBonusUsed;
+        }
+    }
+    
+    
+    private void Start() {
+        _narrator.Disactive();
+    }
+    
+    
+    private void StartTutorial() {
+        TutorialStartAsync().Forget();
+    }
+    
+    
+    private async UniTask TutorialStartAsync() {
+        // Догони врага и передай бомбу
+        NewTutorialStep?.Invoke();
+        await PassBombToEnemyStep();
+        
+        // Убегай от врага с бомбой
+        NewTutorialStep?.Invoke();
+        await RunAwayFromEnemyStep();
+        
+        // Догони врага, передай бомбу и выиграй!  
+        NewTutorialStep?.Invoke();
+        await CatchUpEnemyWithSpeedBonusStep();
+    }
+    
+    
+    // Взрыв бота 1
+    private async UniTask PassBombToEnemyStep() {
+        _bonusManager.SetAvailableToUseBonuses(false);
+        
+        _narrator.Active();
+        _narrator.SetTutorialText(TutorialStep.PassBombToEnemy);
+        
+        await UniTask.WaitWhile(() => _mainPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter);
+        await UniTask.WaitForSeconds(1f);
+        InitBombToMainPlayer = false;
+        _bomb.ExplodeBombLater();
+    }   
+    
+    
+    // Бомба не взрывается а передается просто игроку 
+    private async UniTask RunAwayFromEnemyStep() {
+        _bonusManager.SetAvailableToUseBonuses(true);
+        
+        _narrator.SetTutorialText(TutorialStep.RunAwayFromEnemy);
+        
+        await UniTask.WaitWhile(() => _mainPlayer.RoleBehaviour.CurrentRole != PlayerRoleInGame.Hunter);
+    }  
+    
+    
+    private async UniTask CatchUpEnemyWithSpeedBonusStep() {
+        _narrator.ShowScreenFinger();
+        _narrator.SetTutorialText(TutorialStep.CatchUpEnemyWithSpeedBonus);
+        
+        await UniTask.WaitWhile(() => _mainPlayer.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter);
+        await UniTask.WaitForSeconds(1f);
+        _bomb.ExplodeBombLater();
+        OnTutorialEnd();
+    }  
+    
+    
+    private void OnBonusUsed(IBonus bonus) {
+        _narrator.HideScreenFinger();
+        _bonusManager.SetAvailableToUseBonuses(false);
+    }
+    
+    
+    private void OnTutorialEnd() {
+        Debug.Log("OnTutorialEnd");
+        Saves.TutorialPassed = true;
+        _bonusManager.SetAvailableToUseBonuses(true);
+        _saver.Save();
+        _narrator.DisableNarrator();
+       // Отписаться не забудь
+    }
 
 }

@@ -13,22 +13,19 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 82378
+    Money: 21200
     IsBoughtPurchase: 0
     TutorialPassed: 1
-    Skins:
-    - Id: univesal
-    SkinWearId: univesal
     Bonuses:
     - Id: InvisibleBonus
-      Count: 84
+      Count: 2
     - Id: SpeedBonus
-      Count: 33
+      Count: 2
     - Id: BigJumpBonus
-      Count: 94
+      Count: 2
     Tasks:
     - Id: pass_bomb_10
-      Count: 18
+      Count: 31
       IsGetReward: 0
     - Id: pass_in_void_5
       Count: 0
@@ -37,13 +34,13 @@ MonoBehaviour:
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 34
+      Count: 45
       IsGetReward: 0
     - Id: win_count_5
-      Count: 2
+      Count: 10
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 24
+      Count: 26
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
       Count: 5

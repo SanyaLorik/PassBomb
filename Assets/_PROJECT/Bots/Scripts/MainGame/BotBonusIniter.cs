@@ -17,6 +17,7 @@ public class BotBonusIniter : MonoBehaviour {
     private IBonus _currentBonus;
     private float _totalWeight;
 
+    [Inject] private TutorialManager _tutorialManager;
     [Inject] private MainGameStarter _gameStarter;
     [Inject] private BattleManager _battleManager;
     [Inject] private GameData _gameData;
@@ -77,7 +78,7 @@ public class BotBonusIniter : MonoBehaviour {
         while (!token.IsCancellationRequested) {
             float waitTime = Random.Range(_gameData.BotUseNewBonusTime.From, _gameData.BotUseNewBonusTime.To);
             await UniTask.WaitForSeconds(waitTime, cancellationToken: token);
-            if (_bot.RoleBehaviour.CurrentRole != PlayerRoleInGame.Hunter) {
+            if (_bot.RoleBehaviour.CurrentRole != PlayerRoleInGame.Hunter && _tutorialManager.TutorialPassed) {
                 UseRandomBonus();
             }
         }

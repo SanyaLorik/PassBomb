@@ -14,9 +14,6 @@ public class GameSave : GameSaveBase,
     public bool IsBoughtPurchase = false;
     public bool TutorialPassed = false;
 
-    // Skins
-    public List<SkinItem> Skins = new ();
-    public string SkinWearId = "";
     
     // Bonuses
     public List<BonuseItem> Bonuses = new ();
@@ -33,13 +30,6 @@ public class GameSave : GameSaveBase,
     public DailyQuestSave DailyQuestSave;
     public SkinSave SkinSave;
 
-    public void AddNewSkin(string id) {
-        if(Skins.Any(s => s.Id == id)) return;
-        Skins.Add(new SkinItem {
-            Id = id,
-        });
-    }
-    
     
     public void AddNewBonusCounts(string id, int count, bool clear = false) {
         BonuseItem bonus = Bonuses.FirstOrDefault(b => b.Id == id);
@@ -140,11 +130,6 @@ public class GameSave : GameSaveBase,
     {
         return SkinSave;
     }
-}
-
-[Serializable]
-public class SkinItem {
-    public string Id = "";
 }
 
 

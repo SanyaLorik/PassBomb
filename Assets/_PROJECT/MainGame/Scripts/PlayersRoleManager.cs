@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -10,6 +9,9 @@ public class PlayersRoleManager : MonoBehaviour {
     [Inject] private BattleManager _battleManager;
     [Inject] private Bomb _bomb;
     [Inject] private GameData _gameData;
+    [Inject] private TutorialManager _tutorialManager;
+    [Inject] private IPassBombPlayer _mainPlayer;
+
 
     private IPassBombPlayer _currentHunter;
     
@@ -45,12 +47,39 @@ public class PlayersRoleManager : MonoBehaviour {
         }
         
         // Назначение роли у типочка
-        int randomPlayer = Random.Range(0, players.Count);
-        players.ElementAt(randomPlayer).RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
-        // Debug.Log("назначение охотника");
+        if (!_tutorialManager.TutorialPassed) {
+            if (_tutorialManager.InitBombToMainPlayer) {
+                InitBombToMainPlayer();
+            }
+            else {
+                InitBombToBot(players);
+            }
+        }
+        else {
+            InitBombToRandomPlayer(players);
+        }
     }
 
-    
+    private static void InitBombToRandomPlayer(IReadOnlyCollection<IPassBombPlayer> players) {
+        int randomPlayer = Random.Range(0, players.Count);
+        players.ElementAt(randomPlayer).RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
+    }
+
+    private void InitBombToMainPlayer() {
+        _mainPlayer.RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
+    }
+
+    private void InitBombToBot(IReadOnlyCollection<IPassBombPlayer> players) {
+        foreach (IPassBombPlayer player in players) {
+            if (player != _mainPlayer) {
+                player.RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
+                return;
+            }
+        }
+        Debug.LogError("Игрок для роли хантера не найден");
+    }
+
+
     public void SetGameOver(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (var player in players) {
             player.RoleBehaviour.NewRoundStart(false);
