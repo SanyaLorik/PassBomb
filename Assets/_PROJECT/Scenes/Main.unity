@@ -10266,6 +10266,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3674747906210745377, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
   m_PrefabInstance: {fileID: 1507713581}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1508285285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2452435496066505964, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1516563789 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5906041395580607845, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -10932,6 +10943,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
+--- !u!114 &1653853938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 372490936294051398, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1661918827 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7523160736440482094, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -12680,6 +12702,7 @@ MonoBehaviour:
   - <Id>k__BackingField: Award
     <Data>k__BackingField:
     - {fileID: 1062892832}
+    - {fileID: 1508285285}
   - <Id>k__BackingField: Take Award
     <Data>k__BackingField:
     - {fileID: 138269490}
@@ -12823,6 +12846,7 @@ MonoBehaviour:
   - <Id>k__BackingField: More Games
     <Data>k__BackingField:
     - {fileID: 1839958720}
+    - {fileID: 1653853938}
   Header: {fileID: 11400000, guid: a2d79142d38f1bc4c90686d790eb0402, type: 2}
 --- !u!1 &2087461439 stripped
 GameObject:
