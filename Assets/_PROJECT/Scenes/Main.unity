@@ -460,66 +460,6 @@ MonoBehaviour:
   _hideCanvasEase: 26
   _defaultColor: {r: 1, g: 0, b: 0.6106348, a: 0}
   _colorLighning: {fileID: 935377476}
---- !u!1 &49951018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 49951019}
-  - component: {fileID: 49951020}
-  m_Layer: 0
-  m_Name: 106
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &49951019
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49951018}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1109745345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &49951020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49951018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23373e5ea421c3b4b8fec0520ba591ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurchaseSlot
-  <Id>k__BackingField: 106
-  <PurchaseInfo>k__BackingField:
-    <Id>k__BackingField: 
-    <PriceInteger>k__BackingField: 0
-    <PriceFloat>k__BackingField: 0
-    <Currency>k__BackingField: 
-  <HasPurchaseInfo>k__BackingField: 0
-  _purshaseItems:
-  - rid: 8003847134599708741
-  references:
-    version: 2
-    RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
-      data:
-        _newMoney: 1000
 --- !u!114 &60722210 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8024904503761004126, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -3471,17 +3411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
---- !u!114 &429211140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5857457103277509826, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611408ef5a702e94e88d1d1cefbc15cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PurchaseSlotView
 --- !u!1 &432997090 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9137804383122460171, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -3831,66 +3760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &530871872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 530871873}
-  - component: {fileID: 530871874}
-  m_Layer: 0
-  m_Name: 104
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &530871873
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530871872}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1109745345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &530871874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 530871872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23373e5ea421c3b4b8fec0520ba591ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurchaseSlot
-  <Id>k__BackingField: 104
-  <PurchaseInfo>k__BackingField:
-    <Id>k__BackingField: 
-    <PriceInteger>k__BackingField: 0
-    <PriceFloat>k__BackingField: 0
-    <Currency>k__BackingField: 
-  <HasPurchaseInfo>k__BackingField: 0
-  _purshaseItems:
-  - rid: 8003847134599708741
-  references:
-    version: 2
-    RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
-      data:
-        _newMoney: 1000
 --- !u!1 &530980559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2567247511761974535, guid: 7244baf0dc51f40458e0255c55c05c23, type: 3}
@@ -4234,66 +4103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapItem
---- !u!1 &634435346
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 634435347}
-  - component: {fileID: 634435348}
-  m_Layer: 0
-  m_Name: 107
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &634435347
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634435346}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1109745345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &634435348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634435346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23373e5ea421c3b4b8fec0520ba591ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurchaseSlot
-  <Id>k__BackingField: 107
-  <PurchaseInfo>k__BackingField:
-    <Id>k__BackingField: 
-    <PriceInteger>k__BackingField: 0
-    <PriceFloat>k__BackingField: 0
-    <Currency>k__BackingField: 
-  <HasPurchaseInfo>k__BackingField: 0
-  _purshaseItems:
-  - rid: 8003847134599708741
-  references:
-    version: 2
-    RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
-      data:
-        _newMoney: 1000
 --- !u!1 &635205125 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8895862876855921993, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -6224,6 +6033,22 @@ PrefabInstance:
       propertyPath: _rotating
       value: 
       objectReference: {fileID: 1091495464}
+    - target: {fileID: 428153677415601160, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428153677415601160, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428153677415601160, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 428153677415601160, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1192304545371801911, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _purchaseSlot
       value: 
@@ -6231,7 +6056,7 @@ PrefabInstance:
     - target: {fileID: 1356449604988217509, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _purchaseSlot
       value: 
-      objectReference: {fileID: 634435348}
+      objectReference: {fileID: 0}
     - target: {fileID: 1480857687185745873, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -6316,10 +6141,118 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219311770113160365, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219311770113160365, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219311770113160365, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219311770113160365, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219311770113160365, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417394094475257816, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417394094475257816, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417394094475257816, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2417394094475257816, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419087862856397032, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2793468574174362504, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _purchaseSlot
       value: 
-      objectReference: {fileID: 49951020}
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191538355415666682, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531863212587312466, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531863212587312466, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531863212587312466, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531863212587312466, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556012122806493263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556012122806493263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556012122806493263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4556012122806493263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608524045638783942, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608524045638783942, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608524045638783942, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608524045638783942, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5289991754471019032, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5289991754471019032, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5289991754471019032, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5289991754471019032, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5527758018541367189, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6328,14 +6261,26 @@ PrefabInstance:
       propertyPath: _purchaseSlot
       value: 
       objectReference: {fileID: 1064053379}
+    - target: {fileID: 5646868227618997240, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646868227618997240, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 5646868227618997240, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.023148168
+      objectReference: {fileID: 0}
     - target: {fileID: 5807254573527435743, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _purchaseSlot
       value: 
-      objectReference: {fileID: 530871874}
+      objectReference: {fileID: 0}
     - target: {fileID: 5857457103277509826, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _purchaseSlot
       value: 
-      objectReference: {fileID: 2067611786}
+      objectReference: {fileID: 0}
     - target: {fileID: 6053081653174731065, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6351,6 +6296,18 @@ PrefabInstance:
     - target: {fileID: 6466690064324566937, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972854114533245108, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972854114533245108, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972854114533245108, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -43
       objectReference: {fileID: 0}
     - target: {fileID: 6975360558737340885, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_Name
@@ -6368,10 +6325,66 @@ PrefabInstance:
       propertyPath: _location
       value: 
       objectReference: {fileID: 1091495465}
+    - target: {fileID: 8406231353497602592, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406231353497602592, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406231353497602592, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406231353497602592, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8406231353497602592, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884907420614582304, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8981450645208049866, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _playerBank
       value: 
       objectReference: {fileID: 1189014761}
+    - target: {fileID: 9042845549054001461, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042845549054001461, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042845549054001461, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042845549054001461, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162112804527071399, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162112804527071399, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162112804527071399, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162112804527071399, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6866,14 +6879,14 @@ MonoBehaviour:
     <Currency>k__BackingField: 
   <HasPurchaseInfo>k__BackingField: 0
   _purshaseItems:
-  - rid: 8003847134599708741
+  - rid: 6723450964463059012
   references:
     version: 2
     RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
+    - rid: 6723450964463059012
+      type: {class: MoneyReceiverShop, ns: , asm: Assembly-CSharp}
       data:
-        _newMoney: 1000
+        _newMoney: 250000
 --- !u!1 &1066146940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1289586309415961504, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -7166,10 +7179,6 @@ Transform:
   - {fileID: 2075962894}
   - {fileID: 1816936232}
   - {fileID: 1064053378}
-  - {fileID: 530871873}
-  - {fileID: 2067611785}
-  - {fileID: 49951019}
-  - {fileID: 634435347}
   m_Father: {fileID: 749518683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1109745346
@@ -7189,18 +7198,10 @@ MonoBehaviour:
   - {fileID: 2075962895}
   - {fileID: 1816936233}
   - {fileID: 1064053379}
-  - {fileID: 530871874}
-  - {fileID: 2067611786}
-  - {fileID: 49951020}
-  - {fileID: 634435348}
   _purchaseSlotViiews:
   - {fileID: 1207527134}
   - {fileID: 675789517}
   - {fileID: 1636150282}
-  - {fileID: 1381881357}
-  - {fileID: 429211140}
-  - {fileID: 1883499812}
-  - {fileID: 1292530353}
 --- !u!1 &1113605938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8935176302210752088, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
@@ -7982,17 +7983,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 82b0cb9f4cc4612478070a910969ba04, type: 3}
---- !u!114 &1292530353 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1356449604988217509, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611408ef5a702e94e88d1d1cefbc15cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PurchaseSlotView
 --- !u!114 &1296414949 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6345959961185362311, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
@@ -8544,17 +8534,6 @@ MonoBehaviour:
   _afkButton: {fileID: 1733698342}
   _afkStatusText: {fileID: 1363772413}
   _goPlayButton: {fileID: 1988927018}
---- !u!114 &1381881357 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5807254573527435743, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611408ef5a702e94e88d1d1cefbc15cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PurchaseSlotView
 --- !u!224 &1390632910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 357196155048935263, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -11242,14 +11221,14 @@ MonoBehaviour:
     <Currency>k__BackingField: 
   <HasPurchaseInfo>k__BackingField: 0
   _purshaseItems:
-  - rid: 8003847134599708741
+  - rid: 6723450964463059013
   references:
     version: 2
     RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
+    - rid: 6723450964463059013
+      type: {class: MoneyReceiverShop, ns: , asm: Assembly-CSharp}
       data:
-        _newMoney: 1000
+        _newMoney: 50000
 --- !u!114 &1817609894 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 73460597490218224, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -11574,17 +11553,6 @@ Transform:
   - {fileID: 249027259}
   m_Father: {fileID: 1407686364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1883499812 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2793468574174362504, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 611408ef5a702e94e88d1d1cefbc15cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.PurchaseSlotView
 --- !u!1 &1889167959
 GameObject:
   m_ObjectHideFlags: 0
@@ -12256,66 +12224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!1 &2067611784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2067611785}
-  - component: {fileID: 2067611786}
-  m_Layer: 0
-  m_Name: 105
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2067611785
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067611784}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1109745345}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2067611786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2067611784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23373e5ea421c3b4b8fec0520ba591ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PurchaseSlot
-  <Id>k__BackingField: 105
-  <PurchaseInfo>k__BackingField:
-    <Id>k__BackingField: 
-    <PriceInteger>k__BackingField: 0
-    <PriceFloat>k__BackingField: 0
-    <Currency>k__BackingField: 
-  <HasPurchaseInfo>k__BackingField: 0
-  _purshaseItems:
-  - rid: 8003847134599708741
-  references:
-    version: 2
-    RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
-      data:
-        _newMoney: 1000
 --- !u!1 &2075962893
 GameObject:
   m_ObjectHideFlags: 0
@@ -12368,14 +12276,14 @@ MonoBehaviour:
     <Currency>k__BackingField: 
   <HasPurchaseInfo>k__BackingField: 0
   _purshaseItems:
-  - rid: 8003847134599708741
+  - rid: 6723450964463059011
   references:
     version: 2
     RefIds:
-    - rid: 8003847134599708741
-      type: {class: MoneyReceiver, ns: , asm: Assembly-CSharp}
+    - rid: 6723450964463059011
+      type: {class: MoneyReceiverShop, ns: , asm: Assembly-CSharp}
       data:
-        _newMoney: 1000
+        _newMoney: 25000
 --- !u!114 &2077729792 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3863914841356581805, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
