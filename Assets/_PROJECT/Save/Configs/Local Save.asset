@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 16450
+    Money: 18612
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Bonuses:
     - Id: InvisibleBonus
-      Count: 2
+      Count: 1000
     - Id: SpeedBonus
-      Count: 2
+      Count: 1000
     - Id: BigJumpBonus
-      Count: 2
+      Count: 1000
     Tasks:
     - Id: pass_bomb_10
-      Count: 115
+      Count: 118
       IsGetReward: 0
     - Id: pass_in_void_5
       Count: 0
@@ -34,17 +34,17 @@ MonoBehaviour:
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 58
+      Count: 61
       IsGetReward: 0
     - Id: win_count_5
       Count: 21
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 22
+      Count: 24
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
-      Count: 10
-      IsGetReward: 1
+      Count: 2
+      IsGetReward: 0
     - Id: use_invincible_bonus_10
       Count: 3
       IsGetReward: 0
@@ -66,8 +66,8 @@ MonoBehaviour:
       LastDateTimeReceived: 01.05.2026 13:55:04
       LastDayNumber: 1
     WheelFortuneSave:
-      CountSpinAllow: 3
-      LastDateTimeSpined: 01.05.2026 23:08:22
+      CountSpinAllow: 6
+      LastDateTimeSpined: 02.05.2026 0:36:07
     DailyQuestSave:
       LastDateTimeEntered: 01.05.2026 13:55:07
     SkinSave:
@@ -77,7 +77,7 @@ MonoBehaviour:
         EquippedId: 5
       - GroupId: 2
         BoughtIds: 010000000200000003000000040000000700000006000000
-        EquippedId: 6
+        EquippedId: 3
       - GroupId: 3
         BoughtIds: 0100000002000000
         EquippedId: 2
@@ -86,6 +86,6 @@ MonoBehaviour:
         EquippedId: 1
       - GroupId: 5
         BoughtIds: 0100000002000000030000000700000005000000
-        EquippedId: 5
+        EquippedId: 7
     CommunitySave:
       LastDateTimeSocialNetworking: 01.05.2026 14:22:54
