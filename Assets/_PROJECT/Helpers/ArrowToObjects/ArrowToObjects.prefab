@@ -42,7 +42,7 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571418644470879750}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -87,13 +87,13 @@ LineRenderer:
   - {x: 0, y: 4.11, z: 15.69}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 2
+    widthMultiplier: 3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.25418854
+        time: 0.0030784607
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -137,7 +137,7 @@ LineRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 1
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 0.2, y: 1}
     shadowBias: 0
     generateLightingData: 1
   m_UseWorldSpace: 1
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LineRenderMoving
   _lineRenderer: {fileID: 6523068522804486642}
   _material: {fileID: 2100000, guid: 7afe1c0b878313f438b88a256ebdedb9, type: 2}
-  _speed: 4
+  _speed: 6
 --- !u!1 &3804516722383916066
 GameObject:
   m_ObjectHideFlags: 0
