@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using SanyaBeerExtension;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -23,7 +24,14 @@ public class StaticTranslater : MonoBehaviour
                 continue;
             }
 
-            text.Data.ForEach(i => i.text = translation.Data);
+            SanyaBeerExtension.ArrayExtension.ForEach(text.Data, i =>
+            {
+                if (i == null || i.text == null || translation.Data == null)
+                    return;
+
+                i.text = translation.Data;
+            });
+            //text.Data.ForEach(i => i.text = translation.Data);
         }
     }
 
