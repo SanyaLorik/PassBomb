@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2899160243154729618, guid: 12b7ae26502215342b652aef3b837208, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -561,7 +561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7715482531636780251, guid: 52c08f9e3529ed04b9c5c3eb64475611, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -841,6 +841,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5844345466001308209, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018184262325083621, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018184262325083621, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018184262325083621, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
+      propertyPath: m_RayTracingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6018184262325083621, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
+      propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6226090511231342855, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
