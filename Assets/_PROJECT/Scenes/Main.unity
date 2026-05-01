@@ -1260,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408502e9269a4d8a91f280513988cd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleRewarder
-  _baseReward: 100
+  _baseReward: 300
   _rewardCurve:
     serializedVersion: 2
     m_Curve:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _curveMultiplier: 1000
+  _curveMultiplier: 700
 --- !u!114 &218509406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2723324615258887272, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -5786,8 +5786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acc58d0fe60bf642bcf9db8260258d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EconomyCalculator
-  _minimalReward: 200
-  _ratioForGame: 1000
+  _minimalReward: 1000
+  _ratioForGame: 100
   _curveRatio: 5000
   _animationCurve:
     serializedVersion: 2
