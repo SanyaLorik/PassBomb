@@ -15,7 +15,7 @@ MonoBehaviour:
   Save:
     Money: 21200
     IsBoughtPurchase: 0
-    TutorialPassed: 0
+    TutorialPassed: 1
     Bonuses:
     - Id: InvisibleBonus
       Count: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
       Count: 2
     Tasks:
     - Id: pass_bomb_10
-      Count: 108
+      Count: 111
       IsGetReward: 0
     - Id: pass_in_void_5
       Count: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 49
+      Count: 50
       IsGetReward: 0
     - Id: win_count_5
       Count: 20

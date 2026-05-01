@@ -430,7 +430,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _moneyStartCapital: 20000
+  _moneyStartCapital: 10000
 --- !u!114 &1270892518284674774
 MonoBehaviour:
   m_ObjectHideFlags: 0

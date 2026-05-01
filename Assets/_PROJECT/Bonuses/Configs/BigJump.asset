@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BonusItemConfig
   Bonus:
     rid: 6522072473654001730
-  <Price>k__BackingField: 1488
+  <Price>k__BackingField: 1000
   references:
     version: 2
     RefIds:
