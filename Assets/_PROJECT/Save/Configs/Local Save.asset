@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 21200
+    Money: 16450
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Bonuses:
@@ -25,7 +25,7 @@ MonoBehaviour:
       Count: 2
     Tasks:
     - Id: pass_bomb_10
-      Count: 111
+      Count: 115
       IsGetReward: 0
     - Id: pass_in_void_5
       Count: 0
@@ -34,13 +34,13 @@ MonoBehaviour:
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 50
+      Count: 58
       IsGetReward: 0
     - Id: win_count_5
-      Count: 20
+      Count: 21
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 19
+      Count: 22
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
       Count: 10
@@ -58,18 +58,18 @@ MonoBehaviour:
       LastDateTimeReceived: 01.05.2026 13:55:04
       LastDayNumber: 1
     WheelFortuneSave:
-      CountSpinAllow: 4
-      LastDateTimeSpined: 01.05.2026 13:54:54
+      CountSpinAllow: 3
+      LastDateTimeSpined: 01.05.2026 23:08:22
     DailyQuestSave:
       LastDateTimeEntered: 01.05.2026 13:55:07
     SkinSave:
       SkinSets:
       - GroupId: 1
         BoughtIds: 01000000020000000300000009000000050000000b000000
-        EquippedId: 11
+        EquippedId: 5
       - GroupId: 2
-        BoughtIds: 0100000002000000030000000400000007000000
-        EquippedId: 7
+        BoughtIds: 010000000200000003000000040000000700000006000000
+        EquippedId: 6
       - GroupId: 3
         BoughtIds: 0100000002000000
         EquippedId: 2

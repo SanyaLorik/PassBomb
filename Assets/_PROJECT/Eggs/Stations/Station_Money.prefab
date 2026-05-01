@@ -59,6 +59,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4498811110346982220, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1984793768669962078}
+    - targetCorrespondingSourceObject: {fileID: 7121925951932476664, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2215947902707371781}
   m_SourcePrefab: {fileID: 100100000, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
 --- !u!114 &2760956161868869780 stripped
 MonoBehaviour:
@@ -177,6 +180,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &7950651918785018495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7121925951932476664, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}
+  m_PrefabInstance: {fileID: 900801430102169223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2215947902707371781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950651918785018495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4949e140603814fb992c8abdc8a0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
+  mode: 1
 --- !u!114 &8151439467259905556 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9052218900481511571, guid: 7499b898ec129cd4fa9cfd55f70f73bd, type: 3}

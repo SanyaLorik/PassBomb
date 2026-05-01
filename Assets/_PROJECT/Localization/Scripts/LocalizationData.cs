@@ -29,7 +29,6 @@ public class LocalizationData : LocalizationDataBase,
     public List<TaskTranslate> TaskTranslates;
     public List<TutorialTranslate> TutorialTranslates;
     public List<BonusesTranslate> BonusesTranslates;
-    public List<SkinTranslate> SkinTranslates;
     public List<PetStationTranslate> EggStationNameTranslates;
     
     
@@ -83,12 +82,6 @@ public class BonusesTranslate : IIdName<BonusItemConfig> {
 }
 
 
-[Serializable]
-public class SkinTranslate : IIdName<string> {
-    [field: SerializeField] public string Id { get; set; }
-    [SerializeField] private string _text;
-    public string Text => _text;
-}
 
 [Serializable]
 public class PetStationTranslate : IIdName<string> {

@@ -37,7 +37,7 @@ MonoBehaviour:
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
     <TimeToBombExplode>k__BackingField: 10
-    <TimeToInvinsibleAfterPass>k__BackingField: 2
+    <TimeToInvinsibleAfterPass>k__BackingField: 10
     <DefaultSpeedInRound>k__BackingField: 12
     <HunterSpeed>k__BackingField: 20
     <VelocityBonusSpeed>k__BackingField: 25
@@ -82,7 +82,7 @@ MonoBehaviour:
     <BotJumpBonusDuration>k__BackingField: 2
     <BotDefaultJumpHeight>k__BackingField: 6
     <BotJumpBonusHeight>k__BackingField: 15
-    <ChanceToGoPlayerInHunt>k__BackingField: 0.298
+    <ChanceToGoPlayerInHunt>k__BackingField: 0.3
     <BotUseNewBonusTime>k__BackingField:
       <From>k__BackingField: 4
       <To>k__BackingField: 8

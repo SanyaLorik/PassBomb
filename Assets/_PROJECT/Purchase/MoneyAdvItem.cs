@@ -12,30 +12,19 @@ public class MoneyAdvItem : MonoBehaviour {
     [Inject] private PlayerBank _bank;
     [Inject] private LocalizationData _localization;
     [Inject] private AdvertisingMonetizationMirra _advertisingMonetization;
+    [Inject] private AdvHelper _advHelper;
 
     private void OnEnable() {
-        _getButton.onClick.AddListener(WatchAdv);
+        _advHelper.AddToButtonAdvRewardListener(_getButton, AddMoney);
     }
 
     private void Start() {
         _getButtonText.text = _localization.GetButton;
     }
 
-    private void WatchAdv() {
-        _advertisingMonetization.InvokeRewarded(
-            null,
-            (isSuccess) => 
-            {
-                if (isSuccess) {
-                    AddMoney();
-                }
-            }
-        );
-    }
 
     private void AddMoney() {
         _bank.AddMoney(_money);
     }
-    
     
 }

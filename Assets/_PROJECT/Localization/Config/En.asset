@@ -35,13 +35,12 @@ MonoBehaviour:
   Money: Money
   SelectSkinButton: Select
   SelectedSkinButton: Selected
+  You: You
   PlayerWinner: '{0} wins! '
   PlayerExploded: Player boomed!
   TaskTranslates:
   - <Id>k__BackingField: 0
     _text: Pass the bomb {0} times
-  - <Id>k__BackingField: 1
-    _text: Drop the enemy {0} time
   - <Id>k__BackingField: 2
     _text: Live for {0} seconds
   - <Id>k__BackingField: 3
@@ -56,7 +55,13 @@ MonoBehaviour:
     _text: Use the invisibility bonus {0} times
   - <Id>k__BackingField: 8
     _text: Go through parkour {0} times
-  TutorialTranslates: []
+  TutorialTranslates:
+  - <Id>k__BackingField: 0
+    _text: Catch the enemy and pass the bomb
+  - <Id>k__BackingField: 1
+    _text: Run away from the enemy with the bomb
+  - <Id>k__BackingField: 2
+    _text: Catch the enemy, pass the bomb, and win!
   BonusesTranslates:
   - <Id>k__BackingField: {fileID: 11400000, guid: f4665fba6592ecd4da333ef6375d5ead, type: 2}
     _text: Invisible
@@ -64,7 +69,6 @@ MonoBehaviour:
     _text: Speed
   - <Id>k__BackingField: {fileID: 11400000, guid: 90d408a111db82948b57ffd9ad6ecc6c, type: 2}
     _text: Super Jump
-  SkinTranslates: []
   EggStationNameTranslates: []
   <StaticTranslates>k__BackingField:
   - <Id>k__BackingField: Parkour Header Text

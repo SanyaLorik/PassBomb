@@ -39,7 +39,7 @@ public class GraveSpawner : MonoBehaviour {
         await UniTask.DelayFrame(5);
     
         // Ищем ближайшую точку на NavMesh рядом с позицией смерти
-        if (NavMesh.SamplePosition(position, out NavMeshHit hit, 5f, NavMesh.AllAreas)) {
+        if (NavMesh.SamplePosition(position, out NavMeshHit hit, 10f, NavMesh.AllAreas)) {
             GameObject grave = Instantiate(_gravePrefab, hit.position, Quaternion.identity);
             _gravesInstances.Add(grave);
             Debug.Log($"Могила поставлена на NavMesh: {hit.position}");

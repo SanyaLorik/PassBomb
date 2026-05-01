@@ -1440,6 +1440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7933866518538940292}
   - component: {fileID: 5292782563848835952}
+  - component: {fileID: 4764610787449572762}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -1491,6 +1492,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &4764610787449572762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332767566049772968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4949e140603814fb992c8abdc8a0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
+  mode: 1
 --- !u!1 &1412687228180027857
 GameObject:
   m_ObjectHideFlags: 0
@@ -10566,6 +10580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 330757407346698158}
   - component: {fileID: 6680191695580328616}
+  - component: {fileID: 6686096703596732038}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -10619,6 +10634,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &6686096703596732038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472184059582956855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4949e140603814fb992c8abdc8a0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LookAtCamera
+  mode: 1
 --- !u!1 &6478144003389809037
 GameObject:
   m_ObjectHideFlags: 0
