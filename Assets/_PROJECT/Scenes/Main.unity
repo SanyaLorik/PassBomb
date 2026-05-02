@@ -12703,6 +12703,7 @@ MonoBehaviour:
     <Data>k__BackingField:
     - {fileID: 1062892832}
     - {fileID: 1508285285}
+    - {fileID: 2106050216}
   - <Id>k__BackingField: Take Award
     <Data>k__BackingField:
     - {fileID: 138269490}
@@ -12924,6 +12925,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &2106050216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4302567017174551325, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2107152984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3237455100138701712, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
