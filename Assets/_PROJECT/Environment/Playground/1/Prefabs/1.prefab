@@ -136,12 +136,10 @@ MonoBehaviour:
   - {fileID: 4397095000413325925}
   - {fileID: 6943569251234150014}
   - {fileID: 525920154510419465}
-  - {fileID: 2686118169400203057}
-  - {fileID: 7096746402529283553}
   BombCenterSpawn: {fileID: 6380388630318402401}
   Floor: {fileID: 4208207996392344110}
   YToFind: 10
-  FallBotFindSamplePosition: 2
+  FallBotFindSamplePosition: 5
 --- !u!1 &402734165547102424
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +929,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 78bd4b8584212c749a7a7121ef666fcb, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 1c370dc9b16cdce4cbb93b8a86af6610, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &3699358068867283604
 GameObject:
@@ -3550,6 +3548,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platfrom_13
       objectReference: {fileID: 0}
+    - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Size.y
+      value: 2.9052305
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Center.y
+      value: 0.95261455
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3933,6 +3939,14 @@ PrefabInstance:
     - target: {fileID: 2146527313375872447, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
       propertyPath: m_Name
       value: Platfrom_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8284564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Center.y
+      value: 0.414228
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

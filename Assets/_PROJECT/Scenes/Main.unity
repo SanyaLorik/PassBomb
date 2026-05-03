@@ -1846,7 +1846,7 @@ MonoBehaviour:
   <CentralTeleport>k__BackingField: {fileID: 977837456}
   _mapitems:
   - {fileID: 415421060}
-  - {fileID: 458195318}
+  - {fileID: 1657482258}
   _tutorialMapIndex: 0
 --- !u!114 &350261723 stripped
 MonoBehaviour:
@@ -2472,11 +2472,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2343683270566299301, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4343414195835875579, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_Name
       value: Playground
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749892991226762515, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7103308284208817875, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2627,17 +2631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &458195318 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2621802840029879834, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &468536774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7003254500649802095, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -9829,6 +9822,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1657482258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5417642853748854188, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+  m_PrefabInstance: {fileID: 415421058}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!114 &1661918827 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7523160736440482094, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -10434,7 +10438,7 @@ Transform:
   m_GameObject: {fileID: 1889167959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.5077, y: -26.3, z: -8.6757}
+  m_LocalPosition: {x: 63.5077, y: -31.2, z: -8.6757}
   m_LocalScale: {x: 970.16394, y: 32.01351, z: 777.122}
   m_ConstrainProportionsScale: 0
   m_Children: []
