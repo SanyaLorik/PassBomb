@@ -42,7 +42,7 @@ public class GraveSpawner : MonoBehaviour {
         if (NavMesh.SamplePosition(position, out NavMeshHit hit, 10f, NavMesh.AllAreas)) {
             GameObject grave = Instantiate(_gravePrefab, hit.position, Quaternion.identity);
             _gravesInstances.Add(grave);
-            Debug.Log($"Могила поставлена на NavMesh: {hit.position}");
+            // Debug.Log($"Могила поставлена на NavMesh: {hit.position}");
         }
         else {
             // Фолбэк — ищем на спавне

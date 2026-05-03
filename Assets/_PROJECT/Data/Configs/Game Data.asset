@@ -37,7 +37,8 @@ MonoBehaviour:
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
     <TimeToBombExplode>k__BackingField: 10
-    <TimeToInvinsibleAfterPass>k__BackingField: 10
+    <TimeToInvinsibleAfterPass>k__BackingField: 4
+    <TimeToInvinsibleAfterPassInTutor>k__BackingField: 2
     <DefaultSpeedInRound>k__BackingField: 12
     <HunterSpeed>k__BackingField: 20
     <VelocityBonusSpeed>k__BackingField: 25
@@ -51,6 +52,7 @@ MonoBehaviour:
     <PlayerUpPushRatio>k__BackingField: 6
     <PushTime>k__BackingField: 1
     <PushColldown>k__BackingField: 1
+    <ChanceInitBombToPlayer>k__BackingField: 0.55
     <ColldownToStartGame>k__BackingField: 3
     <TimeAfterBombExplode>k__BackingField: 1
     <TimeToShowDieInfo>k__BackingField: 2

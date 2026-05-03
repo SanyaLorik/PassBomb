@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour {
     private void InitPlayers() {
         foreach (var player in _players) {
             player.SetPlayStatus(true);
-            player.RoleBehaviour.SetInvinsibleAfterBomb(false);
+            player.RoleBehaviour.SetInvincibleAfterBomb(false);
         }
         TeleportPlayersToPoints(_players, PlayersSpawnPoints);
         PlayersCountChanged?.Invoke(_players.Count);
@@ -228,7 +228,7 @@ public class BattleManager : MonoBehaviour {
         foreach (IPassBombPlayer player in _players) {
             if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
                 Debug.Log("Игрок выбыл!");
-                player.RoleBehaviour.SetInvinsibleAfterBomb(true);
+                player.RoleBehaviour.SetInvincibleAfterBomb(true);
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
                     PlayerDied?.Invoke(botMonolog.NickName, player.Transform.position);
@@ -246,6 +246,8 @@ public class BattleManager : MonoBehaviour {
     }
 
     private void RemovePlayer(IPassBombPlayer player) {
+        player.RoleBehaviour.SetInvincibleAfterBomb(false);
+        player.RoleBehaviour.SetInvincibleAfterBonus(false);
         player.RoleBehaviour.NewRoundStart(false);
         _players.Remove(player);
         PlayersCountChanged?.Invoke(PlayersCount);

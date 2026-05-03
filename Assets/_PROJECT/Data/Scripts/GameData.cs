@@ -36,6 +36,7 @@ public class GameData : GameDataBase
     [field: Header("Главная Игра")]
     [field: SerializeField] public float TimeToBombExplode { get; private set; }
     [field: SerializeField] public float TimeToInvinsibleAfterPass { get; private set; }
+    [field: SerializeField] public float TimeToInvinsibleAfterPassInTutor { get; private set; }
     [field: SerializeField] public float DefaultSpeedInRound { get; private set; }
     [field: SerializeField] public float HunterSpeed { get; private set; }
     [field: SerializeField] public float VelocityBonusSpeed { get; private set; }
@@ -49,6 +50,7 @@ public class GameData : GameDataBase
     [field: SerializeField] public float PlayerUpPushRatio { get; private set; }
     [field: SerializeField] public float PushTime { get; private set; }
     [field: SerializeField] public float PushColldown { get; private set; }
+    [field: SerializeField, Range(0,1)] public float ChanceInitBombToPlayer { get; private set; }
     
     [field: Header("Тайминги")]
     [field: SerializeField] public float ColldownToStartGame { get; private set; }

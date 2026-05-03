@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private float _firstJumpForce;
     private float _secondJumpForce;
 
-    public event Action PlayerReturnToTarget;
+    public event Action PlayerTeleportToTarget;
     public event Action JumpPressed;
     public event Action DoubleJumpPressed;
     public event Action<bool> RunningStateChanged;
@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     
         _verticalVelocity = 0; // Сброс скорости
         _jumpsUsed = 0; // Сброс прыжков
+        PlayerTeleportToTarget?.Invoke();
     }
 
 
@@ -218,7 +219,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
             transform.rotation = targetRotation;
         }
         SetCharacterControllerState(true);
-        PlayerReturnToTarget?.Invoke();
+        PlayerTeleportToTarget?.Invoke();
     }
 
 
