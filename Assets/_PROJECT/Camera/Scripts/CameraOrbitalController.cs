@@ -62,7 +62,8 @@ public class CameraOrbitalController : MonoBehaviour {
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private Bomb _bomb;
 
-
+    
+    
     private void OnEnable()  {
         _settings.CameraZoomChanged += ChangeCameraZoomPercent;
         SystemEvents.WindowOpened += ForbidRotate;
@@ -81,6 +82,7 @@ public class CameraOrbitalController : MonoBehaviour {
 
     private void Start() {
         ChangeCameraZoomPercent(_settings.CameraZoomValue);
+        WatchToPlayerBack();
         
         _orbitalFollow.TrackerSettings.PositionDamping = Vector3.zero;
         
@@ -94,6 +96,7 @@ public class CameraOrbitalController : MonoBehaviour {
         }
         _defaultX = _orbitalFollow.HorizontalAxis.Value;
         _defaultY = _orbitalFollow.VerticalAxis.Value;
+        
     }
     
     
