@@ -228,7 +228,6 @@ public class BattleManager : MonoBehaviour {
         foreach (IPassBombPlayer player in _players) {
             if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
                 Debug.Log("Игрок выбыл!");
-                player.RoleBehaviour.SetInvincibleAfterBomb(true);
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
                     PlayerDied?.Invoke(botMonolog.NickName, player.Transform.position);
@@ -246,8 +245,8 @@ public class BattleManager : MonoBehaviour {
     }
 
     private void RemovePlayer(IPassBombPlayer player) {
-        player.RoleBehaviour.SetInvincibleAfterBomb(false);
-        player.RoleBehaviour.SetInvincibleAfterBonus(false);
+        player.RoleBehaviour.DisposeAllLogic();
+        
         player.RoleBehaviour.NewRoundStart(false);
         _players.Remove(player);
         PlayersCountChanged?.Invoke(PlayersCount);

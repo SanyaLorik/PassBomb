@@ -21,6 +21,12 @@ public class ShieldEnabler : MonoBehaviour {
     
     
     private void OnInvinsibleStatusChanged(bool enable) {
+        if (!_playerRoleBehaviour.PassBombPlayer.IsPlaying) {
+            _shieldIsEnabled = false;
+            _shieldVisual.ShieldEnableAnimate(false);
+            return;
+        }
+        
         // Повторно не анимируем
         if (enable == _shieldIsEnabled) {
             return;
@@ -33,7 +39,7 @@ public class ShieldEnabler : MonoBehaviour {
             }
         }
         
-        Debug.Log("Shield enable: " + enable);
+        // Debug.Log("Shield enable: " + enable);
         _shieldIsEnabled =  enable;
         _shieldVisual.ShieldEnableAnimate(enable);
     }

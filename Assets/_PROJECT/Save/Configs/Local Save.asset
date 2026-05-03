@@ -13,40 +13,37 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 18612
+    Money: 16450
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Bonuses:
     - Id: InvisibleBonus
-      Count: 1000
+      Count: 2
     - Id: SpeedBonus
-      Count: 1000
+      Count: 2
     - Id: BigJumpBonus
-      Count: 1000
+      Count: 2
     Tasks:
     - Id: pass_bomb_10
-      Count: 118
-      IsGetReward: 0
-    - Id: pass_in_void_5
-      Count: 0
+      Count: 129
       IsGetReward: 0
     - Id: life_sec_100
       Count: 0
       IsGetReward: 0
     - Id: life_round_15
-      Count: 61
+      Count: 67
       IsGetReward: 0
     - Id: win_count_5
-      Count: 21
+      Count: 24
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 24
+      Count: 28
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
       Count: 2
       IsGetReward: 0
     - Id: use_invincible_bonus_10
-      Count: 3
+      Count: 4
       IsGetReward: 0
     - Id: parkour_count_1
       Count: 0
@@ -55,7 +52,7 @@ MonoBehaviour:
     - Id: bugatti_pet
       Count: 1
     - Id: ghast_pet
-      Count: 1
+      Count: 2
     - Id: wolf_pet
       Count: 1
     - Id: creeper_pet

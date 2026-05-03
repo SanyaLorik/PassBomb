@@ -87,16 +87,17 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        _roleBehaviour.SetInvincibleAfterBonus(false);
+        _roleBehaviour.SetInvincibleAfterBomb(false);
+        
         IsPlaying = goPlay;
         PlayerInSpawn = !goPlay;
         _stateManager.SetupCanvases(goPlay);
         
-        if (goPlay) {
-            
-        }
-        else {
+        if (!goPlay) {
            TeleportInSpawn(); 
         }
+        
     }
     
 
@@ -178,9 +179,9 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
     }
     
-    public void SetInvinsible(bool invnincible) {
-        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
-        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invnincible);
+    public void SetInvincible(bool invincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invincible);
+        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invincible);
     }
 
     

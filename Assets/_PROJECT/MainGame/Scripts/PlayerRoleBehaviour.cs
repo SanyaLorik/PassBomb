@@ -47,8 +47,6 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private const float PASS_COOLDOWN = 0.5f;
     private float _lastRepulseTime = -999f;
     private BotWalkManager _botWalkManager;
-    
-
 
     public IPassBombPlayer PassBombPlayer { get; private set; }
 
@@ -144,6 +142,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public void DisposeAllLogic() {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         UniTaskHelper.DisposeTask(ref _hunterTokenSource);
+        SetInvincibleAfterBomb(false);
+        SetInvincibleAfterBonus(false);
     }
 
 

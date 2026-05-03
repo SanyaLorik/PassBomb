@@ -48,11 +48,13 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        _roleBehaviour.SetInvincibleAfterBonus(false);
+        _roleBehaviour.SetInvincibleAfterBomb(false);
+        
         PlayerStatusChanged?.Invoke(goPlay);
         IsPlaying = goPlay;
         _agent.enabled = true;
         BotWalkManager.StopPhys();
-        RoleBehaviour.DisposeAllLogic();
         BotWalkManager.DisposeAllLogic();
         
         gameObject.SetActive(ShowInSpawn || goPlay);
@@ -141,9 +143,9 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     public bool IsPushed => BotWalkManager.IsPushed;
 
     
-    public void SetInvinsible(bool invnincible) {
-        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
-        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invnincible);
+    public void SetInvincible(bool invincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invincible);
+        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invincible);
     }
 
 
