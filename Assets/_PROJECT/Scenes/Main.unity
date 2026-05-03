@@ -1846,12 +1846,7 @@ MonoBehaviour:
   <CentralTeleport>k__BackingField: {fileID: 977837456}
   _mapitems:
   - {fileID: 415421060}
-  - {fileID: 627850657}
-  - {fileID: 840940625}
-  - {fileID: 1097100114}
   - {fileID: 458195318}
-  - {fileID: 1307087272}
-  - {fileID: 1145189140}
   _tutorialMapIndex: 0
 --- !u!114 &350261723 stripped
 MonoBehaviour:
@@ -2411,6 +2406,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1407686364}
     m_Modifications:
+    - target: {fileID: 18233581239798626, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 90112049561752749, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 258424939766090821, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 06b8d53dae0a8374badd93966ec67b41, type: 2}
+    - target: {fileID: 258424939766090821, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_UseGeometry
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 461965544241013744, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_LocalPosition.x
       value: 100
@@ -2451,9 +2462,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1050867340331608310, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050867340331608310, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 2343683270566299301, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4343414195835875579, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
       propertyPath: m_Name
       value: Playground
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103308284208817875, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103308284208817875, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 7662664590023418984, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3021,17 +3056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b09b4606634461f865ee9953d122b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainGameInstaller
---- !u!114 &627850657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8243420688989026265, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &636432829 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3689047776681763977, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -3742,17 +3766,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 360952959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &840940625 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6020002596322780777, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!114 &848440102 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2409117315428192001, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -7021,17 +7034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!114 &1097100114 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8841115265707546881, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &1100766674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1432561616361690403, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -7179,17 +7181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7ad5638110af447bc2591b9b1332db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MediaKit_M.SkinChanger.SkinItem
---- !u!114 &1145189140 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2681147780089439292, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!114 &1163204490 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6738339824438817341, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -7641,17 +7632,6 @@ MonoBehaviour:
   _canvas: {fileID: 468536774}
   _openButton: {fileID: 291160925}
   _closeButton: {fileID: 291160924}
---- !u!114 &1307087272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3069345477513190578, guid: 97dd70a5ec067624ba81c12446c68854, type: 3}
-  m_PrefabInstance: {fileID: 415421058}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49814a82ff64f07af8266e8a5d7cee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapItem
 --- !u!1 &1307227649
 GameObject:
   m_ObjectHideFlags: 0
@@ -8072,8 +8052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685e4e6beb9f015409ef464f3a085501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainGameStarter
-  _timerDuration: 1000
-  _durationAfterGameOver: 5
   _timerText: {fileID: 11117804}
   _timerCanvas: {fileID: 1831422309}
   _afkButton: {fileID: 1733698342}
