@@ -97,7 +97,12 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         if (!goPlay) {
            TeleportInSpawn(); 
         }
-        
+    }
+
+    public void SetPlayStatusSilent(bool play) {
+        _roleBehaviour.SetInvincibleAfterBonus(false);
+        _roleBehaviour.SetInvincibleAfterBomb(false);
+        IsPlaying = play;
     }
     
 

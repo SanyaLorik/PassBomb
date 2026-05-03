@@ -191,7 +191,7 @@ public class BattleManager : MonoBehaviour {
             _mainPlayer.HideVisualModel(true);
         }
         
-        
+        _mainPlayer.SetPlayStatusSilent(false);
         await UniTask.WaitWhile(() => _gameOverView.ResultWindowShowing);
         
         if (!playerWin) {
@@ -212,10 +212,10 @@ public class BattleManager : MonoBehaviour {
         
         _players.Clear();
         
-        if (!_mainPlayer.PlayerInSpawn) {
-            _mainPlayer.SetPlayStatus(false);
-            _mainPlayer.SetMovingStatus(true);
-        }
+        // if (!_mainPlayer.PlayerInSpawn) {
+        //     _mainPlayer.SetPlayStatus(false);
+        //     _mainPlayer.SetMovingStatus(true);
+        // }
         
         if (setGameOver) {
             _gameStarter.GameOver();

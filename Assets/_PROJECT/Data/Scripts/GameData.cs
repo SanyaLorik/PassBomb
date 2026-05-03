@@ -34,6 +34,8 @@ public class GameData : GameDataBase
     
 
     [field: Header("Главная Игра")]
+    [field: SerializeField] public float NewGameTimer { get; private set; }
+    [field: SerializeField] public float DelayAfterGameOverToNewTimer { get; private set; }
     [field: SerializeField] public float TimeToBombExplode { get; private set; }
     [field: SerializeField] public float TimeToInvinsibleAfterPass { get; private set; }
     [field: SerializeField] public float TimeToInvinsibleAfterPassInTutor { get; private set; }

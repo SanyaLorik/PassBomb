@@ -229,7 +229,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
 
     
     private void GetNextPlayerVictim() {
-        if (Random.value < _gameData.ChanceToGoPlayerInHunt && _battleManager.MainPlayerPlay) {
+        if (Random.value < _gameData.ChanceToGoPlayerInHunt 
+            && _battleManager.MainPlayerPlay 
+            && !_mainPlayer.RoleBehaviour.IsInvincibleAfterBomb
+            && !_mainPlayer.RoleBehaviour.IsInvincibleAfterBonus
+        ) {
             _targetToHunt = _mainPlayer;
             return;
         }

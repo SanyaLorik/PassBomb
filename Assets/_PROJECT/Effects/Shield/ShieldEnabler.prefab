@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShieldEnabler
   _shieldVisual: {fileID: 3961980887024751072}
   _playerRoleBehaviour: {fileID: 0}
+  _shieldIsEnabled: 0
 --- !u!1001 &7736157097824992700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94,6 +95,14 @@ PrefabInstance:
     - target: {fileID: 3957487129104331081, guid: 09814512b0d92554cae7eab6abcb2bd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748522289752894556, guid: 09814512b0d92554cae7eab6abcb2bd7, type: 3}
+      propertyPath: _shieldShowDurations.<To>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748522289752894556, guid: 09814512b0d92554cae7eab6abcb2bd7, type: 3}
+      propertyPath: _shieldShowDurations.<From>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7937978974555470172, guid: 09814512b0d92554cae7eab6abcb2bd7, type: 3}
       propertyPath: m_Name

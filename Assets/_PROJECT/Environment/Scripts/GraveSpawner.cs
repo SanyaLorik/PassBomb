@@ -45,15 +45,15 @@ public class GraveSpawner : MonoBehaviour {
             // Debug.Log($"Могила поставлена на NavMesh: {hit.position}");
         }
         else {
-            // Фолбэк — ищем на спавне
-            if (NavMesh.SamplePosition(_spawnManager.SpawnPoint.position, out NavMeshHit fallbackHit, 10f, NavMesh.AllAreas)) {
-                GameObject grave = Instantiate(_gravePrefab, fallbackHit.position, Quaternion.identity);
-                _gravesInstances.Add(grave);
-                Debug.LogWarning($"GraveSpawner: не нашли NavMesh у смерти, ставим на спавн: {fallbackHit.position}");
-            }
-            else {
-                Debug.LogError($"GraveSpawner: NavMesh не найден нигде. Позиция смерти: {position}, спавн: {_spawnManager.SpawnPoint.position}");
-            }
+            // // Фолбэк — ищем на спавне
+            // if (NavMesh.SamplePosition(_spawnManager.SpawnPoint.position, out NavMeshHit fallbackHit, 10f, NavMesh.AllAreas)) {
+            //     GameObject grave = Instantiate(_gravePrefab, fallbackHit.position, Quaternion.identity);
+            //     _gravesInstances.Add(grave);
+            //     Debug.LogWarning($"GraveSpawner: не нашли NavMesh у смерти, ставим на спавн: {fallbackHit.position}");
+            // }
+            // else {
+            //     Debug.LogError($"GraveSpawner: NavMesh не найден нигде. Позиция смерти: {position}, спавн: {_spawnManager.SpawnPoint.position}");
+            // }
         }
     }
     

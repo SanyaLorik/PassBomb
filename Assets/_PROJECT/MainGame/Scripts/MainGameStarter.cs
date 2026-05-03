@@ -9,9 +9,6 @@ using UnityEngine.UI;
 using Zenject;
 
 public class MainGameStarter : MonoBehaviour  {
-    [Header("Время")]
-    [SerializeField] private float _timerDuration;
-    [SerializeField] private float _durationAfterGameOver;
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private GameObject _timerCanvas;
     [SerializeField] private Button _afkButton;
@@ -22,10 +19,13 @@ public class MainGameStarter : MonoBehaviour  {
     [Inject] private LocalizationData _localization;
     [Inject] private AdvHelper _advHelper;
     [Inject] private TutorialManager _tutorialManager;
+    [Inject] private PlayerMovement _mainPlayer;
+    [Inject] private GameData _gameData;
 
 
     private bool _afkPressed;
     private bool _startGamePressed;
+    private bool _cachedAfkState;
     
     private CancellationTokenSource _tokenSource;
     
@@ -42,7 +42,7 @@ public class MainGameStarter : MonoBehaviour  {
     
     
     private void Start() {
-        float timeToStart = _tutorialManager.TutorialPassed ? _timerDuration : 0f;
+        float timeToStart = _tutorialManager.TutorialPassed ? _gameData.NewGameTimer : 0f;
         StartTimer(timeToStart);
         _afkStatusText.DisactiveSelf();
     }
@@ -64,8 +64,8 @@ public class MainGameStarter : MonoBehaviour  {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         _tokenSource = new CancellationTokenSource();
         UniTaskHelper.TimerAction(
-            _durationAfterGameOver,
-            () => StartTimer(_timerDuration),
+            _gameData.DelayAfterGameOverToNewTimer,
+            () => StartTimer(_gameData.NewGameTimer),
             _tokenSource.Token
         ).Forget();
     }
@@ -73,7 +73,6 @@ public class MainGameStarter : MonoBehaviour  {
 
 
 
-    private bool _cachedAfkState;
     private void EnableAfkWindow(bool windowOpened) {
         if (windowOpened) {
             _cachedAfkState = _afkPressed;
@@ -126,6 +125,8 @@ public class MainGameStarter : MonoBehaviour  {
     
     
     private async UniTaskVoid NewGameTimer(float time, CancellationToken token) {
+        await UniTask.WaitWhile(() => !_mainPlayer.PlayerInSpawn, cancellationToken: token);
+        
         Debug.Log("NewGameTimer");
         float elapsedTime = 0f;
         _timerCanvas.ActiveSelf();

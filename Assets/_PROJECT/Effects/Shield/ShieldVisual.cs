@@ -65,10 +65,10 @@ public class ShieldVisual : MonoBehaviour {
     }
 
     public void ShieldShowFast(bool show) {
-        if (show) {
+        if (show && _shield.localScale != Vector3.one) {
             _shield.localScale = Vector3.one;
         }
-        else {
+        else if(_shield.localScale != Vector3.zero) {
             _shield.localScale = Vector3.zero;
         }
     }
