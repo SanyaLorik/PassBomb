@@ -1,22 +1,34 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class ShieldEnabler : MonoBehaviour {
     [SerializeField] private ShieldVisual _shieldVisual;
     [SerializeField] private PlayerRoleBehaviour _playerRoleBehaviour;
     [SerializeField] private bool _shieldIsEnabled;
 
+    
+    [Inject] BattleManager _battleManager;
+    
     private void Start() {
         _shieldVisual.ShieldShowFast(false);
     }
 
     private void OnEnable() {
+        _battleManager.GameReadyToPlay += HideShield;
         _shieldVisual.ShieldShowFast(false);
         _playerRoleBehaviour.InvinsibleStatusChanged += OnInvinsibleStatusChanged;
     }
 
-    
+
     private void OnDisable() {
+        _battleManager.GameReadyToPlay -= HideShield;
+        _shieldVisual.ShieldShowFast(false);
         _playerRoleBehaviour.InvinsibleStatusChanged -= OnInvinsibleStatusChanged;
+    }
+    
+    
+    private void HideShield() {
+        _shieldVisual.HideShieldFast();
     }
     
     

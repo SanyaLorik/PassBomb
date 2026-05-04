@@ -52,8 +52,8 @@ MonoBehaviour:
     <BonusDuration>k__BackingField: 9
     <BotPushForce>k__BackingField: 27
     <BotUpPushRatio>k__BackingField: 6
-    <PlayerPushForce>k__BackingField: 40
-    <PlayerUpPushRatio>k__BackingField: 12
+    <PlayerPushForce>k__BackingField: 50
+    <PlayerUpPushRatio>k__BackingField: 20
     <PushTime>k__BackingField: 1
     <PushColldown>k__BackingField: 1
     <ChanceInitBombToPlayer>k__BackingField: 0.55

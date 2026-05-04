@@ -21,7 +21,15 @@ public class ShieldVisual : MonoBehaviour {
 
     private CancellationTokenSource _tokenSource;
     private Sequence _shieldSequence;
+
+    private void OnEnable() {
+        DisposeShield();
+    }
     
+
+    public void HideShieldFast() {
+        DisposeShield();
+    }
     
     public void SetShieldPercentage(float percentage, int hp) {
         percentage = Mathf.Clamp01(percentage);
@@ -52,20 +60,20 @@ public class ShieldVisual : MonoBehaviour {
         }
         _bar.offsetMax = targetPos;
         if (percentage == 0f) {
-            HideShieldAnimation();
+            SetShieldAnimation(false);
         }
     }
     
     
     public void ShieldEnableAnimate(bool enable) {
         if (enable) {
-            ShowShieldAnimation();
+            SetShieldAnimation(true);
         }
         else {
-            HideShieldAnimation();
+            SetShieldAnimation(false);
         }
     }
-
+    
     public void ShieldShowFast(bool show) {
         _shield.localScale = show ? Vector3.one : Vector3.zero;
     }
@@ -95,9 +103,13 @@ public class ShieldVisual : MonoBehaviour {
         });
     }
 
-    private void ShowShieldAnimation() => SetShieldAnimation(true);
+    
+    private void DisposeShield() {
+        _shieldSequence?.Kill();
+        _shield.localScale = Vector3.zero;
+        UniTaskHelper.DisposeTask(ref _tokenSource);
+    }
 
-    private void HideShieldAnimation() => SetShieldAnimation(false);
     
     /// <summary>
     /// есть в RectTransformHelper просто приватное, саня верни доступ(((
@@ -117,7 +129,5 @@ public class ShieldVisual : MonoBehaviour {
         return -xEnd * (1f - percent);
     }
 
-    private void OnDisable() {
-        UniTaskHelper.DisposeTask(ref _tokenSource);
-    }
+
 }
