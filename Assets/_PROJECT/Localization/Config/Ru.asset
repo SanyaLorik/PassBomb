@@ -213,6 +213,9 @@ MonoBehaviour:
     <Data>k__BackingField: "\u041F\u0438\u0442\u043E\u043C\u0446\u044B"
   - <Id>k__BackingField: More Games
     <Data>k__BackingField: "\u0411\u043E\u043B\u044C\u0448\u0435 \u0438\u0433\u0440"
+  - <Id>k__BackingField: Pet Speed Info
+    <Data>k__BackingField: "\u0443\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u044E\u0442
+      \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
     <ShowAsReceived>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u043D\u043E"

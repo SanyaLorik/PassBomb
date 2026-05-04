@@ -195,6 +195,8 @@ MonoBehaviour:
     <Data>k__BackingField: More games
   - <Id>k__BackingField: Pets
     <Data>k__BackingField: Pets
+  - <Id>k__BackingField: Pet Speed Info
+    <Data>k__BackingField: increase speed
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten
