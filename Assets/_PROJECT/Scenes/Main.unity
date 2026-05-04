@@ -4578,6 +4578,10 @@ PrefabInstance:
       propertyPath: _purchaseSlot
       value: 
       objectReference: {fileID: 2075962895}
+    - target: {fileID: 7964411728879660203, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+      propertyPath: managedReferences[8003847123027361860]._wheelFortune
+      value: 
+      objectReference: {fileID: 665088958}
     - target: {fileID: 8142693839872980084, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: _location
       value: 
