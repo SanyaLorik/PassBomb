@@ -70,10 +70,7 @@ public class MapsToBattleChanger : MonoBehaviour {
     
     private void ChooseNextMap() {
         if (_tutorialManager.TutorialPassed) {
-            MapIndex++;
-            if (MapIndex > _mapitems.Count-1) {
-                MapIndex = 0;
-            }
+            MapIndex = (MapIndex + 1) % _mapitems.Count;
         }
         else {
             MapIndex = _tutorialMapIndex;
