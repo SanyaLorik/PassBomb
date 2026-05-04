@@ -534,9 +534,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BonusSlot
   <BonusItem>k__BackingField: {fileID: 0}
+  <KeyBoardKey>k__BackingField: 0
   _countText: {fileID: 3455027416796127735}
   _bonusNameText: {fileID: 7231204123371202967}
   _reloadProgress: {fileID: 8889015970773248648}
+  _reloadImage: {fileID: 2444110354747700270}
+  _gradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 0.65001845, b: 0, a: 1}
+    key2: {r: 1, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 1, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 18350
+    ctime2: 43908
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
   _useContainer: {fileID: 7636153004691326672}
   _useTimeProgress: {fileID: 418978055067945506}
   _button: {fileID: 2219096580696750502}

@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 2994082080435044399}
   - component: {fileID: 4162816600585923250}
   - component: {fileID: 7146462998852132824}
+  - component: {fileID: 8011335257415570292}
   m_Layer: 0
   m_Name: Timer Text
   m_TagString: Untagged
@@ -380,6 +381,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8011335257415570292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727842727750535494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 626e96b019042a5449e993f7cf077282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.ScaleDownUpAnimation
+  <Entity>k__BackingField:
+    <Source>k__BackingField: {fileID: 2994082080435044399}
+    <Duration>k__BackingField: 0.5
+    <Ease>k__BackingField: 1
+  <IsAutoStart>k__BackingField: 1
+  _upScale: {x: 1, y: 1, z: 1}
+  _downScale: {x: 1.2, y: 1.2, z: 1.2}
+  _initalScale: {x: 1, y: 1, z: 1}
 --- !u!1 &5003482709468344678
 GameObject:
   m_ObjectHideFlags: 0

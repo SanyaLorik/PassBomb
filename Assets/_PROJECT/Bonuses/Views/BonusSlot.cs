@@ -24,6 +24,8 @@ public class BonusSlot : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private TextMeshProUGUI _bonusNameText;
     [SerializeField] private Image _reloadProgress;
+    [SerializeField] private Image _reloadImage;
+    [SerializeField] private Gradient _gradient;
     [Header("Время использования")]
     [SerializeField] private GameObject _useContainer;
     [SerializeField] private RectTransform _useTimeProgress;
@@ -176,7 +178,9 @@ public class BonusSlot : MonoBehaviour {
 
             float y = GetYPoseByPercent(progress, _yEnd, _useTimeProgress);
             _useTimeProgress.offsetMax = new Vector2(_useTimeProgress.offsetMax.x, y);
-            
+
+            _reloadImage.color = _gradient.Evaluate(progress);
+
             elapsedTime -= Time.deltaTime;
             await UniTask.Yield(cancellationToken: token);
         }

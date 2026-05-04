@@ -6,6 +6,7 @@ using RavingBots.CartoonExplosion;
 using SanyaBeerExtension;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class Bomb : MonoBehaviour {
@@ -19,7 +20,9 @@ public class Bomb : MonoBehaviour {
     [SerializeField] private RectTransform _bombBar;
     [SerializeField] private RectTransform _parentProgressToExplode;
     [SerializeField] private GameObject _timerContainer;
-    
+    [SerializeField] private Image _timerFillAmountImage;
+    [SerializeField] private Gradient _gradient;
+
     public event Action BombExploded;
     public event Action<PlayerRoleBehaviour> PlayerBecameHunter;
     public bool BombExplode { get; private set; }
@@ -120,6 +123,9 @@ public class Bomb : MonoBehaviour {
             _timerText.text = elapsedTime.ToString("F0");
             _bombBar.offsetMax = Vector2.Lerp(startSize, targetSize, progress);
             elapsedTime -= Time.deltaTime;
+
+            _timerFillAmountImage.color = _gradient.Evaluate(progress);
+
             await UniTask.Yield();
         }
 
