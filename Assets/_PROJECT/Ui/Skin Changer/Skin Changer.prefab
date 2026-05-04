@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 437768561262029877, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 2500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 521411230198063563, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -408,7 +408,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 77260adc1116b474ebb1ea58522bbea2, type: 3}
     - target: {fileID: 859146553372320864, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 3000
+      value: 7000
       objectReference: {fileID: 0}
     - target: {fileID: 904085472213380316, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -616,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111760809093759713, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 2500
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2164279848013449858, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Sprite
@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2619888546199805785, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Size
-      value: 0.8303052
+      value: 0.8301435
       objectReference: {fileID: 0}
     - target: {fileID: 2619888546199805785, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Value
@@ -708,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2a4e684693aa40946b72ac41ed5118d8, type: 3}
     - target: {fileID: 2776017460918525615, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 12000
+      value: 18000
       objectReference: {fileID: 0}
     - target: {fileID: 2819938997587120009, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Sprite
@@ -716,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 246a86fd9f9c7e94aaa118818f5e7ff8, type: 3}
     - target: {fileID: 2911271963160644664, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 5000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2933290473276277313, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -744,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2960490603405999511, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 15000
+      value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 3088737624746805212, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_Sprite
@@ -756,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3197875974819951287, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 10000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 3213785057235142521, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7d668a0e68f5c0447a2dc26519c81ceb, type: 3}
     - target: {fileID: 3337745400627790369, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 6000
+      value: 7000
       objectReference: {fileID: 0}
     - target: {fileID: 3394740717230847505, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1000,7 +1000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657642823308069605, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 3000
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 4755122535666433039, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1380,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c9e425d962a2bd448b2f23d149f07c8a, type: 3}
     - target: {fileID: 7332567378967704490, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 2000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 7427513758504724241, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1684,7 +1684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9034717750651175995, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 2000
+      value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 9201017497716150400, guid: d9b68ebe62f32b247b63ab235072db09, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1806,7 +1806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 7500
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -1932,7 +1932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 75000
+      value: 15000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -2058,7 +2058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 8000
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -2184,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 5000
+      value: 12000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -2310,7 +2310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 5000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -2436,7 +2436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 3500
+      value: 9000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
@@ -2562,7 +2562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3273568101790389635, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: <Data>k__BackingField.Money
-      value: 10000
+      value: 35000
       objectReference: {fileID: 0}
     - target: {fileID: 3971079053758101161, guid: 32512da89cb18034bae38ab6378f1044, type: 3}
       propertyPath: m_Pivot.x
