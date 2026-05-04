@@ -616,7 +616,7 @@ MonoBehaviour:
     RewardMoney: 1000
     TaskType: 0
     TaskId: pass_bomb_10
-  - Count: 100
+  - Count: 1000
     RewardMoney: 1000
     TaskType: 2
     TaskId: life_sec_100
