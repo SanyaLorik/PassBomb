@@ -12,7 +12,7 @@ public class DeviceActivity : MonoBehaviour
 
     private void Awake()
     {
-        if (_deviceTypeProvider.DeviceType == DeviceTypeEnum.Desktop) 
+        if (_deviceTypeProvider.DeviceType == DeviceTypeEnum.Mobile) 
             _mobileDisactivities.ForEach(mobile => mobile.DisactiveSelf());
     }
 }
