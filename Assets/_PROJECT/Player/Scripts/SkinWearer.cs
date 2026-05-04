@@ -145,10 +145,7 @@ public class SkinWearer : MonoBehaviour {
     private int GetNextCollectionIndex(int collectionSize, int prevIndex) {
         int newIndex = Random.Range(0, collectionSize);
         if (newIndex == prevIndex) {
-            newIndex++;
-            if (newIndex > collectionSize - 1) {
-                newIndex = 0;
-            }
+            newIndex = (newIndex + 1) % collectionSize; // циклический сдвиг
         }
         return newIndex;
     }

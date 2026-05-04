@@ -70,7 +70,7 @@ public class SoundManager : MonoBehaviour {
         _playerMovement.DoubleJumpPressed += PlayerMovementOnJumpPressed;
         _playerMovement.RunningStateChanged += PlayerMovementOnRunningStateChanged;
         _playerMovement.Floored += PlayerMovementOnFloored;
-        _playerMovement.PlayerHit += OnPlayerHit;
+        _playerMovement.PlayerHited += OnPlayerHited;
         // BANK / WEAR
         _bank.BankNewMoneyPlus += OnMoneyPlus;
         _bank.BankNewMoneyMinus += OnMoneyPlus;
@@ -100,7 +100,7 @@ public class SoundManager : MonoBehaviour {
         _playerMovement.DoubleJumpPressed -= PlayerMovementOnJumpPressed;
         _playerMovement.RunningStateChanged -= PlayerMovementOnRunningStateChanged;
         _playerMovement.Floored -= PlayerMovementOnFloored;
-        _playerMovement.PlayerHit -= OnPlayerHit;
+        _playerMovement.PlayerHited -= OnPlayerHited;
         // BANK / WEAR
         _bank.BankNewMoneyPlus -= OnMoneyPlus;
         _bank.BankNewMoneyMinus -= OnMoneyPlus;
@@ -130,7 +130,7 @@ public class SoundManager : MonoBehaviour {
         PlaySoundByType(SoundType.PlayerStayHunter);
     }
 
-    private void OnPlayerHit() {
+    private void OnPlayerHited() {
         PlaySoundByType(SoundType.HitPlayer);
     }
     

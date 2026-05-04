@@ -23,11 +23,12 @@ public class PlayerFaceChooser : MonoBehaviour {
     
     [Inject] MainGameStarter _mainGameStarter;
     [Inject] BattleManager _battleManager;
+    [Inject] PlayerMovement _playerMovement;
     
     
     private void OnEnable() {
         _button.onClick.AddListener(ChooseNextFaceIndexes);
-        _mainGameStarter.GameStarted += ChooseRandomGlovesToBattle;
+        _playerMovement.InitedToPlay += ChooseRandomGlovesToBattle;
     }
 
     
@@ -45,7 +46,7 @@ public class PlayerFaceChooser : MonoBehaviour {
 
     
     private void ChooseRandomGlovesToBattle(bool started) {
-        if(!started || !_battleManager.MainPlayerPlay) return;
+        if(!started) return;
         
         GlovesIndex = _randomWearer.GetNextGlovesIndex(GlovesIndex);
         GlovesChanged?.Invoke(GlovesIndex);

@@ -34,7 +34,9 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     public CharacterController Controller => _controller;
     public bool MoveEnable { get; private set; } = true;
     public event Action<bool> MoveEnabled;
-    public event Action PlayerHit;
+    public event Action PlayerHited;
+    public event Action<bool> InitedToPlay;
+    
     
     [Inject] private IInputDirection2 _inputDirection2;
     [Inject] private IInputActivity _inputActivity;
@@ -87,6 +89,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
 
 
     public void SetPlayStatus(bool goPlay) {
+        InitedToPlay?.Invoke(goPlay);
         _roleBehaviour.SetInvincibleAfterBonus(false);
         _roleBehaviour.SetInvincibleAfterBomb(false);
         
@@ -110,7 +113,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     public event Action<MoveStatus, bool> MoveStatusChanged;
 
     public void PushAway(Vector3 direction) {
-        PlayerHit?.Invoke();
+        PlayerHited?.Invoke();
         StartCoroutine(PushWithController(_controller, direction.normalized));
             
     }
@@ -199,6 +202,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     
     public void TeleportInSpawn() {
         TeleportToPoint(_spawnPoint.position);
+        RotateToTarget(_spawnPoint.position);
     }
 
 

@@ -27,7 +27,10 @@ MonoBehaviour:
   - "\u041A\u0430"
   <AdsInterstitial>k__BackingField: Ad in
   <LabelProgressNarrator>k__BackingField: Label
-  BotsPhrases: []
+  BotsPhrases:
+  - hello
+  - hi
+  - yo
   Timer: Start in {0}...
   Enemy: Enemy
   TakePet: Take pet!

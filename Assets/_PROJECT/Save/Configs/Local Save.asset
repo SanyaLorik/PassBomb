@@ -13,31 +13,31 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 20900
+    Money: 24850
     IsBoughtPurchase: 0
     TutorialPassed: 1
     Bonuses:
     - Id: InvisibleBonus
       Count: 97
     - Id: SpeedBonus
-      Count: 97
+      Count: 96
     - Id: BigJumpBonus
       Count: 99
     Tasks:
     - Id: pass_bomb_10
-      Count: 136
+      Count: 143
       IsGetReward: 0
     - Id: life_sec_100
-      Count: 0
+      Count: 37
       IsGetReward: 0
     - Id: life_round_15
-      Count: 73
+      Count: 78
       IsGetReward: 0
     - Id: win_count_5
       Count: 24
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 32
+      Count: 33
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
       Count: 3
@@ -66,7 +66,7 @@ MonoBehaviour:
       CountSpinAllow: 6
       LastDateTimeSpined: 02.05.2026 0:36:07
     DailyQuestSave:
-      LastDateTimeEntered: 03.05.2026 14:27:34
+      LastDateTimeEntered: 04.05.2026 13:17:09
     SkinSave:
       SkinSets:
       - GroupId: 1

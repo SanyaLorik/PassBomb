@@ -260,7 +260,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         Debug.Log("Run");
         // Пока просто бегает по площади
         while (!token.IsCancellationRequested) {
-            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.CurrentMapYToFind);
             await UniTask.WaitWhile(() => _botWalkManager.IsPushed, cancellationToken: token);
             await _botWalkManager.SetAgentGoToPointAsync(target, token);
         }
@@ -271,7 +271,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         if(PlayerHandle) return;
         while (!token.IsCancellationRequested) {
             await UniTask.WaitWhile(() => _botWalkManager.IsPushed, cancellationToken: token);
-            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.GetCurrentMapHeight);
+            Vector3 target = _botWalkManager.GetTargetPoint(_mapsChanger.GetCurrentMapFloor, _mapsChanger.CurrentMapYToFind);
             await _botWalkManager.SetAgentGoToPointAsync(target, token);
         }
     }

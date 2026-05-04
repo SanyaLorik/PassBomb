@@ -3065,8 +3065,8 @@ MonoBehaviour:
   - {fileID: 7531992028867299495}
   - {fileID: 2264857521586286435}
   Gloves:
-  - {fileID: 8642194167738139208}
   - {fileID: 7347497357102959282}
+  - {fileID: 8642194167738139208}
 --- !u!114 &1636045225519515357
 MonoBehaviour:
   m_ObjectHideFlags: 0

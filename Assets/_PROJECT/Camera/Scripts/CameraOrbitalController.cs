@@ -24,6 +24,7 @@ public class CameraOrbitalController : MonoBehaviour {
     
     
     private Action _rotationHandler;
+    private Coroutine _waitCameraSave;
 
     private bool IsMobile => _inputType == InputType.Mobile;
 
@@ -62,27 +63,27 @@ public class CameraOrbitalController : MonoBehaviour {
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private Bomb _bomb;
 
+    private void Update() {
+        _rotationHandler.Invoke();
+    }
     
     
     private void OnEnable()  {
         _settings.CameraZoomChanged += ChangeCameraZoomPercent;
         SystemEvents.WindowOpened += ForbidRotate;
         SystemEvents.ForbidZoomChanged += ForbidZoom;
-        _playerMovement.PlayerTeleportToTarget += WatchToPlayerBack;
         GameEvents.ShakeCamera += ShakeCamera;
-        _playerMovement.MoveEnabled += PlayerMovementOnMoveEnabled;
         _bomb.BombExploded += OnBombExploded;
+        _playerMovement.PlayerTeleportToTarget += SetWalkToBack;
+        _playerMovement.InitedToPlay += OnPlayerInitToPlay;
     }
 
-    private void OnBombExploded() {
-        if(!_battleManager.MainPlayerPlay) return;
-        ShakeCamera();
-    }
 
 
     private void Start() {
         ChangeCameraZoomPercent(_settings.CameraZoomValue);
-        WatchToPlayerBack();
+        SetWalkToBack();
+        SetDefaultZoom();
         
         _orbitalFollow.TrackerSettings.PositionDamping = Vector3.zero;
         
@@ -100,12 +101,8 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
     
-    private void Update() {
-        _rotationHandler.Invoke();
-    }
     
     
-
     public void WatchToPoint(Transform point) {
         Debug.Log("WatchToPoint " + point.position);
         _zoomBeforeGame = CurrentFovPercent;
@@ -125,12 +122,6 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
     
-    
-    public void SetLeftPlayerWinnerAxises(bool leftWinner) {
-        // SetAxisToFollow(_gameData.PlayerWinnerAxis.From, _gameData.PlayerWinnerAxis.To);
-        // ChangeCameraZoomPercent(_gameData.ZoomToWinnerView);
-    }
-    
     public void GoToWinner(Transform point) {
         SetFollowPoint(point);
         SetDamping(_dampningInWinnerWindow);
@@ -142,6 +133,19 @@ public class CameraOrbitalController : MonoBehaviour {
         SetFollowPoint(_walkPoint);
         ChangeCameraZoomPercent(_zoomBeforeGame);
     }
+    
+    
+    private void OnPlayerInitToPlay(bool _) {
+        SetDefaultZoom();
+    }
+    
+
+    private void OnBombExploded() {
+        if(!_battleManager.MainPlayerPlay) return;
+        ShakeCamera();
+    }
+
+    
 
     private void StopShake() {
         if (_noise == null) return;
@@ -152,9 +156,20 @@ public class CameraOrbitalController : MonoBehaviour {
     
 
 
-    private void WatchToPlayerBack() {
+    private void SetWalkToBack() {
         _orbitalFollow.HorizontalAxis.Value = _playerMovement.transform.rotation.eulerAngles.y;
         _orbitalFollow.VerticalAxis.Value = _gameData.VerticalAxisValueToStartPlay;
+    }
+    
+
+    private void SetDefaultZoom() {
+        ChangeCameraZoomPercent(
+            _deviceType.DeviceType == DeviceTypeEnum.Desktop 
+                ? 
+                _gameData.PlayZoomInDesktop 
+                : 
+                _gameData.PlayZoomInMobile
+        );
     }
 
     private void SetDamping(Vector3 newDamping) {
@@ -166,13 +181,7 @@ public class CameraOrbitalController : MonoBehaviour {
         _zoomBeforeGame = CurrentFovPercent;
         SetFollowPoint(point);
     }
-    
 
-    private void PlayerMovementOnMoveEnabled(bool enabled) {
-        // Уберу покачто т.к игрок камерой не может крутить во время отсчета
-        // _isOrbiting = enabled;
-        // _allowRotation = enabled;
-    }
     
     private void SetAxisToFollow(float horizontal, float vertical) {
         _orbitalFollow.HorizontalAxis.Value = horizontal;
@@ -185,10 +194,7 @@ public class CameraOrbitalController : MonoBehaviour {
     }
     
 
-    private void ChangeCameraZoomPercent(float percent) {
-        float zoomValue = Mathf.Lerp(_gameData.ZoomDiapasone.From, _gameData.ZoomDiapasone.To, percent);
-        ChangeZoom(zoomValue);
-    }
+
 
 
     private void SetPoint(Transform point) {
@@ -305,7 +311,14 @@ public class CameraOrbitalController : MonoBehaviour {
             _waitCameraSave = StartCoroutine(WaitCameraSave());
         }
     }
-    private Coroutine _waitCameraSave;
+    
+    private void ChangeCameraZoomPercent(float percent) {
+        float zoomValue = Mathf.Lerp(_gameData.ZoomDiapasone.From, _gameData.ZoomDiapasone.To, percent);
+        ChangeZoom(zoomValue);
+    }
+    
+    
+    
     private IEnumerator WaitCameraSave() {
         yield return new WaitForSeconds(_cameraSaveDelay);
         _settings.ChangeCameraZoomSilent();

@@ -20,6 +20,8 @@ public class GameData : GameDataBase
     [field: SerializeField, Range(0,1)] public float MobileCameraFov { get; private set; }
     [field: SerializeField, Range(0,1)] public float DesktopCameraFov { get; private set; }
     [field: SerializeField, Range(0,1)] public float DefaultCameraSens { get; private set; }
+    [field: SerializeField, Range(0,1)] public float PlayZoomInDesktop { get; private set; }
+    [field: SerializeField, Range(0,1)] public float PlayZoomInMobile { get; private set; }
     [field: SerializeField, Range(0,1)] public float ZoomSpeed { get; private set; }
     [field: SerializeField] public float VerticalAxisValueToStartPlay { get; private set; }
     
@@ -69,8 +71,9 @@ public class GameData : GameDataBase
     [field: SerializeField] public float RotationSpeed { get; private set; }
     [field: SerializeField, Range(0,1)] public float ChanceToJump { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayOnPoint { get; private set; }
-    [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
     [field: SerializeField] public PairedValue<float> TimeToStayAfterSpawn { get; private set; }
+    [field: SerializeField] public PairedValue<float> TimeToSpeak { get; private set; }
+    [field: SerializeField, Range(0,1)] public float ChanceToBotChangeNicknameAfterPlay { get; private set; }
     
     [field: Header("Боты в игре")]
     [field: SerializeField] public float DistanceToFloor { get; private set; }

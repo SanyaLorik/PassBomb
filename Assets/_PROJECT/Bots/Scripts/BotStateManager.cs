@@ -1,11 +1,9 @@
 using System;
-using System.Threading;
-using _PROJECT.Scripts.Helpers;
-using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BotStateManager : MonoBehaviour, IPassBombPlayer {
@@ -28,6 +26,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
     [Inject] private GameData _gameData;
     [Inject] private SpawnManager _spawn;
+    [Inject] private MapsToBattleChanger _mapsManager;
 
     
     
@@ -61,6 +60,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
         
         if (goPlay) {
             ActiveBotInGame();
+            SetBotStfu();
         }
         // Возвращение на спавн
         else {
@@ -68,11 +68,15 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
             Debug.Log($"Игрок play статус {IsPlaying} in {_spawn.SpawnPoint.position}");
             SetBotStateBeforeGame();
             TeleportToPoint(_spawn.SpawnPoint.position);
+            ChangeNicknameByChance();
         }
         SetStartWanderIfActive(!goPlay);
     }
 
-    
+    private void ChangeNicknameByChance() {
+        if(Random.value > _gameData.ChanceToBotChangeNicknameAfterPlay) return;
+        _botMonolog.ChangeNickname();
+    }
 
     public void SetPlayStatusSilent(bool goPlay) {
         IsPlaying = goPlay;
@@ -83,7 +87,7 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
             // 1. СНАЧАЛА отменяем всё у BotWalkManager
             BotWalkManager.ResetLogic(); 
         
-            if (NavMesh.SamplePosition(pos, out var hit, 5f, NavMesh.AllAreas)) {
+            if (NavMesh.SamplePosition(pos, out var hit, _mapsManager.CurrentMapYToFind, NavMesh.AllAreas)) {
                 _agent.enabled = false;
                 transform.position = hit.position;
                 _agent.enabled = true;
@@ -177,7 +181,10 @@ public class BotStateManager : MonoBehaviour, IPassBombPlayer {
     
 
     public void SetBotSpeak() {
-        _botMonolog.SaySomething();
+        Debug.Log("Set bot speak");
+        if (!IsPlaying) {
+            _botMonolog.SaySomething();
+        }
     }
 
     public void SetBotStfu() {

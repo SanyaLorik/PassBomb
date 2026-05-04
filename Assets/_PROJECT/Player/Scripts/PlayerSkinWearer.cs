@@ -39,6 +39,7 @@ public class PlayerSkinWearer : MonoBehaviour {
 
     
     private void ChangeGloves(int index) {
+        Debug.Log("Change Gloves index " + index);
        _skinWearer.ChooseGlovesByIndex(_playerFaceChooser.GlovesIndex);
     }
 

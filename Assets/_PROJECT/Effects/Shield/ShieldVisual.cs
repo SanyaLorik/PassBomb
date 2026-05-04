@@ -70,6 +70,7 @@ public class ShieldVisual : MonoBehaviour {
     
     private void ShowShieldAnimation() {
         // SetShieldPercentage(1f, hp);
+        if(_shield.localScale == Vector3.one) return;
         ShieldShowFast(false);
         Sequence seq = DOTween.Sequence();
         seq.Append(_shield
@@ -79,8 +80,9 @@ public class ShieldVisual : MonoBehaviour {
     }
     
     private void HideShieldAnimation() {
-        Sequence seq = DOTween.Sequence();
+        if(_shield.localScale == Vector3.zero) return;
         ShieldShowFast(true);
+        Sequence seq = DOTween.Sequence();
         seq.Append(_shield
             .DOScale(0f, _shieldShowDurations.To)
             .SetEase(_shieldShowEase.To)

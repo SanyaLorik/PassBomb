@@ -11021,7 +11021,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: ad70cd19fa6f3a143aac603c5e51af57, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f040d03e4d30fb4419e55164c732a9c8, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &2027398763282546014
 GameObject:
@@ -18929,7 +18929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &78327834603529364
 Transform:
   m_ObjectHideFlags: 0
@@ -18973,7 +18973,7 @@ MonoBehaviour:
   - {fileID: 3218583973834855692}
   BombCenterSpawn: {fileID: 1558617048777433639}
   Floor: {fileID: 7889221811273728250}
-  YToFind: 10
+  YToFind: 20
   FallBotFindSamplePosition: 2
 --- !u!1 &3610912323570108809
 GameObject:

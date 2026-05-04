@@ -3366,7 +3366,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 069d9f94cf9a71c409f40f0314724f09, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9c2aa0d80148f8c4c88a7bca512fc3f7, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1405401353260051908
 GameObject:
@@ -20177,7 +20177,7 @@ MonoBehaviour:
   BombCenterSpawn: {fileID: 5708493273046180727}
   Floor: {fileID: 8672301182773799359}
   YToFind: 20
-  FallBotFindSamplePosition: 0.4
+  FallBotFindSamplePosition: 5
 --- !u!1 &7720275841075786009
 GameObject:
   m_ObjectHideFlags: 0
