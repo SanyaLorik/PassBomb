@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Local Save
   m_EditorClassIdentifier: Assembly-CSharp::GameSaveSO
   Save:
-    Money: 19505
+    Money: 15525
     IsBoughtPurchase: 0
-    TutorialPassed: 1
+    TutorialPassed: 0
     Bonuses:
     - Id: InvisibleBonus
-      Count: 5
+      Count: 8
     - Id: SpeedBonus
-      Count: 0
+      Count: 3
     - Id: BigJumpBonus
-      Count: 4
+      Count: 9
     Tasks:
     - Id: pass_bomb_10
-      Count: 10
+      Count: 8
       IsGetReward: 0
     - Id: life_sec_100
-      Count: 116
+      Count: 62
       IsGetReward: 0
     - Id: life_round_15
       Count: 12
@@ -37,46 +37,42 @@ MonoBehaviour:
       Count: 1
       IsGetReward: 0
     - Id: use_speed_bonus_10
-      Count: 9
+      Count: 8
       IsGetReward: 0
     - Id: use_super_jump_bonus_10
-      Count: 2
+      Count: 1
       IsGetReward: 0
     - Id: use_invincible_bonus_10
-      Count: 1
+      Count: 2
       IsGetReward: 0
     - Id: parkour_count_1
       Count: 0
       IsGetReward: 0
-    Pets:
-    - Id: bugatti_pet
-      Count: 1
-    - Id: cola_pet
-      Count: 1
+    Pets: []
     DailyRewardSave:
-      LastDateTimeReceived: 03.05.2026 14:27:49
-      LastDayNumber: 2
+      LastDateTimeReceived: 
+      LastDayNumber: -1
     WheelFortuneSave:
-      CountSpinAllow: 5
-      LastDateTimeSpined: 04.05.2026 17:54:24
+      CountSpinAllow: 3
+      LastDateTimeSpined: 04.05.2026 21:14:30
     DailyQuestSave:
-      LastDateTimeEntered: 04.05.2026 13:17:09
+      LastDateTimeEntered: 
     SkinSave:
       SkinSets:
       - GroupId: 1
-        BoughtIds: 01000000020000000300000009000000050000000b000000040000000700000006000000
-        EquippedId: 5
+        BoughtIds: 01000000
+        EquippedId: 1
       - GroupId: 2
-        BoughtIds: 01000000020000000300000004000000070000000600000005000000
-        EquippedId: 6
+        BoughtIds: 01000000
+        EquippedId: 1
       - GroupId: 3
-        BoughtIds: 0100000002000000
-        EquippedId: 2
+        BoughtIds: 01000000
+        EquippedId: 1
       - GroupId: 4
-        BoughtIds: 010000000200000003000000
-        EquippedId: 2
+        BoughtIds: 01000000
+        EquippedId: 1
       - GroupId: 5
-        BoughtIds: 010000000200000003000000070000000500000006000000
-        EquippedId: 3
+        BoughtIds: 01000000
+        EquippedId: 1
     CommunitySave:
-      LastDateTimeSocialNetworking: 01.05.2026 14:22:54
+      LastDateTimeSocialNetworking: 04.05.2026 21:14:29

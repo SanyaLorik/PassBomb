@@ -18,13 +18,13 @@ MonoBehaviour:
     <InterstitialDelay>k__BackingField: 80
     <AdTimerInitial>k__BackingField: 2
     <AdTimerFinal>k__BackingField: 0
-    <MinimumMinutesSocialNetworkingActivity>k__BackingField: 5
+    <MinimumMinutesSocialNetworkingActivity>k__BackingField: 10
     <WalkSpeed>k__BackingField: 13
     <JumpForce>k__BackingField: 12
     <SecondJumpForce>k__BackingField: 16
     <RotateSpeed>k__BackingField: 16
     <GravityScale>k__BackingField: 3
-    <InitBonusCounts>k__BackingField: 5
+    <InitBonusCounts>k__BackingField: 10
     <MobileCameraFov>k__BackingField: 0.452
     <DesktopCameraFov>k__BackingField: 0.474
     <DefaultCameraSens>k__BackingField: 0.137

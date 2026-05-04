@@ -24,7 +24,7 @@ public class EconomyCalculator : MonoBehaviour {
             + 
             _curveRatio * _animationCurve.Evaluate(roundProgress)
         );
-        return reward;
+        return Mathf.Max(reward, _minimalReward);
     }
 
     public int CalcRewardToFall() {
