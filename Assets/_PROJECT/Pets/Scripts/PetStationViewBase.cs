@@ -64,26 +64,29 @@ public abstract class PetStationViewBase : MonoBehaviour {
         else {
             sortedPets = _config.Pets.ToList().OrderByDescending(a => a.Chance).ToList();
         }
-        
-        
-        for (int i = 0; i < sortedPets.Count; i++) {
-            _views[i].Percentage.text = $"{sortedPets[i].Chance / _divider * 100f:#0}%";
-        }
-        
-        float totalPercentage = 0f;
 
-        for (int i = 0; i < sortedPets.Count - 1; i++) {
-            float percentage = Mathf.Round(sortedPets[i].Chance / _divider * 100f);
-            totalPercentage += percentage;
-            _views[i].Icon.sprite = sortedPets[i].PetItemConfig.Sprite;
-            _views[i].Percentage.text = $"{percentage:F0}%";
-        }
+        int length = Mathf.Min(_views.Length, sortedPets.Count);
+        for (int i = 0; i < sortedPets.Count; i++)
+            _views[i].Percentage.text = $"+{sortedPets[i].PetItemConfig.Modifier.ToString()}";
 
-        // Последний элемент получает остаток
-        float lastPercentage = 100f - totalPercentage;
-        _views[^1].Percentage.text = $"{lastPercentage:F0}%";
-        _views[^1].Icon.sprite = sortedPets[^1].PetItemConfig.Sprite;
-        
+        //for (int i = 0; i < sortedPets.Count; i++) {
+        //    _views[i].Percentage.text = $"{sortedPets[i].Chance / _divider * 100f:#0}%";
+        //}
+
+            //float totalPercentage = 0f;
+
+            //for (int i = 0; i < sortedPets.Count - 1; i++) {
+            //    float percentage = Mathf.Round(sortedPets[i].Chance / _divider * 100f);
+            //    totalPercentage += percentage;
+            //    _views[i].Icon.sprite = sortedPets[i].PetItemConfig.Sprite;
+            //    _views[i].Percentage.text = $"{percentage:F0}%";
+            //}
+
+            //// Последний элемент получает остаток
+            //float lastPercentage = 100f - totalPercentage;
+            //_views[^1].Percentage.text = $"{lastPercentage:F0}%";
+            //_views[^1].Icon.sprite = sortedPets[^1].PetItemConfig.Sprite;
+
     }
 
 
