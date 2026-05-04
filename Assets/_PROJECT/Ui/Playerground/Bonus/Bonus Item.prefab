@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_fontSizeMin: 28.4
   m_fontSizeMax: 64
   m_fontStyle: 2
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
