@@ -12,7 +12,7 @@ public class PlayerTrailManager : MonoBehaviour {
     
     private IPassBombPlayer _passBombPlayer;
     
-    private MoveStatus _currentTrailType = MoveStatus.Default;
+    private MoveStatus _currentMoveStatus = MoveStatus.Default;
 
     private void Start() {
         OffAll();
@@ -47,7 +47,7 @@ public class PlayerTrailManager : MonoBehaviour {
         // Eсли чето врубаем обязательно все предыдущие вырубаем
         if (enable) {
             OffAll();
-            _currentTrailType = status;
+            _currentMoveStatus = status;
             if (status == MoveStatus.SuperSpeed) {
                 _speedTrails.ActiveSelf();
             }
@@ -60,8 +60,8 @@ public class PlayerTrailManager : MonoBehaviour {
         }
         // Если вырубился ласт бонус, включаем дефолт
         else {
-            if (status == _currentTrailType) {
-                _currentTrailType = MoveStatus.Default;
+            if (status == _currentMoveStatus) {
+                _currentMoveStatus = MoveStatus.Default;
                 OffAll();
                 _defaultTrails.ActiveSelf();
             }

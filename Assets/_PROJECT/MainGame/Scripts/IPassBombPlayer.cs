@@ -17,7 +17,7 @@ public interface IPassBombPlayer {
     public void SetHunterSpeed();
     public void SetBonusSpeed();
     public void SetBigJump(bool state);
-    public void SetInvinsible(bool invnincible);
+    public void SetInvincible(bool invincible);
     public void PushAway(Vector3 direction);
     public bool IsPlaying { get; }
     public event Action<MoveStatus, bool> MoveStatusChanged;

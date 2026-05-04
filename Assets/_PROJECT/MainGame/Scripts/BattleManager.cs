@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour {
     private void InitPlayers() {
         foreach (var player in _players) {
             player.SetPlayStatus(true);
-            player.RoleBehaviour.SetInvinsibleAfterBomb(false);
+            player.RoleBehaviour.SetInvincibleAfterBomb(false);
         }
         TeleportPlayersToPoints(_players, PlayersSpawnPoints);
         PlayersCountChanged?.Invoke(_players.Count);
@@ -191,7 +191,7 @@ public class BattleManager : MonoBehaviour {
             _mainPlayer.HideVisualModel(true);
         }
         
-        
+        _mainPlayer.SetPlayStatusSilent(false);
         await UniTask.WaitWhile(() => _gameOverView.ResultWindowShowing);
         
         if (!playerWin) {
@@ -212,10 +212,10 @@ public class BattleManager : MonoBehaviour {
         
         _players.Clear();
         
-        if (!_mainPlayer.PlayerInSpawn) {
-            _mainPlayer.SetPlayStatus(false);
-            _mainPlayer.SetMovingStatus(true);
-        }
+        // if (!_mainPlayer.PlayerInSpawn) {
+        //     _mainPlayer.SetPlayStatus(false);
+        //     _mainPlayer.SetMovingStatus(true);
+        // }
         
         if (setGameOver) {
             _gameStarter.GameOver();
@@ -228,7 +228,6 @@ public class BattleManager : MonoBehaviour {
         foreach (IPassBombPlayer player in _players) {
             if (player.RoleBehaviour.CurrentRole == PlayerRoleInGame.Hunter) {
                 Debug.Log("Игрок выбыл!");
-                player.RoleBehaviour.SetInvinsibleAfterBomb(true);
                 BotMonolog botMonolog = player.RoleBehaviour.gameObject.GetComponentInParent<BotMonolog>();
                 if (botMonolog != null) {
                     PlayerDied?.Invoke(botMonolog.NickName, player.Transform.position);
@@ -246,6 +245,8 @@ public class BattleManager : MonoBehaviour {
     }
 
     private void RemovePlayer(IPassBombPlayer player) {
+        player.RoleBehaviour.DisposeAllLogic();
+        
         player.RoleBehaviour.NewRoundStart(false);
         _players.Remove(player);
         PlayersCountChanged?.Invoke(PlayersCount);

@@ -35,10 +35,10 @@ public class BonusSlot : MonoBehaviour {
     private bool IsAvailable { get; set; }
     private IBonus Bonus => BonusItem.Bonus;
     private int BonusCount => Saves.GetBonusCount(BonusItem.Id);
+    private float _yEnd;
     
     private GameSave Saves => _saver.GetSave<GameSave>();
     private CancellationTokenSource _tokenSource;
-    private Vector2 _startOffset;
     
     [Inject] private BonusManager _bonusManager;
     [Inject] private DiContainer _diContainer;
@@ -71,8 +71,9 @@ public class BonusSlot : MonoBehaviour {
     }
 
     private void Start() {
+        _yEnd = _useTimeProgress.rect.height;
+        
         _mainPlayer.RoleBehaviour.PlayerRoleChanged += HideShowElementsByRole;
-        _startOffset = _useTimeProgress.offsetMax;
         CheckAvailable();
         SetProgressBarVisible(false);
         _bonusNameText.text =
@@ -145,13 +146,9 @@ public class BonusSlot : MonoBehaviour {
     
     private void SetProgressBarVisible(bool visible) {
         _useContainer.SetActive(visible);
-        if (visible) {
-            // Принудительно обновляем Layout, чтобы размеры стали актуальными
-            Canvas.ForceUpdateCanvases();
-            // И только теперь сохраняем актуальный offsetMax
-            _startOffset = _useTimeProgress.offsetMax;
-            _useTimeProgress.offsetMax = _startOffset;
-        }
+        // if (visible) {
+        //     Canvas.ForceUpdateCanvases();
+        // }
     }
     
 
@@ -166,14 +163,10 @@ public class BonusSlot : MonoBehaviour {
         _tokenSource = new  CancellationTokenSource();
         StartUseTimerAsync(_tokenSource.Token).Forget();
     }
-    
-    
 
 
     private async UniTask StartUseTimerAsync(CancellationToken token) {
         SetProgressBarVisible(true);
-
-        float yEnd = _useTimeProgress.rect.height;
         float duration = _gameData.BonusDuration;
         float elapsedTime = _gameData.BonusDuration;
         
@@ -181,7 +174,7 @@ public class BonusSlot : MonoBehaviour {
         while (elapsedTime > 0 && !token.IsCancellationRequested) {
             float progress = elapsedTime/duration;
 
-            float y = GetYPoseByPercent(progress, yEnd, _useTimeProgress);
+            float y = GetYPoseByPercent(progress, _yEnd, _useTimeProgress);
             _useTimeProgress.offsetMax = new Vector2(_useTimeProgress.offsetMax.x, y);
             
             elapsedTime -= Time.deltaTime;

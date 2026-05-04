@@ -61,15 +61,21 @@ public class PlayersRoleManager : MonoBehaviour {
         }
     }
 
-    private static void InitBombToRandomPlayer(IReadOnlyCollection<IPassBombPlayer> players) {
-        int randomPlayer = Random.Range(0, players.Count);
-        players.ElementAt(randomPlayer).RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
+    private void InitBombToRandomPlayer(IReadOnlyCollection<IPassBombPlayer> players) {
+        if (Random.value < _gameData.ChanceInitBombToPlayer && _mainPlayer.IsPlaying) {
+            InitBombToMainPlayer();
+        }
+        else {
+            int randomPlayer = Random.Range(0, players.Count);
+            players.ElementAt(randomPlayer).RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
+        }
     }
 
     private void InitBombToMainPlayer() {
         _mainPlayer.RoleBehaviour.SetRole(PlayerRoleInGame.Hunter);
     }
 
+    
     private void InitBombToBot(IReadOnlyCollection<IPassBombPlayer> players) {
         foreach (IPassBombPlayer player in players) {
             if (player != _mainPlayer) {

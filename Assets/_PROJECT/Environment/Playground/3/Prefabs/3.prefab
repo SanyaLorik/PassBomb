@@ -5359,7 +5359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5312293411254479995
 Transform:
   m_ObjectHideFlags: 0
@@ -5406,7 +5406,7 @@ MonoBehaviour:
   BombCenterSpawn: {fileID: 7911616328206779046}
   Floor: {fileID: 5995146405175153484}
   YToFind: 30
-  FallBotFindSamplePosition: 1
+  FallBotFindSamplePosition: 0.5
 --- !u!1 &8839548629518464352
 GameObject:
   m_ObjectHideFlags: 0

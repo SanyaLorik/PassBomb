@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     private float _firstJumpForce;
     private float _secondJumpForce;
 
-    public event Action PlayerReturnToTarget;
+    public event Action PlayerTeleportToTarget;
     public event Action JumpPressed;
     public event Action DoubleJumpPressed;
     public event Action<bool> RunningStateChanged;
@@ -82,20 +82,27 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
     
         _verticalVelocity = 0; // Сброс скорости
         _jumpsUsed = 0; // Сброс прыжков
+        PlayerTeleportToTarget?.Invoke();
     }
 
 
     public void SetPlayStatus(bool goPlay) {
+        _roleBehaviour.SetInvincibleAfterBonus(false);
+        _roleBehaviour.SetInvincibleAfterBomb(false);
+        
         IsPlaying = goPlay;
         PlayerInSpawn = !goPlay;
         _stateManager.SetupCanvases(goPlay);
         
-        if (goPlay) {
-            
-        }
-        else {
+        if (!goPlay) {
            TeleportInSpawn(); 
         }
+    }
+
+    public void SetPlayStatusSilent(bool play) {
+        _roleBehaviour.SetInvincibleAfterBonus(false);
+        _roleBehaviour.SetInvincibleAfterBomb(false);
+        IsPlaying = play;
     }
     
 
@@ -177,9 +184,9 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
         MoveStatusChanged?.Invoke(MoveStatus.SuperSpeed, true);
     }
     
-    public void SetInvinsible(bool invnincible) {
-        _roleBehaviour.SetInvincibleAfterBonus(invnincible);
-        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invnincible);
+    public void SetInvincible(bool invincible) {
+        _roleBehaviour.SetInvincibleAfterBonus(invincible);
+        MoveStatusChanged?.Invoke(MoveStatus.Invincible, invincible);
     }
 
     
@@ -218,7 +225,7 @@ public class PlayerMovement : MonoBehaviour, IPassBombPlayer {
             transform.rotation = targetRotation;
         }
         SetCharacterControllerState(true);
-        PlayerReturnToTarget?.Invoke();
+        PlayerTeleportToTarget?.Invoke();
     }
 
 

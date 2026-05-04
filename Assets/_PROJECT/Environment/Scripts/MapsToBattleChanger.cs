@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using SanyaBeerExtension;
 using UnityEngine;
 using Zenject;
@@ -22,23 +23,42 @@ public class MapsToBattleChanger : MonoBehaviour {
     
     [Inject] private MainGameStarter _mainGameStarter;
     [Inject] private TutorialManager _tutorialManager;
+    [Inject] private PlayerMovement _playerMovement;
 
     
     
     private void OnEnable() {
         _mainGameStarter.GameStarted += OnGameStarted;
+        _tutorialManager.TutorialStarted += OnTutorialStarted;
+    }
+
+    private void OnTutorialStarted(bool started) {
+        if (!started) {
+            RemoveTutorMapAsync().Forget();
+        }
+    }
+
+
+    private void Start() {
+        TryToRemoveTutorialMap();
+        MapIndex = Random.Range(0, _mapitems.Count);
     }
     
     
-    private void Start() {
+    private async UniTask RemoveTutorMapAsync() {
+        await UniTask.WaitUntil(() => _playerMovement.PlayerInSpawn);
+        TryToRemoveTutorialMap();
+    }
+
+    
+    private void TryToRemoveTutorialMap() {
         if (_tutorialManager.TutorialPassed) {
             _mapitems[_tutorialMapIndex].DisactiveSelf();
             _mapitems.RemoveAt(_tutorialMapIndex);
         }
-        MapIndex = Random.Range(0, _mapitems.Count);
     }
 
-    
+
     private void OnGameStarted(bool started) {
         if (started) {
             ChooseNextMap();

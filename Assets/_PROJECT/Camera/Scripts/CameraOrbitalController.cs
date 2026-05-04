@@ -62,12 +62,13 @@ public class CameraOrbitalController : MonoBehaviour {
     [Inject] private PlayerMovement _playerMovement;
     [Inject] private Bomb _bomb;
 
-
+    
+    
     private void OnEnable()  {
         _settings.CameraZoomChanged += ChangeCameraZoomPercent;
         SystemEvents.WindowOpened += ForbidRotate;
         SystemEvents.ForbidZoomChanged += ForbidZoom;
-        _playerMovement.PlayerReturnToTarget += OnGameStarted;
+        _playerMovement.PlayerTeleportToTarget += WatchToPlayerBack;
         GameEvents.ShakeCamera += ShakeCamera;
         _playerMovement.MoveEnabled += PlayerMovementOnMoveEnabled;
         _bomb.BombExploded += OnBombExploded;
@@ -81,6 +82,7 @@ public class CameraOrbitalController : MonoBehaviour {
 
     private void Start() {
         ChangeCameraZoomPercent(_settings.CameraZoomValue);
+        WatchToPlayerBack();
         
         _orbitalFollow.TrackerSettings.PositionDamping = Vector3.zero;
         
@@ -94,6 +96,7 @@ public class CameraOrbitalController : MonoBehaviour {
         }
         _defaultX = _orbitalFollow.HorizontalAxis.Value;
         _defaultY = _orbitalFollow.VerticalAxis.Value;
+        
     }
     
     
@@ -147,10 +150,7 @@ public class CameraOrbitalController : MonoBehaviour {
         _noise.enabled = false;
     }
     
-    
-    private void OnGameStarted() {
-        WatchToPlayerBack();
-    }
+
 
     private void WatchToPlayerBack() {
         _orbitalFollow.HorizontalAxis.Value = _playerMovement.transform.rotation.eulerAngles.y;

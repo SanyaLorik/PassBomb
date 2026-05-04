@@ -36,7 +36,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     private CancellationTokenSource _tokenSource;
     private CancellationTokenSource _hunterTokenSource;
     private IPassBombPlayer _targetToHunt;
-    
+    private float InvincibleAfterPass
+        => _tutorialManager.TutorialPassed ? 
+            _gameData.TimeToInvinsibleAfterPass 
+            : 
+            _gameData.TimeToInvinsibleAfterPassInTutor;
     
     // Для асинхронной передачи
     private static float _lastPassTime = -999f;
@@ -47,21 +51,25 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public IPassBombPlayer PassBombPlayer { get; private set; }
 
     public event Action<PlayerRoleInGame> PlayerRoleChanged;
+    public event Action<bool> InvinsibleStatusChanged;
 
+    
     [Inject] private Bomb _bomb;
     [Inject] private MapsToBattleChanger _mapsChanger;
     [Inject] private BattleManager _battleManager;
     [Inject] private GameData _gameData;
     [Inject] private IPassBombPlayer _mainPlayer;
+    [Inject] private TutorialManager _tutorialManager;
     
     
     private List<IPassBombPlayer> _otherPlayers = new();
     
     
     private void Awake() {
-        SetColliderEnable(false);
+        _collider.enabled = false;
         InitPassBomb();
     }
+
 
     private void Start() {
         if (_botWalkManager != null) {
@@ -69,8 +77,6 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         }
     }
 
-    
-    
     private void ReturnToRole() {
         WaitAfterPushAsync().Forget();
     }
@@ -127,7 +133,7 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         
         SetRole(PlayerRoleInGame.Wanderer);
         
-        StartInvinsibleTimer(_gameData.TimeToInvinsibleAfterPass).Forget();
+        StartInvinsibleAfterBombTimer().Forget();
         _lastPassTime = Time.time;
         
     }
@@ -136,6 +142,8 @@ public class PlayerRoleBehaviour : MonoBehaviour {
     public void DisposeAllLogic() {
         UniTaskHelper.DisposeTask(ref _tokenSource);
         UniTaskHelper.DisposeTask(ref _hunterTokenSource);
+        SetInvincibleAfterBomb(false);
+        SetInvincibleAfterBonus(false);
     }
 
 
@@ -179,10 +187,12 @@ public class PlayerRoleBehaviour : MonoBehaviour {
 
     public void SetInvincibleAfterBonus(bool invincible) {
         IsInvincibleAfterBonus = invincible;
+        InvinsibleStatusChanged?.Invoke(invincible);
     }
     
-    public void SetInvinsibleAfterBomb(bool invinsible) {
-        IsInvincibleAfterBomb = invinsible;
+    public void SetInvincibleAfterBomb(bool invincible) {
+        IsInvincibleAfterBomb = invincible;
+        InvinsibleStatusChanged?.Invoke(invincible);
     }
 
     
@@ -219,7 +229,11 @@ public class PlayerRoleBehaviour : MonoBehaviour {
 
     
     private void GetNextPlayerVictim() {
-        if (Random.value < _gameData.ChanceToGoPlayerInHunt && _battleManager.MainPlayerPlay) {
+        if (Random.value < _gameData.ChanceToGoPlayerInHunt 
+            && _battleManager.MainPlayerPlay 
+            && !_mainPlayer.RoleBehaviour.IsInvincibleAfterBomb
+            && !_mainPlayer.RoleBehaviour.IsInvincibleAfterBonus
+        ) {
             _targetToHunt = _mainPlayer;
             return;
         }
@@ -262,17 +276,16 @@ public class PlayerRoleBehaviour : MonoBehaviour {
         }
     }
 
-    
-    private async UniTask StartInvinsibleTimer(float time) {
+    private async UniTask StartInvinsibleAfterBombTimer() {
         SetColliderEnable(false);
-        await UniTask.WaitForSeconds(time);
+        await UniTask.WaitForSeconds(InvincibleAfterPass);
         SetColliderEnable(true);
     }
 
     
     private void SetColliderEnable(bool enable) {
         _collider.enabled = enable;
-        IsInvincibleAfterBomb = !enable;
+        SetInvincibleAfterBomb(!enable);
     }
 
 

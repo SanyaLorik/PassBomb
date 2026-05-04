@@ -20,6 +20,7 @@ public class TutorialManager : MonoBehaviour {
     public bool InitBombToMainPlayer { get; private set; } = true;
     public bool TutorialPassed => Saves.TutorialPassed;
     public event Action NewTutorialStep;  
+    public event Action<bool> TutorialStarted;  
 
 
     private GameSave Saves => _saver.GetSave<GameSave>();
@@ -53,6 +54,8 @@ public class TutorialManager : MonoBehaviour {
     
     
     private async UniTask TutorialStartAsync() {
+        TutorialStarted?.Invoke(true);
+        
         // Догони врага и передай бомбу
         NewTutorialStep?.Invoke();
         await PassBombToEnemyStep();
@@ -64,6 +67,9 @@ public class TutorialManager : MonoBehaviour {
         // Догони врага, передай бомбу и выиграй!  
         NewTutorialStep?.Invoke();
         await CatchUpEnemyWithSpeedBonusStep();
+        OnTutorialEnd();
+        
+        TutorialStarted?.Invoke(false);
     }
     
     
@@ -107,7 +113,6 @@ public class TutorialManager : MonoBehaviour {
         _lineToObjects.HideArrow();
         
         _bomb.ExplodeBombLater();
-        OnTutorialEnd();
     }  
     
     
@@ -117,7 +122,6 @@ public class TutorialManager : MonoBehaviour {
     
     
     private void OnTutorialEnd() {
-        Debug.Log("OnTutorialEnd");
         Saves.TutorialPassed = true;
         _saver.Save();
         _bonusManager.SetAvailableToUseBonuses(true);

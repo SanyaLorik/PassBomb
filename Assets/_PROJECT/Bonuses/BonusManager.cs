@@ -49,7 +49,7 @@ public class BonusManager : MonoBehaviour {
     private void PlayerStayHunter(PlayerRoleBehaviour player) {
         IPassBombPlayer passPlayer = _battleManager.Players.First(p => p.RoleBehaviour == player);
         passPlayer.SetBigJump(false);
-        passPlayer.SetInvinsible(false);
+        passPlayer.SetInvincible(false);
     }
 
   
