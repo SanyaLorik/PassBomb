@@ -216,6 +216,14 @@ MonoBehaviour:
     <Data>k__BackingField: increase speed
   - <Id>k__BackingField: You have the bomb
     <Data>k__BackingField: YOU HAVE THE BOMB!
+  - <Id>k__BackingField: Games
+    <Data>k__BackingField: Games
+  - <Id>k__BackingField: Max
+    <Data>k__BackingField: Max
+  - <Id>k__BackingField: VKontakte
+    <Data>k__BackingField: VKontakte
+  - <Id>k__BackingField: Telegram
+    <Data>k__BackingField: Telegram
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten

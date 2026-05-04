@@ -1386,6 +1386,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &275277446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5752238561392325329, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &275427009 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4944206640553063384, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -4240,7 +4251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 127271779916993008, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 773.2255
       objectReference: {fileID: 0}
     - target: {fileID: 127271779916993008, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4548,7 +4559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6686364852284224722, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 773.2255
       objectReference: {fileID: 0}
     - target: {fileID: 6686364852284224722, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4604,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8404948179030659296, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 275.22552
       objectReference: {fileID: 0}
     - target: {fileID: 8404948179030659296, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4672,7 +4683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9062164207829182807, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 275.22552
       objectReference: {fileID: 0}
     - target: {fileID: 9062164207829182807, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4925,6 +4936,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1062412837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5019222282097753600, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1062892832 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 975309451220510256, guid: 4618323e71e227f4d92fcd9561fc8042, type: 3}
@@ -5208,6 +5230,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3028764257783719380, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
   m_PrefabInstance: {fileID: 967158670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1130701712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4483454483136770097, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1131761146 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7851821315028620360, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -5845,6 +5878,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1338536997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1328980623615404852, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1341876165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1512841536540941521, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -8512,7 +8556,6 @@ Transform:
   - {fileID: 196757133}
   - {fileID: 449236013}
   - {fileID: 1426750789}
-  - {fileID: 2019568304}
   - {fileID: 2083012939}
   - {fileID: 1014002539}
   - {fileID: 1482640627}
@@ -8876,52 +8919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!1 &2019568303
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2019568304}
-  - component: {fileID: 2019568305}
-  m_Layer: 0
-  m_Name: StaticTranslation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2019568304
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019568303}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1883334078}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019568305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019568303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 060bc5d00e078d043aa531cdddd52bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StaticTranslater
-  _texts: []
-  Header: {fileID: 11400000, guid: a2d79142d38f1bc4c90686d790eb0402, type: 2}
 --- !u!114 &2024615034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6609611469608884265, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -9306,6 +9303,18 @@ MonoBehaviour:
   - <Id>k__BackingField: You have the bomb
     <Data>k__BackingField:
     - {fileID: 1934014902}
+  - <Id>k__BackingField: Games
+    <Data>k__BackingField:
+    - {fileID: 1062412837}
+  - <Id>k__BackingField: Max
+    <Data>k__BackingField:
+    - {fileID: 1338536997}
+  - <Id>k__BackingField: VKontakte
+    <Data>k__BackingField:
+    - {fileID: 1130701712}
+  - <Id>k__BackingField: Telegram
+    <Data>k__BackingField:
+    - {fileID: 275277446}
   Header: {fileID: 11400000, guid: a2d79142d38f1bc4c90686d790eb0402, type: 2}
 --- !u!114 &2098536895 stripped
 MonoBehaviour:

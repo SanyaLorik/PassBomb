@@ -235,6 +235,14 @@ MonoBehaviour:
       \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
   - <Id>k__BackingField: You have the bomb
     <Data>k__BackingField: "\u0423 \u0412\u0410\u0421 \u0411\u041E\u041C\u0411\u0410!"
+  - <Id>k__BackingField: Games
+    <Data>k__BackingField: "\u0418\u0433\u0440\u044B"
+  - <Id>k__BackingField: Max
+    <Data>k__BackingField: "\u041C\u0430\u043A\u0441"
+  - <Id>k__BackingField: VKontakte
+    <Data>k__BackingField: "\u0412\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0435"
+  - <Id>k__BackingField: Telegram
+    <Data>k__BackingField: "\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C"
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u0442\u044C"
     <ShowAsReceived>k__BackingField: "\u0417\u0430\u0431\u0440\u0430\u043D\u043E"
