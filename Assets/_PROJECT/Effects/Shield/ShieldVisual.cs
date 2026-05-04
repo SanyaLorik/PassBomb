@@ -20,6 +20,8 @@ public class ShieldVisual : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _shieldHp;
 
     private CancellationTokenSource _tokenSource;
+    private Sequence _shieldSequence;
+    
     
     public void SetShieldPercentage(float percentage, int hp) {
         percentage = Mathf.Clamp01(percentage);
@@ -67,27 +69,35 @@ public class ShieldVisual : MonoBehaviour {
     public void ShieldShowFast(bool show) {
         _shield.localScale = show ? Vector3.one : Vector3.zero;
     }
+
+    private void SetShieldAnimation(bool show) {
+        // Целевой масштаб
+        float targetScale = show ? 1f : 0f;
     
-    private void ShowShieldAnimation() {
-        // SetShieldPercentage(1f, hp);
-        if(_shield.localScale == Vector3.one) return;
-        ShieldShowFast(false);
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_shield
-            .DOScale(1f, _shieldShowDurations.From)
-            .SetEase(_shieldShowEase.From)
-        );
-    }
+        // Если уже в нужном состоянии — выходим
+        if(_shield.localScale.x == targetScale) return;
     
-    private void HideShieldAnimation() {
-        if(_shield.localScale == Vector3.zero) return;
-        ShieldShowFast(true);
-        Sequence seq = DOTween.Sequence();
-        seq.Append(_shield
-            .DOScale(0f, _shieldShowDurations.To)
-            .SetEase(_shieldShowEase.To)
-        );
+        // Убиваем старую анимацию (если есть)
+    
+        // Выбираем длительность и ease в зависимости от show
+        float duration = show ? _shieldShowDurations.From : _shieldShowDurations.To;
+        Ease ease = show ? _shieldShowEase.From : _shieldShowEase.To;
+    
+        // Запускаем новую
+        _shieldSequence?.Kill();
+        _shieldSequence = DOTween.Sequence();
+        _shieldSequence.Append(_shield.DOScale(targetScale, duration).SetEase(ease));
+    
+        // Необязательно: чистим ссылку после завершения
+        _shieldSequence.OnComplete(() => {
+            if(_shieldSequence != null && _shieldSequence.active == false)
+                _shieldSequence = null;
+        });
     }
+
+    private void ShowShieldAnimation() => SetShieldAnimation(true);
+
+    private void HideShieldAnimation() => SetShieldAnimation(false);
     
     /// <summary>
     /// есть в RectTransformHelper просто приватное, саня верни доступ(((

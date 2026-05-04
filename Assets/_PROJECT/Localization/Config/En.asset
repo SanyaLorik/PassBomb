@@ -31,6 +31,20 @@ MonoBehaviour:
   - hello
   - hi
   - yo
+  - let's go
+  - 'Go '
+  - hey everyone
+  - have fun
+  - cool
+  - nice
+  - great
+  - i see
+  - got it
+  - come on
+  - well well
+  - oops
+  - whoa
+  - whew
   Timer: Start in {0}...
   Enemy: Enemy
   TakePet: Take pet!
@@ -200,6 +214,8 @@ MonoBehaviour:
     <Data>k__BackingField: Pets
   - <Id>k__BackingField: Pet Speed Info
     <Data>k__BackingField: increase speed
+  - <Id>k__BackingField: You have the bomb
+    <Data>k__BackingField: YOU HAVE THE BOMB!
   DailyReward:
     <ShowAsAllowReceive>k__BackingField: Get
     <ShowAsReceived>k__BackingField: Gotten

@@ -38,7 +38,7 @@ MonoBehaviour:
       <From>k__BackingField: 0.5
       <To>k__BackingField: 5
     <MinSensValue>k__BackingField: 0.1
-    <NewGameTimer>k__BackingField: 1500
+    <NewGameTimer>k__BackingField: 15
     <DelayAfterGameOverToNewTimer>k__BackingField: 5
     <TimeToBombExplode>k__BackingField: 10
     <TimeToInvinsibleAfterPass>k__BackingField: 4
@@ -50,10 +50,10 @@ MonoBehaviour:
     <DoubleJumpBonusHeight>k__BackingField: 30
     <BonusReload>k__BackingField: 7
     <BonusDuration>k__BackingField: 9
-    <BotPushForce>k__BackingField: 16
+    <BotPushForce>k__BackingField: 27
     <BotUpPushRatio>k__BackingField: 6
-    <PlayerPushForce>k__BackingField: 20
-    <PlayerUpPushRatio>k__BackingField: 6
+    <PlayerPushForce>k__BackingField: 40
+    <PlayerUpPushRatio>k__BackingField: 12
     <PushTime>k__BackingField: 1
     <PushColldown>k__BackingField: 1
     <ChanceInitBombToPlayer>k__BackingField: 0.55
