@@ -69,8 +69,6 @@ public class TasksManager : MonoBehaviour {
     private int _lifeSec;
     private DateTime _timeGoPlay;
     
-    
-    
     public event Action TaskComplete;
     private GameSave Saver => _gameSave.GetSave<GameSave>();
 
@@ -95,6 +93,7 @@ public class TasksManager : MonoBehaviour {
         if (_dailyQuest.IsTimePassed) {
             ResetCompletedTasks();
         }
+        CheckTaskCount();
     }
     
     private void OnEnable() {
@@ -282,29 +281,22 @@ public class TasksManager : MonoBehaviour {
             if(taskVisualPair.Value.TaskType != type) continue;
             
             TaskVisual taskVisual = taskVisualPair.Value;
-            Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
-            _gameSave.Save();
-        
-            if (currentValue >= taskInfo.Count && !taskVisual.TaskIsComplete) {
-                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.Count);
-                _taskCountView.PlusOne();
-                ShowNotification(taskInfo);
-            }
-            else {
-                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.Count);
-            }
-            Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
-            _gameSave.Save();
-        
-            if (currentValue >= taskInfo.Count && !taskVisual.TaskIsComplete) {
-                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.Count);
-                _taskCountView.PlusOne();
-                ShowNotification(taskInfo);
-            }
-            else {
-                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.Count);
-            }
             
+            if (taskVisual.TaskIsComplete) continue;
+            
+            Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
+            _gameSave.Save();
+        
+            if (currentValue >= taskInfo.Count && !taskVisual.TaskIsComplete) {
+                taskVisual.SetTaskCompleteVisual(currentValue, taskInfo.Count);
+                _taskCountView.PlusOne();
+                ShowNotification(taskInfo);
+            }
+            else {
+                taskVisual.UpdateTaskScoreVisual(currentValue, taskInfo.Count);
+            }
+            Saver.UpdateTaskInfo(taskInfo.TaskId, currentValue, false );
+            _gameSave.Save();
         }
     }
     

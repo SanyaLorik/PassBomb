@@ -527,7 +527,7 @@ MonoBehaviour:
   BombCenterSpawn: {fileID: 6380388630318402401}
   Floor: {fileID: 4208207996392344110}
   YToFind: 20
-  FallBotFindSamplePosition: 0.2
+  FallBotFindSamplePosition: 0.5
 --- !u!1 &402734165547102424
 GameObject:
   m_ObjectHideFlags: 0

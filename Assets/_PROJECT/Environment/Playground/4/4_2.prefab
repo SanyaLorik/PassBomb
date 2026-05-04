@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 2
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -32659,7 +32659,7 @@ MonoBehaviour:
   BombCenterSpawn: {fileID: 7580447708512172667}
   Floor: {fileID: 486795573860291621}
   YToFind: 20
-  FallBotFindSamplePosition: 0.2
+  FallBotFindSamplePosition: 0.5
 --- !u!1 &5565046626101469690
 GameObject:
   m_ObjectHideFlags: 0

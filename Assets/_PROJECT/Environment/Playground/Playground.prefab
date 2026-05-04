@@ -49,10 +49,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 461965544241013744}
     m_Modifications:
-    - target: {fileID: 5316835799150918083, guid: 8c010ba56e75ed2448da4733282c7ad2, type: 3}
-      propertyPath: FallBotFindSamplePosition
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5561344880007864700, guid: 8c010ba56e75ed2448da4733282c7ad2, type: 3}
       propertyPath: m_Name
       value: 4_2
@@ -220,10 +216,6 @@ PrefabInstance:
     - target: {fileID: 3584765550544025888, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
       propertyPath: m_Name
       value: 4_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3844747009157095839, guid: 113bac32b4d179b498c191eb62aa3527, type: 3}
-      propertyPath: FallBotFindSamplePosition
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -596,10 +588,6 @@ PrefabInstance:
     - target: {fileID: 7715482531636780251, guid: 52c08f9e3529ed04b9c5c3eb64475611, type: 3}
       propertyPath: m_Name
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8842446847349364013, guid: 52c08f9e3529ed04b9c5c3eb64475611, type: 3}
-      propertyPath: FallBotFindSamplePosition
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
