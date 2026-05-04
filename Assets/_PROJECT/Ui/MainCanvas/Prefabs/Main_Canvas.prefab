@@ -10342,7 +10342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 642275073455596716, guid: 012cef9d3b99058468982d159415b2bc, type: 3}
       propertyPath: m_Name
-      value: Social Networking_1
+      value: Social Networking Window_1
       objectReference: {fileID: 0}
     - target: {fileID: 642275073455596716, guid: 012cef9d3b99058468982d159415b2bc, type: 3}
       propertyPath: m_IsActive
@@ -11192,7 +11192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9151646822773502547, guid: 5a4fce9e680b67947bfdcb27c0f4de43, type: 3}
       propertyPath: m_Name
-      value: Social Networking Button_1
+      value: Social Networking_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

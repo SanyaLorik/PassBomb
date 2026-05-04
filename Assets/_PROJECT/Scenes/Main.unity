@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.Community
   <IsEnable>k__BackingField: 1
-  _sNButton: {fileID: 1587243775}
+  _sNButton: {fileID: 535005591}
   _sNWindow: {fileID: 1587243774}
 --- !u!114 &254166637 stripped
 MonoBehaviour:
@@ -2769,6 +2769,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2567247511761974535, guid: 7244baf0dc51f40458e0255c55c05c23, type: 3}
   m_PrefabInstance: {fileID: 1091495462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &535005591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6045996466598182602, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &535005593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6644982174903624267, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
+  m_PrefabInstance: {fileID: 967158670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535005591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &539355680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9171557004430764922, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
@@ -2840,7 +2856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CanvasOpenerWithTrigger
   _delayedTrigger: {fileID: 0}
   _canvas: {fileID: 1587243774}
-  _openButton: {fileID: 1587243778}
+  _openButton: {fileID: 535005593}
   _closeButton: {fileID: 1676750810}
 --- !u!65 &573423136
 BoxCollider:
@@ -7797,17 +7813,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CanvasWindowNotifier
   _allowCameraZoom: 0
---- !u!114 &1587243778 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5532243083285528357, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
-  m_PrefabInstance: {fileID: 967158670}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587243775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!114 &1593733432 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7843824909511895558, guid: 776d8e27a07b4864182ee7a91abd1de2, type: 3}
