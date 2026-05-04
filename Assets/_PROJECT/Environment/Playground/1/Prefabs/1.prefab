@@ -10132,9 +10132,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2166657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6583332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000006357829
+      objectReference: {fileID: 0}
     - target: {fileID: 2146527313375872447, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
       propertyPath: m_Name
       value: Platfrom_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693712431850431873, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
       propertyPath: m_Size.y
@@ -10524,9 +10540,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2166657
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6583332
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054354262072530767, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000006357829
+      objectReference: {fileID: 0}
     - target: {fileID: 2146527313375872447, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
       propertyPath: m_Name
       value: Platfrom_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693712431850431873, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697710903320246960, guid: 0d213a81c2804cc4696d6c23687829ab, type: 3}
       propertyPath: m_Size.y
