@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a485dae931be641acc8024cfdbf830, type: 3}
+  m_Name: BurgerConfig
+  m_EditorClassIdentifier: Assembly-CSharp::PetItemConfig
+  <Modifier>k__BackingField: 2
+  <Prefab>k__BackingField: {fileID: 470615098054135759, guid: 52140a3978363ce4c9308bc4889c9cfa, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: c1f213c6b6b46b449a4acc2eb9deeb10, type: 3}
+  <Id>k__BackingField: burger_pet
+  <PetStatus>k__BackingField: 2
+  <PriceIfBought>k__BackingField: 2000000
