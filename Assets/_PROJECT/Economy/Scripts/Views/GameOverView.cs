@@ -37,10 +37,14 @@ public class GameOverView : MonoBehaviour {
         
         _continueButton.onClick.AddListener(() => GetReward(false));
         _advHelper.AddToButtonAdvRewardListener(_continue2xButton, () => GetReward(true));
-        
     }
 
-    
+    private void OnDisable() {
+        _continue2xButton.onClick.RemoveAllListeners();
+        _continueButton.onClick.RemoveAllListeners();
+    }
+
+
     private void ShowResultWindow(bool mainPlayerWin) {
         ResultWindowShowing = true;
         

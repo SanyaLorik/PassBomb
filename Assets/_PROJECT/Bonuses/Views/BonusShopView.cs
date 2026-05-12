@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Architecture_M;
 using DG.Tweening;
@@ -34,6 +35,11 @@ public class BonusShopView : MonoBehaviour {
         _closeButton.onClick.AddListener(CloseCanvas);
         _bonusCards.ForEach(c => c.BuyButton.onClick.AddListener(() => BuyOneItem(c.Bonus.Id, c)));
         _advHelper.AddToButtonAdvRewardListener(_randomByAdv, GetRandom);
+    }
+
+    private void OnDisable() {
+        _bonusCards.ForEach(c => c.BuyButton.onClick.RemoveAllListeners());
+        _randomByAdv.onClick.RemoveAllListeners();
     }
 
 

@@ -97,9 +97,11 @@ public class TasksManager : MonoBehaviour {
     }
     
     private void OnEnable() {
+        
         _openCanvasButton.onClick.AddListener(() => _canvas.ActiveSelf());
         _closeCanvasButton.onClick.AddListener(() => _canvas.DisactiveSelf());
         _advHelper.AddToButtonAdvRewardListener(_resetButton, ResetCompletedTasks);
+        
         _dailyQuest.OnTimerPassed += ResetCompletedTasks;
         
         // Подписка на тасочки
@@ -112,7 +114,13 @@ public class TasksManager : MonoBehaviour {
         _mainPlayer.InitedToPlay += CalculatePlayerLifeTime;
     }
 
-    
+    private void OnDisable() {
+        _openCanvasButton.onClick.RemoveAllListeners();
+        _closeCanvasButton.onClick.RemoveAllListeners();
+        _resetButton.onClick.RemoveAllListeners();
+    }
+
+
     private void CalculatePlayerLifeTime(bool goPlay) {
         if (goPlay) {
             _timeGoPlay =  DateTime.Now;
