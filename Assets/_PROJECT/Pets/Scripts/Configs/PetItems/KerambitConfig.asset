@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a485dae931be641acc8024cfdbf830, type: 3}
   m_Name: KerambitConfig
   m_EditorClassIdentifier: Assembly-CSharp::PetItemConfig
-  <Modifier>k__BackingField: 2
+  <Modifier>k__BackingField: 1
   <Prefab>k__BackingField: {fileID: 4442680977973621959, guid: 5e1832190cd5cb742abb37376873657e, type: 3}
   <Sprite>k__BackingField: {fileID: 21300000, guid: 18f20fea78c79364b9896cc251c24cd8, type: 3}
   <Id>k__BackingField: kerambit_pet

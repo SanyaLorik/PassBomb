@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a485dae931be641acc8024cfdbf830, type: 3}
   m_Name: BurgerConfig
   m_EditorClassIdentifier: Assembly-CSharp::PetItemConfig
-  <Modifier>k__BackingField: 2
+  <Modifier>k__BackingField: 1.5
   <Prefab>k__BackingField: {fileID: 470615098054135759, guid: 52140a3978363ce4c9308bc4889c9cfa, type: 3}
   <Sprite>k__BackingField: {fileID: 21300000, guid: c1f213c6b6b46b449a4acc2eb9deeb10, type: 3}
   <Id>k__BackingField: burger_pet

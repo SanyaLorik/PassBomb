@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PetStationConfig
   <StationNameId>k__BackingField: 
   <Pets>k__BackingField:
-  - <PetItemConfig>k__BackingField: {fileID: 11400000, guid: 05249be0a39e3fd4a8f6b5d5b609a7b5, type: 2}
+  - <PetItemConfig>k__BackingField: {fileID: 11400000, guid: b656d3242c590f440a1f07e8f5d2b629, type: 2}
     <Chance>k__BackingField: 0.4
   - <PetItemConfig>k__BackingField: {fileID: 11400000, guid: a7a47b68cdc48524fb0c1a41c27b96a7, type: 2}
     <Chance>k__BackingField: 0.4
