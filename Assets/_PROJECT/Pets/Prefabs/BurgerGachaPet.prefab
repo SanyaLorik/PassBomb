@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.RotatingAroundAnimation
   <Entity>k__BackingField:
-    <Source>k__BackingField: {fileID: 4030062971129854302}
+    <Source>k__BackingField: {fileID: 1770999591156173952}
     <Duration>k__BackingField: 5.2
     <Ease>k__BackingField: 1
   <IsAutoStart>k__BackingField: 1

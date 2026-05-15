@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Architecture_M.RotatingAroundAnimation
   <Entity>k__BackingField:
-    <Source>k__BackingField: {fileID: 2691378803241266941}
+    <Source>k__BackingField: {fileID: 3313821329559157467}
     <Duration>k__BackingField: 5.2
     <Ease>k__BackingField: 1
   <IsAutoStart>k__BackingField: 1
@@ -183,5 +183,10 @@ PrefabInstance:
 --- !u!4 &2691378803241266941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 564e689b985889d489806417a4cae3e0, type: 3}
+  m_PrefabInstance: {fileID: 2509362329885034774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3313821329559157467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1093817598253413325, guid: 564e689b985889d489806417a4cae3e0, type: 3}
   m_PrefabInstance: {fileID: 2509362329885034774}
   m_PrefabAsset: {fileID: 0}
