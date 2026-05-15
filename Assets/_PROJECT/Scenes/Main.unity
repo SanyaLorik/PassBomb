@@ -1968,6 +1968,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 465079958419664759, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 465079958419664759, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
     - target: {fileID: 484332406680638918, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: '_spawnPlaces.Array.data[0]'
       value: 
@@ -1980,6 +1988,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1957270430407485416, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 1957270430407485416, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
     - target: {fileID: 2009734475998796374, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2048,10 +2064,26 @@ PrefabInstance:
       propertyPath: '_spawnPlaces.Array.data[1]'
       value: 
       objectReference: {fileID: 1507713586}
+    - target: {fileID: 4233781869417873228, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 4233781869417873228, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
     - target: {fileID: 4301084763094167280, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4671892620621579270, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 4671892620621579270, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
     - target: {fileID: 4675616469891422792, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_Size.z
       value: 58.7
@@ -2060,6 +2092,14 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 647aba597061e174eab862e196486dd0, type: 2}
+    - target: {fileID: 4962889826073216320, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 4962889826073216320, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
     - target: {fileID: 5224189463087741245, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2129,6 +2169,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 86201217}
     - target: {fileID: 7127949557615314619, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1507713586}
+    - target: {fileID: 7164201794959086226, guid: 10708828ab29a564cb02e99460462b49, type: 3}
+      propertyPath: '_spawnPlaces.Array.data[0]'
+      value: 
+      objectReference: {fileID: 86201217}
+    - target: {fileID: 7164201794959086226, guid: 10708828ab29a564cb02e99460462b49, type: 3}
       propertyPath: '_spawnPlaces.Array.data[1]'
       value: 
       objectReference: {fileID: 1507713586}
