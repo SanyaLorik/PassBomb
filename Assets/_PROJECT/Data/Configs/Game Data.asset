@@ -40,8 +40,8 @@ MonoBehaviour:
     <MinSensValue>k__BackingField: 0.1
     <NewGameTimer>k__BackingField: 15
     <DelayAfterGameOverToNewTimer>k__BackingField: 5
-    <TimeToBombExplode>k__BackingField: 10
-    <TimeToInvinsibleAfterPass>k__BackingField: 4
+    <TimeToBombExplode>k__BackingField: 15
+    <TimeToInvinsibleAfterPass>k__BackingField: 2
     <TimeToInvinsibleAfterPassInTutor>k__BackingField: 1
     <DefaultSpeedInRound>k__BackingField: 12
     <HunterSpeed>k__BackingField: 20
